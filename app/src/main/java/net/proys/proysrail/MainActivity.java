@@ -45,12 +45,12 @@ public class MainActivity extends AppCompatActivity {
             Login_SQLiteHelper login_sqLiteHelper = new Login_SQLiteHelper(this);
             login_sqLiteHelper.Write(101,"Osman Tofan","Hat İşleri Şefi","","123","T0012--T0013--T0014--T0015","B0001--B0004","R0002","R0022");
             login_sqLiteHelper.Write(102,"Emre Yalçıntaş","Hat İşleri Mühendisi","","123","T0001--T0002","B0001--B0004","R0002","R0022");
-            login_sqLiteHelper.Write(103,"Lider Ülkü","Hat İşleri Teknikeri","lider.ulku@ym.com.tr","123","T0012--T0013--T0014--T0015","B0001--B0004","R0002","R0022");
+            login_sqLiteHelper.Write(103,"Lider Ülkü","Hat İşleri Teknikeri","lider.ulku@ym.com.tr","123","T0012--T0013--T0014--T0015","B0001","R0002","R0022");
             login_sqLiteHelper.Write(104,"Sedat Yıldırım","Hat İşleri Formeni","","123","T0012--T0013--T0014--T0015","B0001--B0004","R0002","R0022");
             login_sqLiteHelper.Write(105,"Enes Güler","Makine İşletme Mühendisi","","123","","B0003--B0004","R0002","R0022");
             login_sqLiteHelper.Write(106,"Berkan Kanca","Harita Mühendisi","","123","T0023","B0001--B0004","R0002","R0022");
             login_sqLiteHelper.Write(107,"Melih Karakurt","Kaynak Mühendisi","","124","","B0002--B0004","R0002","R0022");
-            login_sqLiteHelper.Write(108,"Proys","is sahibi","administrator","proys2019","T0012--T0013--T0014--T0015","B0002--B0004","R0002","R0022");
+            login_sqLiteHelper.Write(108,"Proys","is sahibi","administrator","proys2019","T0012--T0013--T0014--T0015","B0001","R0002","R0022");
            //TODO BILDIRI KENDINE TANIMLI DEGIL DIKKAT KAYNAK ILERLEME
             login_sqLiteHelper.Write(109,"Proys","is sahibi","a","a","T0012--T0013--T0014--T0015","B0001","R0002","R0022");
             final SQLiteHelper database = new SQLiteHelper(this);
