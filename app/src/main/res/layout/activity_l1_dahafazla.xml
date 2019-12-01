@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".L1_dahafazla">
+
+
+    <ImageView
+        android:id="@+id/imageView110"
+        android:layout_width="match_parent"
+        android:layout_height="65.3dp"
+        app:srcCompat="@color/background" />
+
+    <TextView
+        android:id="@+id/textView111"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="18.3dp"
+        android:fontFamily="@font/gill_sans_bold"
+        android:text="Proys"
+        android:textColor="@color/text_color"
+        android:textSize="31.7dp" />
+
+    <TextView
+        android:id="@+id/textView110"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18.3dp"
+        android:layout_toEndOf="@id/textView111"
+        android:fontFamily="@font/gill_sans_bold"
+        android:text="Rail"
+        android:textColor="@color/specialyellow"
+        android:textSize="31.7dp" />
+
+    <ImageView
+        android:id="@+id/imageView112"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16.7dp"
+        android:layout_marginEnd="17.7dp"
+        app:srcCompat="@drawable/update_arrows" />
+
+    <LinearLayout
+        android:backgroundTint="#f6f6f6"
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_below="@id/imageView110"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:background="#f6f6f6"
+            android:id="@+id/linear2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imagebekbild"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/megafon"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="4.7dp"
+                    android:layout_marginBottom="4.7dp"
+
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center"
+                    android:text="Bekleyen Bildiriler"
+                    android:textSize="12.7sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imagenotlar"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/notlar"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="4.7dp"
+                    android:layout_marginBottom="4.7dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:text="Notlar"
+                    android:textSize="12.7sp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imagetamamlananbild"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/tick"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="4.7dp"
+                    android:layout_marginBottom="4.7dp"
+                    android:drawablePadding="12dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center"
+                    android:text="Tamamlanan Bildiriler"
+                    android:textSize="11.7sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/dosyalar"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/dosyalar"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="4.7dp"
+                    android:layout_marginBottom="4.7dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center"
+                    android:text="Dosyalar"
+                    android:textSize="12.7sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imagedahafazla"
+                    android:layout_width="40dp"
+                    android:layout_height="39.7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/daha_fazla"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="4.7dp"
+                    android:layout_marginBottom="4.7dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center"
+                    android:text="Daha Fazla"
+                    android:textSize="12.7sp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear1"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginRight="11dp"
+        android:backgroundTint="#fbfbfb"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ok" />
+
+            <TextView
+                android:textColor="#444444"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginLeft="11.3dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="11dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Profilim"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="58.3dp">
+            <ImageView
+                android:id="@+id/image"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="27.3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/soru_isareti"/>
+            <TextView
+                android:id="@+id/user"
+                android:fontFamily="@font/opensans_regular"
+                android:textSize="18sp"
+                android:textColor="#444444"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:text="Cihan Emin Bayrakdar  "
+                android:layout_alignStart="@id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp" />
+            <TextView
+
+                android:fontFamily="@font/opensans_light"
+                android:textSize="13sp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="78dp"
+                android:text="UI/UX Designer "
+                android:layout_below="@+id/user"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp" />
+        </RelativeLayout>
+        <Button
+            android:id="@+id/btn_cikis"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:text="Çıkış Yap"
+            android:backgroundTint="#efbe31"
+            android:background="@drawable/button_background"
+            android:layout_width="match_parent"
+            android:layout_height="34dp" />
+        <ScrollView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="58.3dp">
+
+                    <ImageView
+                        android:id="@+id/ikon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15.3dp"
+                        android:src="@drawable/veri_g_ncelleme" />
+                    <TextView
+                        android:id="@+id/txt"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="18sp"
+                        android:textColor="#444444"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="60dp"
+                        android:text="Veri Güncelleme  "
+                        android:layout_alignStart="@id/ikon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp" />
+                    <TextView
+
+                        android:fontFamily="@font/opensans_light"
+                        android:textSize="10sp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="78dp"
+                        android:text="En son 08.10.2019 yılında veri güncellenmiştir "
+                        android:layout_below="@+id/txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp" />
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="58.3dp">
+                    <ImageView
+                        android:id="@+id/ikon1"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15.3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/yard_m"/>
+                    <TextView
+                        android:id="@+id/txt1"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="18sp"
+                        android:textColor="#444444"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="60dp"
+                        android:text="Yardım "
+                        android:layout_alignStart="@id/ikon1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp" />
+                    <TextView
+
+                        android:fontFamily="@font/opensans_light"
+                        android:textSize="10sp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="78dp"
+                        android:text="Herhangi bir sorunla karşılaştığınızda bize ulaşın."
+                        android:layout_below="@+id/txt1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp" />
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="58.3dp">
+                    <ImageView
+                        android:id="@+id/ikon2"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15.3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/nas_l_kullan_l_r"/>
+                    <TextView
+                        android:id="@+id/txt2"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="18sp"
+                        android:textColor="#444444"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="60dp"
+                        android:text="Nasıl Kullanılır ?"
+                        android:layout_alignStart="@id/ikon2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp" />
+                    <TextView
+
+                        android:fontFamily="@font/opensans_light"
+                        android:textSize="10sp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="78dp"
+                        android:text="Uygulamayı nasıl kullanacağınızı öğrenin.   "
+                        android:layout_below="@+id/txt2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp" />
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="58.3dp">
+                    <ImageView
+                        android:id="@+id/ikon3"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15.3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/geri_bildirim"/>
+                    <TextView
+                        android:id="@+id/txt3"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="18sp"
+                        android:textColor="#444444"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="60dp"
+                        android:text="Geri Bildirim "
+                        android:layout_alignStart="@id/ikon3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp" />
+                    <TextView
+
+                        android:fontFamily="@font/opensans_light"
+                        android:textSize="10sp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="78dp"
+                        android:text="Uygulamayı geliştirmemiz için bize yardımcı olun. "
+                        android:layout_below="@+id/txt3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp" />
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

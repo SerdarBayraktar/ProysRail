@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".L2_aciklama">
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/background" />
+
+    <TextView
+        android:textAlignment="center"
+        android:fontFamily="@font/opensans_semibold"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25.3dp"
+        android:layout_marginTop="5.3dp"
+        android:text=" Günlük İlerleme"
+        android:textColor="@color/text_color"
+        android:textSize="27.8sp" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/textView"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="-6dp"
+        android:textColor="@color/text_color"
+        android:fontFamily="@font/opensans_lightitalic"
+        android:textSize="16.7sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18.09.2019" />
+
+    <ImageView
+        android:id="@+id/sent"
+        android:layout_width="36dp"
+        android:layout_height="26.3dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="19.7dp"
+        android:layout_marginEnd="14dp"
+        app:srcCompat="@drawable/yenisayfa" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_below="@id/imageView10"
+        app:srcCompat="@color/background2" />
+
+
+    <TextView
+        android:id="@+id/contur1"
+        android:layout_alignBottom="@id/imageView10"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a3a3"/>
+    <TextView
+        android:id="@+id/contur2"
+        android:layout_alignBottom="@id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a3a3"/>
+
+
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="69.7dp"
+        android:layout_below="@id/imageView10"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/imalat_linear"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:src="@drawable/ilerleme"
+                    android:id="@+id/imageImalat"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_weight="1"
+
+
+                    />
+                <TextView
+                    android:layout_marginBottom="4.7dp"
+                    android:layout_marginTop="4.7dp"
+                    android:textSize="12.7sp"
+
+                    android:fontFamily="@font/opensans_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="İmalat"/>
+
+
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:id="@+id/isgucu_linear"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageisci"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/is_gucu"
+
+                    />
+
+                <TextView
+                    android:layout_marginBottom="4.7dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.7dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:text="İş Gücü"
+                    android:textSize="12.7sp"/>
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:id="@+id/makine_linear"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageMakine"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/makine"
+
+                    />
+                <TextView
+                    android:layout_marginBottom="4.7dp"
+                    android:layout_marginTop="4.7dp"
+                    android:textSize="12.7sp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Makine"/>
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:id="@+id/malzeme_linear"
+
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageMalzeme"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/malzeme"
+
+                    />
+                <TextView
+                    android:layout_marginBottom="4.7dp"
+                    android:layout_marginTop="4.7dp"
+                    android:textSize="12.7sp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Malzeme"/>
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:id="@+id/aciklama_linear"
+
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:src="@drawable/notepad"
+                    android:id="@+id/imageAciklama"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_weight="1"
+
+
+                    />
+                <TextView
+                    android:layout_marginBottom="4.7dp"
+                    android:layout_marginTop="4.7dp"
+                    android:textSize="12.7sp"
+                    android:id="@+id/aciklama_txt"
+                    android:fontFamily="@font/opensans_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Açıklama"/>
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:id="@+id/medya_linear"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageCamera"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/camera"
+
+
+                    />
+                <TextView
+                    android:layout_marginBottom="4.7dp"
+                    android:layout_marginTop="4.7dp"
+                    android:textSize="12.7sp"
+
+                    android:fontFamily="@font/opensans_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Medya"/>
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+    ////////////////
+
+    <LinearLayout
+
+        android:id="@+id/ustpanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/contur2"
+        android:layout_marginStart="6.3dp"
+        android:layout_marginEnd="6.3dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
+
+
+
+
+        <LinearLayout
+            android:background="#fbfbfb"
+            android:layout_marginTop="11.3dp"
+            android:orientation="horizontal"
+            android:id="@+id/Subbaslast"
+            android:layout_width="match_parent"
+            android:layout_height="39.7dp">
+
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="14.7dp"
+                android:layout_height="16.7dp"
+                android:src="@drawable/okgen_1"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10.3dp"
+                android:textSize="22.2sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subbalast Serimi"
+                android:fontFamily="@font/opensans_regular"/>
+
+
+            <LinearLayout
+                android:background="#fbfbfb"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_marginRight="15dp"
+                    android:layout_width="26.3dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/dots"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/text_aciklama"
+
+            android:background="@color/background"
+            android:layout_below="@id/linear1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp">
+
+            <EditText
+                android:gravity="top"
+                android:id="@+id/aciklama_1"
+                android:hint="Lorem Ipsum,m, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beş"
+                android:textSize="16sp"
+                android:fontFamily="@font/opensans_light"
+                android:padding="7dp"
+                android:background="@drawable/edit_back_no_radius"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"/>
+
+            <EditText
+                android:id="@+id/aciklama_2"
+                android:gravity="top"
+                android:layout_marginTop="11.3dp"
+                android:hint="Lorem Ipbırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beş"
+                android:textSize="16sp"
+                android:fontFamily="@font/opensans_light"
+                android:padding="7dp"
+                android:background="@drawable/edit_back_no_radius"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"/>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/alt_more"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+
+        />
+
+
+</RelativeLayout>

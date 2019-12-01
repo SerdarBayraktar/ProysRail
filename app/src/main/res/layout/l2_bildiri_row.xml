@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_marginEnd="6.3dp"
+    android:layout_marginStart="6.3dp"
+
+
+    >
+
+
+
+    <ImageView
+
+        android:id="@+id/imageView22"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@color/background2" />
+
+    <ImageView
+        android:id="@+id/imageView223"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="11dp"
+        app:srcCompat="@drawable/okgen_1" />
+
+    <TextView
+        android:singleLine="false"
+        android:maxLines="4"
+        android:lines="4"
+        android:id="@+id/imalat_adi"
+        android:layout_toEndOf="@id/imageView223"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginStart="14.7dp"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/opensans_regular"
+        android:text="Subbalast Serimi"
+        android:textColor="@color/text_color"
+        android:textSize="22.9sp" />
+
+
+    <ImageView
+        android:id="@+id/imageView23"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_below="@id/imageView22"
+        app:srcCompat="@color/background" />
+
+    <TextView
+        android:id="@+id/mesafe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView22"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/opensans_light"
+        android:text="2970 thm"
+        android:textColor="@color/text_color"
+        android:textSize="19.4sp" />
+
+    <ImageView
+        android:id="@+id/imageView24"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_below="@id/mesafe"
+        android:layout_marginTop="4dp"
+        app:srcCompat="@drawable/cubuk" />
+
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:orientation="vertical"></LinearLayout>-->
+
+    <TextView
+        android:id="@+id/km_bas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView24"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/opensans_light"
+        android:text="184+846"
+        android:textColor="@color/text_color"
+        android:textSize="16.4sp" />
+
+    <TextView
+        android:id="@+id/km_son"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/imageView24"
+        android:layout_marginEnd="10.7dp"
+        android:layout_marginTop="7.3dp"
+        android:fontFamily="@font/opensans_light"
+        android:text="187+816 "
+        android:textColor="@color/text_color"
+        android:textSize="16.4sp" />
+
+    <LinearLayout
+        android:id="@+id/line"
+        android:layout_below="@id/km_son"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/verimtxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:fontFamily="@font/opensans_semibold"
+                android:textSize="19.4sp"
+                android:gravity="center"
+                android:textColor="#009640"
+                android:text="Verim" />
+
+            <TextView
+                android:id="@+id/verim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:fontFamily="@font/opensans_semibold"
+                android:textSize="17.2sp"
+                android:gravity="center"
+                android:background="@drawable/elips_2"
+                android:textColor="#009640"
+                android:text="%96" />
+
+            <TextView
+                android:id="@+id/ort_verimsiz_sure"
+                android:layout_width="match_parent"
+                android:textSize="12sp"
+                android:fontFamily="@font/opensans_light"
+                android:layout_weight="0"
+                android:textColor="@color/text_color"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="Kaynak başına ortalama
+verimsiz süre: " />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:weightSum="4"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="12sp"
+                    android:textColor="#444444"
+                    android:fontFamily="@font/opensans_light"
+                    android:text="Personel" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:weightSum="2"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/personel_sayisi"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/opensans_regular"
+                        android:layout_weight="1"
+                        android:text="0" />
+
+                    <TextView
+                        android:id="@+id/personel_puantaj"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/opensans_regular"
+                        android:layout_weight="1"
+                        android:text="0 Saat" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView27"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/opensans_light"
+                    android:textSize="12sp"
+                    android:textColor="#444444"
+                    android:text="Makine" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:weightSum="2"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/makine_sayisi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_color"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:layout_weight="1"
+                        android:text="0" />
+
+                    <TextView
+                        android:id="@+id/makine_puantaj"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_color"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:layout_weight="1"
+                        android:text="0 Saat" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView31"
+                    android:textColor="#444444"
+                    android:fontFamily="@font/opensans_light"
+                    android:textSize="12sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Medya" />
+
+                <TextView
+                    android:id="@+id/medya"
+                    android:layout_width="match_parent"
+
+                    android:textColor="@color/text_color"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:layout_height="wrap_content"
+                    android:text="0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView29"
+
+                    android:textColor="#444444"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/opensans_light"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Açıklama" />
+
+                <TextView
+                    android:id="@+id/aciklama"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/text_color"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:layout_height="wrap_content"
+                    android:text="0" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="45dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#f6f6f6"
+    android:layout_marginTop="11.3dp"
+    android:orientation="horizontal"
+    android:id="@+id/Subbaslast"
+    android:layout_marginLeft="7dp"
+    android:layout_marginRight="7dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="14.7dp"
+            android:layout_height="16.7dp"
+            android:src="@drawable/okgen_1"
+            android:layout_gravity="center_vertical"/>
+        <TextView
+            android:letterSpacing="-0.03"
+            android:id="@+id/imalat_adi"
+
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10.3dp"
+            android:textSize="22.2sp"
+            android:textColor="#444444"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Subbalast Serimi"
+            android:fontFamily="@font/opensans_regular"/>
+
+
+
+
+
+</LinearLayout>

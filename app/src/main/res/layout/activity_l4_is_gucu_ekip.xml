@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".L4_is_gucu_ekip"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginStart="-28dp"
+        android:background="@color/background"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <TextView
+        android:textAlignment="center"
+        android:fontFamily="@font/opensans_semibold"
+        android:id="@+id/makine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25.3dp"
+        android:layout_marginTop="4.3dp"
+        android:text="İş Gücü"
+        android:textColor="@color/text_color"
+        android:textSize="27.8sp" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/makine"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="-7dp"
+        android:textColor="@color/text_color"
+        android:fontFamily="@font/opensans_lightitalic"
+        android:textSize="16.7sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18.09.2019" />
+    <LinearLayout
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_width="29dp"
+            android:layout_height="29.3dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="22dp"
+            app:srcCompat="@drawable/magnifier_tool" />
+    </LinearLayout>
+
+
+    //Toolbardan sonra gelen kapsayıcı Layout
+    <LinearLayout
+        android:weightSum="10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:orientation="vertical">
+        // ilk listview u içine alan layoutumuz
+        <LinearLayout
+            android:layout_weight="4.5"
+            android:layout_below="@id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ListView
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </LinearLayout>
+        // Favorilerim textview u yıldız imageview unu ve ikinci listview u içine alan layoutumuz
+        <LinearLayout
+            android:weightSum="5.5"
+            android:layout_weight="5.5"
+            android:background="@color/background2"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_weight="4.5"
+                android:weightSum="4"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp">
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/bar"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_weight="3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp">
+                    <ImageView
+                        android:layout_marginTop="2dp"
+                        android:id="@+id/imageView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        app:srcCompat="@drawable/favori_y_ld_z" />
+                    <TextView
+                        android:id="@+id/makinegrup"
+                        android:layout_marginStart="3.7dp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="İsçi Grupları" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ListView
+                    android:id="@+id/list_view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></ListView>
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

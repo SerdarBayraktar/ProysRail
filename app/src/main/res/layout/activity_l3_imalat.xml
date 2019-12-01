@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.proys.proysrail.L3_imalat">
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/background" />
+
+    <TextView
+        android:textAlignment="center"
+        android:fontFamily="@font/opensans_semibold"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25.3dp"
+        android:layout_marginTop="5.3dp"
+        android:text="İlerleme"
+        android:textColor="@color/text_color"
+        android:textSize="27.8sp" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/textView"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="-7dp"
+        android:textColor="@color/text_color"
+        android:fontFamily="@font/opensans_lightitalic"
+        android:textSize="16.7sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18.09.2019" />
+
+    <ImageView
+        android:id="@+id/tick"
+        android:layout_marginTop="19.7dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="14dp"
+        android:layout_width="36dp"
+        android:layout_height="26.3dp"
+        app:srcCompat="@drawable/onay" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_below="@id/imageView10"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        app:srcCompat="@color/background2" />
+
+
+    <LinearLayout
+        android:background="@color/background2"
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="69.7dp"
+        android:layout_below="@id/imageView10"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/imalat_linear"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageImalat"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/imalat"
+
+                    />
+                <TextView
+                    android:id="@+id/textimalat"
+                    android:layout_marginBottom="4.7dp"
+                    android:layout_marginTop="4.7dp"
+                    android:textSize="12.7sp"
+
+                    android:fontFamily="@font/opensans_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="İmalat"/>
+
+
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/verim_linear"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageverim"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/verimsizlik"
+
+                    />
+
+                <TextView
+                    android:layout_marginBottom="4.7dp"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/textVerimsizlik"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.7dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:text="Verimsizlik"
+                    android:textSize="12.7sp"/>
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/aciklama_linear"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageAciklama"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/notepad"
+
+                    />
+                <TextView
+                    android:layout_marginBottom="4.7dp"
+                    android:layout_marginTop="4.7dp"
+                    android:textSize="12.7sp"
+                    android:id="@+id/textAciklama"
+                    android:fontFamily="@font/opensans_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Açıklama"/>
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:id="@+id/medya_linear"
+
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageCamera"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/camera"
+
+                    />
+                <TextView
+                    android:layout_marginBottom="4.7dp"
+                    android:layout_marginTop="4.7dp"
+                    android:textSize="12.7sp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/textMedya"
+                    android:layout_height="wrap_content"
+                    android:text="Medya"/>
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="9dp"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="4.7dp"
+        android:layout_height="78.3dp"
+        android:layout_marginStart="4.7dp"
+        app:cardBackgroundColor="@color/background"
+        android:layout_below="@id/imageView11"
+
+        >
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15.3dp"
+            android:textColor="@color/text_color"
+            android:layout_marginTop="9.3dp"
+            android:fontFamily="@font/opensans_regular"
+            android:textSize="19.4sp"
+            android:text="İmalat Adı:" />
+
+        <TextView
+
+            android:paddingLeft="9dp"
+            android:text="Subbalast Terimi "
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_marginStart="13.7dp"
+            android:layout_marginEnd="13.7dp"
+            android:textColor="@color/text_color"
+            android:layout_marginTop="37dp"
+            android:background="@drawable/edit_background"
+            android:fontFamily="@font/opendans_italic"
+            android:textSize="19.4sp" />
+
+    </android.support.v7.widget.CardView>
+
+
+
+    <LinearLayout
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_marginStart="4.7dp"
+        android:layout_marginEnd="4.7dp"
+        android:layout_marginTop="9dp"
+        android:id="@id/linear1"
+        android:layout_height="39.3dp"
+        android:background="@color/background"
+        android:layout_below="@id/card_view"
+        android:orientation="horizontal">
+
+
+
+        <LinearLayout
+
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:gravity="center_vertical"
+                android:layout_marginStart="16.3dp"
+                android:id="@+id/textView8"
+                android:layout_width="179.7dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="19.4sp"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Sektör:" />
+        </LinearLayout>
+
+        <LinearLayout
+
+
+            android:layout_width="0dp"
+            android:layout_height="39.3dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/sektor"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:layout_marginTop="9.3dp"
+                android:layout_marginEnd="13.7dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/opensans_light"
+                android:letterSpacing="-0.02"
+                android:textAlignment="center"
+                android:text="Akdağmadeni İstasyon"
+                android:textSize="16sp"
+                />
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/hatno"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_marginStart="4.7dp"
+        android:layout_marginEnd="4.7dp"
+        android:layout_marginTop="9dp"
+
+        android:layout_height="39.3dp"
+        android:background="@color/background"
+        android:layout_below="@id/linear1"
+        android:orientation="horizontal">
+
+
+
+        <LinearLayout
+
+            android:layout_weight="0.9"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:gravity="center_vertical"
+                android:layout_marginStart="16.3dp"
+                android:id="@+id/textView9"
+                android:layout_width="179.7dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="19.4sp"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Hat No:" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="18dp"
+            android:background="@color/background"
+            android:weightSum="4"
+            android:layout_width="0dp"
+            android:layout_height="39.3dp"
+            android:layout_weight="1.1"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/imageView201"
+                android:layout_width="wrap_content"
+                android:layout_height="28.7dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/number_1" />
+
+            <ImageView
+                android:id="@+id/imageView202"
+
+                android:layout_gravity="center"
+                android:layout_weight="1"
+
+                android:src="@drawable/number2"
+                android:layout_width="wrap_content"
+                android:layout_height="28.7dp" />
+
+            <ImageView
+                android:id="@+id/imageView203"
+
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/number_2"
+                android:layout_width="wrap_content"
+                android:layout_height="28.7dp" />
+
+            <ImageView
+                android:id="@+id/imageView204"
+
+                android:layout_marginRight="3dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/more"
+                android:layout_width="wrap_content"
+                android:layout_height="28.7dp" />
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+    <LinearLayout
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:id="@+id/linear3"
+        android:layout_marginTop="9dp"
+        android:layout_below="@id/hatno"
+        android:layout_height="167.7dp"
+        android:background="@color/background"
+        android:layout_marginStart="4.7dp"
+        android:layout_marginEnd="4.7dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:weightSum="4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="16.3dp"
+                android:layout_marginTop="13dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/opensans_regular"
+                android:text="KM Başlangıç:"
+                android:textColor="@color/text_color"
+                android:textSize="19.4sp" />
+
+            <TextView
+
+                android:layout_weight="1"
+                android:id="@+id/textView12"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/opensans_regular"
+                android:textSize="19.4sp"
+                android:layout_marginStart="16.3dp"
+                android:layout_marginTop="13dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="KM Bitiş:" />
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/textView13"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/opensans_regular"
+                android:textSize="19.4sp"
+                android:layout_marginStart="16.3dp"
+                android:layout_marginTop="13.3dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="Mesafe:" />
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/textView14"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/opensans_regular"
+                android:textSize="19.4sp"
+                android:layout_marginStart="16.3dp"
+                android:layout_marginTop="14.3dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="Birim:"
+                android:layout_marginBottom="3dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:weightSum="4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4.7dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+
+            <EditText
+
+                android:layout_weight="1"
+                android:layout_marginRight="13.3dp"
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/background"
+                android:ems="10"
+                android:inputType="phone"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+
+            <EditText
+                android:layout_weight="1"
+                android:id="@+id/editText3"
+                android:layout_width="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="13.3dp"
+                android:layout_height="0dp"
+                android:background="@color/background"
+                android:ems="10"
+                android:inputType="phone"
+                /><View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+            <EditText
+
+                android:layout_marginRight="13.3dp"
+                android:id="@+id/editText4"
+                android:layout_width="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:background="@color/background"
+                android:ems="10"
+                android:inputType="number"
+                /><View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:inputType="phone"
+                android:layout_weight="1"
+                android:id="@+id/birimtxt"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/gil_sans_light_italic"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:textSize="22.2sp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="@string/hat_metre" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

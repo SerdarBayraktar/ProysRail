@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.proys.proysrail">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/via_de_tren"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".l2_is_gucu" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Anasayfa" />
+        <activity android:name=".L3_imalat" />
+        <activity android:name=".L4_imalatlar" />
+        <activity android:name=".L1_main" />
+
+        <meta-data
+            android:name="com.parse.SERVER_URL"
+            android:value="@string/back4app_server_url" />
+        <meta-data
+            android:name="com.parse.APPLICATION_ID"
+            android:value="@string/back4app_app_id" />
+        <meta-data
+            android:name="com.parse.CLIENT_KEY"
+            android:value="@string/back4app_client_key" />
+
+        <activity android:name=".L2_bildiri" />
+        <activity android:name=".L3_verimsizlik" />
+        <activity android:name=".L3_aciklama" />
+        <activity android:name=".L4_aciklama" />
+        <activity android:name=".L3_medya" />
+        <activity android:name=".L2_aciklama" />
+        <activity android:name=".L4_verimsizlik" />
+        <activity android:name=".L4_medya" />
+        <activity android:name=".L1_dahafazla" />
+        <activity android:name=".L1_tamamlanan" />
+        <activity android:name=".L2_makine" />
+        <activity android:name=".L2_medya" />
+        <activity android:name=".L3_isgucu" />
+        <activity android:name=".L4_makine" />
+        <activity android:name=".L3_makine" />
+        <activity android:name=".L4_is_gucu" />
+        <activity android:name=".L4_isci_detay" />
+        <activity android:name=".L4_is_gucu_ekip" />
+        <activity android:name=".L4_makine_detay" />
+        <activity android:name=".L4_makine_grup" />
+        <activity android:name=".L4_sektor"></activity>
+    </application>
+
+</manifest>

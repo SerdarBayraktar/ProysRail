@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".L2_medya">
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/background" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25.3dp"
+        android:layout_marginTop="5.3dp"
+        android:fontFamily="@font/opensans_semibold"
+        android:text=" Günlük İlerleme"
+        android:textAlignment="center"
+        android:textColor="@color/text_color"
+        android:textSize="27.8sp" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="-6dp"
+        android:fontFamily="@font/opensans_lightitalic"
+        android:text="18.09.2019"
+        android:textColor="@color/text_color"
+        android:textSize="16.7sp" />
+
+    <ImageView
+        android:id="@+id/sent"
+        android:layout_width="36dp"
+        android:layout_height="26.3dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="19.7dp"
+        android:layout_marginEnd="14dp"
+        app:srcCompat="@drawable/yenisayfa" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_below="@id/imageView10"
+        app:srcCompat="@drawable/navbar_back" />
+    <TextView
+        android:id="@+id/contur1"
+        android:layout_alignBottom="@id/imageView10"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a3a3"/>
+    <TextView
+        android:id="@+id/contur2"
+        android:layout_alignBottom="@id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a3a3"/>
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="69.7dp"
+        android:layout_below="@id/imageView10"
+        android:orientation="horizontal">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/imalat_linear"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageImalat"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ilerleme"
+
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.7dp"
+
+                    android:layout_marginBottom="4.7dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:text="İmalat"
+                    android:textSize="12.7sp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:id="@+id/isgucu_linear"
+
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageisci"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/is_gucu"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.7dp"
+                    android:layout_marginBottom="4.7dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:text="İş Gücü"
+                    android:textSize="12.7sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:id="@+id/makine_linear"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageMakine"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/makine"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.7dp"
+                    android:layout_marginBottom="4.7dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:text="Makine"
+                    android:textSize="12.7sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:id="@+id/malzeme_linear"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageMalzeme"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/malzeme"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.7dp"
+                    android:layout_marginBottom="4.7dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:text="Malzeme"
+                    android:textSize="12.7sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/aciklama_linear"
+
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageAciklama"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/notepad"
+
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.7dp"
+
+                    android:layout_marginBottom="4.7dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:text="Açıklama"
+                    android:textSize="12.7sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/medya_linear"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageCamera"
+                    android:layout_width="match_parent"
+                    android:layout_height="39.7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/camera"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/medya_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4.7dp"
+
+                    android:layout_marginTop="4.7dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:text="Medya"
+                    android:textSize="12.7sp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    ////////////////
+
+    <LinearLayout
+
+        android:id="@+id/ustpanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/contur2"
+        android:layout_marginStart="6.3dp"
+        android:layout_marginEnd="6.3dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/Subbaslast"
+            android:layout_width="match_parent"
+            android:layout_height="39.7dp"
+            android:layout_marginTop="11.3dp"
+            android:background="#fbfbfb"
+            android:orientation="horizontal">
+
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="14.7dp"
+                android:layout_height="16.7dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/okgen_1" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10.3dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Subbalast Serimi"
+                android:textSize="22.2sp" />
+
+
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TableLayout
+                android:background="#f6f6f6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+
+                <TableRow>
+
+                    <ImageView
+                        android:layout_marginRight="8dp"
+                        android:scaleType="centerCrop"
+                        android:adjustViewBounds="true"
+                        android:layout_width="71dp"
+                        android:layout_height="60dp"
+
+                        android:src="@color/blue" />
+
+                    <ImageView
+                        android:layout_marginRight="8dp"
+                        android:layout_height="60dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:layout_width="71dp"
+
+                        android:src="@color/blue" />
+
+                    <ImageView
+                        android:layout_marginRight="8dp"
+                        android:scaleType="centerCrop"
+                        android:adjustViewBounds="true"
+                        android:layout_width="71dp"
+                        android:layout_height="60dp"
+                        android:src="@color/blue" />
+
+                    <ImageView
+
+                        android:scaleType="centerCrop"
+                        android:adjustViewBounds="true"
+                        android:layout_width="70dp"
+                        android:layout_height="60dp"
+                        android:src="@color/blue" />
+
+                </TableRow>
+
+
+            </TableLayout>
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

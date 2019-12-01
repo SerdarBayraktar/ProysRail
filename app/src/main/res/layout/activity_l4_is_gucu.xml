@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".L4_is_gucu"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_alignStart="@+id/textView"
+
+        android:background="@color/background"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <TextView
+        android:textAlignment="center"
+        android:fontFamily="@font/opensans_semibold"
+        android:id="@+id/makine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25.3dp"
+        android:layout_marginTop="5.3dp"
+        android:text="İş Gücü"
+        android:textColor="@color/text_color"
+        android:textSize="27.8sp" />
+
+
+    <TextView
+        android:id="@+id/imalat"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/makine"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="-4dp"
+        android:textColor="@color/text_color"
+        android:fontFamily="@font/gil_sans_light_italic"
+        android:textSize="16.7sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subbalast Serimi" />
+    <LinearLayout
+        android:id="@+id/lin"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/onay"
+            android:layout_width="29dp"
+            android:layout_height="29.3dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="22dp"
+            app:srcCompat="@drawable/onay" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_toStartOf="@id/lin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/ekip"
+            android:layout_width="29dp"
+            android:layout_height="29.3dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="22dp"
+            app:srcCompat="@drawable/ic_people_black_24dp" />
+    </LinearLayout>
+
+
+
+    //Toolbardan sonra gelen kapsayıcı Layout
+    <LinearLayout
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:orientation="horizontal"
+        android:id="@+id/search_bar"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+
+            android:paddingLeft="4dp"
+            android:drawableLeft="@drawable/ic_search"
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="32.3dp"
+            android:layout_marginTop="9dp"
+            android:background="@drawable/corners_background_with_kontur"
+            android:gravity="center"
+            android:hint="Ara"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#9f9f9f"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:weightSum="10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/search_bar"
+        android:orientation="vertical">
+        // ilk listview u içine alan layoutumuz
+        <LinearLayout
+            android:layout_marginTop="9dp"
+            android:layout_weight="4.5"
+            android:layout_below="@id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ListView
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </LinearLayout>
+        // Favorilerim textview u yıldız imageview unu ve ikinci listview u içine alan layoutumuz
+        <LinearLayout
+            android:weightSum="5.5"
+            android:layout_weight="5.5"
+            android:background="@color/background2"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_weight="4.5"
+                android:weightSum="4"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:background="#eeeeee"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp">
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/bar"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_weight="3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp">
+
+                    <TextView
+                        android:textColor="#444444"
+                        android:id="@+id/makinegrup"
+                        android:layout_marginStart="3.7dp"
+                        android:fontFamily="@font/opensans_semibold"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Seçilenler" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:background="#eeeeee"
+                android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ListView
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:id="@+id/list_view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></ListView>
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

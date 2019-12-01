@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_marginTop="5dp"
+    android:layout_height="wrap_content"
+    android:background="#f6f6f6"
+    android:orientation="vertical"
+    >
+
+
+    <TextView
+        android:textSize="19.4sp"
+        android:textColor="#444444"
+        android:gravity="center"
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="34.7dp"
+        android:text="Subbalast Serimi Ekibi #2" />
+    <TextView
+        android:textSize="19.4sp"
+        android:textColor="#e3e3e3"
+        android:gravity="center"
+        android:id="@+id/puantaj"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:text="8" />
+</RelativeLayout>
