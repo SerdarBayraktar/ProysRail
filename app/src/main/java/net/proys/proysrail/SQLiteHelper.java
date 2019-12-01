@@ -2204,6 +2204,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.close();
         return aciklamalar;
     }
+    public void UpdateAciklamal4(String id, String imalat_id,String aciklama){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA,aciklama);
+        String[] args = {id,imalat_id,aciklama};
+        sqLiteDatabase.update(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,contentValues,TASLAK_ACIKLAMALAR_YAPISI.ID+ " = ?"+" AND "+TASLAK_ACIKLAMALAR_YAPISI.IMALAT+ " = ?",args);
+        sqLiteDatabase.close();
+    }
     public String[] ReadTaslakResource(String id){
         String tarih = null;
         String kaynak_id = null;

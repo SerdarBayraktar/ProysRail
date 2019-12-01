@@ -1,6 +1,9 @@
 package net.proys.proysrail;
 
 import android.app.Activity;
+import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,8 @@ public class L4_aciklama_adapter extends ArrayAdapter<String> {
 
     private final Activity context;
     private final List<String> aciklamalar;
+    SQLiteHelper database;
+    Get_Set veri;
 
 
     public L4_aciklama_adapter(Activity context, List<String> aciklamalar) {
@@ -25,7 +30,8 @@ public class L4_aciklama_adapter extends ArrayAdapter<String> {
         // TODO Auto-generated constructor stub
         this.context=context;
         this.aciklamalar=aciklamalar;
-
+        database = new SQLiteHelper(context);
+        veri = new Get_Set();
     }
 
     public View getView(final int position, View view, ViewGroup parent) {
@@ -33,6 +39,22 @@ public class L4_aciklama_adapter extends ArrayAdapter<String> {
         View rowView=inflater.inflate(R.layout.l4_aciklama_row, null,true);//layout hatalı olabilir
         EditText aciklama_edit = rowView.findViewById(R.id.aciklama_edit);
         aciklama_edit.setText(aciklamalar.get(position));
+        aciklama_edit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                database.UpdateAciklamal4(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),s.toString());
+            }
+        });
         return rowView;
 
     }
