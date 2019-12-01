@@ -12,7 +12,7 @@ import java.util.List;
 
 public class L4_aciklama extends AppCompatActivity {
     private EditText aciklama;
-    private ImageView tick;
+    private ImageView tick,ekle;
     ListView listView;
     Get_Set veri;
     SQLiteHelper database;
@@ -32,6 +32,7 @@ public class L4_aciklama extends AppCompatActivity {
         aciklama = findViewById(R.id.aciklama_edit);
         tick = findViewById(R.id.tick);
         listView = findViewById(R.id.listview);
+        ekle = findViewById(R.id.ekle);
     }
     protected void setOnclickevents(){
         tick.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +41,13 @@ public class L4_aciklama extends AppCompatActivity {
                 Intent intent = new Intent(L4_aciklama.this,L3_aciklama.class);
                 veri.setAciklamalar(aciklama.getText().toString());
                 startActivity(intent);
+            }
+        });
+        ekle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // database.WriteTaslakL4(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),Integer.valueOf(database.ReadGet_Set("KopyaNo")));
+                //setListView();
             }
         });
 

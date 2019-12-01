@@ -52,6 +52,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         private static final String TARIH = "TARIH";
         private static final String IMALAT = "IMALAT";
         private static final String ACIKLAMA = "ACIKLAMA";
+        private static final String KOPYA_NO = "KOPYA_NO";
     }
     private static class IMALAT_TABLO_YAPISI{
         private static final String TABLO_ADI = "IMALAT_TABLOSU";
@@ -80,9 +81,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         private static final String MESAFE = "MESAFE";
         private static final String BIRIM = "BIRIM";
         private static final String SENT = "SENT";
-
-
-
     }
     private static class PERSONEL_TABLO_YAPISI{
         private static final String TABLO_ADI = "PERSONEL_TABLOSU";
@@ -224,6 +222,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     String TASLAK_ACIKLAMALAR_OLUSTURMA = "CREATE TABLE " + TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI +"("+ TASLAK_ACIKLAMALAR_YAPISI.ID+" VARCHAR(255) , "
             + TASLAK_ACIKLAMALAR_YAPISI.TARIH + " VARCHAR(255), "
             + TASLAK_ACIKLAMALAR_YAPISI.IMALAT + " VARCHAR(255), "
+            + TASLAK_ACIKLAMALAR_YAPISI.KOPYA_NO + " INTEGER, "
             + TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA + " TEXT " +")";
     String VARSAYILAN_IMALAT_TABLOSU_OLUSTURMA = "CREATE TABLE " + VARSAYILAN_IMALAT_TABLO_YAPISI.TABLO_ADI +"("+ VARSAYILAN_IMALAT_TABLO_YAPISI.ID+" VARCHAR(255) PRIMARY KEY , "
             + VARSAYILAN_IMALAT_TABLO_YAPISI.IMALAT + " VARCHAR(255), "
@@ -2204,12 +2203,61 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.close();
         return aciklamalar;
     }
-    public void UpdateAciklamal4(String id, String imalat_id,String aciklama){
+    public List<String> ReadAciklamal3(String id,String imalat_id,String kopya_no){
+        String aciklama =null;
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String[] columns = {
+                TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA,
+        };
+        String[] selectionArgs = {id,imalat_id,kopya_no};
+        Cursor cursor = sqLiteDatabase.query(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,columns,TASLAK_ACIKLAMALAR_YAPISI.ID+" =? "+" AND "+ TASLAK_ACIKLAMALAR_YAPISI.IMALAT+ " =? "+" AND "+ TASLAK_ACIKLAMALAR_YAPISI.IMALAT+ " =? ",selectionArgs,null,null,null);
+        List<String> aciklamalar= new ArrayList<>();
+        if (cursor.getCount()>0){
+            while (cursor.moveToNext()){
+                aciklama = cursor.getString(cursor.getColumnIndex(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA));
+                aciklamalar.add(aciklama);
+            }
+        } else {
+        }
+        cursor.close();
+        sqLiteDatabase.close();
+        return aciklamalar;
+    }
+
+    public void  WriteTaslakL3(String id,String imalat,int kopya_no){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.ID, id);
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.IMALAT, imalat);
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA, "");
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.KOPYA_NO, kopya_no);
+        sqLiteDatabase.insert(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,null,contentValues);
+        sqLiteDatabase.close();
+    }
+    public void  WriteTaslakL4(String id,String imalat,int kopya_no){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.ID, id);
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.IMALAT, imalat);
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA, "");
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.KOPYA_NO, kopya_no);
+        sqLiteDatabase.insert(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,null,contentValues);
+        sqLiteDatabase.close();
+    }
+    public void UpdateAciklamal4(String id, String imalat_id,String aciklama,String aciklama_old){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA,aciklama);
-        String[] args = {id,imalat_id,aciklama};
-        sqLiteDatabase.update(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,contentValues,TASLAK_ACIKLAMALAR_YAPISI.ID+ " = ?"+" AND "+TASLAK_ACIKLAMALAR_YAPISI.IMALAT+ " = ?",args);
+        String[] args = {id,imalat_id,aciklama_old};
+        sqLiteDatabase.update(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,contentValues,TASLAK_ACIKLAMALAR_YAPISI.ID+ " = ?"+" AND "+TASLAK_ACIKLAMALAR_YAPISI.IMALAT+ " = ?"+" AND "+TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA+ " = ?",args);
+        sqLiteDatabase.close();
+    }
+    public void UpdateAciklamal3(String id, String imalat_id,String aciklama,String kopya_no,String aciklama_old){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA,aciklama);
+        String[] args = {id,imalat_id,aciklama_old,kopya_no};
+        sqLiteDatabase.update(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,contentValues,TASLAK_ACIKLAMALAR_YAPISI.ID+ " = ?"+" AND "+TASLAK_ACIKLAMALAR_YAPISI.IMALAT+ " = ?"+" AND "+TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA+ " = ?"+" AND "+TASLAK_ACIKLAMALAR_YAPISI.KOPYA_NO+ " = ?",args);
         sqLiteDatabase.close();
     }
     public String[] ReadTaslakResource(String id){

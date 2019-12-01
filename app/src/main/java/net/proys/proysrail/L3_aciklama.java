@@ -21,12 +21,16 @@ public class L3_aciklama extends AppCompatActivity {
     protected LinearLayout imalat_linear,verim_linear,aciklama_linear,medya_linear;
     protected LinearLayout linearLayout;
     Get_Set veri;
+    protected ListView listView;
+    protected SQLiteHelper database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_l3_aciklama);
         veri = new Get_Set();
+        database = new SQLiteHelper(L3_aciklama.this);
         init();
+        setListView();
         setOnclickevents();
         allset4menu();
         setIcons();
@@ -46,7 +50,7 @@ public class L3_aciklama extends AppCompatActivity {
         medya_linear = findViewById(R.id.medya_linear);
         tick = findViewById(R.id.tick);
         aciklama_icon = findViewById(R.id.imageAciklama);
-        aciklama = findViewById(R.id.aciklama_ilerleme_edit);
+        listView = findViewById(R.id.listview);
         if (veri.getAciklamalar().equals("")){
             linearLayout.setVisibility(View.INVISIBLE);
         }else{
@@ -67,10 +71,8 @@ public class L3_aciklama extends AppCompatActivity {
         ekleme_butonu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(L3_aciklama.this,L4_aciklama.class);
-                startActivity(intent);
-
+                database.WriteTaslakL3(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),Integer.valueOf(database.ReadGet_Set("KopyaNo")));
+                setListView();
             }
         });
 
@@ -152,6 +154,12 @@ public class L3_aciklama extends AppCompatActivity {
             }
         }
 
+    }
+
+    public void setListView() {
+        List<String> aciklamalar = database.ReadAciklamal3(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),database.ReadGet_Set("KopyaNo"));
+        L3_aciklama_adapter adapter = new L3_aciklama_adapter(L3_aciklama.this,aciklamalar);
+        listView.setAdapter(adapter);
     }
 
     @Override

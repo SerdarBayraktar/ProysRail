@@ -200,37 +200,29 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:id="@+id/text_aciklama"
-        android:layout_marginTop="9dp"
-        android:background="@color/background"
+    <ListView
+        android:id="@id/listview"
         android:layout_below="@id/linear1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="05dp">
+        android:layout_height="match_parent"></ListView>
 
-        <EditText
-            android:id="@+id/aciklama_ilerleme_edit"
-            android:gravity="top"
-            android:hint="Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beş"
-            android:textSize="16sp"
-            android:fontFamily="@font/opensans_light"
-            android:padding="3dp"
-            android:background="@drawable/edit_back_no_radius"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"/>
+    <ImageView
+        android:id="@+id/more"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/alt_more"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
 
-
-    </LinearLayout>
+        />
     <ImageView
         android:id="@+id/ilerleme_icon"
-        android:layout_marginEnd="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/text_aciklama"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@id/more"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/sonraki_butonu"/>
@@ -247,16 +239,6 @@
 
         />
 
-    <ImageView
-        android:layout_marginBottom="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/alt_more"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-
-        />
 
 
 
