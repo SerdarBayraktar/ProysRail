@@ -53,6 +53,5 @@ public class L4_aciklama_adapter extends ArrayAdapter<String> {
         });
 
         return rowView;
-
     }
 }

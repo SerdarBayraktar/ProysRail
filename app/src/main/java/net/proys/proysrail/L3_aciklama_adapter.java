@@ -43,7 +43,7 @@ public class L3_aciklama_adapter extends ArrayAdapter<String> {
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
             @Override
             public void afterTextChanged(Editable s) {
-                database.UpdateAciklamal3(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),s.toString(),database.ReadGet_Set("KopyaNo"),aciklamalar.get(position));
+                database.UpdateAciklamal3(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"),s.toString(),database.ReadGet_Set("KopyaNo"),aciklamalar.get(position));
                 aciklamalar.set(position,s.toString());
             }
         });

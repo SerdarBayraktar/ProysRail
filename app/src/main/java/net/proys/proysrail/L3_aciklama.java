@@ -19,7 +19,6 @@ public class L3_aciklama extends AppCompatActivity {
     private EditText aciklama;
     protected ImageView imalat_icon,verimsizlik_icon,aciklama_icon;
     protected LinearLayout imalat_linear,verim_linear,aciklama_linear,medya_linear;
-    protected LinearLayout linearLayout;
     Get_Set veri;
     protected ListView listView;
     protected SQLiteHelper database;
@@ -36,7 +35,6 @@ public class L3_aciklama extends AppCompatActivity {
         setIcons();
     }
     protected void init(){
-        linearLayout = findViewById(R.id.text_aciklama);
         ilerleme_icon = findViewById(R.id.ilerleme_icon);
         ekleme_butonu = findViewById(R.id.aciklama_ekleme);
         medya_icon = findViewById(R.id.imageCamera);
@@ -51,11 +49,7 @@ public class L3_aciklama extends AppCompatActivity {
         tick = findViewById(R.id.tick);
         aciklama_icon = findViewById(R.id.imageAciklama);
         listView = findViewById(R.id.listview);
-        if (veri.getAciklamalar().equals("")){
-            linearLayout.setVisibility(View.INVISIBLE);
-        }else{
-            aciklama.setText(veri.getAciklamalar());
-        }
+
     }
     protected void setOnclickevents(){
         tick.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +65,7 @@ public class L3_aciklama extends AppCompatActivity {
         ekleme_butonu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                database.WriteTaslakL3(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),Integer.valueOf(database.ReadGet_Set("KopyaNo")));
+                database.WriteTaslakL3(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"),Integer.valueOf(database.ReadGet_Set("KopyaNo")));
                 setListView();
             }
         });
@@ -85,6 +79,13 @@ public class L3_aciklama extends AppCompatActivity {
         });
 
     }
+
+    public void setListView() {
+        List<String> aciklamalar = database.ReadAciklamal3(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"),database.ReadGet_Set("KopyaNo"));
+        L3_aciklama_adapter adapter = new L3_aciklama_adapter(L3_aciklama.this,aciklamalar);
+        listView.setAdapter(adapter);
+    }
+
     protected void allset4menu(){
         imalat_linear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,12 +155,6 @@ public class L3_aciklama extends AppCompatActivity {
             }
         }
 
-    }
-
-    public void setListView() {
-        List<String> aciklamalar = database.ReadAciklamal3(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),database.ReadGet_Set("KopyaNo"));
-        L3_aciklama_adapter adapter = new L3_aciklama_adapter(L3_aciklama.this,aciklamalar);
-        listView.setAdapter(adapter);
     }
 
     @Override

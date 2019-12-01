@@ -2210,7 +2210,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA,
         };
         String[] selectionArgs = {id,imalat_id,kopya_no};
-        Cursor cursor = sqLiteDatabase.query(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,columns,TASLAK_ACIKLAMALAR_YAPISI.ID+" =? "+" AND "+ TASLAK_ACIKLAMALAR_YAPISI.IMALAT+ " =? "+" AND "+ TASLAK_ACIKLAMALAR_YAPISI.IMALAT+ " =? ",selectionArgs,null,null,null);
+        Cursor cursor = sqLiteDatabase.query(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,columns,TASLAK_ACIKLAMALAR_YAPISI.ID+" =? "+" AND "+ TASLAK_ACIKLAMALAR_YAPISI.IMALAT+ " =? "+" AND "+ TASLAK_ACIKLAMALAR_YAPISI.KOPYA_NO+ " =? ",selectionArgs,null,null,null);
         List<String> aciklamalar= new ArrayList<>();
         if (cursor.getCount()>0){
             while (cursor.moveToNext()){
