@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_marginEnd="6.3dp"
-    android:layout_marginStart="6.3dp"
 
+    android:layout_marginBottom="10dp"
 
     >
 
+<RelativeLayout
 
+    android:background="@drawable/background_border"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
 
     <ImageView
 
@@ -45,10 +48,11 @@
         android:textSize="22.9sp" />
 
 
+
     <ImageView
         android:id="@+id/imageView23"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="240dp"
         android:layout_below="@id/imageView22"
         app:srcCompat="@color/background" />
 
@@ -65,12 +69,15 @@
         android:textSize="19.4sp" />
 
     <ImageView
+        android:background="@drawable/cubuk"
+        android:layout_marginLeft="20dp"
+       android:layout_marginRight="20dp"
         android:id="@+id/imageView24"
         android:layout_width="match_parent"
         android:layout_height="6dp"
         android:layout_below="@id/mesafe"
         android:layout_marginTop="4dp"
-        app:srcCompat="@drawable/cubuk" />
+        />
 
 
     <!--<LinearLayout
@@ -155,6 +162,7 @@
 verimsiz süre: " />
         </LinearLayout>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -163,6 +171,7 @@ verimsiz süre: " />
             android:orientation="vertical">
 
             <LinearLayout
+                android:layout_marginRight="20dp"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:weightSum="2"
@@ -199,17 +208,25 @@ verimsiz süre: " />
 
                     <TextView
                         android:id="@+id/personel_puantaj"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:textSize="16sp"
                         android:textColor="@color/text_color"
                         android:fontFamily="@font/opensans_regular"
                         android:layout_weight="1"
                         android:text="0 Saat" />
                 </LinearLayout>
+
             </LinearLayout>
+            <TextView
+                android:id="@+id/contur1"
+                android:layout_alignBottom="@id/imageView110"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#a3a3a3"/>
 
             <LinearLayout
+                android:layout_marginRight="20dp"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:weightSum="2"
@@ -226,6 +243,8 @@ verimsiz süre: " />
                     android:textColor="#444444"
                     android:text="Makine" />
 
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_weight="1"
@@ -235,17 +254,17 @@ verimsiz süre: " />
 
                     <TextView
                         android:id="@+id/makine_sayisi"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/text_color"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/opensans_regular"
                         android:layout_weight="1"
-                        android:text="0" />
+                        android:fontFamily="@font/opensans_regular"
+                        android:text="0"
+                        android:textColor="@color/text_color"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/makine_puantaj"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_color"
                         android:textSize="16sp"
@@ -254,8 +273,15 @@ verimsiz süre: " />
                         android:text="0 Saat" />
                 </LinearLayout>
             </LinearLayout>
+            <TextView
+                android:id="@+id/contur2"
+                android:layout_alignBottom="@id/imageView110"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#a3a3a3"/>
 
             <LinearLayout
+                android:layout_marginRight="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -270,6 +296,7 @@ verimsiz süre: " />
                     android:layout_height="wrap_content"
                     android:text="Medya" />
 
+
                 <TextView
                     android:id="@+id/medya"
                     android:layout_width="match_parent"
@@ -280,9 +307,16 @@ verimsiz süre: " />
                     android:layout_height="wrap_content"
                     android:text="0" />
             </LinearLayout>
+            <TextView
+                android:id="@+id/contur3"
+                android:layout_alignBottom="@id/imageView110"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#a3a3a3"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -297,6 +331,7 @@ verimsiz süre: " />
                     android:layout_height="wrap_content"
                     android:text="Açıklama" />
 
+
                 <TextView
                     android:id="@+id/aciklama"
                     android:layout_width="match_parent"
@@ -308,6 +343,6 @@ verimsiz süre: " />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
+</RelativeLayout>
 
 </RelativeLayout>

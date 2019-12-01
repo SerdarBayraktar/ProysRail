@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.Arrays;
@@ -68,6 +69,7 @@ public class L2_bildiri_adapter extends ArrayAdapter<String> {
             TextView verimtxt = rowView.findViewById(R.id.verimtxt);
             TextView verim = rowView.findViewById(R.id.verim);
             TextView ort_verimsiz_sure = rowView.findViewById(R.id.ort_verimsiz_sure);
+
 
             imalat_adi.setText(String.valueOf(imalat_array[position]));
             mesafe.setText(String.valueOf(mesafe_array[position]+" "+ mesafe_birim_array[position]));
