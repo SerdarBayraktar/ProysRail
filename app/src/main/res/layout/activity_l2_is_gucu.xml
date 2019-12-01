@@ -23,6 +23,12 @@
         android:textAlignment="center"
         android:textColor="@color/text_color"
         android:textSize="27.8sp" />
+    <TextView
+        android:id="@+id/contur0"
+        android:layout_alignBottom="@id/imageView10"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a3a3"/>
 
 
     <TextView
@@ -47,26 +53,8 @@
         android:layout_marginEnd="14dp"
         app:srcCompat="@drawable/yenisayfa" />
 
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="match_parent"
-        android:layout_height="69dp"
-        android:layout_below="@id/imageView10"
-        app:srcCompat="@drawable/navbar_back" />
-    <TextView
-        android:id="@+id/kontur2"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/linear1"
-        android:textColor="#a3a3a3" />
-    <TextView
-        android:id="@+id/kontur1"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageView10"
-        android:textColor="#a3a3a3" />
+
+
 
 
     <LinearLayout
@@ -280,13 +268,19 @@
         </LinearLayout>
 
     </LinearLayout>
+    <TextView
+        android:id="@+id/contur1"
+        android:layout_alignBottom="@id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a3a3"/>
 
     <ExpandableListView
         android:id="@+id/listview"
         android:layout_marginTop="11.5dp"
         android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-        android:layout_below="@id/linear1"
+        android:layout_below="@id/contur1"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

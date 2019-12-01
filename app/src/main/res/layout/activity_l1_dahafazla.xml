@@ -12,28 +12,26 @@
         android:layout_width="match_parent"
         android:layout_height="65.3dp"
         app:srcCompat="@color/background" />
-
     <TextView
+        android:id="@+id/contur0"
+        android:layout_alignBottom="@id/imageView110"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a3a3"/>
+
+
+    <ImageView
         android:id="@+id/textView111"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="126dp"
+        android:layout_height="30.3dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="18.3dp"
         android:fontFamily="@font/gill_sans_bold"
+        android:src="@drawable/main_title"
         android:text="Proys"
-        android:textColor="@color/text_color"
-        android:textSize="31.7dp" />
+        android:textColor="@color/text_color" />
 
-    <TextView
-        android:id="@+id/textView110"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18.3dp"
-        android:layout_toEndOf="@id/textView111"
-        android:fontFamily="@font/gill_sans_bold"
-        android:text="Rail"
-        android:textColor="@color/specialyellow"
-        android:textSize="31.7dp" />
+
 
     <ImageView
         android:id="@+id/imageView112"
@@ -53,7 +51,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:background="#f6f6f6"
+            android:background="@drawable/navbar_back"
             android:id="@+id/linear2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -89,6 +87,7 @@
 
 
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -214,18 +213,43 @@
 
         </LinearLayout>
     </LinearLayout>
+    <TextView
+        android:id="@+id/contur1"
+        android:layout_alignBottom="@id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a3a3"/>
+
+
+
+
+
+
+
+
+
+ <android.support.v7.widget.CardView
+
+     app:cardElevation="1dp"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_below="@+id/linear1"
+     android:layout_marginLeft="11dp"
+     android:layout_marginTop="9dp"
+     android:layout_marginRight="11dp"
+>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linear1"
-        android:layout_marginLeft="11dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginRight="11dp"
-        android:backgroundTint="#fbfbfb"
+
+
         android:orientation="vertical">
 
         <LinearLayout
+            android:background="@drawable/navbar_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -251,9 +275,10 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
+            android:layout_height="0.5dp"
+            android:background="#a3a3a3" />
         <RelativeLayout
+            android:background="@drawable/navbar_back"
             android:layout_width="match_parent"
             android:layout_height="58.3dp">
             <ImageView
@@ -270,7 +295,7 @@
                 android:textColor="#444444"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="50dp"
-                android:text="Cihan Emin Bayrakdar  "
+                android:text="Armağan Civelek"
                 android:layout_alignStart="@id/image"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp" />
@@ -287,14 +312,17 @@
         </RelativeLayout>
         <Button
             android:id="@+id/btn_cikis"
-            android:layout_marginTop="5dp"
+
             android:textAllCaps="false"
             android:text="Çıkış Yap"
             android:backgroundTint="#efbe31"
             android:background="@drawable/button_background"
             android:layout_width="match_parent"
             android:layout_height="34dp" />
+
+
         <ScrollView
+            android:background="@drawable/navbar_back"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -308,7 +336,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="58.3dp">
+                    android:layout_height="63.3dp">
 
                     <ImageView
                         android:id="@+id/ikon"
@@ -341,12 +369,12 @@
                 </RelativeLayout>
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray" />
+                    android:layout_height="0.5dp"
+                    android:background="#a3a3a3" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="58.3dp">
+                    android:layout_height="63.3dp">
                     <ImageView
                         android:id="@+id/ikon1"
                         android:layout_centerVertical="true"
@@ -378,12 +406,12 @@
                 </RelativeLayout>
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray" />
+                    android:layout_height="0.5dp"
+                    android:background="#a3a3a3" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="58.3dp">
+                    android:layout_height="63.3dp">
                     <ImageView
                         android:id="@+id/ikon2"
                         android:layout_centerVertical="true"
@@ -415,12 +443,12 @@
                 </RelativeLayout>
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray" />
+                    android:layout_height="0.5dp"
+                    android:background="#a3a3a3" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="58.3dp">
+                    android:layout_height="63.3dp">
                     <ImageView
                         android:id="@+id/ikon3"
                         android:layout_centerVertical="true"
@@ -452,8 +480,8 @@
                 </RelativeLayout>
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray" />
+                    android:layout_height="0.5dp"
+                    android:background="#a3a3a3" />
 
 
 
@@ -462,6 +490,7 @@
         </ScrollView>
 
     </LinearLayout>
+ </android.support.v7.widget.CardView>
 
 
 

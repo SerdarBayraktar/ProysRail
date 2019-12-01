@@ -11,6 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:background="@color/background" />
+    <TextView
+    android:id="@+id/contur0"
+    android:layout_alignBottom="@id/imageView10"
+    android:layout_width="match_parent"
+    android:layout_height="0.5dp"
+    android:background="#a3a3a3"/>
 
     <TextView
         android:textAlignment="center"
@@ -195,12 +201,18 @@
 
         </LinearLayout>
     </LinearLayout>
+    <TextView
+        android:id="@+id/contur1"
+        android:layout_alignBottom="@id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a3a3"/>
 
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linear1">
+        android:layout_below="@+id/contur1">
 
     </ListView>
 
