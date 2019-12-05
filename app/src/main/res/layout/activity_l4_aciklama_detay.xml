@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.proys.proysrail.L4_aciklama_detay">
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/background" />
+
+    <TextView
+        android:textAlignment="center"
+        android:fontFamily="@font/opensans_semibold"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25.3dp"
+        android:layout_marginTop="5.3dp"
+        android:text="Açıklama"
+        android:textColor="@color/text_color"
+        android:textSize="27.8sp" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/textView"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="-4dp"
+        android:textColor="@color/text_color"
+        android:fontFamily="@font/gil_sans_light_italic"
+        android:textSize="16.7sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subbalast Serimi" />
+
+    <ImageView
+        android:id="@+id/tick"
+        android:layout_marginTop="19.7dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="14dp"
+        android:layout_width="36dp"
+        android:layout_height="26.3dp"
+        app:srcCompat="@drawable/onay" />
+
+    <LinearLayout
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:orientation="vertical"
+        android:id="@+id/text_aciklama"
+        android:layout_below="@id/imageView10"
+        android:layout_marginTop="9dp"
+        android:background="@color/background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="05dp">
+        <EditText
+            android:id="@+id/aciklama_edit"
+            android:gravity="top"
+            android:hint="Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beş"
+            android:textSize="16sp"
+            android:fontFamily="@font/opensans_light"
+            android:padding="7dp"
+            android:background="@drawable/edit_back_no_radius"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"/>
+
+
+
+    </LinearLayout>
+
+
+
+    <ImageView
+        android:id="@+id/ekle"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/sol_alt_add"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+
+        />
+
+    <ImageView
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/alt_more"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+
+        />
+
+</RelativeLayout>

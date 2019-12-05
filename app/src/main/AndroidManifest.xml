@@ -55,7 +55,8 @@
         <activity android:name=".L4_is_gucu_ekip" />
         <activity android:name=".L4_makine_detay" />
         <activity android:name=".L4_makine_grup" />
-        <activity android:name=".L4_sektor"></activity>
+        <activity android:name=".L4_sektor" />
+        <activity android:name=".L4_aciklama_detay"></activity>
     </application>
 
 </manifest>
