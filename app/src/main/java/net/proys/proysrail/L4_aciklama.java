@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class L4_aciklama extends AppCompatActivity {
@@ -54,7 +55,9 @@ public class L4_aciklama extends AppCompatActivity {
     }
 
     public void setListView() {
-        List<String> aciklamalar = database.ReadAciklamal4(String.valueOf(veri.getKod()),veri.getImalatIsgucuid());
+        List[] lists = database.ReadAciklamal4(String.valueOf(veri.getKod()),veri.getImalatIsgucuid());
+        List<String> aciklamalar = lists[0];
+        List<String> aciklama_idler = lists[1];
         L4_aciklama_adapter adapter = new L4_aciklama_adapter(L4_aciklama.this,aciklamalar);
         listView.setAdapter(adapter);
 

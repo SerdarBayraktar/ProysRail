@@ -49,6 +49,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     private static class TASLAK_ACIKLAMALAR_YAPISI{
         private static final String TABLO_ADI ="TASLAK_ACIKLAMALAR_TABLOSU";
         private static final String ID = "ID";
+        private static final String ACIKLAMA_ID = "ACIKLAMA_ID";
         private static final String TARIH = "TARIH";
         private static final String IMALAT = "IMALAT";
         private static final String ACIKLAMA = "ACIKLAMA";
@@ -221,6 +222,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             + TASLAK_RESOURCE_YAPISI.SAYI + " INTEGER "+")";
     String TASLAK_ACIKLAMALAR_OLUSTURMA = "CREATE TABLE " + TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI +"("+ TASLAK_ACIKLAMALAR_YAPISI.ID+" VARCHAR(255) , "
             + TASLAK_ACIKLAMALAR_YAPISI.TARIH + " VARCHAR(255), "
+            + TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA_ID + " VARCHAR(255), "
             + TASLAK_ACIKLAMALAR_YAPISI.IMALAT + " VARCHAR(255), "
             + TASLAK_ACIKLAMALAR_YAPISI.KOPYA_NO + " INTEGER, "
             + TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA + " TEXT " +")";
@@ -2183,25 +2185,30 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return degerler;
     }
 
-    public List<String> ReadAciklamal4(String id,String imalat_id){
+    public List[] ReadAciklamal4(String id,String imalat_id){
         String aciklama =null;
+        String aciklama_id =null;
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         String[] columns = {
                 TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA,
+                TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA_ID,
         };
         String[] selectionArgs = {id,imalat_id};
         Cursor cursor = sqLiteDatabase.query(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,columns,TASLAK_ACIKLAMALAR_YAPISI.ID+" =?"+" AND "+ TASLAK_ACIKLAMALAR_YAPISI.IMALAT+ " =? ",selectionArgs,null,null,null);
         List<String> aciklamalar= new ArrayList<>();
+        List<String> aciklama_idler= new ArrayList<>();
         if (cursor.getCount()>0){
             while (cursor.moveToNext()){
                 aciklama = cursor.getString(cursor.getColumnIndex(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA));
+                aciklama_id = cursor.getString(cursor.getColumnIndex(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA_ID));
                 aciklamalar.add(aciklama);
+                aciklama_idler.add(aciklama_id);
             }
-        } else {
-        }
+        } else {}
         cursor.close();
         sqLiteDatabase.close();
-        return aciklamalar;
+        List[] lists = new List[]{aciklamalar,aciklama_idler};
+        return lists;
     }
     public List<String> ReadAciklamal3(String id,String imalat_id,String kopya_no){
         String aciklama =null;
