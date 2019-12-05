@@ -3,6 +3,7 @@ package net.proys.proysrail;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,7 +13,7 @@ public class L4_aciklama_detay extends AppCompatActivity {
     protected Get_Set veri;
     protected TextView imalat_txt;
     protected EditText aciklama_edit;
-    protected ImageView tick,ekle;
+    protected ImageView tick;
     protected Intent getintent;
     protected String aciklama_str;
     protected String aciklama_id;
@@ -22,8 +23,8 @@ public class L4_aciklama_detay extends AppCompatActivity {
         setContentView(R.layout.activity_l4_aciklama_detay);
         veri = new Get_Set();
         database = new SQLiteHelper(L4_aciklama_detay.this);
-        init();
         getdatawintent();
+        init();
         setOnclickEvents();
 
     }
@@ -31,7 +32,6 @@ public class L4_aciklama_detay extends AppCompatActivity {
         imalat_txt = findViewById(R.id.textView2);
         aciklama_edit =findViewById(R.id.aciklama_edit);
         tick = findViewById(R.id.tick);
-        ekle = findViewById(R.id.ekle);
 
         aciklama_edit.setText(aciklama_str);
 
@@ -39,10 +39,18 @@ public class L4_aciklama_detay extends AppCompatActivity {
     }
     protected void getdatawintent(){
         getintent = getIntent();
-        getintent.getStringExtra("text");
-        getintent.getStringExtra("id");
+        aciklama_str = getintent.getStringExtra("text");
+        aciklama_id = getintent.getStringExtra("id");
     }
     protected void setOnclickEvents(){
+        tick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(L4_aciklama_detay.this,L4_aciklama.class);
+                database.UpdateAciklamal4(aciklama_id,aciklama_edit.getText().toString());
+                startActivity(intent);
+            }
+        });
 
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -56,10 +57,19 @@ public class L4_aciklama extends AppCompatActivity {
 
     public void setListView() {
         List[] lists = database.ReadAciklamal4(String.valueOf(veri.getKod()),veri.getImalatIsgucuid());
-        List<String> aciklamalar = lists[0];
-        List<String> aciklama_idler = lists[1];
+        final List<String> aciklamalar = lists[0];
+        final List<Integer> aciklama_idler = lists[1];
         L4_aciklama_adapter adapter = new L4_aciklama_adapter(L4_aciklama.this,aciklamalar);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(L4_aciklama.this,L4_aciklama_detay.class);
+                intent.putExtra("id",aciklama_idler.get(position));
+                intent.putExtra("text",aciklamalar.get(position));
+                startActivity(intent);
+            }
+        });
 
     }
 

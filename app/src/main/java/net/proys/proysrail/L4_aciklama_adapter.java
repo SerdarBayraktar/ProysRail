@@ -38,20 +38,6 @@ public class L4_aciklama_adapter extends ArrayAdapter<String> {
         View rowView=inflater.inflate(R.layout.l4_aciklama_row, null,true);//layout hatalı olabilir
         final EditText aciklama_edit = rowView.findViewById(R.id.aciklama_edit);
         aciklama_edit.setText(aciklamalar.get(position));
-        aciklama_edit.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-            @Override
-            public void afterTextChanged(Editable s) {
-                database.UpdateAciklamal4(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),s.toString(),aciklamalar.get(position));
-                aciklamalar.set(position,s.toString());
-            }
-        });
-
         return rowView;
     }
 }

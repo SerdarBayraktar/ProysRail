@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -81,9 +83,20 @@ public class L3_aciklama extends AppCompatActivity {
     }
 
     public void setListView() {
-        List<String> aciklamalar = database.ReadAciklamal3(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"),database.ReadGet_Set("KopyaNo"));
+        List[] lists = database.ReadAciklamal3(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"),database.ReadGet_Set("KopyaNo"));
+        final List<String> aciklamalar = lists[0];
+        final List<String> aciklama_idler = lists[1];
         L3_aciklama_adapter adapter = new L3_aciklama_adapter(L3_aciklama.this,aciklamalar);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(L3_aciklama.this,L4_aciklama_detay.class);
+                intent.putExtra("id",aciklama_idler.get(position));
+                intent.putExtra("text",aciklamalar.get(position));
+                startActivity(intent);
+            }
+        });
     }
 
     protected void allset4menu(){
