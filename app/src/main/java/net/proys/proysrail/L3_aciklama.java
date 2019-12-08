@@ -40,10 +40,8 @@ public class L3_aciklama extends AppCompatActivity {
         ilerleme_icon = findViewById(R.id.ilerleme_icon);
         ekleme_butonu = findViewById(R.id.aciklama_ekleme);
         medya_icon = findViewById(R.id.imageCamera);
-
         imalat_icon = findViewById(R.id.imageImalat);
         verimsizlik_icon = findViewById(R.id.imageverim);
-
         imalat_linear = findViewById(R.id.imalat_linear);
         verim_linear = findViewById(R.id.verim_linear);
         aciklama_linear = findViewById(R.id.aciklama_linear);

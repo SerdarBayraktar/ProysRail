@@ -1887,7 +1887,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         List<String> makine_sayilari = new ArrayList();
         List<String> verimlilik_orani = new ArrayList();
         List<String> ort_verimsizlik_sureler = new ArrayList();
-        for (int i = 0; i<imalat.length;i++){/*
+
+
+        for (int i = 0; i<imalat.length;i++){
             String kaynak_id = null;
             String kategori = null;
             int puantaj = 0;
@@ -1903,14 +1905,19 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                     TASLAK_RESOURCE_YAPISI.VERIM,
                     TASLAK_RESOURCE_YAPISI.SAYI
             };
+
             String[] selectionArgs = {String.valueOf(id),imalat[i]};
+
             Cursor cursor = sqLiteDatabase.query(TASLAK_RESOURCE_YAPISI.TABLO_ADI,columns,TASLAK_RESOURCE_YAPISI.ID+" =?"+" AND "+TASLAK_RESOURCE_YAPISI.IMALAT+" =? ",selectionArgs,null,null,null);
+
             int kisi_sayisi=0;
             int personel_puantaj = 0;
             int makine_sayisi = 0;
             int makine_puantaj=0;
             int iscilik_verimsizlik=0;
             int makine_verimsizlik=0;
+
+
             if (cursor.getCount()>0){
                 while (cursor.moveToNext()){
                     kategori = cursor.getString(cursor.getColumnIndex(TASLAK_RESOURCE_YAPISI.KATEGORI));
@@ -1956,7 +1963,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
 
             cursor.close();
-            sqLiteDatabase.close();*/
+            sqLiteDatabase.close();
 
 
             personel_puantajlar.add("0");
@@ -2129,13 +2136,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             if (cursor.getCount()>0){
                 while (cursor.moveToNext()){
                     aciklama = cursor.getString(cursor.getColumnIndex(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA));
-
                 }
                 aciklamalar.add(String.valueOf(aciklama_sayisi));
             } else {
-
             }*//*
-
             cursor.close();
             sqLiteDatabase.close();*/
             aciklamala_sayilari.add("0");

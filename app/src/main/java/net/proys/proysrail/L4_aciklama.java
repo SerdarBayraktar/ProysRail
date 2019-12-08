@@ -29,6 +29,7 @@ public class L4_aciklama extends AppCompatActivity {
         setOnclickevents();
 
 
+
     }
     protected void init(){
         aciklama = findViewById(R.id.aciklama_edit);
