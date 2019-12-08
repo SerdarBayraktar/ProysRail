@@ -57,8 +57,6 @@ public class L4_imalatlar extends AppCompatActivity {
     protected String[] imalatfavori;
     Intent getIntent;
     ListView list;
-    L1_main l1_main;
-    String bildiri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +64,7 @@ public class L4_imalatlar extends AppCompatActivity {
         getIntent = getIntent();
         veri= new Get_Set();
         setFavoriArray();
-        setlistviewarray();
-        setListview();
+        init();
     }
     protected void setFavoriArray(){
         Login_SQLiteHelper login_database = new Login_SQLiteHelper(this);
@@ -78,17 +75,12 @@ public class L4_imalatlar extends AppCompatActivity {
             imalatfavori[i] = database.ReadImalat(favoriler[i])[0];// id olan tüm elemanlar sqlitedan kontrol edilerek str hali bulunup aktarılıyor
         }
     }
-    protected void init() {
-        database = new SQLiteHelper(L4_imalatlar.this);
-        l1_main = new L1_main();
-    }
-    protected void setlistviewarray() {
-        bildiri = database.ReadBildirilerwIsim(l1_main.getMaintitle()[veri.getPosition()].split(" ")[0] + " " + l1_main.getMaintitle()[veri.getPosition()].split(" ")[1])[0];
-        maintitle = database.ReadImalatfL4(bildiri);
-    }
-
-    protected void setListview(){
+    protected void init(){
         if(getIntent.getStringExtra("tip").equals("imalat")){
+            database = new SQLiteHelper(L4_imalatlar.this);
+            L1_main l1_main = new L1_main();
+            String bildiri = database.ReadBildirilerwIsim(l1_main.getMaintitle()[veri.getPosition()].split(" ")[0]+" "+ l1_main.getMaintitle()[veri.getPosition()].split(" ")[1])[0];
+            maintitle = database.ReadImalatfL4(bildiri);
             //L4_imalat_adapter adapter = new L4_imalat_adapter(this, maintitle, imgid);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,maintitle);
             list=findViewById(R.id.list_view);
@@ -145,7 +137,7 @@ public class L4_imalatlar extends AppCompatActivity {
                 }
             });
         }
-    }
+    }/*
     protected void setSearchEngine(){
         EditText editText= new EditText(this);
         editText.addTextChangedListener(new TextWatcher() {
@@ -169,7 +161,9 @@ public class L4_imalatlar extends AppCompatActivity {
                 setListview();
             }
         });
-    }
+    }*/
+
+
 
     @Override
     public void onBackPressed() {

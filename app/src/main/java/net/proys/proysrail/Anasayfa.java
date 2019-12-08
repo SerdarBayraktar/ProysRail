@@ -82,6 +82,43 @@ public class Anasayfa extends AppCompatActivity {
 
 
     }
+    protected void urldeneme(){
+        String url = "http://176.53.81.147/panel/restdeneme";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                            /*Herhangi bir hata yok ise, kullanıcıya bilgi verilir.*/
+                        Toast.makeText(getApplicationContext(), "Veri kayıt edildi...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                    /*Hata meydana geldiğinde kullanıcıya bilgi verilir.*/
+                Toast.makeText(getApplicationContext(), "Hata meydana geldi", Toast.LENGTH_SHORT).show();
+                System.out.println("asd"+error);
+            }
+        }) {
+            /*StringRequest isteğinin temel amacı, MySql'e veri eklemektir. Kullanıcının
+            arayüze girdiği veriler Map kullanılarak alınır ve istekler beraber veritabanına
+            gönderilir. Map içerisinde veriler key-value çiftleri halinde bulunur. HashMap
+            te aynı yapıda bir sınıftır. Temel mantıkları anahtar-veri çiftleri halinde verileri
+            saklamaktır*/
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> info = new HashMap<String, String>();
+                    /*name ve password bilgileri insert_admin_info.php isimli dosyada $_POST
+                    içinde bulunan değerlerdir. Bunların aynı olması gerekiyor.*/
+                info.put("gelisme","serdar baba yapti" );
+                return info;
+            }
+        };
+            /*istek işlenir.*/
+        MySingleton.getInstance(getApplicationContext()).addToRequestQue(stringRequest);
+
+    }
 
 
 

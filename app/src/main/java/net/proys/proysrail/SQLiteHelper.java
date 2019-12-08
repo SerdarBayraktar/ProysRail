@@ -2251,6 +2251,17 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,null,contentValues);
         sqLiteDatabase.close();
     }
+    public void  WriteTaslakL1(String id,String imalat,int kopya_no){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA_ID, 1);
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.ID, id);
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.IMALAT, imalat);
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA, "asdasd");
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.KOPYA_NO, kopya_no);
+        sqLiteDatabase.insert(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,null,contentValues);
+        sqLiteDatabase.close();
+    }
     public void  WriteTaslakL4(String id,String imalat,int kopya_no){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

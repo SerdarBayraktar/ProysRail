@@ -48,6 +48,7 @@ public class L3_aciklama extends AppCompatActivity {
         tick = findViewById(R.id.tick);
         aciklama_icon = findViewById(R.id.imageAciklama);
         listView = findViewById(R.id.listview);
+        database.WriteTaslakL1(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"),Integer.valueOf(database.ReadGet_Set("KopyaNo")));
 
     }
     protected void setOnclickevents(){
