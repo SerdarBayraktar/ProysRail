@@ -55,7 +55,6 @@ public class Anasayfa extends AppCompatActivity {
       setOnclickEvents();
        Benihatirla();
 
-
         //System.out.println(database.ReadPersonelwImalat_id("T0002")[0]);
 
     }

@@ -20,7 +20,7 @@
             android:id="@+id/aciklama_txt"
             android:gravity="top"
             android:clickable="true"
-            android:hint="Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beş"
+            android:hint="  "
             android:textSize="16sp"
             android:fontFamily="@font/opensans_light"
             android:padding="7dp"

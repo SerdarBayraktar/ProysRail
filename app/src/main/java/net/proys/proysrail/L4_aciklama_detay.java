@@ -16,7 +16,7 @@ public class L4_aciklama_detay extends AppCompatActivity {
     protected ImageView tick;
     protected Intent getintent;
     protected String aciklama_str;
-    protected String aciklama_id;
+    protected int aciklama_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +40,8 @@ public class L4_aciklama_detay extends AppCompatActivity {
     protected void getdatawintent(){
         getintent = getIntent();
         aciklama_str = getintent.getStringExtra("text");
-        aciklama_id = getintent.getStringExtra("id");
+        aciklama_id = getintent.getIntExtra("id",0);
+        System.out.println("asd");
     }
     protected void setOnclickEvents(){
         tick.setOnClickListener(new View.OnClickListener() {

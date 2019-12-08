@@ -48,7 +48,6 @@ public class L3_aciklama extends AppCompatActivity {
         tick = findViewById(R.id.tick);
         aciklama_icon = findViewById(R.id.imageAciklama);
         listView = findViewById(R.id.listview);
-        database.WriteTaslakL1(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"),Integer.valueOf(database.ReadGet_Set("KopyaNo")));
 
     }
     protected void setOnclickevents(){
@@ -90,8 +89,8 @@ public class L3_aciklama extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(L3_aciklama.this,L4_aciklama_detay.class);
-                intent.putExtra("id",aciklama_idler.get(position));
-                intent.putExtra("text",aciklamalar.get(position));
+                intent.putExtra("id",Integer.valueOf(aciklama_idler.get(position-1)));
+                intent.putExtra("text",String.valueOf(aciklamalar.get(position-1)));
                 startActivity(intent);
             }
         });
@@ -119,9 +118,6 @@ public class L3_aciklama extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
     }
     protected void setIcons(){
         aciklama_icon.setImageResource(R.drawable.aciklama_o);
