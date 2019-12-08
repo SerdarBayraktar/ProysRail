@@ -1121,6 +1121,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.close();
         return id;
     }
+
     public List[] CreateL2IsgucuKartPart1(String bildiri_id){
 
         String imalat =null;
@@ -1175,6 +1176,32 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         List[] lists = new List[]{imalatlar_isim,imalatlar_id};
         return lists;
     }
+    public List[] CreateL2AciklamaKartPart1(String bildiri_id){
+        String imalat =null;
+        HashMap<String,String> hashMap = new HashMap<>();
+        HashMap<String,String> hashMap1 = new HashMap<>();
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String[] columns = {
+                TASLAK_ACIKLAMALAR_YAPISI.IMALAT,
+        };
+        String[] selectionArgs = {String.valueOf(bildiri_id),"1"};
+        Cursor cursor = sqLiteDatabase.query(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,columns,TASLAK_ACIKLAMALAR_YAPISI.ID+" =? "+" AND "+ TASLAK_ACIKLAMALAR_YAPISI.KOPYA_NO + " =? ",selectionArgs,null,null,null);
+        List<String> imalatlar_isim = new ArrayList<>();
+        List<String> imalatlar_id = new ArrayList<>();
+        if (cursor.getCount()>0){
+            while (cursor.moveToNext()){
+                imalat = cursor.getString(cursor.getColumnIndex(TASLAK_ACIKLAMALAR_YAPISI.IMALAT));
+                imalatlar_isim.add(imalat);
+            }
+        }
+        for (int i =0; i<imalatlar_isim.size();i++){
+            imalatlar_id.add(ReadImalatwidforisim(imalatlar_isim.get(i)));
+        }
+        cursor.close();
+        sqLiteDatabase.close();
+        List[] lists = new List[]{imalatlar_isim,imalatlar_id};
+        return lists;
+    }
 
     public HashMap[] CreateL2IsgucuKartPart2(List<String> imalatlar_isim,List<String> imalatlar_id,String bildiri_id){
 
@@ -1205,6 +1232,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
         HashMap[] hashMaps = new HashMap[]{hashMap,hashMap1,hashMap2};
         return hashMaps;
+    }
+    public HashMap<String,List<String>> CreateL2AciklamaKartPart2(List<String> imalatlar_isim,List<String> imalatlar_id,String bildiri_id){
+        HashMap<String,List<String>> hashMap = new HashMap<>();
+        for (int i =0; i<imalatlar_id.size();i++){
+            List<String> aciklamalar = CreateL2AciklamaKartPart3(bildiri_id,imalatlar_id,i);
+            hashMap.put(imalatlar_isim.get(i),aciklamalar);
+        }
+        return hashMap;
     }
 
     public List[] CreateL2IsgucuKartPart3(String bildiri_id,List<String> imalatlar_id,int i){
@@ -1263,6 +1298,24 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         List[] back = new List[]{kaynak,puantaj,sayi};
         return back;
 
+    }
+    public List<String> CreateL2AciklamaKartPart3(String bildiri_id,List<String> imalatlar_id,int i){
+        SQLiteDatabase sqLiteDatabase1 = getWritableDatabase();
+        String[] sutunlar = {
+                TASLAK_ACIKLAMALAR_YAPISI.IMALAT,
+                TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA
+        };
+        String[] args = {bildiri_id,imalatlar_id.get(i)};
+        List<String> aciklamalar = new ArrayList<>();
+        Cursor cursor2 = sqLiteDatabase1.query(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,sutunlar,TASLAK_ACIKLAMALAR_YAPISI.ID+" =? "+" AND "+TASLAK_ACIKLAMALAR_YAPISI.IMALAT+" =? ",args,null,null,null);
+        if (cursor2.getCount()>0){
+            while (cursor2.moveToNext()){
+                aciklamalar.add(cursor2.getString(cursor2.getColumnIndex(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA)));
+            }
+        }
+        cursor2.close();
+        sqLiteDatabase1.close();
+        return aciklamalar;
     }
 
     public String[] ReadBildiriler(String id){
@@ -2263,11 +2316,11 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.insert(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,null,contentValues);
         sqLiteDatabase.close();
     }
-    public void UpdateAciklamal4(int aciklama_id,String aciklama){
+    public void UpdateAciklamal4(String aciklama_id,String aciklama){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA,aciklama);
-        String[] args = {String.valueOf(aciklama_id)};
+        String[] args = {aciklama_id};
         sqLiteDatabase.update(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,contentValues,TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA_ID+ " = ?",args);
         sqLiteDatabase.close();
     }

@@ -89,7 +89,7 @@ public class L3_aciklama extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(L3_aciklama.this,L4_aciklama_detay.class);
-                intent.putExtra("id",Integer.valueOf(aciklama_idler.get(position-1)));
+                intent.putExtra("id",String.valueOf(aciklama_idler.get(position-1)));
                 intent.putExtra("text",String.valueOf(aciklamalar.get(position-1)));
                 startActivity(intent);
             }

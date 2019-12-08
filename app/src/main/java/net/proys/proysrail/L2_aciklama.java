@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,36 +16,50 @@ import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.List;
 
 public class L2_aciklama extends AppCompatActivity {
     ImageView isci_icon,imalat_icon,makine_icon,sent;
     LinearLayout isci_linear,imalat_linear,makine_linear,malzeme_linear,aciklama_linear,medya_linear;
 
 
-    protected EditText aciklama1,aciklama2;
     protected ImageView medya_icon,malzeme_icon;
     protected ImageView aciklama_icon;
+    protected SQLiteHelper database;
+    protected ExpandableListView expandableListView;
     protected TextView aciklama_txt;
     Get_Set veri;
+    private List<String> imalatlar_isim;
+    private HashMap<String,List<String>> hashMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_l2_aciklama);
         veri = new Get_Set();
+        database = new SQLiteHelper(L2_aciklama.this);
         init();
-        setInheritance();
         setOnclickEvents();
-        setWatchers();
         allset4icon();
+        setListviewlists();
+        setExpandableListview();
+
+    }
+    protected void setListviewlists(){
+        List[] lists = database.CreateL2AciklamaKartPart1(String.valueOf(veri.getKod()));
+        imalatlar_isim = lists[0];
+        List<String> imalatlar_id = lists[1] ;
+        hashMap = database.CreateL2AciklamaKartPart2(imalatlar_isim,imalatlar_id,String.valueOf(veri.getKod()));
+    }
+    protected void setExpandableListview(){
+        L2_aciklama_Expandable_Listview_adapter adapter = new L2_aciklama_Expandable_Listview_adapter(L2_aciklama.this,imalatlar_isim,hashMap);
+        expandableListView.setAdapter(adapter);
 
     }
     protected void init(){
         sent = findViewById(R.id.sent);
-        aciklama1 = findViewById(R.id.aciklama_1);
-        aciklama2 = findViewById(R.id.aciklama_2);
         medya_icon = findViewById(R.id.imageCamera);
-        aciklama2.setVisibility(View.INVISIBLE);
         aciklama_icon = findViewById(R.id.imageAciklama);
         aciklama_txt = findViewById(R.id.aciklama_txt);
         malzeme_icon = findViewById(R.id.imageMalzeme);
@@ -56,6 +71,7 @@ public class L2_aciklama extends AppCompatActivity {
         malzeme_linear = findViewById(R.id.malzeme_linear);
         makine_linear = findViewById(R.id.makine_linear);
         medya_linear = findViewById(R.id.medya_linear);
+        expandableListView = findViewById(R.id.expandablelistview);
         aciklama_linear = findViewById(R.id.aciklama_linear);
     }
     protected void setOnclickEvents(){
@@ -115,33 +131,11 @@ public class L2_aciklama extends AppCompatActivity {
             }
         });
     }
-    protected void setInheritance(){
-        if (!veri.getAciklamalar().equals("")){
-            aciklama1.setText(veri.getAciklamalar());
-        }
-    }
     protected void allset4icon(){
         aciklama_icon.setImageResource(R.drawable.l2_aciklama_o);
         aciklama_txt.setTextColor(getResources().getColor(R.color.text_color_yellow));
         Typeface typeface = getResources().getFont(R.font.opensans_semibold);
         aciklama_txt.setTypeface(typeface);
-    }
-    protected void setWatchers(){
-        TextWatcher watcher = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-                veri.setAciklamalar(s.toString());
-            }
-        };
-        aciklama1.addTextChangedListener(watcher);
     }
 
     @Override

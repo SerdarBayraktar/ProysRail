@@ -283,107 +283,11 @@
 
 
     ////////////////
-
-    <LinearLayout
-
-        android:id="@+id/ustpanel"
+    <ExpandableListView
+        android:layout_below="@id/linear1"
+        android:id="@+id/expandablelistview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/contur2"
-        android:layout_marginStart="6.3dp"
-        android:layout_marginEnd="6.3dp"
-        android:background="@color/white"
-        android:orientation="vertical"
-        >
-
-
-
-
-        <LinearLayout
-            android:background="#fbfbfb"
-            android:layout_marginTop="11.3dp"
-            android:orientation="horizontal"
-            android:id="@+id/Subbaslast"
-            android:layout_width="match_parent"
-            android:layout_height="39.7dp">
-
-
-            <android.support.v7.widget.AppCompatImageView
-                android:layout_width="14.7dp"
-                android:layout_height="16.7dp"
-                android:src="@drawable/okgen_1"
-                android:layout_gravity="center_vertical"/>
-            <TextView
-
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10.3dp"
-                android:textSize="22.2sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Subbalast Serimi"
-                android:fontFamily="@font/opensans_regular"/>
-
-
-            <LinearLayout
-                android:background="#fbfbfb"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right">
-
-                <android.support.v7.widget.AppCompatImageView
-                    android:layout_marginRight="15dp"
-                    android:layout_width="26.3dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/dots"
-                    android:layout_gravity="center_vertical"/>
-            </LinearLayout>
-
-
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:id="@+id/text_aciklama"
-
-            android:background="@color/background"
-            android:layout_below="@id/linear1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="14dp">
-
-            <EditText
-                android:gravity="top"
-                android:id="@+id/aciklama_1"
-                android:hint="Lorem Ipsum,m, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beş"
-                android:textSize="16sp"
-                android:fontFamily="@font/opensans_light"
-                android:padding="7dp"
-                android:background="@drawable/edit_back_no_radius"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"/>
-
-            <EditText
-                android:id="@+id/aciklama_2"
-                android:gravity="top"
-                android:layout_marginTop="11.3dp"
-                android:hint="Lorem Ipbırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beş"
-                android:textSize="16sp"
-                android:fontFamily="@font/opensans_light"
-                android:padding="7dp"
-                android:background="@drawable/edit_back_no_radius"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"/>
-
-
-        </LinearLayout>
-
-
-
-    </LinearLayout>
+        android:layout_height="match_parent"></ExpandableListView>
 
 
     <ImageView
