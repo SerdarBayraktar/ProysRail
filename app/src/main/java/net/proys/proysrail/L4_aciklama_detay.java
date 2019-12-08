@@ -46,7 +46,7 @@ public class L4_aciklama_detay extends AppCompatActivity {
         tick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(L4_aciklama_detay.this,L4_aciklama.class);
+                Intent intent = new Intent(L4_aciklama_detay.this,L3_aciklama.class);
                 database.UpdateAciklamal4(aciklama_id,aciklama_edit.getText().toString());
                 startActivity(intent);
             }

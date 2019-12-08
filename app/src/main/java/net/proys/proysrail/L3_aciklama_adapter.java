@@ -1,6 +1,8 @@
 package net.proys.proysrail;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -18,15 +21,17 @@ import java.util.List;
 public class L3_aciklama_adapter extends ArrayAdapter<String> {
     private final Activity context;
     private final List<String> aciklamalar;
+    private final List<Integer> aciklama_idler;
     SQLiteHelper database;
     Get_Set veri;
 
 
-    public L3_aciklama_adapter(Activity context, List<String> aciklamalar) {
+    public L3_aciklama_adapter(Activity context, List<String> aciklamalar, List<Integer> aciklama_idler) {
         super(context, R.layout.l4_aciklama_row,aciklamalar);
         // TODO Auto-generated constructor stub
         this.context=context;
         this.aciklamalar=aciklamalar;
+        this.aciklama_idler = aciklama_idler;
         database = new SQLiteHelper(context);
         veri = new Get_Set();
     }
@@ -34,7 +39,7 @@ public class L3_aciklama_adapter extends ArrayAdapter<String> {
     public View getView(final int position, View view, ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.l4_aciklama_row, null,true);//layout hatalı olabilir
-        EditText aciklama_edit = rowView.findViewById(R.id.aciklama_edit);
+        TextView aciklama_edit = rowView.findViewById(R.id.aciklama_txt);
         aciklama_edit.setText(aciklamalar.get(position));
 
         return rowView;

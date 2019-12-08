@@ -5,9 +5,12 @@ import android.content.res.AssetManager;
 import android.os.WorkSource;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.io.IOException;
@@ -52,13 +55,19 @@ public class L4_imalatlar extends AppCompatActivity {
             null,
     };
     protected String[] imalatfavori;
+    Intent getIntent;
     ListView list;
+    L1_main l1_main;
+    String bildiri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_l4_imalatlar);
+        getIntent = getIntent();
+        veri= new Get_Set();
         setFavoriArray();
-        init();
+        setlistviewarray();
+        setListview();
     }
     protected void setFavoriArray(){
         Login_SQLiteHelper login_database = new Login_SQLiteHelper(this);
@@ -69,14 +78,17 @@ public class L4_imalatlar extends AppCompatActivity {
             imalatfavori[i] = database.ReadImalat(favoriler[i])[0];// id olan tüm elemanlar sqlitedan kontrol edilerek str hali bulunup aktarılıyor
         }
     }
-    protected void init(){
-        veri= new Get_Set();
-        final Intent getIntent = getIntent();
+    protected void init() {
+        database = new SQLiteHelper(L4_imalatlar.this);
+        l1_main = new L1_main();
+    }
+    protected void setlistviewarray() {
+        bildiri = database.ReadBildirilerwIsim(l1_main.getMaintitle()[veri.getPosition()].split(" ")[0] + " " + l1_main.getMaintitle()[veri.getPosition()].split(" ")[1])[0];
+        maintitle = database.ReadImalatfL4(bildiri);
+    }
+
+    protected void setListview(){
         if(getIntent.getStringExtra("tip").equals("imalat")){
-            database = new SQLiteHelper(L4_imalatlar.this);
-            L1_main l1_main = new L1_main();
-            String bildiri = database.ReadBildirilerwIsim(l1_main.getMaintitle()[veri.getPosition()].split(" ")[0]+" "+ l1_main.getMaintitle()[veri.getPosition()].split(" ")[1])[0];
-            maintitle = database.ReadImalatfL4(bildiri);
             //L4_imalat_adapter adapter = new L4_imalat_adapter(this, maintitle, imgid);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,maintitle);
             list=findViewById(R.id.list_view);
@@ -132,7 +144,41 @@ public class L4_imalatlar extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-        }/*else if(intent.getStringExtra("tip").equals("sektör")){
+        }
+    }
+    protected void setSearchEngine(){
+        EditText editText= new EditText(this);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().equals("")) {
+                    maintitle = database.ReadImalatfL4(bildiri);
+                } else {
+                    List<String> depo_searched = new ArrayList<>();
+                    for (int i = 0; i < maintitle.length; i++) {
+                        if (maintitle[i].toLowerCase().contains(s.toString().toLowerCase())) {
+                            depo_searched.add(maintitle[i]);
+                        }
+                    }
+                    maintitle = depo_searched.toArray(new String[depo_searched.size()]);
+                }
+                setListview();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(L4_imalatlar.this,L3_imalat.class);
+        SQLiteHelper database = new SQLiteHelper(L4_imalatlar.this);
+        database.DeleteTaslak(String.valueOf(veri.getKod()));//id tarih sil
+        super.onBackPressed();
+    }
+}/*else if(intent.getStringExtra("tip").equals("sektör")){
             database = new SQLiteHelper(L4_imalatlar.this);
             String imalatid = database.ReadImalatwisim(veri.getImalat())[0];
             List<String> sektorler = new ArrayList<String>();
@@ -168,13 +214,3 @@ public class L4_imalatlar extends AppCompatActivity {
                 }
             });
         }*/
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(L4_imalatlar.this,L3_imalat.class);
-        SQLiteHelper database = new SQLiteHelper(L4_imalatlar.this);
-        database.DeleteTaslak(String.valueOf(veri.getKod()));//id tarih sil
-        super.onBackPressed();
-    }
-}

@@ -18,7 +18,6 @@ import java.util.List;
 public class L3_aciklama extends AppCompatActivity {
     protected ImageView ekleme_butonu;
     protected ImageView medya_icon,ilerleme_icon,tick;
-    private EditText aciklama;
     protected ImageView imalat_icon,verimsizlik_icon,aciklama_icon;
     protected LinearLayout imalat_linear,verim_linear,aciklama_linear,medya_linear;
     Get_Set veri;
@@ -31,10 +30,10 @@ public class L3_aciklama extends AppCompatActivity {
         veri = new Get_Set();
         database = new SQLiteHelper(L3_aciklama.this);
         init();
-        setListView();
         setOnclickevents();
         allset4menu();
         setIcons();
+        setListView();
     }
     protected void init(){
         ilerleme_icon = findViewById(R.id.ilerleme_icon);
@@ -83,8 +82,8 @@ public class L3_aciklama extends AppCompatActivity {
     public void setListView() {
         List[] lists = database.ReadAciklamal3(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"),database.ReadGet_Set("KopyaNo"));
         final List<String> aciklamalar = lists[0];
-        final List<String> aciklama_idler = lists[1];
-        L3_aciklama_adapter adapter = new L3_aciklama_adapter(L3_aciklama.this,aciklamalar);
+        final List<Integer> aciklama_idler = lists[1];
+        L3_aciklama_adapter adapter = new L3_aciklama_adapter(L3_aciklama.this,aciklamalar,aciklama_idler);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -119,6 +118,8 @@ public class L3_aciklama extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
     }
     protected void setIcons(){

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -10,13 +12,14 @@
         android:id="@+id/text_aciklama"
         android:layout_marginTop="9dp"
         android:background="@color/background"
-        android:layout_below="@id/linear1"
         android:layout_width="match_parent"
+        android:clickable="true"
         android:layout_height="wrap_content"
         android:padding="05dp">
-        <EditText
-            android:id="@+id/aciklama_edit"
+        <TextView
+            android:id="@+id/aciklama_txt"
             android:gravity="top"
+            android:clickable="true"
             android:hint="Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beş"
             android:textSize="16sp"
             android:fontFamily="@font/opensans_light"
@@ -25,8 +28,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"/>
-
-
 
     </LinearLayout>
 

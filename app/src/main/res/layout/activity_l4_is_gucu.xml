@@ -95,6 +95,7 @@
             android:background="@drawable/corners_background_with_kontur"
             android:gravity="center"
             android:hint="Ara"
+            android:inputType="textShortMessage"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="#9f9f9f"

@@ -3,10 +3,13 @@ package net.proys.proysrail;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,6 +22,7 @@ import java.util.List;
 public class L4_is_gucu extends AppCompatActivity {
     protected ImageView onay,ekip_icon;
     private ListView depo_list,secilen_list;
+    private EditText arama_motoru;
     TextView imalat;
     protected List<String> depo,secilen;
     Get_Set veri;
@@ -34,12 +38,13 @@ public class L4_is_gucu extends AppCompatActivity {
         setLists();
         setListView1();
         setListView2();
+        setArama_motoru();
     }
     protected void init(){
         onay = findViewById(R.id.onay);
         depo_list = findViewById(R.id.list_view);
         secilen_list = findViewById(R.id.list_view2);
-
+        arama_motoru = findViewById(R.id.editText);
         imalat = findViewById(R.id.imalat);
         imalat.setText(veri.getImalatIsgucu());
          database = new SQLiteHelper(L4_is_gucu.this);
@@ -67,6 +72,29 @@ public class L4_is_gucu extends AppCompatActivity {
             }
         });
 
+    }
+    protected void setArama_motoru(){
+        arama_motoru.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().equals("")) {
+                    depo = database.ReadPersonelforL4Sepet(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"));
+                } else {
+                    List<String> depo_searched = new ArrayList<>();
+                    for (int i = 0; i < depo.size(); i++) {
+                        if (depo.get(i).toLowerCase().contains(s.toString().toLowerCase())) {
+                            depo_searched.add(depo.get(i));
+                        }
+                    }
+                    depo = depo_searched;
+                }
+                setListView1();
+            }
+        });
     }
     protected void setLists(){
         Get_Set veri = new Get_Set();

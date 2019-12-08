@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -23,6 +25,7 @@ public class L4_makine extends AppCompatActivity {
     protected TextView makine,makinegrup,imalat;
     Get_Set veri;
     SQLiteHelper database;
+    private EditText arama_motoru;
 
     protected ImageView onay,ekip_icon;
     private ListView depo_list,secilen_list;
@@ -39,8 +42,10 @@ public class L4_makine extends AppCompatActivity {
         setListView1();
         setListView2();
         setOnclickEvents();
+        setArama_motoru();
     }
     protected void init(){
+        arama_motoru = findViewById(R.id.editText);
         ekip_icon = findViewById(R.id.ekip);
         onay = findViewById(R.id.onay);
         database = new SQLiteHelper(this);
@@ -68,6 +73,29 @@ public class L4_makine extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(L4_makine.this,L4_makine_grup.class);
                 startActivity(intent);
+            }
+        });
+    }
+    protected void setArama_motoru(){
+        arama_motoru.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().equals("")) {
+                    depo = database.ReadPersonelforL4SepetMakine(String.valueOf(veri.getKod()));
+                } else {
+                    List<String> depo_searched = new ArrayList<>();
+                    for (int i = 0; i < depo.size(); i++) {
+                        if (depo.get(i).toLowerCase().contains(s.toString().toLowerCase())) {
+                            depo_searched.add(depo.get(i));
+                        }
+                    }
+                    depo = depo_searched;
+                }
+                setListView1();
             }
         });
     }
