@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
@@ -32,6 +33,7 @@ public class L2_aciklama extends AppCompatActivity {
     Get_Set veri;
     private List<String> imalatlar_isim;
     private HashMap<String,List<String>> hashMap;
+    private List<String> imalatlar_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,7 @@ public class L2_aciklama extends AppCompatActivity {
     protected void setListviewlists(){
         List[] lists = database.CreateL2AciklamaKartPart1(String.valueOf(veri.getKod()));
         imalatlar_isim = lists[0];
-        List<String> imalatlar_id = lists[1] ;
+        imalatlar_id= lists[1] ;
         hashMap = database.CreateL2AciklamaKartPart2(imalatlar_isim,imalatlar_id,String.valueOf(veri.getKod()));
     }
     protected void setExpandableListview(){
@@ -63,6 +65,16 @@ public class L2_aciklama extends AppCompatActivity {
         for(int i = 0; i<imalatlar_isim.size();i++) {
             listView.expandGroup(i);
         }
+        listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                database.UpdateGet_Set("ImalatId",String.valueOf(imalatlar_id.get(groupPosition)));
+                Intent intent = new Intent(L2_aciklama.this, L4_aciklama.class);
+                startActivity(intent);
+                return true;
+
+            }
+        });
 
     }
     protected void init(){

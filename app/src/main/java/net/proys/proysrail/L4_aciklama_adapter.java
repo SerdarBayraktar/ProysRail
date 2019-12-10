@@ -36,8 +36,8 @@ public class L4_aciklama_adapter extends ArrayAdapter<String> {
     public View getView(final int position, View view, ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.l4_aciklama_row, null,true);//layout hatalı olabilir
-        final EditText aciklama_edit = rowView.findViewById(R.id.aciklama_edit);
-        aciklama_edit.setText(aciklamalar.get(position));
+        final TextView aciklama_txt = rowView.findViewById(R.id.aciklama_txt);
+        aciklama_txt.setText(aciklamalar.get(position));
         return rowView;
     }
 }

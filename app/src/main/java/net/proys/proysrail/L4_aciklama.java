@@ -55,8 +55,8 @@ public class L4_aciklama extends AppCompatActivity {
         });
 
     }
-
     public void setListView() {
+        String asd =database.ReadGet_Set("ImalatId");
         List[] lists = database.ReadAciklamal4(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"));
         final List<String> aciklamalar = lists[0];
         final List<Integer> aciklama_idler = lists[1];
@@ -66,8 +66,8 @@ public class L4_aciklama extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(L4_aciklama.this,L4_aciklama_detay.class);
-                intent.putExtra("id",String.valueOf(aciklama_idler.get(position)));
-                intent.putExtra("text",aciklamalar.get(position));
+                intent.putExtra("id",String.valueOf(aciklama_idler.get(position-1)));
+                intent.putExtra("text",aciklamalar.get(position-1));
                 startActivity(intent);
             }
         });

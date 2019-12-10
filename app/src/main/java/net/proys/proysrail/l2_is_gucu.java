@@ -164,6 +164,7 @@ public class l2_is_gucu extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Get_Set veri = new Get_Set();
+                database.WriteGet_Set("ImalatId",String.valueOf(lists[0].get(position)));
                 veri.setImalatIsgucu(String.valueOf(lists[0].get(position)));
                 veri.setImalatIsgucuid(String.valueOf(lists[1].get(position)));
                 Intent intent = new Intent(l2_is_gucu.this, L3_isgucu.class);
