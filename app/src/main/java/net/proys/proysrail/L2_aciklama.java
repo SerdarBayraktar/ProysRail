@@ -27,7 +27,7 @@ public class L2_aciklama extends AppCompatActivity {
     protected ImageView medya_icon,malzeme_icon;
     protected ImageView aciklama_icon;
     protected SQLiteHelper database;
-    protected ExpandableListView expandableListView;
+    protected ExpandableListView listView;
     protected TextView aciklama_txt;
     Get_Set veri;
     private List<String> imalatlar_isim;
@@ -54,7 +54,15 @@ public class L2_aciklama extends AppCompatActivity {
     }
     protected void setExpandableListview(){
         L2_aciklama_Expandable_Listview_adapter adapter = new L2_aciklama_Expandable_Listview_adapter(L2_aciklama.this,imalatlar_isim,hashMap);
-        expandableListView.setAdapter(adapter);
+        listView.setAdapter(adapter);
+
+        listView.setDivider(null);
+        listView.setGroupIndicator(null);
+        listView.setChildIndicator(null);
+
+        for(int i = 0; i<imalatlar_isim.size();i++) {
+            listView.expandGroup(i);
+        }
 
     }
     protected void init(){
@@ -71,7 +79,7 @@ public class L2_aciklama extends AppCompatActivity {
         malzeme_linear = findViewById(R.id.malzeme_linear);
         makine_linear = findViewById(R.id.makine_linear);
         medya_linear = findViewById(R.id.medya_linear);
-        expandableListView = findViewById(R.id.expandablelistview);
+        listView = findViewById(R.id.expandablelistview);
         aciklama_linear = findViewById(R.id.aciklama_linear);
     }
     protected void setOnclickEvents(){

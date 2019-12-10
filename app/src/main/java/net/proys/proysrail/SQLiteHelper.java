@@ -1177,7 +1177,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return lists;
     }
     public List[] CreateL2AciklamaKartPart1(String bildiri_id){
-        String imalat =null;
+        String imalat_id =null;
         HashMap<String,String> hashMap = new HashMap<>();
         HashMap<String,String> hashMap1 = new HashMap<>();
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
@@ -1190,12 +1190,15 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         List<String> imalatlar_id = new ArrayList<>();
         if (cursor.getCount()>0){
             while (cursor.moveToNext()){
-                imalat = cursor.getString(cursor.getColumnIndex(TASLAK_ACIKLAMALAR_YAPISI.IMALAT));
-                imalatlar_isim.add(imalat);
+                imalat_id = cursor.getString(cursor.getColumnIndex(TASLAK_ACIKLAMALAR_YAPISI.IMALAT));
+                if (!imalatlar_id.contains(imalat_id)){
+                    imalatlar_id.add(imalat_id);
+                }
+
             }
         }
-        for (int i =0; i<imalatlar_isim.size();i++){
-            imalatlar_id.add(ReadImalatwidforisim(imalatlar_isim.get(i)));
+        for (int i =0; i<imalatlar_id.size();i++){
+            imalatlar_isim.add(ReadImalatwidforid(imalatlar_id.get(i)));
         }
         cursor.close();
         sqLiteDatabase.close();
@@ -1604,6 +1607,24 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         sqLiteDatabase.close();
         return id;
+    }
+    public String  ReadImalatwidforid(String id){
+        String isim = null;
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        String[] columns = {
+                IMALAT_TABLO_YAPISI.ISIM,
+        };
+        String[] selectionArgs = {id};
+        Cursor cursor = sqLiteDatabase.query(IMALAT_TABLO_YAPISI.TABLO_ADI,columns,IMALAT_TABLO_YAPISI.ID+" =?",selectionArgs,null,null,null);
+        if (cursor.getCount()>0){
+            while (cursor.moveToNext()){
+                isim = cursor.getString(cursor.getColumnIndex(IMALAT_TABLO_YAPISI.ISIM));
+            }
+        } else {
+        }
+        cursor.close();
+        sqLiteDatabase.close();
+        return isim;
     }
     public String[]  ReadImalat(String id){
         String isim = null;
