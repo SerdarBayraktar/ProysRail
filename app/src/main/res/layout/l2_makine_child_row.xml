@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#eeeeee"
+    android:layout_height="match_parent"
+
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="@drawable/background_border2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
 
 
     <TextView
@@ -10,32 +16,39 @@
         android:layout_width="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:gravity="center"
         android:layout_marginStart="24dp"
+        android:textSize="16sp"
         android:fontFamily="@font/opensans_regular"
         android:textColor="@color/text_color"
+        android:layout_height="53dp"
+        android:text="Cihan Emin Bayrakdar"  />
 
-        android:layout_marginTop="18dp"
-        android:layout_height="wrap_content"
-        android:text="isci adı" />
+
     <TextView
+        android:layout_marginLeft="3.5dp"
         android:id="@+id/sayi"
         android:layout_width="wrap_content"
         android:layout_toEndOf="@id/isciadi"
         android:layout_alignParentTop="true"
         android:fontFamily="@font/opensans_regular"
-        android:textColor="@color/text_color"
-        android:layout_marginTop="18dp"
-        android:layout_height="wrap_content" />
+        android:textColor="@color/text_color_yellow"
+ android:gravity="center_vertical"
+        android:layout_height="53dp" />
 
 
 
     <TextView
+        android:textColor="@color/text_color"
+        android:fontFamily="@font/opensans_light"
         android:id="@+id/calisilan_saat"
-        android:layout_marginTop="18dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="50dp"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginEnd="21dp"
         android:layout_alignParentTop="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="53dp"
         android:text="9" />
+    </RelativeLayout>
 </RelativeLayout>

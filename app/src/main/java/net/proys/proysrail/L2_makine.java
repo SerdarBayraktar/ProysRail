@@ -2,6 +2,7 @@ package net.proys.proysrail;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -155,6 +156,7 @@ public class L2_makine extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(L2_makine.this, L3_isgucu.class);
+
                 intent.putExtra("tip","makine");
                 startActivity(intent);
             }

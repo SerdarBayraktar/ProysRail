@@ -63,7 +63,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="29dp"
             android:layout_marginTop="-5dp"
-            android:fontFamily="@font/opensans_lightitalic"
+            android:fontFamily="@font/opensans_italic"
             android:text="Subbalast Serimi"
             android:textColor="@color/text_color"
             android:textSize="16.7sp" />
@@ -86,11 +86,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
 
         <ExpandableListView
+            android:divider="@null"
             android:id="@+id/listview"
-
+            android:groupIndicator="@null"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_width="match_parent"

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidStudioProjects-ProysRail.iml" filepath="$PROJECT_DIR$/AndroidStudioProjects-ProysRail.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProysRail.iml" filepath="$PROJECT_DIR$/ProysRail.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/ProysRail-app.iml" filepath="$PROJECT_DIR$/app/ProysRail-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

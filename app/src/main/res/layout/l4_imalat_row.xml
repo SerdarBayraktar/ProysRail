@@ -17,7 +17,7 @@
         android:layout_marginStart="21.7dp"
         android:fontFamily="@font/opensans_regular"
         android:textColor="@color/text_color"
-        android:textSize="21sp"
+        android:textSize="19.4sp"
         android:text="İmalat İsmi" />
 
     <ImageView

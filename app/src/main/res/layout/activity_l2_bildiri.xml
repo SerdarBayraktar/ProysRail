@@ -281,6 +281,7 @@
         android:layout_height="0.5dp"
         android:background="#a3a3a3"/>
     <ListView
+        android:divider="@null"
         android:layout_marginTop="7dp"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"

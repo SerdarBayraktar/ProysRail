@@ -4,7 +4,6 @@
     <stroke android:width="0.5dp"
         android:color="@color/detaycontur">
     </stroke>
-    <solid android:color="@color/background2"></solid>
-
+    <solid android:color="#eeeeee"></solid>
 
 </shape>

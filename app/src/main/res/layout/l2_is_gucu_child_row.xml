@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#eeeeee"
-
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
+<RelativeLayout
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:background="@drawable/background_border2"
+    android:layout_width="match_parent"
+    android:layout_height="30dp">
 
     <TextView
+
         android:id="@+id/isciadi"
         android:layout_width="wrap_content"
         android:layout_alignParentStart="true"
@@ -20,14 +24,16 @@
         android:text="Cihan Emin Bayrakdar" />
 
     <TextView
-
+        android:textColor="@color/text_color"
+         android:fontFamily="@font/opensans_light"
         android:id="@+id/calisilan_saat"
         android:layout_alignParentEnd="true"
         android:textSize="16sp"
         android:gravity="center"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="21dp"
         android:layout_alignParentTop="true"
         android:layout_width="wrap_content"
         android:layout_height="53dp"
         android:text="9" />
+</RelativeLayout>
 </RelativeLayout>

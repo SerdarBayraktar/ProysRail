@@ -17,6 +17,12 @@
         android:background="@color/background"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
+    <TextView
+        android:id="@+id/contur0"
+        android:layout_alignBottom="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a3a3"/>
 
     <TextView
         android:textAlignment="center"
@@ -38,9 +44,9 @@
         android:layout_alignParentStart="true"
         android:layout_below="@id/textView"
         android:layout_marginStart="29dp"
-        android:layout_marginTop="-4dp"
+        android:layout_marginTop="-7dp"
         android:textColor="@color/text_color"
-        android:fontFamily="@font/gil_sans_light_italic"
+        android:fontFamily="@font/opensans_lightitalic"
         android:textSize="16.7sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,17 +86,27 @@
                 />
         </LinearLayout>
         // Favorilerim textview u yıldız imageview unu ve ikinci listview u içine alan layoutumuz
+
         <LinearLayout
+            android:id="@+id/linear2"
             android:weightSum="5.5"
             android:layout_weight="5.5"
-            android:background="@color/background2"
+            android:background="@color/background"
             android:orientation="vertical"
             android:layout_centerHorizontal="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <TextView
+
+                android:id="@+id/contur1"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#a3a3a3"/>
 
             <LinearLayout
-                android:layout_weight="4.5"
+                android:background="@color/background"
+                android:id="@+id/Favorilerim"
+                android:layout_weight="4.7"
                 android:weightSum="4"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -107,34 +123,53 @@
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/bar"/>
                             </LinearLayout>-->
-                <LinearLayout
-                    android:gravity="center"
+
+
+                    <LinearLayout
+
+                  android:gravity="center"
                     android:layout_weight="3"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp">
-                    <ImageView
-                        android:layout_marginTop="2dp"
-                        android:id="@+id/imageView17"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                           android:layout_marginBottom="2dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_gravity="center"
+                            android:id="@+id/imageView17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="17dp"
 
-                        app:srcCompat="@drawable/favori_y_ld_z" />
+                            app:srcCompat="@drawable/favori_y_ld_z" />
+                        <LinearLayout
+
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
                     <TextView
-
+                        android:layout_marginTop="3dp"
                         android:id="@+id/textView20"
-                        android:layout_marginStart="5.7dp"
                         android:fontFamily="@font/opensans_semibold"
                         android:textSize="20sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Favorilerim" />
+                        </LinearLayout>
 
 
                 </LinearLayout>
+                <TextView
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/contur2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#a3a3a3"/>
 
 
             </LinearLayout>
             <LinearLayout
+                android:layout_marginTop="-5dp"
                 android:layout_weight="0.5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
