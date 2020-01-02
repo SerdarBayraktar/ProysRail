@@ -55,7 +55,6 @@ public class L4_makine_detay extends AppCompatActivity {
         });
     }
 
-
     public void setListView() {
         List<String>[] lists = database.ReadTaslakResourceforLsMakinedetay(String.valueOf(veri.getKod()),database.ReadPersonelwisim(kisi_ismi));
         L4_isci_detay_adapter adapter = new L4_isci_detay_adapter(L4_makine_detay.this,lists[0],lists[1]);

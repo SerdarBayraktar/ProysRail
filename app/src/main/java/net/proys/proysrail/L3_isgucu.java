@@ -237,7 +237,7 @@ public class L3_isgucu extends AppCompatActivity {
         listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, final int groupPosition, long id) {
-               final AlertDialog alertDialog;
+               /*final AlertDialog alertDialog;
                AlertDialog.Builder  dialogBuilder = new AlertDialog.Builder(getApplicationContext());
                 View layoutView = getLayoutInflater().inflate(R.layout.l3_is_gucu_pop_up,null);
                 Button dialogButton = layoutView.findViewById(R.id.btnadd);
@@ -250,7 +250,10 @@ public class L3_isgucu extends AppCompatActivity {
                         alertDialog.dismiss();
                         Toast.makeText(L3_isgucu.this, "dfd        ", Toast.LENGTH_SHORT).show();
                     }
-                });
+                });*/
+
+
+               //todo e1 üstüne aramağan abi ile bakcen
                 /*builder.setTitle("Puantaj");
                 final EditText input = new EditText(L3_isgucu.this);
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(

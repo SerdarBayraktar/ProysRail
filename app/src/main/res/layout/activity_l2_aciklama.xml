@@ -287,7 +287,9 @@
         android:layout_below="@id/linear1"
         android:id="@+id/expandablelistview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ExpandableListView>
+        android:layout_height="match_parent">
+
+    </ExpandableListView>
 
 
     <ImageView

@@ -57,9 +57,10 @@ public class L4_makine_grup extends AppCompatActivity {
         Login_SQLiteHelper login_sqLiteHelper = new Login_SQLiteHelper(L4_makine_grup.this);
         final String[] ekipler_ids = login_sqLiteHelper.ReadLoginforFavGrup(database.ReadGet_Set("ImalatId"));// database.ReadPersonelwekip_adi("iscilik");
         final List<String> ekipler_list = new ArrayList<>();
-        for (int i = 0; i<ekipler_ids.length;i++){
+        /*for (int i = 0; i<ekipler_ids.length;i++){
             ekipler_list.add(database.ReadPersonelwid(ekipler_ids[i]));
-        }
+        }        //todo e2 la burada for çöküii gel buna bak muhtemelen i saysıı çok yükseliyor bura favori ekip listviewine veri atıyor
+
         final String[] ekipler_array = ekipler_list.toArray(new String[ekipler_list.size()]);
         ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,ekipler_array);
         listView2.setAdapter(arrayAdapter1);
@@ -75,7 +76,7 @@ public class L4_makine_grup extends AppCompatActivity {
                 Intent intent = new Intent(L4_makine_grup.this,L4_makine.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
     @Override
     public void onBackPressed() {

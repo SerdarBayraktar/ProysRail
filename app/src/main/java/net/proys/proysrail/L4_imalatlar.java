@@ -101,7 +101,7 @@ public class L4_imalatlar extends AppCompatActivity {
                         database.WriteTaslak(veri.getKod(), tarih,maintitle[position],kopya_no,database.ReadSektor(Integer.valueOf(database.ReadImalatwisim(maintitle[position])[6]))[0],
                                 1,km_bas,km_bas+mesafe,mesafe,
                                 database.ReadImalatwisim(maintitle[position])[2],0);
-                        //database.UpdateGet_Set("ImalatId",maintitle[position]);
+                                database.UpdateGet_Set("ImalatId",maintitle[position]);
                         //database.UpdateGet_Set("KopyaNo",String.valueOf(kopya_no));
                     }else if (getIntent.getStringExtra("version").equals("old")){
                         database.UpdateTaslak(veri.getKod(), tarih, maintitle[position], kopya_no, database.ReadSektor(Integer.valueOf(database.ReadImalatwisim(maintitle[position])[6]))[0],
@@ -111,6 +111,8 @@ public class L4_imalatlar extends AppCompatActivity {
                         String abc = getIntent.getStringExtra("imalat");
                         Long lll = veri.getKod();
                             String akc = getIntent.getStringExtra("imalat");
+                        database.UpdateGet_Set("ImalatId",maintitle[position]);
+
                     }
                     startActivity(intent);
                 }

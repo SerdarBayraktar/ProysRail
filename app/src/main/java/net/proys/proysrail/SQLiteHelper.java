@@ -2320,7 +2320,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.ID, id);
         contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.IMALAT, imalat);
-        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA, "");
+        contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA, "Lütfen açıklama giriniz.");
         contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.KOPYA_NO, kopya_no);
         sqLiteDatabase.insert(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,null,contentValues);
         sqLiteDatabase.close();
@@ -2345,6 +2345,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.update(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,contentValues,TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA_ID+ " = ?",args);
         sqLiteDatabase.close();
     }
+
+
     public void UpdateAciklamal3(String id, String imalat_id,String aciklama,String kopya_no,String aciklama_old){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -2922,6 +2924,13 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     }
 
+    public void DeleteAciklama(String id) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        String[] silinecekVeri = {String.valueOf(id)};
+        sqLiteDatabase.delete(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI, TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA_ID+ "= ?", silinecekVeri);
+        sqLiteDatabase.close();
+
+    }
     public void DeleteTaslakVerimsizlik(String bildiri_id,String imalat_id,String etken_id) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String[] silinecekVeri = {bildiri_id,imalat_id,etken_id};
