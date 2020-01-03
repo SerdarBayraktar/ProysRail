@@ -150,6 +150,7 @@ public class l2_is_gucu extends AppCompatActivity {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
                 Get_Set veri = new Get_Set();
+                database.UpdateGet_Set("ImalatId",String.valueOf(lists[0].get(groupPosition)));
                 veri.setImalatIsgucu(String.valueOf(lists[0].get(groupPosition)));
                 veri.setImalatIsgucuid(String.valueOf(lists[1].get(groupPosition)));
                 Intent intent = new Intent(l2_is_gucu.this, L3_isgucu.class);
@@ -160,18 +161,30 @@ public class l2_is_gucu extends AppCompatActivity {
         for(int i = 0; i<lists[0].size();i++) {
             listView.expandGroup(i);
         }
+        listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                Get_Set veri = new Get_Set();
+                database.UpdateGet_Set("ImalatId",String.valueOf(lists[0].get(groupPosition)));
+                veri.setImalatIsgucu(String.valueOf(lists[0].get(groupPosition)));
+                veri.setImalatIsgucuid(String.valueOf(lists[1].get(groupPosition)));
+                Intent intent = new Intent(l2_is_gucu.this, L3_isgucu.class);
+                startActivity(intent);
+                return true;
+            }
+        });/*
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Get_Set veri = new Get_Set();
-                database.WriteGet_Set("ImalatId",String.valueOf(lists[0].get(position)));
+                database.UpdateGet_Set("ImalatId",String.valueOf(lists[0].get(position)));
                 veri.setImalatIsgucu(String.valueOf(lists[0].get(position)));
                 veri.setImalatIsgucuid(String.valueOf(lists[1].get(position)));
                 Intent intent = new Intent(l2_is_gucu.this, L3_isgucu.class);
                 intent.putExtra("tip","isgucu");
                 startActivity(intent);
             }
-        });
+        });*/
 
 
     }

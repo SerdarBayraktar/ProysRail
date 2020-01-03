@@ -1,6 +1,7 @@
 package net.proys.proysrail;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -55,6 +56,7 @@ public class L3_aciklama extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 imalat_check();
+                database.DeleteAciklamaEmpty();
                 Intent intent = new Intent(L3_aciklama.this,L2_bildiri.class);
                 startActivity(intent);
 
@@ -93,9 +95,27 @@ public class L3_aciklama extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(L3_aciklama.this,L4_aciklama_detay.class);
+                intent.putExtra("tip","L3");
                 intent.putExtra("id",String.valueOf(aciklama_idler.get(position)));
                 intent.putExtra("text",String.valueOf(aciklamalar.get(position)));
                 startActivity(intent);
+            }
+        });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view,final int position, long id) {
+                Snackbar snackbar = Snackbar.make(view,"Silinsin mi?",Snackbar.LENGTH_LONG).setAction("Evet", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        SQLiteHelper database = new SQLiteHelper(L3_aciklama.this);
+                        database.DeleteAciklama(String.valueOf(aciklama_idler.get(position)));
+                        setListView();
+                    }
+                });
+                snackbar.setActionTextColor(getResources().getColor(R.color.text_color_yellow));
+                snackbar.show();
+                return false;
             }
         });
     }

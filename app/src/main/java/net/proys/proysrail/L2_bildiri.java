@@ -247,6 +247,7 @@ public class L2_bildiri extends AppCompatActivity {
                         setListView();
                     }
                 });
+                snackbar.setActionTextColor(getResources().getColor(R.color.text_color_yellow));
                 snackbar.show();
 
 

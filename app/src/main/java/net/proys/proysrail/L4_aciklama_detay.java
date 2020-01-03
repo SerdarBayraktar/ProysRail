@@ -18,8 +18,7 @@ public class L4_aciklama_detay extends AppCompatActivity {
     protected Intent getintent;
     protected String aciklama_str;
     protected String aciklama_id;
-    protected Button delete;
-    protected Button clear;
+    protected String öncekiaktivite;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,15 +28,18 @@ public class L4_aciklama_detay extends AppCompatActivity {
         getdatawintent();
         init();
         setOnclickEvents();
+        setgetIntent();
 
+    }
+    protected void setgetIntent(){
+        Intent getintent = getIntent();
+        öncekiaktivite = getintent.getStringExtra("tip");
     }
     protected void init(){
         imalat_txt = findViewById(R.id.textView2);
         aciklama_edit =findViewById(R.id.aciklama_edit);
         tick = findViewById(R.id.tick);
         aciklama_edit.setText(aciklama_str);
-        delete = findViewById(R.id.delete);
-        clear = findViewById(R.id.clear);
     }
     protected void getdatawintent(){
         getintent = getIntent();
@@ -48,25 +50,31 @@ public class L4_aciklama_detay extends AppCompatActivity {
         tick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(L4_aciklama_detay.this,L3_aciklama.class);
+                Intent intent = null;
+                if (öncekiaktivite.equals("L4")){
+                    intent = new Intent(L4_aciklama_detay.this,L4_aciklama.class);
+                }else if (öncekiaktivite.equals("L3")){
+                        intent = new Intent(L4_aciklama_detay.this,L3_aciklama.class);
+                }else {
+                    intent = new Intent(L4_aciklama_detay.this,L3_aciklama.class);
+                }
                 database.UpdateAciklamal4(aciklama_id,aciklama_edit.getText().toString());
+                database.DeleteAciklamaEmpty();
                 startActivity(intent);
             }
         });
-        clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                aciklama_edit.setText("");
-            }
-        });
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                database.DeleteAciklama(aciklama_id);
-                Intent intent = new Intent(L4_aciklama_detay.this,L3_aciklama.class);
-                startActivity(intent);
-            }
-        });
+    }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = null;
+        if (öncekiaktivite.equals("L4")){
+            intent = new Intent(L4_aciklama_detay.this,L4_aciklama.class);
+        }else if (öncekiaktivite.equals("L3")){
+            intent = new Intent(L4_aciklama_detay.this,L3_aciklama.class);
+        }else {
+            intent = new Intent(L4_aciklama_detay.this,L3_aciklama.class);
+        }
+        startActivity(intent);
     }
 }

@@ -37,6 +37,11 @@ public class L4_aciklama_adapter extends ArrayAdapter<String> {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.l4_aciklama_row, null,true);//layout hatalı olabilir
         final TextView aciklama_txt = rowView.findViewById(R.id.aciklama_txt);
+        /*if (aciklamalar.get(position).equals("")){
+            aciklama_txt.setText("Lütfen açıklama giriniz.");
+        }else {
+            aciklama_txt.setText(aciklamalar.get(position));
+        }*/
         aciklama_txt.setText(aciklamalar.get(position));
         return rowView;
     }

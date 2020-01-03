@@ -1,6 +1,8 @@
 package net.proys.proysrail;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,8 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class L4_aciklama extends AppCompatActivity {
-    private EditText aciklama;
-    private ImageView tick,ekle;
+       private ImageView tick,ekle;
     ListView listView;
     Get_Set veri;
     SQLiteHelper database;
@@ -32,7 +33,6 @@ public class L4_aciklama extends AppCompatActivity {
 
     }
     protected void init(){
-        aciklama = findViewById(R.id.aciklama_edit);
         tick = findViewById(R.id.tick);
         listView = findViewById(R.id.listview);
         ekle = findViewById(R.id.ekle);
@@ -41,16 +41,16 @@ public class L4_aciklama extends AppCompatActivity {
         tick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(L4_aciklama.this,L3_aciklama.class);
-                veri.setAciklamalar(aciklama.getText().toString());
+                database.DeleteAciklamaEmpty();
+                Intent intent = new Intent(L4_aciklama.this,L2_aciklama.class);
                 startActivity(intent);
             }
         });
         ekle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // database.WriteTaslakL4(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),Integer.valueOf(database.ReadGet_Set("KopyaNo")));
-                //setListView();
+                database.WriteTaslakL4(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"),Integer.valueOf(database.ReadGet_Set("KopyaNo")));
+                setListView();
             }
         });
 
@@ -66,9 +66,26 @@ public class L4_aciklama extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(L4_aciklama.this,L4_aciklama_detay.class);
-                intent.putExtra("id",String.valueOf(aciklama_idler.get(position-1)));
-                intent.putExtra("text",aciklamalar.get(position-1));
+                intent.putExtra("tip","L4");
+                intent.putExtra("id",String.valueOf(aciklama_idler.get(position)));
+                intent.putExtra("text",aciklamalar.get(position));
                 startActivity(intent);
+            }
+        });
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view,final int position, long id) {
+                Snackbar snackbar = Snackbar.make(view,"Silinsin mi?",Snackbar.LENGTH_LONG).setAction("Evet", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        SQLiteHelper database = new SQLiteHelper(L4_aciklama.this);
+                        database.DeleteAciklama(String.valueOf(aciklama_idler.get(position)));
+                        setListView();
+                    }
+                });
+                snackbar.setActionTextColor(getResources().getColor(R.color.text_color_yellow));
+                snackbar.show();
+                return false;
             }
         });
 
@@ -76,7 +93,7 @@ public class L4_aciklama extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this,L3_aciklama.class);
+        Intent intent = new Intent(L4_aciklama.this,L2_aciklama.class);
         startActivity(intent);
     }
 }

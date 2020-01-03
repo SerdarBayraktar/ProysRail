@@ -27,6 +27,8 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -54,7 +56,7 @@ public class Anasayfa extends AppCompatActivity {
        animation();
       setOnclickEvents();
        Benihatirla();
-       //urldeneme();
+       urldeneme();
 
         //System.out.println(database.ReadPersonelwImalat_id("T0002")[0]);
 
@@ -83,7 +85,7 @@ public class Anasayfa extends AppCompatActivity {
 
     }
     protected void urldeneme(){
-        String url = "http://176.53.81.147/panel/restdeneme";
+        String url = "http://31.210.91.198/restdeneme/deneme1";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -98,7 +100,8 @@ public class Anasayfa extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                     /*Hata meydana geldiğinde kullanıcıya bilgi verilir.*/
                 Toast.makeText(getApplicationContext(), "Hata meydana geldi", Toast.LENGTH_SHORT).show();
-                System.out.println("asd"+error);
+                System.out.println("asd"+error.getLocalizedMessage());
+                System.out.println("asd"+error.getMessage());
             }
         }) {
             /*StringRequest isteğinin temel amacı, MySql'e veri eklemektir. Kullanıcının
@@ -108,11 +111,22 @@ public class Anasayfa extends AppCompatActivity {
             saklamaktır*/
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> info = new HashMap<String, String>();
-                    /*name ve password bilgileri insert_admin_info.php isimli dosyada $_POST
-                    içinde bulunan değerlerdir. Bunların aynı olması gerekiyor.*/
+                /*Map<String, String> info = new HashMap<String, String>();
+                    *//*name ve password bilgileri insert_admin_info.php isimli dosyada $_POST
+                    içinde bulunan değerlerdir. Bunların aynı olması gerekiyor.*//*
                 info.put("gelisme","serdar baba yapti" );
-                return info;
+                return info;*/
+                Map<String, String> params = new HashMap<String, String>();
+
+                Map<String, String[]> userParams = new HashMap<String, String[]>();
+                userParams.put("name",new String[]{"serdar","armagan"});
+                userParams.put("ages",new String[]{"16","23"});
+
+                JSONObject userJSON = new JSONObject(userParams);
+
+                params.put("users", userJSON.toString());
+
+                return params;
             }
         };
             /*istek işlenir.*/

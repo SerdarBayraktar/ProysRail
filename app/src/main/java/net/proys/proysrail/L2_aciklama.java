@@ -75,7 +75,6 @@ public class L2_aciklama extends AppCompatActivity {
 
             }
         });
-
     }
     protected void init(){
         sent = findViewById(R.id.sent);

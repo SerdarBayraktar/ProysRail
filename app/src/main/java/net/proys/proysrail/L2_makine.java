@@ -149,9 +149,20 @@ public class L2_makine extends AppCompatActivity {
                 return true;
             }
         });
+        listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                Get_Set veri = new Get_Set();
+                veri.setImalatIsgucu(String.valueOf(lists[0].get(groupPosition)));
+                veri.setImalatIsgucuid(String.valueOf(lists[1].get(groupPosition)));
+                Intent intent = new Intent(L2_makine.this, L3_makine.class);
+                startActivity(intent);
+                return true;
+            }
+        });
         for(int i = 0; i<lists[0].size();i++) {
             listView.expandGroup(i);
-        }
+        }/*
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -160,7 +171,7 @@ public class L2_makine extends AppCompatActivity {
                 intent.putExtra("tip","makine");
                 startActivity(intent);
             }
-        });
+        });*/
 
 
     }
