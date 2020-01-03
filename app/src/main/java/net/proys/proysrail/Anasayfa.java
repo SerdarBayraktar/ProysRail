@@ -54,6 +54,7 @@ public class Anasayfa extends AppCompatActivity {
        animation();
       setOnclickEvents();
        Benihatirla();
+       //urldeneme();
 
         //System.out.println(database.ReadPersonelwImalat_id("T0002")[0]);
 

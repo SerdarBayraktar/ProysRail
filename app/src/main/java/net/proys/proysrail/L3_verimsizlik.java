@@ -166,7 +166,7 @@ public class L3_verimsizlik extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this,L2_bildiri.class);
+        Intent intent = new Intent(L3_verimsizlik.this,L2_bildiri.class);
         startActivity(intent);
     }
 }

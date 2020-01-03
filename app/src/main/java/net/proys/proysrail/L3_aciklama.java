@@ -64,6 +64,10 @@ public class L3_aciklama extends AppCompatActivity {
         ekleme_butonu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String abc = String.valueOf(veri.getKod());
+                String abc1 = database.ReadGet_Set("ImalatId");
+                int ab2 = Integer.valueOf(database.ReadGet_Set("KopyaNo"));
+                int a =0;
                 database.WriteTaslakL3(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"),Integer.valueOf(database.ReadGet_Set("KopyaNo")));
                 setListView();
             }
@@ -165,10 +169,9 @@ public class L3_aciklama extends AppCompatActivity {
         }
 
     }
-
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this,L2_bildiri.class);
+        Intent intent = new Intent(L3_aciklama.this,L2_bildiri.class);
         startActivity(intent);
     }
 }

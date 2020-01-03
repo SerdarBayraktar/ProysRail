@@ -325,7 +325,7 @@ public class L3_imalat extends AppCompatActivity {
                 Intent intent = new Intent(L3_imalat.this,L4_sektor.class);
                 startActivity(intent);
             }
-        });
+        });/*
         imalatadi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -336,7 +336,7 @@ public class L3_imalat extends AppCompatActivity {
                 intent.putExtra("imalat",veri.getImalat());
                 startActivity(intent);
             }
-        });
+        });*/
 
     }
     protected void imalat_check(){
