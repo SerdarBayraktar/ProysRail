@@ -77,7 +77,7 @@ public class L3_imalat extends AppCompatActivity {
         L1_main l1_main = new L1_main();
         String tarih = l1_main.getMaintitle()[veri.getPosition()].subSequence(l1_main.getMaintitle()[veri.getPosition()].length()-11,l1_main.getMaintitle()[veri.getPosition()].length()-1).toString();
         String bildiri = database.ReadBildirilerwIsim(l1_main.getMaintitle()[veri.getPosition()].split(" ")[0]+" "+ l1_main.getMaintitle()[veri.getPosition()].split(" ")[1])[0];
-        List[] diziler = database.ReadTaslakfList(String.valueOf(veri.getKod()),tarih);
+        List[] diziler = database.ReadTaslakfList(String.valueOf(veri.getKod()));
         final String[] imalat_array = Arrays.copyOf(diziler[0].toArray(new String[diziler[0].size()]),diziler[0].toArray(new String[diziler[0].size()]).length,String[].class);
         final String[] mesafe_array = Arrays.copyOf(diziler[1].toArray(new String[diziler[1].size()]),diziler[1].toArray(new String[diziler[1].size()]).length,String[].class);
         final String[] km_bas_array = Arrays.copyOf(diziler[2].toArray(new String[diziler[2].size()]),diziler[2].toArray(new String[diziler[2].size()]).length,String[].class);
@@ -133,7 +133,7 @@ public class L3_imalat extends AppCompatActivity {
         // TO-DO
         String tarih = l1_main.getMaintitle()[veri.getPosition()].subSequence(l1_main.getMaintitle()[veri.getPosition()].length()-11,l1_main.getMaintitle()[veri.getPosition()].length()-1).toString();
         String bildiri = database.ReadBildirilerwIsim(l1_main.getMaintitle()[veri.getPosition()].split(" ")[0]+" "+ l1_main.getMaintitle()[veri.getPosition()].split(" ")[1])[0];//sadece 2 kelime olan bildirilere adapte
-        List[] diziler = database.ReadTaslakfList(String.valueOf(veri.getKod()),tarih);
+        List[] diziler = database.ReadTaslakfList(String.valueOf(veri.getKod()));
         imalat_array = Arrays.copyOf(diziler[0].toArray(new String[diziler[0].size()]),diziler[0].toArray(new String[diziler[0].size()]).length,String[].class);
         mesafe_array = Arrays.copyOf(diziler[1].toArray(new String[diziler[1].size()]),diziler[1].toArray(new String[diziler[1].size()]).length,String[].class);
         km_bas_array = Arrays.copyOf(diziler[2].toArray(new String[diziler[2].size()]),diziler[2].toArray(new String[diziler[2].size()]).length,String[].class);
@@ -186,10 +186,10 @@ public class L3_imalat extends AppCompatActivity {
     protected void imalat_hatnosenc(){
         if ((!veri.getImalat().equals(""))&&(!veri.getSektör().equals(""))){
             SQLiteHelper database = new SQLiteHelper(L3_imalat.this);
-            for (int i = 1 ; i<=167;i++){
-                if (database.ReadSektor(90000+i)[5].equals("1")){
-                    if (database.ReadSektor(90000+i)[0].equals(veri.getSektör())){
-                        String[] hatnolar = database.ReadSektor(90000+i)[2].split("--");
+            for (int i = 1 ; i<=10;i++){
+                if (database.ReadSektor(100+i)[5].equals("1")){
+                    if (database.ReadSektor(100+i)[0].equals(veri.getSektör())){
+                        String[] hatnolar = database.ReadSektor(100+i)[2].split("--");
                         if (hatnolar.length==1){
                             veri.setHatno(Integer.valueOf(hatnolar[0]));
                             L1_main l1_main = new L1_main();

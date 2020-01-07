@@ -56,7 +56,7 @@ public class Anasayfa extends AppCompatActivity {
        animation();
       setOnclickEvents();
        Benihatirla();
-       urldeneme();
+       //urldeneme();
 
         //System.out.println(database.ReadPersonelwImalat_id("T0002")[0]);
 
@@ -133,10 +133,6 @@ public class Anasayfa extends AppCompatActivity {
         MySingleton.getInstance(getApplicationContext()).addToRequestQue(stringRequest);
 
     }
-
-
-
-
     public void Benihatirla(){
         SharedPreferences sp = getSharedPreferences("Login",MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();

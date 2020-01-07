@@ -1894,7 +1894,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.close();
         return sonuc;
     }
-    public List[] ReadTaslakfList(String id,String tarih){
+    public List[] ReadTaslakfList(String id){
         String imalat = null;
         String sektor = null;
         int hat_no = 0;
@@ -1918,18 +1918,18 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 TASLAK_TABLO_YAPISI.BIRIM,
                 TASLAK_TABLO_YAPISI.SENT
         };
-        String[] selectionArgs = {String.valueOf(id),tarih};
-        Cursor cursor = sqLiteDatabase.query(TASLAK_TABLO_YAPISI.TABLO_ADI,columns,TASLAK_TABLO_YAPISI.ID+" =?"+" AND "+ TASLAK_TABLO_YAPISI.TARIH+" =? ",selectionArgs,null,null,null);
+        String[] selectionArgs = {String.valueOf(id)};
+        Cursor cursor = sqLiteDatabase.query(TASLAK_TABLO_YAPISI.TABLO_ADI,columns,TASLAK_TABLO_YAPISI.ID+" =?",selectionArgs,null,null,null);
         List<String> imalatlar = new ArrayList();
         List<String> mesafeler = new ArrayList();
         List<String> km_baslar = new ArrayList();
         List<String> km_sonlar = new ArrayList();
         List<String> mesafe_birimler = new ArrayList();
         List<Integer> kopya_nolar = new ArrayList();
+        List<Integer> hatno_lar = new ArrayList();
         if (cursor.getCount()>0){
             while (cursor.moveToNext()){
                 id = cursor.getString(cursor.getColumnIndex(TASLAK_TABLO_YAPISI.ID));
-                tarih = cursor.getString(cursor.getColumnIndex(TASLAK_TABLO_YAPISI.TARIH));
                 imalat = cursor.getString(cursor.getColumnIndex(TASLAK_TABLO_YAPISI.IMALAT));
                 kopya_no = cursor.getInt(cursor.getColumnIndex(TASLAK_TABLO_YAPISI.KOPYA_NO));
                 sektor = cursor.getString(cursor.getColumnIndex(TASLAK_TABLO_YAPISI.SEKTOR));
@@ -1945,11 +1945,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 km_sonlar.add(String.valueOf(km_son));
                 mesafe_birimler.add(ReadImalatwisim(imalat)[2]);
                 kopya_nolar.add(kopya_no);
+                hatno_lar.add(hat_no);
             }
         } else {
             // donothing because all lists willbe length of 0
         }
-        List[] sonuc = new List[]{imalatlar,mesafeler,km_baslar,km_sonlar,mesafe_birimler,kopya_nolar};
+        List[] sonuc = new List[]{imalatlar,mesafeler,km_baslar,km_sonlar,mesafe_birimler,kopya_nolar,hatno_lar};
         cursor.close();
         sqLiteDatabase.close();
         return sonuc;
@@ -2313,6 +2314,26 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.close();
         List[] lists = new List[]{aciklamalar,aciklama_idler};
         return lists;
+    }
+    public List<String> ReadAciklamaForRestAPI(String id,String imalat_id){
+        String aciklama =null;
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String[] columns = {
+                TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA
+        };
+        String[] selectionArgs = {id,imalat_id};
+        Cursor cursor = sqLiteDatabase.query(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,columns,TASLAK_ACIKLAMALAR_YAPISI.ID+" =? "+" AND "+ TASLAK_ACIKLAMALAR_YAPISI.IMALAT+ " =? ",selectionArgs,null,null,null);
+        List<String> aciklamalar= new ArrayList<>();
+        if (cursor.getCount()>0){
+            while (cursor.moveToNext()){
+                aciklama = cursor.getString(cursor.getColumnIndex(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA));
+                aciklamalar.add(aciklama);
+            }
+        } else {
+        }
+        cursor.close();
+        sqLiteDatabase.close();
+        return aciklamalar;
     }
 
     public int WriteTaslakL3(String id,String imalat,int kopya_no){

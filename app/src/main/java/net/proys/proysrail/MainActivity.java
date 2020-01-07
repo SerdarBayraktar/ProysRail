@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             login_sqLiteHelper.Write(107,"Melih Karakurt","Kaynak Mühendisi","","124","","B0002--B0004","R0002","R0022");
             login_sqLiteHelper.Write(108,"Proys","is sahibi","administrator","proys2019","T0012--T0013--T0014--T0015","B0001","R0002","R0022");
            //TODO BILDIRI KENDINE TANIMLI DEGIL DIKKAT KAYNAK ILERLEME
-            login_sqLiteHelper.Write(109,"Proys","is sahibi","a","a","T0012--T0013--T0014--T0015","B0001","R0002","R0022");
+            login_sqLiteHelper.Write(109,"Proys","is sahibi","a","a","T0015","B0001","R0002","R0022");
             final SQLiteHelper database = new SQLiteHelper(this);
             database.WriteEtkenListe("V0001","Makine Arızası",-3,0);
             database.WriteEtkenListe("V0002","Hava Koşulları",-4,0);
@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             database.WriteGet_Set("KullaniciAdi","");
             database.WriteGet_Set("KopyaNo","");
             database.WriteGet_Set("KullaniciId","");
+/*
 
             database.WriteTaslakResource(109000120190924L,"23.09.2019","T0001","R0001","iscilik","verimsiz",-3,1,"V0001");
             database.WriteTaslakResource(101000120190923L,"23.09.2019","T0001","R0002","iscilik","ekip",10,1,"efor");
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
             database.WriteTaslakResource(101000120190923L,"23.09.2019","T0001","R0015","iscilik","isci",10,1,"R0002");
             database.WriteTaslakResource(101000120190923L,"23.09.2019","T0001","R0016","iscilik","isci",10,1,"R0002");
             database.WriteTaslakResource(101000120190923L,"23.09.2019","T0001","R0017","iscilik","isci",9,1,"efor");
+*/
 
             database.WritePersonel("R0001","Abdülkadir Mustafa Yılmaz","123.672","iscilik","isci","R0002",8,1);
             database.WritePersonel("R0002","Balastlı Hatlar Ekibi (1)","124.707","iscilik","ekip","",8,1);
@@ -104,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
             database.WritePersonel("R0021","VAIACAR","067.578","makine","makine","R0022",8,1);
             database.WritePersonel("R0022","Panel Serme Grubu","","makine","grup","",8,1);
             database.WritePersonel("R0023","LDH 70","210","makine","makine","R0022",8,1);
+/*
+
             database.WriteImalat("T0001", "Balastlı Hat Montajı", "birincil", "thm", 1.446, 402889, "B0001", 90168, 0,1);
             database.WriteImalat("T0002", "2. Kademe Balast Serimi", "birincil", "thm", 0.213, 412570, "B0001", 90026, 600,1);
             database.WriteImalat("T0003", "1. Kademe Buraj Yapılması", "birincil", "thm", 0.185, 402889, "", 90168, 0,1);
@@ -132,6 +136,23 @@ public class MainActivity extends AppCompatActivity {
             database.WriteImalat("T0029", "Geçici Makas Montajı", "birincil", "adet", 0, 0, "B0001", 90168, 1,1);
             database.WriteImalat("T0030", "Geçici Hat Montajı", "birincil", "thm", 0, 0, "B0001", 90168, 540,1);
             database.WriteImalat("T0031", "Konvansiyonel Hat Montajı", "birincil", "thm", 0, 0, "B0001", 90026, 540,1);
+*/
+            database.WriteSektor(100, "Kemerburgaz - Göktürk", "ana-hat", "1--2", 115052, 118183, 1, "T0015--T0016", "A1");
+            database.WriteSektor(101, "E02 - İhsaniye", "ana-hat", "1--2", 120803, 128139, 1, "T0015--T0016", "A1");
+            database.WriteSektor(102, "Havalimanı-1 - Hat Sonu", "ana-hat", "1--2", 134174, 138032, 1, "T0015--T0016", "A1");
+            database.WriteSektor(103, "Gayrettepe - Kağıthane", "ana-hat", "1--2", 000000, 13798, 1, "T0015--T0016", "A1");
+            database.WriteSektor(104, "İhsaniye - Havalimanİ-2", "ana-hat", "1--2", 128139, 131085, 1, "T0015--T0016", "A1");
+            database.WriteSektor(105, "Hasdal - Kemerburgaz", "ana-hat", "1--2", 109440, 115052, 1, "T0015--T0016", "A1");
+            database.WriteSektor(106, "Havalimanı-2 - Havalimaı-1", "ana-hat", "1--2", 131805, 134174, 1, "T0015--T0016", "A1");
+            database.WriteSektor(107, "Göktürk - E02", "ana-hat", "1--2", 118182, 120823, 1, "T0015--T0016", "A1");
+            database.WriteSektor(108, "Kağıthane - Hasdal", "ana-hat", "1--2", 103798, 109440, 1, "T0015--T0016", "A1");
+            database.WriteSektor(109, "M4 Cep Hattı", "ana-hat", "1", 000000, 100242, 1, "T0015--T0016", "A1");
+            database.WriteSektor(110, "Gayrettepe Loop Hattı", "ana-hat", "1", 000000, 100894, 1, "T0015--T0016", "A1");
+
+            database.WriteImalat("T0015", "Faz-1 Betonu Dökülmesi", "birincil", "thm", 1, 1, "B0001", 104, 100,1);
+            database.WriteImalat("T0016", "Faz-2 Betonu Dökülmesi (trapez kalıp dahil)", "birincil", "thm", 1, 1, "B0001", 104, 100,1);
+
+/*
             database.WriteSektor(90001, "Tünel-189", "ana-hat", "1--2", 189862, 191084, 1, "T0025--T0026--T0013--T0014--T0015--T0006--T0007--T0008--T0009", "A1");
             database.WriteSektor(90002, "Tünel-194", "ana-hat", "1--2", 194175, 195069, 1, "T0025--T0026--T0013--T0014--T0015--T0006--T0007--T0008--T0009", "A1");
             database.WriteSektor(90003, "Tünel-198", "ana-hat", "1--2", 198103, 202944, 1, "T0025--T0026--T0013--T0014--T0015--T0006--T0007--T0008--T0009", "A1");
@@ -299,7 +320,7 @@ public class MainActivity extends AppCompatActivity {
             database.WriteSektor(90165, "Makas-97", "", "", 0, 0, 0, "T0010--T0011--T0022", "");
             database.WriteSektor(90166, "Makas-98", "", "", 0, 0, 0, "T0010--T0011--T0022", "");
             database.WriteSektor(90167, "Makas-99", "", "", 0, 0, 0, "T0010--T0011--T0022", "");
-            database.WriteSektor(90168, "Sektör Yok", "", "", 0, 0, 0, "T0028--T0029--T0030", "");
+            database.WriteSektor(90168, "Sektör Yok", "", "", 0, 0, 0, "T0028--T0029--T0030", "");*/
             database.WriteBildiriler("B0001", "Günlük İlerleme", 1, 1, 0, "09.30", 1, "09.00");
             database.WriteBildiriler("B0002", "Kaynak İlerleme", 1, 1, 0, "09.30", 1, "09.00");
         }

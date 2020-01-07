@@ -14,10 +14,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class L2_makine extends AppCompatActivity {
     ImageView isci_icon,malzeme_icon,imalat_icon,makine_icon,aciklama_icon,medya_icon,sent;
@@ -104,7 +112,7 @@ public class L2_makine extends AppCompatActivity {
         sent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                L1_main l1_main = new L1_main();
+                /*L1_main l1_main = new L1_main();
                 veri = new Get_Set();
                 SQLiteHelper database = new SQLiteHelper(L2_makine.this);
                 String tarih = l1_main.getMaintitle()[veri.getPosition()].subSequence(l1_main.getMaintitle()[veri.getPosition()].length()-11,l1_main.getMaintitle()[veri.getPosition()].length()-1).toString();
@@ -113,13 +121,14 @@ public class L2_makine extends AppCompatActivity {
                 SimpleDateFormat sdf1 = new SimpleDateFormat("dd.MM.yyyy");
                 try {
 
-                    Long kod = Long.valueOf(database.ReadGet_Set("ImalatId")+String.valueOf(bildiri).substring(1)+sdf2.format(sdf1.parse(tarih)));
+                    Long kod = Long.valueOf(database.ReadGet_Set("KullaniciId")+String.valueOf(bildiri).substring(1)+sdf2.format(sdf1.parse(tarih)));
                     database.UpdateBildiriListesi(kod,"SENT",1);
                     Intent intent = new Intent(L2_makine.this,L1_main.class);
                     startActivity(intent);
                 } catch (ParseException e) {
                     e.printStackTrace();
-                }
+                }*/
+                Rest_Gonderme();
             }
         });
 
@@ -176,6 +185,99 @@ public class L2_makine extends AppCompatActivity {
 
     }
 
+
+    protected void Rest_Gonderme(){
+        String url_imalat = "http://31.210.91.198/rest/imalat";
+
+        SQLiteHelper database = new SQLiteHelper(L2_makine.this);
+        L1_main l1_main = new L1_main();
+        final String tarih = l1_main.getMaintitle()[veri.getPosition()].subSequence(l1_main.getMaintitle()[veri.getPosition()].length()-11,l1_main.getMaintitle()[veri.getPosition()].length()-1).toString();
+        final String bildiri = database.ReadBildirilerwIsim(l1_main.getMaintitle()[veri.getPosition()].split(" ")[0]+" "+ l1_main.getMaintitle()[veri.getPosition()].split(" ")[1])[0];
+        List[] diziler = database.ReadTaslakfList(String.valueOf(veri.getKod()));
+        String[] imalat_array = Arrays.copyOf(diziler[0].toArray(new String[diziler[0].size()]),diziler[0].toArray(new String[diziler[0].size()]).length,String[].class);
+        //    String[] imalat_array_isim = Arrays.copyOf(diziler[6].toArray(new String[diziler[6].size()]),diziler[6].toArray(new String[diziler[6].size()]).length,String[].class);
+        final String[] mesafe_array = Arrays.copyOf(diziler[1].toArray(new String[diziler[1].size()]),diziler[1].toArray(new String[diziler[1].size()]).length,String[].class);
+        final String[] km_bas_array = Arrays.copyOf(diziler[2].toArray(new String[diziler[2].size()]),diziler[2].toArray(new String[diziler[2].size()]).length,String[].class);
+        final String[] km_son_array = Arrays.copyOf(diziler[3].toArray(new String[diziler[3].size()]),diziler[3].toArray(new String[diziler[3].size()]).length,String[].class);
+        final String[] mesafe_birim_array = Arrays.copyOf(diziler[4].toArray(new String[diziler[4].size()]),diziler[4].toArray(new String[diziler[4].size()]).length,String[].class);
+        final Integer[] kopya_nolar = Arrays.copyOf(diziler[5].toArray(new Integer[diziler[5].size()]),diziler[5].toArray(new Integer[diziler[5].size()]).length,Integer[].class);
+        final Integer[] hat_nolar = Arrays.copyOf(diziler[6].toArray(new Integer[diziler[6].size()]),diziler[6].toArray(new Integer[diziler[6].size()]).length,Integer[].class);
+        String[] aciklama_array = database.ReadTaslakAciklamaflist(bildiri,tarih,imalat_array);
+
+        for (int i=0 ; i<imalat_array.length ; i++) {
+            final Map<String, String> userParams = new HashMap<String, String>();
+            userParams.put("bildiri_id", String.valueOf(veri.getKod()));
+            userParams.put("imalat_adi", imalat_array[i]);
+            userParams.put("km_bas", km_bas_array[i]);
+            userParams.put("km_bit", km_son_array[i]);
+            userParams.put("hat_no", String.valueOf(hat_nolar[i]));
+            userParams.put("ilerleme", mesafe_array[i]);
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url_imalat,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            /*Herhangi bir hata yok ise, kullanıcıya bilgi verilir.*/
+                            Toast.makeText(getApplicationContext(), "Veri kayıt edildi...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    /*Hata meydana geldiğinde kullanıcıya bilgi verilir.*/
+                    Toast.makeText(getApplicationContext(), "Hata meydana geldi", Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    //Map<String, String> params = new HashMap<String, String>();
+                    //JSONObject userJSON = new JSONObject(userParams);
+                    return userParams;
+                }
+            };
+            MySingleton.getInstance(getApplicationContext()).addToRequestQue(stringRequest);
+
+        }
+
+        String url_aciklama = "http://31.210.91.198/rest/aciklama";
+
+        for (int i=0 ; i<imalat_array.length ; i++) {
+            List<String> aciklamalar = database.ReadAciklamaForRestAPI(String.valueOf(veri.getKod()), database.ReadImalatwidforisim(imalat_array[i]));
+            for (int j = 0; j < aciklamalar.size(); j++) {
+                final Map<String, String> userParams = new HashMap<String, String>();
+                userParams.put("bildiri_id", String.valueOf(veri.getKod()));
+                userParams.put("imalat_adi", imalat_array[i]);
+                userParams.put("aciklama", aciklamalar.get(j));
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url_aciklama,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                            /*Herhangi bir hata yok ise, kullanıcıya bilgi verilir.*/
+                                //Toast.makeText(getApplicationContext(), "Veri kayıt edildi...", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    /*Hata meydana geldiğinde kullanıcıya bilgi verilir.*/
+                        //Toast.makeText(getApplicationContext(), "Hata meydana geldi", Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        //Map<String, String> params = new HashMap<String, String>();
+                        //JSONObject userJSON = new JSONObject(userParams);
+                        return userParams;
+                    }
+                };
+                MySingleton.getInstance(getApplicationContext()).addToRequestQue(stringRequest);
+
+            }
+        }
+        Intent intent = new Intent(L2_makine.this,L1_main.class);
+        startActivity(intent);
+
+
+    }
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this,L1_main.class);

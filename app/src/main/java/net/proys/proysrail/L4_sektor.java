@@ -41,10 +41,10 @@ public class L4_sektor extends AppCompatActivity {
         database = new SQLiteHelper(L4_sektor.this);
         String imalatid = database.ReadImalatwisim(veri.getImalat())[0];
         List<String> sektorler = new ArrayList<String>();
-        for (int i = 1; i <= 100; i++) {
-            if (database.ReadSektor(90000 + i)[6].contains(imalatid)) {
-                if (!sektorler.contains(database.ReadSektor(90000 + i)[0])) {
-                    sektorler.add(database.ReadSektor(90000 + i)[0]);
+        for (int i = 1; i <= 10; i++) {
+            if (database.ReadSektor(100 + i)[6].contains(imalatid)) {
+                if (!sektorler.contains(database.ReadSektor(100 + i)[0])) {
+                    sektorler.add(database.ReadSektor(100 + i)[0]);
                 }
             }
         }
@@ -60,7 +60,7 @@ public class L4_sektor extends AppCompatActivity {
                 SQLiteHelper database = new SQLiteHelper(L4_sektor.this);
                 String tarih = l1_main.getMaintitle()[veri.getPosition()].subSequence(l1_main.getMaintitle()[veri.getPosition()].length() - 11, l1_main.getMaintitle()[veri.getPosition()].length() - 1).toString();
                 //String bildiri = database.ReadBildirilerwIsim(l1_main.getMaintitle()[veri.getPosition()].split(" ")[0] + " " + l1_main.getMaintitle()[veri.getPosition()].split(" ")[1])[0];
-                List[] diziler = database.ReadTaslakfList(String.valueOf(veri.getKod()), tarih);
+                List[] diziler = database.ReadTaslakfList(String.valueOf(veri.getKod()));
                 Integer[] kopya_nolar = Arrays.copyOf(diziler[5].toArray(new Integer[diziler[5].size()]), diziler[5].toArray(new Integer[diziler[5].size()]).length, Integer[].class);
                 database.UpdateTaslak(String.valueOf(veri.getKod()), tarih, veri.getImalat(), kopya_nolar[veri.getPositionL2()], "SEKTOR", veri.getSektör());
                 startActivity(intent);
