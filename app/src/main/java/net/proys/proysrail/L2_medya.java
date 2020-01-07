@@ -25,9 +25,13 @@ public class L2_medya extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_l2_medya);
+        onBackPressed();
+        Toast.makeText(L2_medya.this, "Henüz hazır değil.", Toast.LENGTH_SHORT).show();
+
+/*
         init();
         setOnclickEvents();
-        allset4icon();
+        allset4icon();*/
     }
     protected void init(){
         sent = findViewById(R.id.sent);
@@ -115,10 +119,10 @@ public class L2_medya extends AppCompatActivity {
         });
 
         
-    }
+    }/*
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this,L1_main.class);
         startActivity(intent);
-    }
+    }*/
 }

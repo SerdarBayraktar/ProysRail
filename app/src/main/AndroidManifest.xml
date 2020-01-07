@@ -56,7 +56,9 @@
         <activity android:name=".L4_makine_detay" />
         <activity android:name=".L4_makine_grup" />
         <activity android:name=".L4_sektor" />
-        <activity android:name=".L4_aciklama_detay"></activity>
+        <activity android:name=".L4_aciklama_detay" />
+        <activity android:name=".L1_Notlar" />
+        <activity android:name=".L1_Dosyalar"></activity>
     </application>
 
 </manifest>

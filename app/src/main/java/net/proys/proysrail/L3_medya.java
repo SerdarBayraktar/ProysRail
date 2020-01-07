@@ -21,11 +21,14 @@ public class L3_medya extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_l3_medya);
+        onBackPressed();
+        Toast.makeText(L3_medya.this, "Henüz hazır değil.", Toast.LENGTH_SHORT).show();
+/*
         veri = new Get_Set();
         init();
         allset4menu();
         setIcons();
-        setOnclickEvents();
+        setOnclickEvents();*/
 
     }
     protected void init(){
@@ -130,12 +133,12 @@ public class L3_medya extends AppCompatActivity {
         }
 
     }
-
+/*
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this,L2_bildiri.class);
         startActivity(intent);
-    }
+    }*/
 
 
 }

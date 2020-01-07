@@ -74,6 +74,7 @@
 
                     />
                 <TextView
+                    android:id="@+id/bektxt"
                     android:gravity="center"
                     android:layout_marginBottom="4.7dp"
                     android:layout_marginTop="4.7dp"
@@ -89,6 +90,7 @@
 
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/notlar_lin"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:layout_weight="1"
@@ -125,6 +127,8 @@
 
             <LinearLayout
                 android:gravity="center"
+
+                android:id="@+id/tamamlanan_lin"
                 android:orientation="vertical"
                 android:layout_weight="1"
                 android:layout_width="0dp"
@@ -161,6 +165,8 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:layout_weight="1"
+
+                android:id="@+id/dosyalar_lin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent">
 
@@ -190,6 +196,8 @@
 
             </LinearLayout>
             <LinearLayout
+
+                android:id="@+id/dahafazlalin"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:layout_weight="1"

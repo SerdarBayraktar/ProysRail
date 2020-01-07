@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.ParseException;
@@ -23,16 +25,27 @@ public class L1_main extends AppCompatActivity {
         return maintitle;
     }
 
+    protected LinearLayout notlar_lin,bek_lin,dosyalar_lin,dahafazla_lin,tamamlanan_lin;
+
     protected ImageView notlar_icon,t_bild_icon,dosyalar_icon,dahafazla_icon,bek_bild;
+    protected TextView bektxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_l1_main);
+        init();
         setList();
         all4menu();
         setIcons();
         setMaintitle();
+    }
+    protected void init(){
+        bektxt = findViewById(R.id.bektxt);
+        notlar_lin = findViewById(R.id.notlar_lin);
+        dosyalar_lin = findViewById(R.id.dosyalar_lin);
+        dahafazla_lin = findViewById(R.id.dahafazlalin);
+        tamamlanan_lin = findViewById(R.id.tamamlanan_lin);
     }
     public void setMaintitle(){
         SQLiteHelper database = new SQLiteHelper(L1_main.this);
@@ -92,23 +105,39 @@ public class L1_main extends AppCompatActivity {
         dosyalar_icon = findViewById(R.id.dosyalar);
         dahafazla_icon = findViewById(R.id.imagedahafazla);
         bek_bild = findViewById(R.id.imagebekbild);
-        dahafazla_icon.setOnClickListener(new View.OnClickListener() {
+        dahafazla_lin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(L1_main.this,L1_dahafazla.class);
                 startActivity(intent);
             }
         });
-        t_bild_icon.setOnClickListener(new View.OnClickListener() {
+        tamamlanan_lin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(L1_main.this,L1_tamamlanan.class);
                 startActivity(intent);
             }
         });
+
+        notlar_lin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(L1_main.this,L1_Notlar.class);
+                startActivity(intent);
+            }
+        });
+        dosyalar_lin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(L1_main.this,L1_Dosyalar.class);
+                startActivity(intent);
+            }
+        });
     }
     protected void setIcons(){
         bek_bild.setImageResource(R.drawable.bekleyen_bildiriler_o);
+        bektxt.setTextColor(getResources().getColor(R.color.text_color_yellow));
     }
 
 
