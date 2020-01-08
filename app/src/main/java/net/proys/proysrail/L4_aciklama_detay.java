@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,7 +35,8 @@ public class L4_aciklama_detay extends AppCompatActivity {
         öncekiaktivite = getintent.getStringExtra("tip");
     }
     protected void init(){
-        imalat_txt = findViewById(R.id.textView2);
+        imalat_txt = findViewById(R.id.imalattxt);
+        imalat_txt.setText(database.ReadImalatwidforid(database.ReadGet_Set("ImalatId")));
         aciklama_edit =findViewById(R.id.aciklama_edit);
         tick = findViewById(R.id.tick);
         aciklama_edit.setText(aciklama_str);

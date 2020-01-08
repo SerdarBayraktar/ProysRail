@@ -48,6 +48,9 @@ public class L2_bildiri extends AppCompatActivity {
 
     }
     private void init(){
+
+        TextView imalattxt = findViewById(R.id.imalattxt);
+        imalattxt.setText(String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11));
         sent = findViewById(R.id.sent);
         ekle = findViewById(R.id.imageView100);
         isci_icon = findViewById(R.id.imageisci);

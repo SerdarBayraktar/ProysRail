@@ -28,6 +28,7 @@ public class L3_makine extends AppCompatActivity {
     Get_Set veri;
     TextView imalat;
     L3_makine_expandableListView_adapter listadapter;
+    L3_makine_expandableListView_adapter_kapali listadapter_kapali;
     private List<String> listdataheader;
     private HashMap<String,List<String>> listHash;
     private HashMap<String,List<String>> listHashPuantaj;
@@ -242,8 +243,8 @@ public class L3_makine extends AppCompatActivity {
         final List<String>[] groups = database.ReadTaslakResourceforExListViewGroupMakine(String.valueOf(veri.getKod()),veri.getImalatIsgucuid());//list[]
         final HashMap<String,List<String>>[] hashMaps = database.ReadTaslakResourceforExListViewChildMakine(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),groups[0],groups[1]);
 
-        listadapter  = new L3_makine_expandableListView_adapter(this,groups[1],groups[2],hashMaps[0],hashMaps[1],groups[3]);
-        listView.setAdapter(listadapter);
+        listadapter_kapali  = new L3_makine_expandableListView_adapter_kapali(this,groups[1],groups[2],hashMaps[0],hashMaps[1],groups[3]);
+        listView.setAdapter(listadapter_kapali);
 
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
@@ -258,7 +259,7 @@ public class L3_makine extends AppCompatActivity {
         listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-                if (listadapter.getChildrenCount(groupPosition)==0){
+                if (listadapter_kapali.getChildrenCount(groupPosition)==0){
                     Intent intent = new Intent(L3_makine.this,L4_makine_detay.class);
                     intent.putExtra("kisi",groups[1].get(groupPosition));
                     intent.putExtra("verim","efor");

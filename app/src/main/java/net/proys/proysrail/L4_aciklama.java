@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +29,13 @@ public class L4_aciklama extends AppCompatActivity {
         init();
         setListView();
         setOnclickevents();
-
-
-
     }
     protected void init(){
         tick = findViewById(R.id.tick);
         listView = findViewById(R.id.listview);
         ekle = findViewById(R.id.ekle);
+        TextView imalattxt = findViewById(R.id.imalattxt);
+        imalattxt.setText(database.ReadImalatwidforid(database.ReadGet_Set("ImalatId")));
     }
     protected void setOnclickevents(){
         tick.setOnClickListener(new View.OnClickListener() {

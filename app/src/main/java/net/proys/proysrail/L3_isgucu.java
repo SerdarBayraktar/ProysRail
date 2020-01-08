@@ -52,11 +52,11 @@ public class L3_isgucu extends AppCompatActivity {
         setExpandableListViewOnNormal();
     }
     protected void init(){
+        imalat = findViewById(R.id.imalat);
         ekleme = findViewById(R.id.plus);
         listView = findViewById(R.id.listview);
         tick = findViewById(R.id.tick);
         change_image = findViewById(R.id.change);
-        imalat = findViewById(R.id.imalat);
         imalat.setText(veri.getImalatIsgucu());
     }
     private void initdata(){
@@ -216,21 +216,23 @@ public class L3_isgucu extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(L3_isgucu.this);
                 //builder.setTitle("Puantaj");
                 final EditText input = new EditText(L3_isgucu.this);
-              /*  LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT);
                 input.setText(listHashPuantaj.get(listdataheader.get(groupPosition)).get(childPosition));
-                input.setLayoutParams(lp);*/
-                builder.setView(R.layout.l3_is_gucu_pop_up);
+                builder.setTitle("Puantaj değiştir");
+                input.setLayoutParams(lp);
+                builder.setView(input);
+                //builder.setView(R.layout.l3_is_gucu_pop_up);
 
-              /*  builder.setPositiveButton("tamam", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("tamam", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         database.PopUpUpdate(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),Integer.valueOf(input.getText().toString()),database.ReadPersonelwisim(listHash.get(listdataheader.get(groupPosition)).get(childPosition)));
                         setExpandableListViewOnPuantaj();
                     }
                 });
-                builder.setNegativeButton("iptal",null);*/
+                builder.setNegativeButton("iptal",null);
                 builder.show();
                 return false;
             }
@@ -238,9 +240,8 @@ public class L3_isgucu extends AppCompatActivity {
         listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, final int groupPosition, long id) {
-               /*final AlertDialog alertDialog;
-               AlertDialog.Builder  dialogBuilder = new AlertDialog.Builder(getApplicationContext());
-                View layoutView = getLayoutInflater().inflate(R.layout.l3_is_gucu_pop_up,null);
+               AlertDialog.Builder  builder = new AlertDialog.Builder(L3_isgucu.this);
+                /*View layoutView = getLayoutInflater().inflate(R.layout.l3_is_gucu_pop_up,null);
                 Button dialogButton = layoutView.findViewById(R.id.btnadd);
                 dialogBuilder.setView(layoutView);
                 alertDialog = dialogBuilder.create();
@@ -255,17 +256,15 @@ public class L3_isgucu extends AppCompatActivity {
 
 
                //todo e1 üstüne aramağan abi ile bakcen
-                /*builder.setTitle("Puantaj");
+                builder.setTitle("Puantaj değiştir");
                 final EditText input = new EditText(L3_isgucu.this);
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT);
                 input.setText(puantajdataheader.get(groupPosition));
-                input.setLayoutParams(lp);*/
-            
-
-
-               /* builder.setPositiveButton("tamam", new DialogInterface.OnClickListener() {
+                input.setLayoutParams(lp);
+                builder.setView(input);
+                builder.setPositiveButton("tamam", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //kayna id için  databaseden isim to id yapılmadı child on clickten farklı olarak çünkü veri çekilen list zaten id tutuyor isim tutmuyor
@@ -273,7 +272,8 @@ public class L3_isgucu extends AppCompatActivity {
                         setExpandableListViewOnPuantaj();
                     }
                 });
-                builder.setNegativeButton("iptal",null);*/
+                builder.setNegativeButton("iptal",null);
+                builder.show();
              
 
                 return true;

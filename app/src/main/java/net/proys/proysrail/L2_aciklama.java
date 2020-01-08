@@ -86,6 +86,9 @@ public class L2_aciklama extends AppCompatActivity {
         });
     }
     protected void init(){
+
+        TextView imalattxt = findViewById(R.id.imalattxt);
+        imalattxt.setText(String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11));
         sent = findViewById(R.id.sent);
         medya_icon = findViewById(R.id.imageCamera);
         aciklama_icon = findViewById(R.id.imageAciklama);

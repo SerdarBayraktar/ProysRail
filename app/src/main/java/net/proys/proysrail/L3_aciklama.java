@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -37,6 +38,9 @@ public class L3_aciklama extends AppCompatActivity {
         setListView();
     }
     protected void init(){
+
+        TextView imalattxt = findViewById(R.id.imalattxt);
+        imalattxt.setText(String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11));
         ilerleme_icon = findViewById(R.id.ilerleme_icon);
         ekleme_butonu = findViewById(R.id.aciklama_ekleme);
         medya_icon = findViewById(R.id.imageCamera);

@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:/proys/proys_hersey/proys_android/git/ProysRail/AndroidStudioProjects-ProysRail.iml" filepath="C:/proys/proys_hersey/proys_android/git/ProysRail/AndroidStudioProjects-ProysRail.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/AndroidStudioProjects-ProysRail-app.iml" filepath="$PROJECT_DIR$/app/AndroidStudioProjects-ProysRail-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProysRail.iml" filepath="$PROJECT_DIR$/ProysRail.iml" />
-      <module fileurl="file://C:/proys/proys_hersey/proys_android/git/ProysRail/app/ProysRail-app.iml" filepath="C:/proys/proys_hersey/proys_android/git/ProysRail/app/ProysRail-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/armag-AndroidStudioProjects-ProysRail.iml" filepath="$PROJECT_DIR$/armag-AndroidStudioProjects-ProysRail.iml" />
     </modules>
   </component>
 </project>

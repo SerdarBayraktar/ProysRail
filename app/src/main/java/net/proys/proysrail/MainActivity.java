@@ -148,8 +148,8 @@ public class MainActivity extends AppCompatActivity {
             database.WriteSektor(106, "Havalimanı-2 - Havalimaı-1", "ana-hat", "1--2", 131805, 134174, 1, "T0015--T0016", "A1");
             database.WriteSektor(107, "Göktürk - E02", "ana-hat", "1--2", 118182, 120823, 1, "T0015--T0016", "A1");
             database.WriteSektor(108, "Kağıthane - Hasdal", "ana-hat", "1--2", 103798, 109440, 1, "T0015--T0016", "A1");
-            database.WriteSektor(109, "M4 Cep Hattı", "ana-hat", "1", 000000, 100242, 1, "T0015--T0016", "A1");
-            database.WriteSektor(110, "Gayrettepe Loop Hattı", "ana-hat", "1", 000000, 100894, 1, "T0015--T0016", "A1");
+            //database.WriteSektor(109, "M4 Cep Hattı", "ana-hat", "1", 000000, 100242, 1, "T0015--T0016", "A1");
+            //database.WriteSektor(110, "Gayrettepe Loop Hattı", "ana-hat", "1", 000000, 100894, 1, "T0015--T0016", "A1");
 
             database.WriteImalat("T0015", "Faz-1 Betonu Dökülmesi", "birincil", "thm", 1, 1, "B0001", 104, 100,1);
             database.WriteImalat("T0016", "Faz-2 Betonu Dökülmesi (trapez kalıp dahil)", "birincil", "thm", 1, 1, "B0001", 104, 100,1);

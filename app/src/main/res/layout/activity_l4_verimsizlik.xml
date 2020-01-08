@@ -63,7 +63,7 @@
 
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/imalattxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textView"
@@ -92,7 +92,7 @@
 
     </RelativeLayout>
 
-    <EditText
+    <TextView
         android:paddingLeft="5dp"
         android:drawableLeft="@drawable/ic_search"
         android:id="@+id/editText"

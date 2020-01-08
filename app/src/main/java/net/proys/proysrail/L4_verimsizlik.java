@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +22,7 @@ public class L4_verimsizlik extends AppCompatActivity {
     TextView name;
     SQLiteHelper database;
     LinearLayout tick_linear;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,8 @@ public class L4_verimsizlik extends AppCompatActivity {
         setOnclickListeners();
     }
     protected void init(){
+        TextView imalattxt = findViewById(R.id.imalattxt);
+        imalattxt.setText(String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11));
         list = findViewById(R.id.listview_l4_verimsizlik);
         name = findViewById(R.id.textView);
         tick_linear = findViewById(R.id.tick_linear);

@@ -101,6 +101,9 @@ public class L3_imalat extends AppCompatActivity {
         final String[] medya_array = medya_list.toArray(new String[medya_list.size()]);
     }
     public void init(){
+
+        TextView imalat_txt = findViewById(R.id.imalattxt);
+        imalat_txt.setText(String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11));
         imalatadi = findViewById(R.id.textView7);
         sektörtxt = findViewById(R.id.sektor);
         imalattxt = findViewById(R.id.textimalat);
@@ -186,7 +189,7 @@ public class L3_imalat extends AppCompatActivity {
     protected void imalat_hatnosenc(){
         if ((!veri.getImalat().equals(""))&&(!veri.getSektör().equals(""))){
             SQLiteHelper database = new SQLiteHelper(L3_imalat.this);
-            for (int i = 1 ; i<=10;i++){
+            for (int i = 1 ; i<=8;i++){
                 if (database.ReadSektor(100+i)[5].equals("1")){
                     if (database.ReadSektor(100+i)[0].equals(veri.getSektör())){
                         String[] hatnolar = database.ReadSektor(100+i)[2].split("--");

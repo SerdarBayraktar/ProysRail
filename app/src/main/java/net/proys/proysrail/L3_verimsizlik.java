@@ -36,6 +36,9 @@ public class L3_verimsizlik extends AppCompatActivity {
         setListview();
     }
     protected void init(){
+
+        TextView imalattxt = findViewById(R.id.imalattxt);
+        imalattxt.setText(String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11));
         tick = findViewById(R.id.tick);
         //ariza_edit = findViewById(R.id.ariza_edit);
         ekleme_butonu = findViewById(R.id.ariza_ekleme);

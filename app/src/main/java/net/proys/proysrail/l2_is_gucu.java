@@ -45,6 +45,9 @@ public class l2_is_gucu extends AppCompatActivity {
         setOnclickEvents();
     }
     private void init() {
+
+        TextView imalattxt = findViewById(R.id.imalattxt);
+        imalattxt.setText(String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11));
         listView = findViewById(R.id.listview);
         isci_txt = findViewById(R.id.isci_txt);
         isci_icon = findViewById(R.id.imageisci);

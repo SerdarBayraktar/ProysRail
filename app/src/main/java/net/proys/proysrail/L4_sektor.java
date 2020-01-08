@@ -30,6 +30,9 @@ public class L4_sektor extends AppCompatActivity {
         setOnclickListeners();
     }
     protected void init(){
+
+        TextView imalattxt = findViewById(R.id.imalattxt);
+        imalattxt.setText(String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11));
         list = findViewById(R.id.listview_l4_verimsizlik);
         name = findViewById(R.id.textView);
         tick_linear = findViewById(R.id.tick_linear);
@@ -41,7 +44,7 @@ public class L4_sektor extends AppCompatActivity {
         database = new SQLiteHelper(L4_sektor.this);
         String imalatid = database.ReadImalatwisim(veri.getImalat())[0];
         List<String> sektorler = new ArrayList<String>();
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 1; i <= 8; i++) {
             if (database.ReadSektor(100 + i)[6].contains(imalatid)) {
                 if (!sektorler.contains(database.ReadSektor(100 + i)[0])) {
                     sektorler.add(database.ReadSektor(100 + i)[0]);

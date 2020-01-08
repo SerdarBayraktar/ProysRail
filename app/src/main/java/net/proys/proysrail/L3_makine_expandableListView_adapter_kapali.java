@@ -14,7 +14,7 @@ import java.util.List;
  * Created by Proys Yazılım on 5.10.2019.
  */
 
-public class L3_makine_expandableListView_adapter extends BaseExpandableListAdapter {
+public class L3_makine_expandableListView_adapter_kapali extends BaseExpandableListAdapter {
     private Context context;
     private List<String> listDataHeader;
     private List<String> sayiDataHeader;
@@ -26,7 +26,7 @@ public class L3_makine_expandableListView_adapter extends BaseExpandableListAdap
     public int getGroupCount() {
         return listDataHeader.size();
     }
-    public L3_makine_expandableListView_adapter(Context context, List<String> list,List<String> listPuantaj, HashMap<String, List<String>> listHashMap,HashMap<String, List<String>> listHashMapPuantaj,List<String> sayiDataHeader) {
+    public L3_makine_expandableListView_adapter_kapali(Context context, List<String> list,List<String> listPuantaj, HashMap<String, List<String>> listHashMap,HashMap<String, List<String>> listHashMapPuantaj,List<String> sayiDataHeader) {
         this.context = context;
         this.listDataHeader = list;
         this.listHashMap = listHashMap;
@@ -73,12 +73,13 @@ public class L3_makine_expandableListView_adapter extends BaseExpandableListAdap
 
         if (convertView ==null){
             LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.l3_makine_group_row,null);
+            convertView = inflater.inflate(R.layout.l3_makine_group_row_kapali,null);
 
         }
         TextView lblListHeader = convertView.findViewById(R.id.textView);
         TextView GroupPuantaj = convertView.findViewById(R.id.puantaj);
         TextView GroupSayi = convertView.findViewById(R.id.sayi);
+
         lblListHeader.setText(headerTitle);
         GroupPuantaj.setText(headerPuantaj);
         if (!headerSayi.equals("1")){
@@ -94,7 +95,7 @@ public class L3_makine_expandableListView_adapter extends BaseExpandableListAdap
         final String childpuantaj = listHashMapPuantaj.get(listDataHeader.get(groupPosition)).get(childPosition);
         if (convertView == null){
             LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.l3_isgucu_row_child,null);
+            convertView = inflater.inflate(R.layout.l3_isgucu_row_child_kapali,null);
         }
         TextView txtlistchild = convertView.findViewById(R.id.textView1);
         TextView txtpuantajchild =convertView.findViewById(R.id.puantaj);
