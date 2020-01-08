@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.RecyclerView
+
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+          <Button
+              android:id="@+id/imalat_sec"
+              android:paddingLeft="30dp"
+              android:textAlignment="textStart"
+              android:textSize="19.3sp"
+              android:textAllCaps="false"
+              android:textColor="#ffffff"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:layout_below="@id/recycler"
+              android:text="İmalat Seç"
+              android:background="#009640"
+              />
+        <Button
+            android:id="@+id/isim"
+            android:paddingLeft="30dp"
+            android:textAlignment="textStart"
+            android:textSize="19.3sp"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/imalat_sec"
+            android:text="Armağan Civelek"
+            android:background="@color/text_color"
+            />
+    </RelativeLayout>
+    </ScrollView>bn
+
+
+</RelativeLayout>

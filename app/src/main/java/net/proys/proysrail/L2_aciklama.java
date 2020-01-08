@@ -82,6 +82,7 @@ public class L2_aciklama extends AppCompatActivity {
                 return true;
 
             }
+
         });
     }
     protected void init(){

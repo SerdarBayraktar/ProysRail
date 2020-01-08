@@ -1,6 +1,7 @@
 package net.proys.proysrail;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +19,20 @@ public class L2_aciklama_Expandable_Listview_adapter extends BaseExpandableListA
     private Context context;
     private List<String> imalatlar_isim;
     private HashMap<String,List<String>> listAciklamalar;
+    private    SQLiteHelper database;
+    private     Get_Set veri;
+
+    private List<String> imalatlar_id;
 
     public L2_aciklama_Expandable_Listview_adapter(Context context, List<String> imalatlar_isim, HashMap<String, List<String>> listAciklamalar) {
         this.context = context;
+        veri = new Get_Set();
         this.imalatlar_isim = imalatlar_isim;
         this.listAciklamalar = listAciklamalar;
+        this.database=new SQLiteHelper(context);
+        List[] lists = database.CreateL2AciklamaKartPart1(String.valueOf(veri.getKod()));
+        imalatlar_id= lists[1] ;
+
     }
     @Override
     public int getGroupCount() {
@@ -73,7 +83,7 @@ public class L2_aciklama_Expandable_Listview_adapter extends BaseExpandableListA
     }
 
     @Override
-    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+    public View getChildView(final int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         final String childText = (String) getChild(groupPosition,childPosition);
         if (convertView == null){
             LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -81,6 +91,14 @@ public class L2_aciklama_Expandable_Listview_adapter extends BaseExpandableListA
         }
         TextView txtlistchild = convertView.findViewById(R.id.aciklama_txt);
         txtlistchild.setText(childText);
+        txtlistchild.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                database.UpdateGet_Set("ImalatId",String.valueOf(imalatlar_id.get(groupPosition)));
+                Intent intent = new Intent(context, L4_aciklama.class);
+               context.startActivity(intent);
+            }
+        });
         return convertView;
     }
     @Override

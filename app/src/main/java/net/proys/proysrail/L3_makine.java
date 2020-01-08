@@ -110,7 +110,8 @@ public class L3_makine extends AppCompatActivity {
             public boolean onChildClick(ExpandableListView parent, View v, final int groupPosition, final int childPosition, long id) {
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(L3_makine.this);
-                builder.setTitle("Puantaj ve Sayıyı değiştir");
+
+                builder.setTitle("Puantaj Değiştir");
                 final EditText input = new EditText(L3_makine.this);
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
@@ -118,13 +119,13 @@ public class L3_makine extends AppCompatActivity {
                 input.setText(listHashPuantaj.get(listdataheader.get(groupPosition)).get(childPosition));
                 input.setLayoutParams(lp);
                 builder.setView(input);
-                builder.setPositiveButton("tamam", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         database.PopUpUpdate(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),Integer.valueOf(input.getText().toString()),database.ReadPersonelwisim(listHash.get(listdataheader.get(groupPosition)).get(childPosition)));
                         if (!database.ReadPersonel(database.ReadPersonelwisim(listHash.get(listdataheader.get(groupPosition)).get(childPosition)))[7].equals("1")){
                             AlertDialog.Builder builder1 = new AlertDialog.Builder(L3_makine.this);
-                            builder1.setTitle("Sayıyı değiştir");
+                            builder1.setTitle("Sayıyı Değiştir");
                             final EditText sayi = new EditText(L3_makine.this);
                             LinearLayout.LayoutParams lp1 = new LinearLayout.LayoutParams(
                                     LinearLayout.LayoutParams.MATCH_PARENT,
@@ -132,7 +133,7 @@ public class L3_makine extends AppCompatActivity {
                             sayi.setText(listHashPuantaj.get(listdataheader.get(groupPosition)).get(childPosition));
                             sayi.setLayoutParams(lp1);
                             builder1.setView(sayi);
-                            builder1.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            builder1.setPositiveButton("Değiştir", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     database.PopUpUpdateWsayi(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),Integer.valueOf(input.getText().toString()),database.ReadPersonelwisim(listHash.get(listdataheader.get(groupPosition)).get(childPosition)),Integer.valueOf(sayi.getText().toString()));
@@ -140,7 +141,7 @@ public class L3_makine extends AppCompatActivity {
 
                                 }
                             });
-                            builder1.setNegativeButton("no",null);
+                            builder1.setNegativeButton("İptal",null);
                             builder1.show();
                         }
                         setExpandableListViewOnPuantaj();

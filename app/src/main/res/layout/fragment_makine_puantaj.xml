@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.MakinePuantaj"
+    android:orientation="vertical">
+    <Button
+        android:layout_marginBottom="3dp"
+ android:layout_marginTop="3dp"
+        android:background="#f1f1f1"
+        android:id="@+id/additem"
+        android:letterSpacing="-0.01"
+        android:textColor="#444444"
+        android:textSize="19.3sp"
+        android:drawableRight="@drawable/vector_add"
+        android:paddingRight="34dp"
+        android:text="Puantaj Detay Ekle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></android.support.v7.widget.RecyclerView>
+
+
+
+</LinearLayout>

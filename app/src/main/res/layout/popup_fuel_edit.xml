@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <TextView
+        android:textColor="@color/text_color"
+         android:textSize="19.3sp"
+        android:letterSpacing="-0.01"
+        android:gravity="center"
+          android:layout_weight="1"
+          android:text="Tarih :"
+        android:inputType="datetime"
+        android:layout_width="0dp"
+        android:layout_height="50dp"/>
+        <TextView
+            android:textColor="#999999"
+            android:textSize="19.3sp"
+            android:letterSpacing="-0.01"
+            android:gravity="center"
+            android:text="19.03.2019"
+            android:layout_weight="1"
+            android:id="@+id/date"
+            android:layout_width="0dp"
+            android:layout_height="50dp"/>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+        android:textColor="@color/text_color"
+        android:textSize="19.3sp"
+        android:letterSpacing="-0.01"
+        android:gravity="center"
+        android:text="Miktar :"
+        android:layout_weight="1"
+        android:id="@+id/miktar"
+        android:inputType="datetime"
+        android:layout_width="0dp"
+        android:layout_height="50dp"/>
+<EditText
+    android:id="@+id/fuel_miktar"
+    android:gravity="center"
+    android:inputType="numberDecimal"
+    android:layout_weight="1"
+    android:layout_width="0dp"
+    android:layout_height="50dp"/>
+    </LinearLayout>
+
+
+</LinearLayout>

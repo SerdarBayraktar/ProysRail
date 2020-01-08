@@ -100,6 +100,7 @@
 
 
                     />
+
                 <TextView
                     android:layout_marginBottom="4.7dp"
                     android:layout_marginTop="4.7dp"
@@ -296,16 +297,21 @@
         android:layout_alignParentBottom="true"
 
         />
-    <ExpandableListView
-        android:divider="@null"
-        android:childDivider="@null"
-        android:id="@+id/listview"
 
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_below="@id/imageView11"
+    <ExpandableListView
+        android:id="@+id/listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+
+        android:layout_below="@id/imageView11"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="-1dp"
+        android:childDivider="@null"
+        android:divider="@null">
 
     </ExpandableListView>
 

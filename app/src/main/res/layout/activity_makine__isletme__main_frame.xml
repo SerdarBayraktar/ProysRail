@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Makine_Isletme_MainFrame">
+    <include
+        android:id="@+id/ust_bar"
+        layout="@layout/ust_bar"
+       />
+    <TextView
+        android:id="@+id/contur0"
+        android:layout_alignBottom="@id/ust_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a3a3"/>
+
+
+
+    <include
+        android:id="@+id/navbar"
+        layout="@layout/makine_iscilik_navbar"
+        android:layout_below="@id/contur0"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        />
+    <TextView
+        android:id="@+id/contur1"
+        android:layout_alignBottom="@id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a3a3"/>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/navbar"
+
+
+       >
+
+    </FrameLayout>
+
+    <LinearLayout
+      android:id="@+id/choose_machine"
+      android:paddingRight="10dp"
+      android:paddingLeft="20dp"
+      android:gravity="center"
+      android:layout_marginBottom="15dp"
+      android:layout_marginLeft="16dp"
+      android:orientation="horizontal"
+     android:layout_alignParentBottom="true"
+      android:layout_width="wrap_content"
+      android:layout_height="50dp"
+      android:background="@drawable/makine_button">
+      <TextView
+          android:fontFamily="@font/opensans_regular"
+          android:id="@+id/text"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="19.3sp"
+          android:textColor="#ffffff"
+          android:letterSpacing="-0.01"
+          android:gravity="center_horizontal"
+           android:text="Ekskavatör-01"
+          />
+      <android.support.v7.widget.AppCompatRadioButton
+          android:checked="true"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="10dp"
+          android:layout_alignRight="@+id/text"
+          android:buttonTint="#009640"/>
+
+
+  </LinearLayout>
+    <ImageView
+        android:id="@+id/more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/alt_more"
+         android:layout_alignParentEnd="true"
+         android:layout_alignParentBottom="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="13dp"
+
+         />
+
+
+
+
+
+</RelativeLayout>

@@ -63,9 +63,9 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="29dp"
             android:layout_marginTop="-5dp"
-            android:fontFamily="@font/opendans_italic"
+            android:fontFamily="@font/opensans_italic"
             android:text="Subbalast Serimi"
-            android:textColor="@color/text_color"
+            android:textColor="@color/altbaslik"
             android:textSize="16.7sp" />
 
         <LinearLayout

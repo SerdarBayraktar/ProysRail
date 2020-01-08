@@ -36,6 +36,12 @@
             android:background="@color/background"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
+        <TextView
+            android:id="@+id/contur0"
+            android:layout_alignBottom="@id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#a3a3a3"/>
 
 
         <TextView
