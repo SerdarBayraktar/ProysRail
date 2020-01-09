@@ -16,7 +16,12 @@
         android:background="@color/background"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
-
+    <TextView
+          android:layout_below="@id/toolbar"
+        android:id="@+id/contur1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a3a3"/>
     <TextView
         android:textAlignment="center"
         android:fontFamily="@font/opensans_semibold"
@@ -124,6 +129,12 @@
                 />
         </LinearLayout>
         // Favorilerim textview u yıldız imageview unu ve ikinci listview u içine alan layoutumuz
+        <TextView
+            android:id="@+id/contur2"
+            android:layout_alignBottom="@id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#a3a3a3"/>
         <LinearLayout
             android:weightSum="5.5"
             android:layout_weight="5.5"
@@ -144,21 +155,12 @@
 
                 <LinearLayout
                     android:gravity="center"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp">
-                    <android.support.v7.widget.AppCompatImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/bar"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:gravity="center"
                     android:layout_weight="3"
                     android:layout_width="match_parent"
                     android:layout_height="0dp">
 
                     <TextView
+                        android:layout_marginTop="-1.5dp"
                         android:textColor="#444444"
                         android:id="@+id/makinegrup"
                         android:layout_marginStart="3.7dp"

@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <RelativeLayout
+        android:id="@+id/panel"
         android:paddingLeft="30dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -23,5 +24,11 @@
 
 
     </RelativeLayout>
+    <TextView
+        android:layout_below="@id/panel"
+        android:id="@+id/contur1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a3a3"/>
 
 </RelativeLayout>

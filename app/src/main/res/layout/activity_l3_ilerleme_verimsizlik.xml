@@ -114,15 +114,5 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <Button
-        android:id="@+id/git"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="104dp"
-        android:text="Dolaş"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_right" />
+
 </android.support.constraint.ConstraintLayout>

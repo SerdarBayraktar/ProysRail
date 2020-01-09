@@ -24,6 +24,8 @@ public class L3_aciklama_adapter extends ArrayAdapter<String> {
     private final List<Integer> aciklama_idler;
     SQLiteHelper database;
     Get_Set veri;
+    List[] lists;
+
 
 
     public L3_aciklama_adapter(Activity context, List<String> aciklamalar, List<Integer> aciklama_idler) {
@@ -34,6 +36,8 @@ public class L3_aciklama_adapter extends ArrayAdapter<String> {
         this.aciklama_idler = aciklama_idler;
         database = new SQLiteHelper(context);
         veri = new Get_Set();
+        lists  = database.ReadAciklamal4(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"));
+        aciklama_idler= lists[1];
     }
 
     public View getView(final int position, View view, ViewGroup parent) {
@@ -41,6 +45,16 @@ public class L3_aciklama_adapter extends ArrayAdapter<String> {
         View rowView=inflater.inflate(R.layout.l4_aciklama_row, null,true);//layout hatalı olabilir
         TextView aciklama_edit = rowView.findViewById(R.id.aciklama_txt);
         aciklama_edit.setText(aciklamalar.get(position));
+        aciklama_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,L4_aciklama_detay.class);
+                intent.putExtra("tip","L4");
+                intent.putExtra("id",String.valueOf(aciklama_idler.get(position)));
+                intent.putExtra("text",aciklamalar.get(position));
+                context.startActivity(intent);
+            }
+        });
 
         return rowView;
 

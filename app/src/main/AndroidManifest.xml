@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".l2_is_gucu" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Deneme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -59,6 +59,10 @@
         <activity android:name=".L4_aciklama_detay" />
         <activity android:name=".L1_Notlar" />
         <activity android:name=".L1_Dosyalar"></activity>
+        <activity android:name=".IP1ISCILIKPUANTAJ"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Makine_Isletme_MainFrame"></activity>
+        <activity android:name=".Puantaj_Detay_Ekle"></activity>
     </application>
 
 </manifest>

@@ -41,7 +41,7 @@ public class L3_aciklama extends AppCompatActivity {
 
         TextView imalattxt = findViewById(R.id.imalattxt);
         imalattxt.setText(String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11));
-        ilerleme_icon = findViewById(R.id.ilerleme_icon);
+     //   ilerleme_icon = findViewById(R.id.ilerleme_icon);
         ekleme_butonu = findViewById(R.id.aciklama_ekleme);
         medya_icon = findViewById(R.id.imageCamera);
         imalat_icon = findViewById(R.id.imageImalat);
@@ -79,13 +79,13 @@ public class L3_aciklama extends AppCompatActivity {
             }
         });
 
-        ilerleme_icon.setOnClickListener(new View.OnClickListener() {
+      /*  ilerleme_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(L3_aciklama.this,L3_medya.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
     }
 
