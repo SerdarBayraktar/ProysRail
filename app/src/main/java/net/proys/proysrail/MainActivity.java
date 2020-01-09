@@ -19,14 +19,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = new Intent(MainActivity.this,Makine_Isletme_MainFrame.class);
+        startActivity(intent);
         //kopyala();
         data();
         //data1();
         Parse.initialize(this);
         ParseInstallation.getCurrentInstallation().saveInBackground();
 
-        Intent intent = new Intent(MainActivity.this,Anasayfa.class);
-        startActivity(intent);
+        // Intent intent = new Intent(MainActivity.this,Anasayfa.class);
+        //startActivity(intent);
     }
     public void kopyala(){
         DatabaseCopyHelper databaseCopyHelper = new DatabaseCopyHelper(this);

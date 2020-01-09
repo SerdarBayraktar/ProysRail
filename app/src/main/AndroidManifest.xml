@@ -36,6 +36,9 @@
             android:value="@string/back4app_client_key" />
 
         <activity android:name=".L2_bildiri" />
+        <activity android:name=".Makine_Isletme_MainFrame" />
+        <activity android:name=".Puantaj_Detay_Ekle" />
+        <activity android:name=".IP1ISCILIKPUANTAJ" />
         <activity android:name=".L3_verimsizlik" />
         <activity android:name=".L3_aciklama" />
         <activity android:name=".L4_aciklama" />
