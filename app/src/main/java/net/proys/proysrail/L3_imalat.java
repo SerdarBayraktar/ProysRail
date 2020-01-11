@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextPaint;
 import android.text.TextWatcher;
 import android.view.View;
@@ -28,9 +29,9 @@ import java.util.Locale;
 
 public class L3_imalat extends AppCompatActivity {
     protected String imalat;
-    protected EditText baskm;
+    protected EditText km_baslangic;
     protected TextView birimtxt;
-    protected EditText bitiskm,farktxt;
+    protected EditText km_son,km_mesafe;
     protected int bas,son,kmfark;
     protected String[] arraybas;
     protected String[] arrayson;
@@ -57,6 +58,12 @@ public class L3_imalat extends AppCompatActivity {
     String[] ort_verimsiz_sure;
     String[] aciklama_array;
 
+    private Boolean flag=false;
+    private String kmbaslangic="";
+    private String kmson="";
+    private String kmmesafe;
+    private int difference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +71,17 @@ public class L3_imalat extends AppCompatActivity {
         setContentView(R.layout.activity_l3_imalat);
         veri = new Get_Set();
 
+
         init();
+        inheritance();
+        setInheritanceKM();
         setWatchers();
         setOnclicklisteners();
         allset4menu();
         setIcons();
         imalat_hatnosenc();
-        inheritance();
+
+
     }
     public void arraylar(){
         SQLiteHelper database = new SQLiteHelper(this);
@@ -123,9 +134,15 @@ public class L3_imalat extends AppCompatActivity {
         hat2 = findViewById(R.id.imageView202);
         hat3 = findViewById(R.id.imageView203);
         hatn = findViewById(R.id.imageView204);
-        baskm = findViewById(R.id.editText2);
-        bitiskm = findViewById(R.id.editText3);
-        farktxt = findViewById(R.id.editText4);
+        //baskm = findViewById(R.id.editText2);
+        //bitiskm = findViewById(R.id.editText3);
+        //farktxt = findViewById(R.id.editText4);
+
+        km_baslangic=findViewById(R.id.editText2);
+        km_son=findViewById(R.id.editText3);
+        km_mesafe=findViewById(R.id.editText4);
+
+
         verimsizlik_icon = findViewById(R.id.imageverim);
         aciklama_icon = findViewById(R.id.imageAciklama);
         medya_icon = findViewById(R.id.imageCamera);
@@ -177,12 +194,14 @@ public class L3_imalat extends AppCompatActivity {
             hat3.setImageResource(R.drawable.numberonline_3);
         }
 
+
         if (!km_bas_array[veri.getPositionL2()].equals("-1")){
-            baskm.setText(String.valueOf(km_bas_array[veri.getPositionL2()]));
+            String asd = leadingZeros(String.valueOf(km_bas_array[veri.getPositionL2()]),String.valueOf(km_bas_array[veri.getPositionL2()]).length());
+            km_baslangic.setText(asd);
         }if (!km_son_array[veri.getPositionL2()].equals("-1")){
-            bitiskm.setText(String.valueOf(km_son_array[veri.getPositionL2()]));
+            km_son.setText(leadingZeros(String.valueOf(km_son_array[veri.getPositionL2()]),String.valueOf(km_son_array[veri.getPositionL2()]).length()));
         }if (!mesafe_array[veri.getPositionL2()].equals("-1")){
-            farktxt.setText(String.valueOf(mesafe_array[veri.getPositionL2()]));
+            km_mesafe.setText(String.valueOf(mesafe_array[veri.getPositionL2()]));
         }
         birimtxt.setText(String.valueOf(mesafe_birim_array[veri.getPositionL2()]));
     }
@@ -413,6 +432,7 @@ public class L3_imalat extends AppCompatActivity {
 
         }
     protected void setWatchers(){
+        /*
         TextWatcher watcher = new TextWatcher() {
 
             private static final int TOTAL_SYMBOLS = 7; // size of pattern 0000-0000-0000-0000
@@ -505,104 +525,6 @@ public class L3_imalat extends AppCompatActivity {
                 return digits;
             }
 
-        };
-        TextWatcher watcher1 = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (veri.getKmOnline() == 0) {
-                    if (s.length() <= 6) {
-                        if (!s.toString().equals("")) {
-                            if (Integer.valueOf(s.toString()) < 10000) {
-                                if (baskm.getText().toString().length() == 7) {
-                                    arraybas = baskm.getText().toString().split("\\+");
-                                    if (arraybas.length == 2) {//mesafe girilince sonkmyi hesaplaması için gerekli işlemler
-                                        bas = (Integer.parseInt(arraybas[0]) * 1000) + (Integer.parseInt(arraybas[1]));
-                                        int son = bas + Integer.valueOf(s.toString());
-                                        int sıfır = 6 - (String.valueOf(son).length());
-                                        StringBuilder stringBuilder = new StringBuilder();
-                                        for (int i = 0; i < sıfır; i++) {//son değişkeni km bitişin sayı değeridir. + nın konumunu doğru tespit edebilmek için
-                                            // 6 karaktere tamamlayana kadar başına 0 ekledim ardından sonuna son değişkeni ekledim bu sayede 7 haneli + lı gösterimi elde etttin
-                                            stringBuilder.append("0");
-                                        }
-                                        String sonkm = stringBuilder.toString();
-                                        sonkm = sonkm + String.valueOf(son);
-                                        //sonkm = sonkm.subSequence(0, 3).toString() + "+" + sonkm.subSequence(3, 6).toString();
-                                        veri.setKmfarkOnline(1);
-                                        veri.setKmfark(Integer.valueOf(s.toString()));
-                                        veri.setKmbas(bas);
-                                        SQLiteHelper database = new SQLiteHelper(L3_imalat.this);
-                                        L1_main l1_main = new L1_main();
-                                        String tarih = l1_main.getMaintitle()[veri.getPosition()].subSequence(l1_main.getMaintitle()[veri.getPosition()].length()-11,l1_main.getMaintitle()[veri.getPosition()].length()-1).toString();
-                                        String bildiri = l1_main.getMaintitle()[veri.getPosition()].split(" ")[0]+" "+ l1_main.getMaintitle()[veri.getPosition()].split(" ")[1];
-                                        database.UpdateTaslak(String.valueOf(veri.getKod()),tarih,veri.getImalat(),kopya_nolar[veri.getPositionL2()],"KM_SON",son);
-                                        database.UpdateTaslak(String.valueOf(veri.getKod()),tarih,veri.getImalat(),kopya_nolar[veri.getPositionL2()],"MESAFE",Integer.valueOf(s.toString()));
-                                        DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
-                                        symbols.setGroupingSeparator('+');
-                                        NumberFormat nf = new DecimalFormat("000,000", symbols);
-                                        bitiskm.setText(nf.format(Integer.valueOf(sonkm)));
-
-                                        new CountDownTimer(150,500){
-                                            @Override
-                                            public void onTick(long millisUntilFinished) {
-
-                                            }
-
-                                            @Override
-                                            public void onFinish() {
-                                                Get_Set data = new Get_Set();
-                                                data.setKmfarkOnline(0);
-
-                                            }
-                                        }.start();
-
-                                    }
-                                }
-                            } else {
-                                farktxt.setText("9999");
-                                Toast.makeText(L3_imalat.this, "Girdiğiniz mesafe değeri çok yüksek lütfen kontrol ediniz.", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    } else if (s.length() == 100) {
-                        int fark = Integer.valueOf(s.toString().subSequence(0, 1).toString() + s.toString().subSequence(2, 5).toString());
-                        if (baskm.getText().toString().length() == 7) {
-                            arraybas = baskm.getText().toString().split("\\+");
-                            if (arraybas.length == 2) {//mesafe girilince sonkmyi hesaplaması için gerekli işlemler
-                                bas = (Integer.parseInt(arraybas[0]) * 1000) + (Integer.parseInt(arraybas[1]));
-                                int son = bas + Integer.valueOf(fark);
-                                int sıfır = 6 - (String.valueOf(son).length());
-                                StringBuilder stringBuilder = new StringBuilder();
-                                for (int i = 0; i < sıfır; i++) {//son değişkeni km bitişin sayı değeridir. + nın konumunu doğru tespit edebilmek için
-                                    // 6 karaktere tamamlayana kadar başına 0 ekledim ardından sonuna son değişkeni ekledim bu sayede 7 haneli + lı gösterimi elde etttin
-                                    stringBuilder.append("0");
-                                }
-                                String sonkm = stringBuilder.toString();
-                                sonkm = sonkm + String.valueOf(son);
-                                //sonkm = sonkm.subSequence(0, 3).toString() + "+" + sonkm.subSequence(3, 6).toString();
-                                veri.setKmfarkOnline(1);
-                                DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
-                                symbols.setGroupingSeparator('+');
-                                NumberFormat nf = new DecimalFormat("000,000", symbols);
-                                bitiskm.setText(nf.format(sonkm));
-
-                            }
-                        }
-
-                    }
-                }else if (veri.getKmOnline()==1){
-                    veri.setKmOnline(0);
-                    //do nothing çok yakında değişti caten
-                }
-            }
         };
         TextWatcher watcher2 = new TextWatcher() {
 
@@ -703,8 +625,132 @@ public class L3_imalat extends AppCompatActivity {
 
         };
         baskm.addTextChangedListener(watcher);
-    bitiskm.addTextChangedListener(watcher2);
-    farktxt.addTextChangedListener(watcher1);
+    bitiskm.addTextChangedListener(watcher2);*/
+        km_mesafe.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b) {
+                    flag = false;
+                }
+            }
+        });
+        km_mesafe.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(flag==false)
+                {
+                    if(!kmbaslangic.equals(""))
+                    {
+                        kmmesafe=km_mesafe.getText().toString();
+                        if(!kmmesafe.equals(""))
+                        {
+                            String son=  String.valueOf( Integer.valueOf(kmbaslangic)+Integer.valueOf(Integer.valueOf(kmmesafe)));
+                            km_son.setText(son);
+                            kmson=son;
+                            System.out.println("asd bas : "+ kmbaslangic +" son : " + kmson+ " mesafe : "+ kmmesafe);
+                            SQLiteHelper database = new SQLiteHelper(L3_imalat.this);
+                            L1_main l1_main = new L1_main();
+                            String tarih = l1_main.getMaintitle()[veri.getPosition()].subSequence(l1_main.getMaintitle()[veri.getPosition()].length()-11,l1_main.getMaintitle()[veri.getPosition()].length()-1).toString();
+                            database.UpdateTaslak(String.valueOf(veri.getKod()),tarih,veri.getImalat(),kopya_nolar[veri.getPositionL2()],"KM_BAS",kmbaslangic);
+                            database.UpdateTaslak(String.valueOf(veri.getKod()),tarih,veri.getImalat(),kopya_nolar[veri.getPositionL2()],"KM_SON",kmson);
+                            database.UpdateTaslak(String.valueOf(veri.getKod()),tarih,veri.getImalat(),kopya_nolar[veri.getPositionL2()],"MESAFE",kmmesafe);
+/*
+                            veri.setKmbas(Integer.valueOf(kmbaslangic));
+                            veri.setKmson(Integer.valueOf(kmson));
+                            veri.setKmfark(Integer.valueOf(kmmesafe));*/
+/*
+
+                            veri.setKmbas(bas);
+                            veri.setKmson();
+                            veri.setKmfark(kmfark);
+                            SQLiteHelper database = new SQLiteHelper(L3_imalat.this);
+                            L1_main l1_main = new L1_main();
+                            String tarih = l1_main.getMaintitle()[veri.getPosition()].subSequence(l1_main.getMaintitle()[veri.getPosition()].length()-11,l1_main.getMaintitle()[veri.getPosition()].length()-1).toString();
+                            database.UpdateTaslak(String.valueOf(veri.getKod()),tarih,veri.getImalat(),kopya_nolar[veri.getPositionL2()],"KM_BAS",bas);
+                            database.UpdateTaslak(String.valueOf(veri.getKod()),tarih,veri.getImalat(),kopya_nolar[veri.getPositionL2()],"KM_SON",son);
+                            database.UpdateTaslak(String.valueOf(veri.getKod()),tarih,veri.getImalat(),kopya_nolar[veri.getPositionL2()],"MESAFE",kmfark);
+*/
+                        }
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+        km_baslangic.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if(!hasFocus)
+                {
+                    km_baslangic.setFilters(new InputFilter[] { new InputFilter.LengthFilter(7) });
+                    kmbaslangic=km_baslangic.getText().toString();
+                    int length =km_baslangic.getText().toString().length();
+                    km_baslangic.setText(leadingZeros(kmbaslangic,length));
+                    if(!kmson.equals("")&&!kmbaslangic.equals(""))
+                    {
+                        flag=true;
+                        difference= Math.abs(Integer.valueOf(kmbaslangic)-Integer.valueOf(kmson));
+                        kmmesafe = String.valueOf(difference);
+                        km_mesafe.setText(kmmesafe);
+
+
+                    }
+
+                }
+                if (hasFocus)
+                {
+                    km_baslangic.setFilters(new InputFilter[] { new InputFilter.LengthFilter(6) });
+                    km_baslangic.setText(kmbaslangic);
+
+                }
+                System.out.println("asd bas : "+ kmbaslangic +" son : " + kmson+ " mesafe : "+ kmmesafe);
+                SQLiteHelper database = new SQLiteHelper(L3_imalat.this);
+                L1_main l1_main = new L1_main();
+                String tarih = l1_main.getMaintitle()[veri.getPosition()].subSequence(l1_main.getMaintitle()[veri.getPosition()].length()-11,l1_main.getMaintitle()[veri.getPosition()].length()-1).toString();
+                database.UpdateTaslak(String.valueOf(veri.getKod()),tarih,veri.getImalat(),kopya_nolar[veri.getPositionL2()],"KM_BAS",kmbaslangic);
+                database.UpdateTaslak(String.valueOf(veri.getKod()),tarih,veri.getImalat(),kopya_nolar[veri.getPositionL2()],"KM_SON",kmson);
+                database.UpdateTaslak(String.valueOf(veri.getKod()),tarih,veri.getImalat(),kopya_nolar[veri.getPositionL2()],"MESAFE",kmmesafe);
+
+
+            }
+        });
+        km_son.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if(!hasFocus)
+                {
+                    km_son.setFilters(new InputFilter[] { new InputFilter.LengthFilter(7) });
+                    kmson=km_son.getText().toString();
+                    int length =km_son.getText().toString().length();
+                    km_son.setText(leadingZeros(kmson,length));
+                    if(!kmbaslangic.equals("")&&!kmson.equals(""))
+                    {
+                        flag=true;
+                        difference= Math.abs(Integer.valueOf(kmbaslangic)-Integer.valueOf(kmson));
+                        km_mesafe.setText(String.valueOf(difference));
+                    }
+                }
+                if (hasFocus)
+                {
+                    km_son.setFilters(new InputFilter[] { new InputFilter.LengthFilter(6) });
+                    km_son.setText(kmson);
+                }
+                System.out.println("asd bas : "+ kmbaslangic +" son : " + kmson+ " mesafe : "+ kmmesafe);
+                SQLiteHelper database = new SQLiteHelper(L3_imalat.this);
+                L1_main l1_main = new L1_main();
+                String tarih = l1_main.getMaintitle()[veri.getPosition()].subSequence(l1_main.getMaintitle()[veri.getPosition()].length()-11,l1_main.getMaintitle()[veri.getPosition()].length()-1).toString();
+                database.UpdateTaslak(String.valueOf(veri.getKod()),tarih,veri.getImalat(),kopya_nolar[veri.getPositionL2()],"KM_BAS",kmbaslangic);
+                database.UpdateTaslak(String.valueOf(veri.getKod()),tarih,veri.getImalat(),kopya_nolar[veri.getPositionL2()],"KM_SON",kmson);
+                database.UpdateTaslak(String.valueOf(veri.getKod()),tarih,veri.getImalat(),kopya_nolar[veri.getPositionL2()],"MESAFE",kmmesafe);
+
+
+
+
+            }
+        });
+
     }
     protected void setIcons(){
         imalat_icon.setImageResource(R.drawable.imalat_o);//set icon color
@@ -727,4 +773,46 @@ public class L3_imalat extends AppCompatActivity {
         Intent intent = new Intent(this,L2_bildiri.class);
         startActivity(intent);
     }
+    // 4 haneden az olanları sol tarafını 0 la dolduran fonksiyon
+    public final String leadingZeros(String s,int length) {
+        if (s.length() >4)
+        {
+            return formatKm(s);
+        }
+        else if(s.length()==4)
+            return formatKm(s);
+        else
+        {
+            return  formatKm( String.format("%0" + (4-s.length()) + "d%s", 0, s));
+
+        }
+
+    }
+    // + lı format haline getiriyor
+    public final String  formatKm(String s)
+    {
+        StringBuilder stringBuilder=new StringBuilder();
+        stringBuilder.append(s);
+
+        return     stringBuilder.insert(s.length()-3,"+").toString();
+
+    }
+
+    public void setInheritanceKM(){
+
+        kmbaslangic =   km_bas_array[veri.getPositionL2()];
+        kmson = km_son_array[veri.getPositionL2()];
+        kmmesafe = mesafe_array[veri.getPositionL2()];
+        kmmesafe = mesafe_array[veri.getPositionL2()];
+
+/*
+
+        km_son.setText(leadingZeros(km_son_array[veri.getPositionL2()],km_son_array[veri.getPositionL2()].length()));
+        km_mesafe.setText(leadingZeros(mesafe_array[veri.getPositionL2()],mesafe_array[veri.getPositionL2()].length()));
+        km_baslangic.setText(leadingZeros(km_bas_array[veri.getPositionL2()],km_bas_array[veri.getPositionL2()].length()));*/
+
+
+
+    }
+
 }

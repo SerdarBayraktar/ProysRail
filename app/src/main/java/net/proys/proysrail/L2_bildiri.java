@@ -400,4 +400,5 @@ public class L2_bildiri extends AppCompatActivity {
 
 
     }
+
 }

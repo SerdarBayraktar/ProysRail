@@ -29,124 +29,90 @@ private Boolean flag=false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_deneme);
-        //km_baslangıc=findViewById(R.id.km_baslangıc);
-        //km_son=findViewById(R.id.km_son);
-        //km_mesafe=findViewById(R.id.mesafe);
-km_mesafe.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-    @Override
-    public void onFocusChange(View view, boolean b) {
-if(b)
-            flag=false;
-    }
-});
-km_mesafe.addTextChangedListener(new TextWatcher() {
-
-
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-
-         if(flag==false)
-         {
-
-             if(!kmbaslangic.equals(""))
-             {
-                 kmmesafe=km_mesafe.getText().toString();
-                 if(!kmmesafe.equals(""))
-                 {
-                     String son=  String.valueOf( Integer.valueOf(kmbaslangic)+Integer.valueOf(Integer.valueOf(kmmesafe)));
-                     km_son.setText(son);
-                     kmson=son;
-                 }
-
-
-             }
-
-         }
-    }
-
-
-    @Override
-    public void afterTextChanged(Editable editable) {
-
-    }
-});
-
-
-
-        km_baslangıc.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                 if(!hasFocus)
-                 {
-                     km_baslangıc.setFilters(new InputFilter[] { new InputFilter.LengthFilter(7) });
-                      kmbaslangic=km_baslangıc.getText().toString();
-                     int length =km_baslangıc.getText().toString().length();
-                      km_baslangıc.setText(leadingZeros(kmbaslangic,length));
-                     if(!kmson.equals("")&&!kmbaslangic.equals(""))
-                     {
-                        flag=true;
-                         difference= Math.abs(Integer.valueOf(kmbaslangic)-Integer.valueOf(kmson));
-                         km_mesafe.setText(String.valueOf(difference));
-
-                     }
-
-                 }
-                 if (hasFocus)
-                 {
-                     km_baslangıc.setFilters(new InputFilter[] { new InputFilter.LengthFilter(6) });
-                    km_baslangıc.setText(kmbaslangic);
-
-                 }
-            }
-
-        });
-
-
-
-        km_son.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                if(!hasFocus)
-                {
-                    km_son.setFilters(new InputFilter[] { new InputFilter.LengthFilter(7) });
-                    kmson=km_son.getText().toString();
-                    int length =km_son.getText().toString().length();
-
-                  
-                        km_son.setText(leadingZeros(kmson,length));
-                        if(!kmbaslangic.equals("")&&!kmson.equals(""))
-                        {
-
-                            flag=true;
-                            difference= Math.abs(Integer.valueOf(kmbaslangic)-Integer.valueOf(kmson));
-                            km_mesafe.setText(String.valueOf(difference));
+        /*km_baslangıc=findViewById(R.id.km_baslangıc);
+        km_son=findViewById(R.id.km_son);
+        km_mesafe=findViewById(R.id.mesafe);
+        */    km_mesafe.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View view, boolean b) {
+                        if(b) {
+                            flag = false;
                         }
-                    
-
-
                 }
-                if (hasFocus)
-                {
-                    km_son.setFilters(new InputFilter[] { new InputFilter.LengthFilter(6) });
-                    km_son.setText(kmson);
-
-
-
-
+            });
+            km_mesafe.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                     if(flag==false)
+                     {
+                         if(!kmbaslangic.equals(""))
+                         {
+                             kmmesafe=km_mesafe.getText().toString();
+                             if(!kmmesafe.equals(""))
+                             {
+                                 String son=  String.valueOf( Integer.valueOf(kmbaslangic)+Integer.valueOf(Integer.valueOf(kmmesafe)));
+                                 km_son.setText(son);
+                                 kmson=son;
+                             }
+                         }
+                     }
                 }
+                @Override
+                public void afterTextChanged(Editable editable) {}
+            });
+            km_baslangıc.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View view, boolean hasFocus) {
+                             if(!hasFocus)
+                             {
+                                 km_baslangıc.setFilters(new InputFilter[] { new InputFilter.LengthFilter(7) });
+                                  kmbaslangic=km_baslangıc.getText().toString();
+                                 int length =km_baslangıc.getText().toString().length();
+                                  km_baslangıc.setText(leadingZeros(kmbaslangic,length));
+                                 if(!kmson.equals("")&&!kmbaslangic.equals(""))
+                                 {
+                                    flag=true;
+                                     difference= Math.abs(Integer.valueOf(kmbaslangic)-Integer.valueOf(kmson));
+                                     km_mesafe.setText(String.valueOf(difference));
 
-            }
-        });
+                                 }
 
+                             }
+                             if (hasFocus)
+                             {
+                                 km_baslangıc.setFilters(new InputFilter[] { new InputFilter.LengthFilter(6) });
+                                km_baslangıc.setText(kmbaslangic);
 
+                             }
+                        }
 
+            });
+                km_son.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View view, boolean hasFocus) {
+                        if(!hasFocus)
+                        {
+                            km_son.setFilters(new InputFilter[] { new InputFilter.LengthFilter(7) });
+                            kmson=km_son.getText().toString();
+                            int length =km_son.getText().toString().length();
+                            km_son.setText(leadingZeros(kmson,length));
+                                if(!kmbaslangic.equals("")&&!kmson.equals(""))
+                                {
+                                    flag=true;
+                                    difference= Math.abs(Integer.valueOf(kmbaslangic)-Integer.valueOf(kmson));
+                                    km_mesafe.setText(String.valueOf(difference));
+                                }
+                        }
+                        if (hasFocus)
+                        {
+                            km_son.setFilters(new InputFilter[] { new InputFilter.LengthFilter(6) });
+                            km_son.setText(kmson);
+                        }
 
+                    }
+                });
         // 4 haneden az olanları sol tarafını 0 la dolduran fonksiyon
     }
     public final String leadingZeros(String s,int length) {
