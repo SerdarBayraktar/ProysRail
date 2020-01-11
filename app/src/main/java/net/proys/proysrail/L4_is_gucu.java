@@ -113,13 +113,14 @@ public class L4_is_gucu extends AppCompatActivity {
             secilen.add(depo.get(position));
             String[] bilgiler = database.ReadPersonel(database.ReadPersonelwisim(depo.get(position)));
             if (bilgiler.length>=6){
+                String tarih = String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11);
                 Get_Set veri = new Get_Set();
-                database.WriteTaslakResource(veri.getKod(),"tarih",veri.getImalatIsgucuid(),bilgiler[0],"iscilik","isci",Integer.valueOf(bilgiler[6]),1,"efor");//TODO CHECK TARIH IMALAT
+                database.WriteTaslakResource(veri.getKod(),tarih,veri.getImalatIsgucuid(),bilgiler[0],"iscilik","isci",Integer.valueOf(bilgiler[6]),1,"efor");//TODO CHECK TARIH IMALAT
                 List[] verimsizlik_listler = database.ReadEtkenListesiforlist(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"));// l3 verimsizlik ile aynı kod bu tüzden etken isim olarak var onu id ye çevirip kullanıcım
                 String[] etken = Arrays.copyOf(verimsizlik_listler[0].toArray(new String[verimsizlik_listler[0].size()]),verimsizlik_listler[0].toArray(new String[verimsizlik_listler[0].size()]).length,String[].class);
                 String[] deger = Arrays.copyOf(verimsizlik_listler[1].toArray(new String[verimsizlik_listler[0].size()]),verimsizlik_listler[1].toArray(new String[verimsizlik_listler[1].size()]).length,String[].class);
                 for (int i =0; i<etken.length; i++){
-                    database.WriteTaslakResource(veri.getKod(),"tarih",veri.getImalatIsgucuid(),bilgiler[0],"iscilik","verimsiz",Integer.valueOf(deger[i]),1,database.ReadEtkenListesiforid(etken[i]));
+                    database.WriteTaslakResource(veri.getKod(),tarih,veri.getImalatIsgucuid(),bilgiler[0],"iscilik","verimsiz",Integer.valueOf(deger[i]),1,database.ReadEtkenListesiforid(etken[i]));
                 }
             }
                 depo.remove(position);

@@ -232,8 +232,8 @@ public class l2_is_gucu extends AppCompatActivity {
                         @Override
                         public void onResponse(String response) {
                             /*Herhangi bir hata yok ise, kullanıcıya bilgi verilir.*/
-                            Toast.makeText(getApplicationContext(), "Veri kayıt edildi...", Toast.LENGTH_SHORT).show();
-                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Sunucuya gönderildi", Toast.LENGTH_SHORT).show();
+
                         }
                     }, new Response.ErrorListener() {
                 @Override

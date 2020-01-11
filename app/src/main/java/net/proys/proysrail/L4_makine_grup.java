@@ -29,6 +29,9 @@ public class L4_makine_grup extends AppCompatActivity {
         setListView();
     }
     protected void init(){
+        TextView imalattxt = findViewById(R.id.imalattxt);
+        imalattxt.setText(String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11));
+
 
         database = new SQLiteHelper(this);
         getIntent = getIntent();

@@ -28,10 +28,10 @@ private Boolean flag=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deneme);
-        km_baslangıc=findViewById(R.id.km_baslangıc);
-        km_son=findViewById(R.id.km_son);
-        km_mesafe=findViewById(R.id.mesafe);
+        //setContentView(R.layout.activity_deneme);
+        //km_baslangıc=findViewById(R.id.km_baslangıc);
+        //km_son=findViewById(R.id.km_son);
+        //km_mesafe=findViewById(R.id.mesafe);
 km_mesafe.setOnFocusChangeListener(new View.OnFocusChangeListener() {
     @Override
     public void onFocusChange(View view, boolean b) {
@@ -68,15 +68,6 @@ km_mesafe.addTextChangedListener(new TextWatcher() {
              }
 
          }
-
-
-
-
-
-
-
-
-
     }
 
 

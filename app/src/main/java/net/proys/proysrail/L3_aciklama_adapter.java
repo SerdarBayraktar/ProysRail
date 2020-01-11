@@ -49,7 +49,7 @@ public class L3_aciklama_adapter extends ArrayAdapter<String> {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context,L4_aciklama_detay.class);
-                intent.putExtra("tip","L4");
+                intent.putExtra("tip","L3");
                 intent.putExtra("id",String.valueOf(aciklama_idler.get(position)));
                 intent.putExtra("text",aciklamalar.get(position));
                 context.startActivity(intent);

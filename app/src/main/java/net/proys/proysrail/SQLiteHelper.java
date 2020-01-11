@@ -9,6 +9,8 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.RadioButton;
 
+import net.proys.proysrail.Items.İsciPuantajItem;
+
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -171,7 +173,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             + KITAP_TABLO_YAPISI.AKTIF+" INTEGER, "
             + KITAP_TABLO_YAPISI.IMALAT+" VARCHAR(255), "
             + KITAP_TABLO_YAPISI.BOLGE + " VARCHAR(255)"+")";
-    String GETTER_SETTER_TABLOSU_OLUSTURMA = "CREATE TABLE "+GETTER_SETTER_TABLO_YAPISI.TABLO_ADI+"("+GETTER_SETTER_TABLO_YAPISI.KEY +" VARCHAR(255) PRIMARY KEY , "
+    String GETTER_SETTER_TABLOSU_OLUSTURMA = "CREATE TABLE "+GETTER_SETTER_TABLO_YAPISI.TABLO_ADI+"( "+GETTER_SETTER_TABLO_YAPISI.KEY + " VARCHAR(255) PRIMARY KEY , "
             + GETTER_SETTER_TABLO_YAPISI.VALUE+ " VARCHAR(255)"+")";
     String IMALAT_TABLOSU_OLUSTURMA = "CREATE TABLE " + IMALAT_TABLO_YAPISI.TABLO_ADI+"("+IMALAT_TABLO_YAPISI.ID+" VARCHAR(255) PRIMARY KEY , "
             //+ IMALAT_TABLO_YAPISI.ORDER +" VARCHAR(255), "
@@ -1827,6 +1829,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         } else {
             //do nothing
         }
+        row1.add("İşçilik Puantaj Bildirisi");
+        row2.add("");
         List[] rows = new List[]{row1,row2};
         cursor.close();
         sqLiteDatabase.close();
@@ -3023,6 +3027,67 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         String[] silinecekVeri = {bildiri_id,imalat_id,kaynak_id,"verimsiz"};
         sqLiteDatabase.delete(TASLAK_RESOURCE_YAPISI.TABLO_ADI, TASLAK_RESOURCE_YAPISI.ID+ " = ?"+" AND "+TASLAK_RESOURCE_YAPISI.IMALAT+ " = ?"+" AND "+TASLAK_RESOURCE_YAPISI.KAYNAK_ID+ "= ?"+" AND "+TASLAK_RESOURCE_YAPISI.KATEGORI+ "= ?", silinecekVeri);
         sqLiteDatabase.close();
+
+    }
+
+    public ArrayList<İsciPuantajItem> ReadİşçilikPuantaj(String tarih,String kaynak_id){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        ArrayList<İsciPuantajItem> arrayList = new ArrayList<İsciPuantajItem>();
+        ArrayList<String> array = new ArrayList<String>();
+        String[] kaynak_idler = kaynak_id.split("--");
+        Cursor cursor = null;
+        for (int i =0;i<kaynak_idler.length;i++) {
+            array = asd(tarih,kaynak_idler[i]);
+            /*String kisa_isim = null;
+            int puantaj = 0;
+            String[] columns = {
+                    TASLAK_RESOURCE_YAPISI.ID,
+                    TASLAK_RESOURCE_YAPISI.KAYNAK_ID,
+                    TASLAK_RESOURCE_YAPISI.PUANTAJ,
+
+            };
+            String[] selectionArgs = {tarih, kaynak_idler[i]};
+            cursor = sqLiteDatabase.query(TASLAK_RESOURCE_YAPISI.TABLO_ADI, columns, TASLAK_RESOURCE_YAPISI.TARIH + " =?" + " AND " + TASLAK_RESOURCE_YAPISI.KAYNAK_ID + " =?", selectionArgs, null, null, null);
+
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    kisa_isim = ReadPersonelwid(cursor.getString(cursor.getColumnIndex(TASLAK_RESOURCE_YAPISI.KAYNAK_ID)));
+                    puantaj = cursor.getInt(cursor.getColumnIndex(TASLAK_RESOURCE_YAPISI.PUANTAJ));
+
+                }
+            }*/
+            arrayList.add(new İsciPuantajItem(array.get(0), (float) Integer.valueOf(array.get(1))));
+        }
+        sqLiteDatabase.close();
+        return arrayList;
+    }
+    public ArrayList<String> asd(String tarih,String kaynak_id){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String kisa_isim = null;
+        int puantaj =0;
+        String[] columns = {
+                TASLAK_RESOURCE_YAPISI.ID,
+                TASLAK_RESOURCE_YAPISI.KAYNAK_ID,
+                TASLAK_RESOURCE_YAPISI.PUANTAJ,
+        };
+        String[] selectionArgs = {tarih, kaynak_id};
+        Cursor cursor = sqLiteDatabase.query(TASLAK_RESOURCE_YAPISI.TABLO_ADI, columns, TASLAK_RESOURCE_YAPISI.TARIH + " =?" + " AND " + TASLAK_RESOURCE_YAPISI.KAYNAK_ID + " =?", selectionArgs, null, null, null);
+
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                kisa_isim = ReadPersonelwid(cursor.getString(cursor.getColumnIndex(TASLAK_RESOURCE_YAPISI.KAYNAK_ID)));
+                puantaj = cursor.getInt(cursor.getColumnIndex(TASLAK_RESOURCE_YAPISI.PUANTAJ));
+            }
+        }else{
+            kisa_isim = ReadPersonelwid(kaynak_id);
+            puantaj = 0;
+        }
+        cursor.close();
+        sqLiteDatabase.close();
+        ArrayList<String> list = new ArrayList<String>();
+        list.add(kisa_isim);
+        list.add(String.valueOf(puantaj));
+        return list;
 
     }
 

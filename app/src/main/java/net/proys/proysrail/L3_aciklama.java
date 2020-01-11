@@ -95,7 +95,7 @@ public class L3_aciklama extends AppCompatActivity {
         final List<Integer> aciklama_idler = lists[1];
         L3_aciklama_adapter adapter = new L3_aciklama_adapter(L3_aciklama.this,aciklamalar,aciklama_idler);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(L3_aciklama.this,L4_aciklama_detay.class);
@@ -104,7 +104,7 @@ public class L3_aciklama extends AppCompatActivity {
                 intent.putExtra("text",String.valueOf(aciklamalar.get(position)));
                 startActivity(intent);
             }
-        });
+        });*/
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
