@@ -1817,6 +1817,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         Cursor cursor = sqLiteDatabase.query(BILDIRI_LISTESI_TABLO_YAPISI.TABLO_ADI,columns,BILDIRI_LISTESI_TABLO_YAPISI.KULLANICI_ID+" =?"+ " AND "+BILDIRI_LISTESI_TABLO_YAPISI.SENT+" =?",selectionArgs,null,null,null);
         List<String> row1 = new ArrayList();
         List<String> row2= new ArrayList();
+        row1.add("İşçilik Puantaj Bildirisi (10.01.2020)");
+        row2.add("Son Bildiri Tarihi 11.01.2020 09:00");
         if (cursor.getCount()>0){
             while (cursor.moveToNext()){
                 isim= cursor.getString(cursor.getColumnIndex(BILDIRI_LISTESI_TABLO_YAPISI.ISIM));
@@ -1829,8 +1831,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         } else {
             //do nothing
         }
-        row1.add("İşçilik Puantaj Bildirisi");
-        row2.add("");
         List[] rows = new List[]{row1,row2};
         cursor.close();
         sqLiteDatabase.close();
@@ -3037,7 +3037,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         String[] kaynak_idler = kaynak_id.split("--");
         Cursor cursor = null;
         for (int i =0;i<kaynak_idler.length;i++) {
-            array = asd(tarih,kaynak_idler[i]);
+            array = ReadİşçilikPuantaj1(tarih,kaynak_idler[i]);
             /*String kisa_isim = null;
             int puantaj = 0;
             String[] columns = {
@@ -3056,19 +3056,21 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
                 }
             }*/
-            arrayList.add(new İsciPuantajItem(array.get(0), (float) Integer.valueOf(array.get(1))));
+            arrayList.add(new İsciPuantajItem(array.get(0), (float) Integer.valueOf(array.get(1)),array.get(2)));
         }
         sqLiteDatabase.close();
         return arrayList;
     }
-    public ArrayList<String> asd(String tarih,String kaynak_id){
+    public ArrayList<String> ReadİşçilikPuantaj1(String tarih,String kaynak_id){
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         String kisa_isim = null;
+        String kategori = null;
         int puantaj =0;
         String[] columns = {
                 TASLAK_RESOURCE_YAPISI.ID,
                 TASLAK_RESOURCE_YAPISI.KAYNAK_ID,
                 TASLAK_RESOURCE_YAPISI.PUANTAJ,
+                TASLAK_RESOURCE_YAPISI.KATEGORI
         };
         String[] selectionArgs = {tarih, kaynak_id};
         Cursor cursor = sqLiteDatabase.query(TASLAK_RESOURCE_YAPISI.TABLO_ADI, columns, TASLAK_RESOURCE_YAPISI.TARIH + " =?" + " AND " + TASLAK_RESOURCE_YAPISI.KAYNAK_ID + " =?", selectionArgs, null, null, null);
@@ -3077,16 +3079,19 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext()) {
                 kisa_isim = ReadPersonelwid(cursor.getString(cursor.getColumnIndex(TASLAK_RESOURCE_YAPISI.KAYNAK_ID)));
                 puantaj = cursor.getInt(cursor.getColumnIndex(TASLAK_RESOURCE_YAPISI.PUANTAJ));
+                kategori = cursor.getString(cursor.getColumnIndex(TASLAK_RESOURCE_YAPISI.KATEGORI));
             }
         }else{
             kisa_isim = ReadPersonelwid(kaynak_id);
             puantaj = 0;
+            kategori = "iscilik";
         }
         cursor.close();
         sqLiteDatabase.close();
         ArrayList<String> list = new ArrayList<String>();
         list.add(kisa_isim);
         list.add(String.valueOf(puantaj));
+        list.add(kategori);
         return list;
 
     }

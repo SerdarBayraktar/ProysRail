@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Iscilik_Puantaj_Imalat extends AppCompatActivity {
 
     String[] maintitle ={
@@ -28,18 +31,6 @@ public class Iscilik_Puantaj_Imalat extends AppCompatActivity {
             "Geçici Hat Montajı",
             "Konvansiyonel Hat Montajı",
     };
-    String[] sektörmain ={"Yerköy Balastsız İstasyon Hattı","Sivas Konvansiyonel Hat","Tünel-212",
-            "Yıldızeli Balastlı İstasyon Hattı"
-    };
-    String[] verimsizlik = {
-            "Makine Arızası",
-            "Makine Yakıt İkmali",
-            "Hava Koşulları",
-            "Sahaya Seyahat Süresi",
-            "Tren Trafiği",
-            "Malzeme Bekleme"
-
-    };
     Get_Set veri;
     SQLiteHelper database;
     Intent intent;
@@ -48,6 +39,10 @@ public class Iscilik_Puantaj_Imalat extends AppCompatActivity {
             null,null,
             null,
     };
+
+    String bildiri_id = "109000220200110";
+    String tarih = "10.01.2020";
+    String formen_tablodan_gelen = "R0004--R0005--R0008";
     protected String[] imalatfavori;
     Intent getIntent;
     ListView list;
@@ -58,7 +53,7 @@ public class Iscilik_Puantaj_Imalat extends AppCompatActivity {
         setContentView(R.layout.activity_iscilik__puantaj__imalat);
         getIntent = getIntent();
         veri= new Get_Set();
-        setFavoriArray();
+        //setFavoriArray();
         init();
     }
 
@@ -83,7 +78,7 @@ public class Iscilik_Puantaj_Imalat extends AppCompatActivity {
                 list.setAdapter(adapter);
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(Iscilik_Puantaj_Imalat.this);
                         //builder.setTitle("Puantaj");
                         final EditText input = new EditText(Iscilik_Puantaj_Imalat.this);
@@ -101,8 +96,12 @@ public class Iscilik_Puantaj_Imalat extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 Get_Set veri = new Get_Set();
                                 veri.setPuantajpopup(Integer.valueOf(input.getText().toString()));
+                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+                                LocalDate date = LocalDate.parse(tarih,formatter).minusDays(1);
 
-
+                                database.WriteTaslakResource(Long.valueOf(bildiri_id),date.format(formatter),database.ReadImalatwidforisim(maintitle[position]),
+                                        database.ReadPersonelwisim(veri.getIsci()),"iscilik","iscilik_puantaj",Integer.valueOf(input.getText().toString()),
+                                                1,"efor");
                                 Intent intent = new Intent(Iscilik_Puantaj_Imalat.this,IP1ISCILIKPUANTAJ.class);
                                 startActivity(intent);
                             }
@@ -111,7 +110,7 @@ public class Iscilik_Puantaj_Imalat extends AppCompatActivity {
 
                     }
                 });
-                ListView ls = findViewById(R.id.list_view2);
+                /*ListView ls = findViewById(R.id.list_view2);
                 ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,imalatfavori);
                 ls.setAdapter(arrayAdapter1);
                 ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -145,7 +144,7 @@ public class Iscilik_Puantaj_Imalat extends AppCompatActivity {
 
 
                     }
-                });
+                });*/
             }
         /*
     protected void setSearchEngine(){

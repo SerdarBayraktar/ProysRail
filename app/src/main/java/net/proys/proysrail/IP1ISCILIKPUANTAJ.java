@@ -163,7 +163,11 @@ public class IP1ISCILIKPUANTAJ extends AppCompatActivity {
           public void onClick(View view) {
              // builderSingle.show();
 
-        dialogCustom.show();
+          //dialogCustom.show();
+            Intent intent = new Intent(IP1ISCILIKPUANTAJ.this,L1_main.class);
+            startActivity(intent);
+
+
           }
       });
 
