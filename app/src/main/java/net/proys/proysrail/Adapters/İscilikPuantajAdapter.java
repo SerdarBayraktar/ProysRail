@@ -127,6 +127,7 @@ public class İscilikPuantajAdapter  extends RecyclerView.Adapter<İscilikPuanta
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         İsciPuantajItem  item=puantajMainItems.get(position);
+        final int positionlocal=position;
         holder.setData(item);
         if (item.getSaat().toString().equals("0.0")){
             holder.itemView.setBackgroundColor(mContext.getResources().getColor(R.color.verimsizlik_bg));
@@ -139,7 +140,8 @@ public class İscilikPuantajAdapter  extends RecyclerView.Adapter<İscilikPuanta
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dialogCustom.show();
+                  //  dialogCustom.show();
+                    Toast.makeText(mContext, "position"+positionlocal, Toast.LENGTH_SHORT).show();
                 }
 
             });
@@ -153,7 +155,8 @@ public class İscilikPuantajAdapter  extends RecyclerView.Adapter<İscilikPuanta
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dialogCustom.show();
+                   //dialogCustom.show();
+                    Toast.makeText(mContext, "position"+positionlocal, Toast.LENGTH_SHORT).show();
                 }
             });
         }else if (item.getKategori().equals("iscilik_puantaj")){
