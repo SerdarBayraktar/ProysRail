@@ -55,6 +55,15 @@ public class İscilikPuantajAdapter  extends RecyclerView.Adapter<İscilikPuanta
         arrayAdapter.add("Archit");
         arrayAdapter.add("Jignesh");
 
+        view1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Get_Set veri = new Get_Set();
+                TextView isci_txt = view1.findViewById(R.id.isci_adi);
+                veri.setIsci(isci_txt.getText().toString());
+            }
+        });
+
         builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -113,9 +122,7 @@ public class İscilikPuantajAdapter  extends RecyclerView.Adapter<İscilikPuanta
                 //Toast.makeText(mContext, "toast", Toast.LENGTH_SHORT).show();
             }
         });
-        Button button1 = view.findViewById(R.id.isim);
-        Get_Set veri = new Get_Set();
-        button1.setText(veri.getIsci());
+
 
         recyclerView1.setAdapter(adapter1);
 
@@ -126,20 +133,24 @@ public class İscilikPuantajAdapter  extends RecyclerView.Adapter<İscilikPuanta
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        İsciPuantajItem  item=puantajMainItems.get(position);
+        final İsciPuantajItem  item=puantajMainItems.get(position);
+        final int positionlocal=position;
         holder.setData(item);
         if (item.getSaat().toString().equals("0.0")){
             holder.itemView.setBackgroundColor(mContext.getResources().getColor(R.color.verimsizlik_bg));
             final TextView isci_adi = holder.itemView.findViewById(R.id.isci_adi);
             isci_adi.setTextColor(mContext.getResources().getColor(R.color.white));
             final Get_Set veri = new Get_Set();
-            veri.setIsci(isci_adi.getText().toString());
+            //veri.setIsci(isci_adi.getText().toString());
             TextView calisma_saati = holder.itemView.findViewById(R.id.calisma_saati);
             calisma_saati.setTextColor(mContext.getResources().getColor(R.color.white));
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     dialogCustom.show();
+                    veri.setIsci(puantajMainItems.get(positionlocal).getName());
+                    Toast.makeText(mContext, "position"+positionlocal, Toast.LENGTH_SHORT).show();
+
                 }
 
             });
@@ -150,18 +161,37 @@ public class İscilikPuantajAdapter  extends RecyclerView.Adapter<İscilikPuanta
             TextView calisma_saati = holder.itemView.findViewById(R.id.calisma_saati);
             calisma_saati.setTextColor(mContext.getResources().getColor(R.color.white));
             calisma_saati.setText("İzin");
+            final Get_Set veri = new Get_Set();
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     dialogCustom.show();
+                    veri.setIsci(puantajMainItems.get(positionlocal).getName());
+                    Toast.makeText(mContext, "position"+positionlocal, Toast.LENGTH_SHORT).show();
                 }
             });
         }else if (item.getKategori().equals("iscilik_puantaj")){
             holder.itemView.setBackgroundColor(mContext.getResources().getColor(R.color.iscilik_yesil));
             final TextView isci_adi = holder.itemView.findViewById(R.id.isci_adi);
+            final Get_Set veri = new Get_Set();
             isci_adi.setTextColor(mContext.getResources().getColor(R.color.white));
             TextView calisma_saati = holder.itemView.findViewById(R.id.calisma_saati);
             calisma_saati.setTextColor(mContext.getResources().getColor(R.color.white));
+
+        }else {
+            final TextView isci_adi = holder.itemView.findViewById(R.id.isci_adi);
+            final Get_Set veri = new Get_Set();
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    veri.setIsci(puantajMainItems.get(positionlocal).getName());
+                    Toast.makeText(mContext, "position"+positionlocal, Toast.LENGTH_SHORT).show();
+                    Button button1 = holder.itemView.findViewById(R.id.isim);
+                    Get_Set veri = new Get_Set();
+                    String isci = veri.getIsci();
+                    button1.setText(veri.getIsci());
+                }
+            });
         }
     }
 
