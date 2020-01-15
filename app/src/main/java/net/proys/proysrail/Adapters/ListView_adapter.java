@@ -1,14 +1,12 @@
 package net.proys.proysrail.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.IpPrefix;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,36 +16,49 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import net.proys.proysrail.Get_Set;
-import net.proys.proysrail.IP1ISCILIKPUANTAJ;
 import net.proys.proysrail.Iscilik_Puantaj_Imalat;
 import net.proys.proysrail.Items.İsciPuantajItem;
 import net.proys.proysrail.R;
-import net.proys.proysrail.SQLiteHelper;
 
 import java.util.ArrayList;
 
-public class İscilikPuantajAdapter  extends RecyclerView.Adapter<İscilikPuantajAdapter.ViewHolder> {
+public class ListView_adapter extends ArrayAdapter<String> {
 
     private LayoutInflater inflater;
     private ArrayList<İsciPuantajItem> puantajMainItems;
-    private Context mContext;
+    private Activity mContext;
     AlertDialog dialogCustom;
     private String isci;
     RecyclerView recyclerView1;
     String tarih;
     String bildiri_id;
-
-    public İscilikPuantajAdapter(ArrayList<İsciPuantajItem> puantajMainItems, Context mContext,String tarih,String bildiri_id) {
+    String[] deneme;
+    public ListView_adapter(Activity mContext, String tarih,String bildiri_id,ArrayList<İsciPuantajItem> puantajMainItems,String[] deneme) {
+        super(mContext, R.layout.l2_is_gucu_row,deneme);
+        // TODO Auto-generated constructor stub
+        this.deneme = deneme;
         this.puantajMainItems = puantajMainItems;
         this.mContext = mContext;
         this.tarih = tarih;
         this.bildiri_id = bildiri_id;
+
     }
 
-    @Override
-    public ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
-        final View view1 = LayoutInflater.from(parent.getContext()).inflate(R.layout.iscilik_puantaj_row,parent,false);
+    public View getView(final int position, final View view, ViewGroup parent) {
+        LayoutInflater inflater=mContext.getLayoutInflater();
+        final View rowView=inflater.inflate(R.layout.iscilik_puantaj_row, null,true);//layout hatalı olabilir
+        final Get_Set veri = new Get_Set();
 
+        final TextView isci_adi = rowView.findViewById(R.id.isci_adi);
+        //veri.setIsci(isci_adi.getText().toString());
+        TextView calisma_saati = rowView.findViewById(R.id.calisma_saati);
+        final Button button1 = rowView.findViewById(R.id.isim);
+
+        final İsciPuantajItem  item=puantajMainItems.get(position);
+        isci_adi.setText(item.getName());
+        calisma_saati.setText(item.getSaat().toString());
+
+            ////pop up
         AlertDialog.Builder builderSingle= new AlertDialog.Builder(mContext);
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_expandable_list_item_1);
         arrayAdapter.add("Hardik");
@@ -55,11 +66,11 @@ public class İscilikPuantajAdapter  extends RecyclerView.Adapter<İscilikPuanta
         arrayAdapter.add("Archit");
         arrayAdapter.add("Jignesh");
 
-        view1.setOnClickListener(new View.OnClickListener() {
+        rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Get_Set veri = new Get_Set();
-                TextView isci_txt = view1.findViewById(R.id.isci_adi);
+                TextView isci_txt = rowView.findViewById(R.id.isci_adi);
                 veri.setIsci(isci_txt.getText().toString());
             }
         });
@@ -69,7 +80,7 @@ public class İscilikPuantajAdapter  extends RecyclerView.Adapter<İscilikPuanta
             public void onClick(DialogInterface dialog, int which) {
                 String strName = arrayAdapter.getItem(which);
                 AlertDialog.Builder builderInner = new AlertDialog.Builder(mContext);
-                Toast.makeText(parent.getContext(), "asdasdsadadas", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(parent.getContext(), "asdasdsadadas", Toast.LENGTH_SHORT).show();
                 builderInner.setMessage(strName);
                 builderInner.setTitle("Your Selected Item is");
                 builderInner.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -85,13 +96,15 @@ public class İscilikPuantajAdapter  extends RecyclerView.Adapter<İscilikPuanta
         // builderSingle.create().getWindow().setGravity(Gravity.BOTTOM);
 
         ///////////////////////////////////////////////////////////////////////////////////
-        AlertDialog.Builder builderCustom=new AlertDialog.Builder(parent.getContext());
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.iscilik_puantaj_popup,null);
-        recyclerView1 = view.findViewById(R.id.recycler);
+
+
+        final AlertDialog.Builder builderCustom=new AlertDialog.Builder(mContext);
+        View view1= LayoutInflater.from(mContext).inflate(R.layout.iscilik_puantaj_popup,null);
+        recyclerView1 = view1.findViewById(R.id.recycler);
 
         ArrayList<İsciPuantajItem> array1 = new ArrayList<>();
-        İsciPuantajItem item=new İsciPuantajItem();
-        item.setName("İşe Gelmedi");
+        İsciPuantajItem item6=new İsciPuantajItem();
+        item6.setName("İşe Gelmedi");
         İsciPuantajItem item2=new İsciPuantajItem();
         item2.setName("Yıllık İzin");
         İsciPuantajItem item3=new İsciPuantajItem();
@@ -101,19 +114,19 @@ public class İscilikPuantajAdapter  extends RecyclerView.Adapter<İscilikPuanta
         İsciPuantajItem item5=new İsciPuantajItem();
         item5.setName("Gurbetçi İzni");
 
-        array1.add(item);
+        array1.add(item6);
         array1.add(item2);
         array1.add(item3);
         array1.add(item5);
         array1.add(item4);
 
         recyclerView1.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(parent.getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView1.setLayoutManager(linearLayoutManager);
 
-        İp1PopupAdapter adapter1=new İp1PopupAdapter(array1,parent.getContext(),tarih,isci,bildiri_id);
-        Button button = view.findViewById(R.id.imalat_sec);
+        İp1PopupAdapter adapter1=new İp1PopupAdapter(array1,mContext,tarih,isci,bildiri_id);
+        Button button = view1.findViewById(R.id.imalat_sec);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,94 +142,62 @@ public class İscilikPuantajAdapter  extends RecyclerView.Adapter<İscilikPuanta
         builderCustom.setView(view);
         dialogCustom=builderCustom.create();
 
-        return new ViewHolder(view1);
-    }
-
-    @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        final İsciPuantajItem  item=puantajMainItems.get(position);
-        final int positionlocal=position;
-        holder.setData(item);
+        //Pop p son
         if (item.getSaat().toString().equals("0.0")){
-            holder.itemView.setBackgroundColor(mContext.getResources().getColor(R.color.verimsizlik_bg));
-            final TextView isci_adi = holder.itemView.findViewById(R.id.isci_adi);
+            rowView.setBackgroundColor(mContext.getResources().getColor(R.color.verimsizlik_bg));
             isci_adi.setTextColor(mContext.getResources().getColor(R.color.white));
-            final Get_Set veri = new Get_Set();
             //veri.setIsci(isci_adi.getText().toString());
-            TextView calisma_saati = holder.itemView.findViewById(R.id.calisma_saati);
             calisma_saati.setTextColor(mContext.getResources().getColor(R.color.white));
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
+            rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     dialogCustom.show();
-                    veri.setIsci(puantajMainItems.get(positionlocal).getName());
-                    Toast.makeText(mContext, "position"+positionlocal, Toast.LENGTH_SHORT).show();
+                    veri.setIsci(puantajMainItems.get(position).getName());
+                    Toast.makeText(mContext, "position"+position, Toast.LENGTH_SHORT).show();
 
                 }
 
             });
         }else if (item.getSaat().toString().equals("999.0")){
-            holder.itemView.setBackgroundColor(mContext.getResources().getColor(R.color.iscilik_puantaj_mazeret));
-            final TextView isci_adi = holder.itemView.findViewById(R.id.isci_adi);
+            rowView.setBackgroundColor(mContext.getResources().getColor(R.color.iscilik_puantaj_mazeret));
             isci_adi.setTextColor(mContext.getResources().getColor(R.color.white));
-            TextView calisma_saati = holder.itemView.findViewById(R.id.calisma_saati);
             calisma_saati.setTextColor(mContext.getResources().getColor(R.color.white));
             calisma_saati.setText("İzin");
-            final Get_Set veri = new Get_Set();
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
+            rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     dialogCustom.show();
-                    veri.setIsci(puantajMainItems.get(positionlocal).getName());
-                    Toast.makeText(mContext, "position"+positionlocal, Toast.LENGTH_SHORT).show();
+
+                    veri.setIsci(puantajMainItems.get(position).getName());
+                    Toast.makeText(mContext, "position"+position, Toast.LENGTH_SHORT).show();
                 }
             });
         }else if (item.getKategori().equals("iscilik_puantaj")){
-            holder.itemView.setBackgroundColor(mContext.getResources().getColor(R.color.iscilik_yesil));
-            final TextView isci_adi = holder.itemView.findViewById(R.id.isci_adi);
-            final Get_Set veri = new Get_Set();
+            rowView.setBackgroundColor(mContext.getResources().getColor(R.color.iscilik_yesil));
             isci_adi.setTextColor(mContext.getResources().getColor(R.color.white));
-            TextView calisma_saati = holder.itemView.findViewById(R.id.calisma_saati);
             calisma_saati.setTextColor(mContext.getResources().getColor(R.color.white));
 
         }else {
-            final TextView isci_adi = holder.itemView.findViewById(R.id.isci_adi);
-            final Get_Set veri = new Get_Set();
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
+            rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    veri.setIsci(puantajMainItems.get(positionlocal).getName());
-                    Toast.makeText(mContext, "position"+positionlocal, Toast.LENGTH_SHORT).show();
-                    Button button1 = holder.itemView.findViewById(R.id.isim);
+                    veri.setIsci(puantajMainItems.get(position).getName());
+                    dialogCustom.show();
+                    Toast.makeText(mContext, "position"+position, Toast.LENGTH_SHORT).show();
+
                     Get_Set veri = new Get_Set();
                     String isci = veri.getIsci();
                     button1.setText(veri.getIsci());
                 }
             });
         }
+
+
+
+
+
+        return rowView;
+
     }
 
-    @Override
-    public int getItemCount() {
-        return puantajMainItems.size();
-    }
-
-    public class  ViewHolder  extends  RecyclerView.ViewHolder{
-
-        public TextView isci_adi,calisma_saati;
-
-
-        public ViewHolder(View view) {
-            super(view);
-            isci_adi= (TextView) view.findViewById(R.id.isci_adi);
-            calisma_saati=(TextView)view.findViewById(R.id.calisma_saati);
-
-        }
-
-        public void setData(İsciPuantajItem item) {
-
-            this.isci_adi.setText(item.getName());
-            this.calisma_saati.setText(item.getSaat().toString());
-        }
-    }
 }

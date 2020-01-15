@@ -17,6 +17,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import net.proys.proysrail.Adapters.ListView_adapter;
 import net.proys.proysrail.Adapters.İp1PopupAdapter;
 import net.proys.proysrail.Adapters.İscilikPuantajAdapter;
 import net.proys.proysrail.Items.İsciPuantajItem;
@@ -28,9 +29,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class IP1ISCILIKPUANTAJ extends AppCompatActivity {
-    RecyclerView recyclerView;
+    ListView recyclerView;
     ArrayList<İsciPuantajItem> array;
-    İscilikPuantajAdapter adapter;
+    ListView_adapter adapter;
     ImageView image;
     AlertDialog dialogCustom;
     AlertDialog.Builder builderSingle,builderCustom;
@@ -53,10 +54,12 @@ public class IP1ISCILIKPUANTAJ extends AppCompatActivity {
         //String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11);
         array = database.ReadİşçilikPuantaj(date.format(formatter),formen_tablodan_gelen);
 
-        adapter=new İscilikPuantajAdapter(array,getApplicationContext(),date.format(formatter),bildiri_id);
+        //adapter=new ListView_adapter(array,getApplicationContext(),date.format(formatter),bildiri_id);
+        String[] deneme = new String[]{"a","b","c"};
+        adapter=new ListView_adapter(IP1ISCILIKPUANTAJ.this, date.format(formatter),bildiri_id,array,deneme);
         recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //recyclerView.setHasFixedSize(true);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
 
