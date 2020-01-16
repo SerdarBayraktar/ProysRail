@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import net.proys.proysrail.Gecici_pop_up;
 import net.proys.proysrail.Get_Set;
 import net.proys.proysrail.Iscilik_Puantaj_Imalat;
 import net.proys.proysrail.Items.İsciPuantajItem;
@@ -151,9 +152,15 @@ public class ListView_adapter extends ArrayAdapter<String> {
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dialogCustom.show();
+                    //dialogCustom.show();
                     veri.setIsci(puantajMainItems.get(position).getName());
                     Toast.makeText(mContext, "position"+position, Toast.LENGTH_SHORT).show();
+                    Intent intent =new Intent(mContext, Gecici_pop_up.class);
+                    intent.putExtra("id",bildiri_id);
+                    intent.putExtra("tarih",tarih);
+
+                    intent.putExtra("isim",puantajMainItems.get(position).getName());
+                    mContext.startActivity(intent);
 
                 }
 
@@ -166,8 +173,13 @@ public class ListView_adapter extends ArrayAdapter<String> {
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dialogCustom.show();
+                    //dialogCustom.show();
+                    Intent intent =new Intent(mContext, Gecici_pop_up.class);
 
+                    intent.putExtra("isim",puantajMainItems.get(position).getName());
+                    intent.putExtra("id",bildiri_id);
+                    intent.putExtra("tarih",tarih);
+                    mContext.startActivity(intent);
                     veri.setIsci(puantajMainItems.get(position).getName());
                     Toast.makeText(mContext, "position"+position, Toast.LENGTH_SHORT).show();
                 }
@@ -182,9 +194,13 @@ public class ListView_adapter extends ArrayAdapter<String> {
                 @Override
                 public void onClick(View v) {
                     veri.setIsci(puantajMainItems.get(position).getName());
-                    dialogCustom.show();
+                    //dialogCustom.show();
                     Toast.makeText(mContext, "position"+position, Toast.LENGTH_SHORT).show();
-
+                    Intent intent =new Intent(mContext, Gecici_pop_up.class);
+                    intent.putExtra("isim",puantajMainItems.get(position).getName());
+                    intent.putExtra("id",bildiri_id);
+                    intent.putExtra("tarih",tarih);
+                    mContext.startActivity(intent);
                     Get_Set veri = new Get_Set();
                     String isci = veri.getIsci();
                     button1.setText(veri.getIsci());
