@@ -74,4 +74,10 @@ public class Gecici_pop_up extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Gecici_pop_up.this,L1_main.class);
+        startActivity(intent);
+    }
 }

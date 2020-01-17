@@ -190,4 +190,10 @@ public class IP1ISCILIKPUANTAJ extends AppCompatActivity {
         });*/
       recyclerView=findViewById(R.id.recycler);
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(IP1ISCILIKPUANTAJ.this,L1_main.class);
+        startActivity(intent);
+    }
 }

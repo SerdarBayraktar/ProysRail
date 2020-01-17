@@ -176,9 +176,8 @@ public class Iscilik_Puantaj_Imalat extends AppCompatActivity {
 
         @Override
         public void onBackPressed() {
-            Intent intent = new Intent(Iscilik_Puantaj_Imalat.this,L3_imalat.class);
+            Intent intent = new Intent(Iscilik_Puantaj_Imalat.this,L1_main.class);
             SQLiteHelper database = new SQLiteHelper(Iscilik_Puantaj_Imalat.this);
-            database.DeleteTaslak(String.valueOf(veri.getKod()));//id tarih sil
             super.onBackPressed();
         }
     }/*else if(intent.getStringExtra("tip").equals("sektör")){

@@ -104,10 +104,10 @@ public class MainActivity extends AppCompatActivity {
             database.WritePersonel("R0015","Hıdır Yıldız","123.789","iscilik","isci","R0002",8,1);
             database.WritePersonel("R0016","İbrahim Özyürek","125.786","iscilik","isci","R0002",8,1);
             database.WritePersonel("R0017","Kazım Yiğit","243.562","iscilik","isci","",8,1);
-            database.WritePersonel("R0020","Platform Vagon","053.122","makine","makine","R0022",8,16);
-            database.WritePersonel("R0021","VAIACAR","067.578","makine","makine","R0022",8,1);
-            database.WritePersonel("R0022","Panel Serme Grubu","","makine","grup","",8,1);
-            database.WritePersonel("R0023","LDH 70","210","makine","makine","R0022",8,1);
+            database.WritePersonel("R0020","Titan","053.122","makine","makine","R0022",8,16);
+            database.WritePersonel("R0021","Kamyon Üstü Vinç","067.578","makine","makine","R0022",8,1);
+            database.WritePersonel("R0022","Tır seti","","makine","grup","",8,1);
+            database.WritePersonel("R0023","Alın Kaynak Makinesi","210","makine","makine","R0022",8,1);
 /*
 
             database.WriteImalat("T0001", "Balastlı Hat Montajı", "birincil", "thm", 1.446, 402889, "B0001", 90168, 0,1);
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
             //database.WriteSektor(110, "Gayrettepe Loop Hattı", "ana-hat", "1", 000000, 100894, 1, "T0015--T0016", "A1");
 
             database.WriteImalat("T0015", "Faz-1 Betonu Dökülmesi", "birincil", "thm", 1, 1, "B0001", 104, 100,1);
-            database.WriteImalat("T0016", "Faz-2 Betonu Dökülmesi (trapez kalıp dahil)", "birincil", "thm", 1, 1, "B0001", 104, 100,1);
+            database.WriteImalat("T0016", "Faz-2 Betonu Dökülmesi", "birincil", "thm", 1, 1, "B0001", 104, 100,1);
 
 /*
             database.WriteSektor(90001, "Tünel-189", "ana-hat", "1--2", 189862, 191084, 1, "T0025--T0026--T0013--T0014--T0015--T0006--T0007--T0008--T0009", "A1");
