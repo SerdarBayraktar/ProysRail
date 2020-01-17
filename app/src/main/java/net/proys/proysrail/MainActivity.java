@@ -139,15 +139,15 @@ public class MainActivity extends AppCompatActivity {
             database.WriteImalat("T0030", "Geçici Hat Montajı", "birincil", "thm", 0, 0, "B0001", 90168, 540,1);
             database.WriteImalat("T0031", "Konvansiyonel Hat Montajı", "birincil", "thm", 0, 0, "B0001", 90026, 540,1);
 */
-            database.WriteSektor(100, "Kemerburgaz - Göktürk", "ana-hat", "1--2", 115052, 118183, 1, "T0015--T0016", "A1");
-            database.WriteSektor(101, "E02 - İhsaniye", "ana-hat", "1--2", 120803, 128139, 1, "T0015--T0016", "A1");
-            database.WriteSektor(102, "Havalimanı-1 - Hat Sonu", "ana-hat", "1--2", 134174, 138032, 1, "T0015--T0016", "A1");
-            database.WriteSektor(103, "Gayrettepe - Kağıthane", "ana-hat", "1--2", 000000, 13798, 1, "T0015--T0016", "A1");
-            database.WriteSektor(104, "İhsaniye - Havalimanİ-2", "ana-hat", "1--2", 128139, 131085, 1, "T0015--T0016", "A1");
-            database.WriteSektor(105, "Hasdal - Kemerburgaz", "ana-hat", "1--2", 109440, 115052, 1, "T0015--T0016", "A1");
-            database.WriteSektor(106, "Havalimanı-2 - Havalimaı-1", "ana-hat", "1--2", 131805, 134174, 1, "T0015--T0016", "A1");
-            database.WriteSektor(107, "Göktürk - E02", "ana-hat", "1--2", 118182, 120823, 1, "T0015--T0016", "A1");
-            database.WriteSektor(108, "Kağıthane - Hasdal", "ana-hat", "1--2", 103798, 109440, 1, "T0015--T0016", "A1");
+            database.WriteSektor(100, "Kemerburgaz - Göktürk", "ana-hat", "1--2", 15052, 18183, 1, "T0015--T0016", "A1");
+            database.WriteSektor(101, "E02 - İhsaniye", "ana-hat", "1--2", 20803, 28139, 1, "T0015--T0016", "A1");
+            database.WriteSektor(102, "Havalimanı-1 - Hat Sonu", "ana-hat", "1--2", 34174, 38032, 1, "T0015--T0016", "A1");
+            database.WriteSektor(103, "Gayrettepe - Kağıthane", "ana-hat", "1--2", 0, 13798, 1, "T0015--T0016", "A1");
+            database.WriteSektor(104, "İhsaniye - Havalimanİ-2", "ana-hat", "1--2", 28139, 31085, 1, "T0015--T0016", "A1");
+            database.WriteSektor(105, "Hasdal - Kemerburgaz", "ana-hat", "1--2", 9440, 15052, 1, "T0015--T0016", "A1");
+            database.WriteSektor(106, "Havalimanı-2 - Havalimaı-1", "ana-hat", "1--2", 31805, 34174, 1, "T0015--T0016", "A1");
+            database.WriteSektor(107, "Göktürk - E02", "ana-hat", "1--2", 18182, 20823, 1, "T0015--T0016", "A1");
+            database.WriteSektor(108, "Kağıthane - Hasdal", "ana-hat", "1--2", 3798, 9440, 1, "T0015--T0016", "A1");
             //database.WriteSektor(109, "M4 Cep Hattı", "ana-hat", "1", 000000, 100242, 1, "T0015--T0016", "A1");
             //database.WriteSektor(110, "Gayrettepe Loop Hattı", "ana-hat", "1", 000000, 100894, 1, "T0015--T0016", "A1");
 
