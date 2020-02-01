@@ -3,7 +3,8 @@ package net.proys.proysrail;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -13,20 +14,19 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.parse.FindCallback;
-import com.parse.Parse;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
+import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
@@ -57,7 +57,7 @@ public class Anasayfa extends AppCompatActivity {
       setOnclickEvents();
        Benihatirla();
        //urldeneme();
-
+        urlget();
         //System.out.println(database.ReadPersonelwImalat_id("T0002")[0]);
 
     }
@@ -85,9 +85,9 @@ public class Anasayfa extends AppCompatActivity {
 
     }
     protected void urldeneme(){
-        String url = "http://31.210.91.198/restdeneme/deneme1";
+        String url = "http://31.210.91.198/rest/bildiri_cek";
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -131,6 +131,58 @@ public class Anasayfa extends AppCompatActivity {
         };
             /*istek işlenir.*/
         MySingleton.getInstance(getApplicationContext()).addToRequestQue(stringRequest);
+
+    }
+    protected void urlget() {
+        RequestQueue mRequestQueue;
+        StringRequest mStringRequest;
+        String url = "http://31.210.91.198/rest/bildiri_cek?format=json";
+
+
+        //RequestQueue initialized
+        mRequestQueue = Volley.newRequestQueue(this);
+
+        //String Request initialized
+        mStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                Toast.makeText(getApplicationContext(), "Response :" + response.toString(), Toast.LENGTH_LONG).show();//display the response on screen
+                //System.out.println("deneme1 "+response.split("\\{")[1].split(",")[0].split(":")[0]);
+                //System.out.println("deneme2 "+response.split("\\{")[1].split(",")[0].split(":")[1]);
+                List<JSONObject> list = new ArrayList<>();
+                String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
+                //System.out.println("deneme0 "+ array[0]);
+                try {
+                    //JSONObject jsonObject = new JSONObject(response.substring(1,response.length()-1));
+                    //System.out.println("deneme3 "+jsonObject.get("bildiri_id"));
+                    //System.out.println("deneme3 "+response);
+
+                    for (int i = 0; i<array.length;i++){
+                        //System.out.println("deneme0 "+ array[i]);
+                        String asd = array[i]+"\\}";
+                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
+                        //System.out.println("deneme0 "+ asd);
+
+                        JSONObject jsonObject = new JSONObject(asd);
+                        list.add(jsonObject);
+
+                        System.out.println("deneme "+String.valueOf(i)+" " + list.get(i).keys().next());
+                    }
+                }catch (JSONException err){
+                    Log.d("Error", err.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Anasayfa.this, error.toString(), Toast.LENGTH_LONG).show();
+                System.out.println("asd" + error.toString());
+                Log.i("tag", "Error :" + error.toString());
+            }
+        });
+
+        mRequestQueue.add(mStringRequest);
 
     }
     public void Benihatirla(){

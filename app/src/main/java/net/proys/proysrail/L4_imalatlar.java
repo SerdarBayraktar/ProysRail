@@ -1,23 +1,13 @@
 package net.proys.proysrail;
 
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.os.WorkSource;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class L4_imalatlar extends AppCompatActivity {
     String[] maintitle ={

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.List;
 
-import static android.support.constraint.Constraints.TAG;
+//import static androidx.constraintlayout.Constraints.TAG;
 
 /**
  * Created by Proys Yazılım on 8.09.2019.

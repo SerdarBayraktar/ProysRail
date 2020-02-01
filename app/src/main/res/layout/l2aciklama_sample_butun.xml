@@ -26,7 +26,7 @@
             android:layout_height="39.7dp">
 
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="14.7dp"
                 android:layout_height="16.7dp"
                 android:src="@drawable/okgen_1"
@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="right">
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_marginRight="15dp"
                     android:layout_width="26.3dp"
                     android:layout_height="wrap_content"

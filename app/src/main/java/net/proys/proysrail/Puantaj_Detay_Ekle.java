@@ -1,18 +1,15 @@
 package net.proys.proysrail;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import net.proys.proysrail.Adapters.PuantajDetayEkleAdapter;
-import net.proys.proysrail.Fragments.MakinePuantaj;
 import net.proys.proysrail.Items.PuantajDetayItem;
 
 import java.util.ArrayList;
