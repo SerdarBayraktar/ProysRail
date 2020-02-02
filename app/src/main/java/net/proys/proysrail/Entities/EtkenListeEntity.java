@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class EtkenListe {
+public class EtkenListeEntity {
 
     @PrimaryKey (autoGenerate = true)
     public int etken_id;

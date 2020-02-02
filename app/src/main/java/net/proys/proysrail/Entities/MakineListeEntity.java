@@ -6,12 +6,12 @@ import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {
         @ForeignKey(
-                entity = MakineKategori.class,
+                entity = MakineKategoriEntity.class,
                 parentColumns = "kategori_id",
                 childColumns = "kategori"
         )
 })
-public class MakineListe {
+public class MakineListeEntity {
 
     @PrimaryKey(autoGenerate = true)//todo 9000+
     public int makine_id;

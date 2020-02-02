@@ -1,25 +1,25 @@
 package net.proys.proysrail.Entities;
 
+
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 
 @Entity(foreignKeys = {
         @ForeignKey(
-                entity = ImalatListe.class,
+                entity = ImalatListeEntity.class,
                 parentColumns = "imalat_id",
                 childColumns = "imalat"
         ),
         @ForeignKey(
-                entity = SektorListe.class,
-                parentColumns = "sektor_id",
-                childColumns = "sektor"
+                entity = MakineListeEntity.class,
+                parentColumns = "makine_id",
+                childColumns = "makine"
         )
 })
-public class ImalatSektorEslesme {
+public class ImalatMakineEslesmeEntity {
 
     public String imalat;
 
-    public String sektor;
+    public String makine;
 
-    public boolean tahmin;
 }

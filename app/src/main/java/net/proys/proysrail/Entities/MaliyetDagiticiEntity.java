@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 
 @Entity//todo foreign keys
-public class MaliyetDagitici {
+public class MaliyetDagiticiEntity {
 
     public String dagilan;
 

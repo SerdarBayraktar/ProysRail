@@ -9,17 +9,17 @@ import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {
         @ForeignKey(
-                entity = BildiriTipListe.class,
+                entity = BildiriTipListeEntity.class,
                 parentColumns = "bildiritip_id",
                 childColumns = "bildiri"
         ),
         @ForeignKey(
-                entity = Kullanicilar.class,
+                entity = KullanicilarEntity.class,
                 parentColumns = "kullanici_id",
                 childColumns = "kullanici"
         )
 })
-public class Bildiriler {
+public class BildirilerEntity {
 
     @PrimaryKey(autoGenerate = true)
     public String bildiri_id;

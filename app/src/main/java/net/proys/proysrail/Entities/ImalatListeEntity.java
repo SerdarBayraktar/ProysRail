@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class ImalatListe {
+public class ImalatListeEntity {
 
     @PrimaryKey(autoGenerate = true)
     public int imalat_id;//todo 10+

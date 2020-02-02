@@ -1,25 +1,21 @@
 package net.proys.proysrail.Entities;
 
-import java.sql.Date;
-
-import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
-import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {
         @ForeignKey(
-                entity = Kullanicilar.class,
+                entity = KullanicilarEntity.class,
                 parentColumns = "kullanici_id",
                 childColumns = "kullanici"
         ),
         @ForeignKey(
-                entity = ImalatListe.class,
+                entity = ImalatListeEntity.class,
                 parentColumns = "imalat_id",
                 childColumns = "imalat"
         )
 })
-public class KullaniciImalatEslesme {
+public class KullaniciImalatEslesmeEntity {
 
 
     public String kullanici;

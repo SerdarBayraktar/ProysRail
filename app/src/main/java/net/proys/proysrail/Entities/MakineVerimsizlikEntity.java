@@ -8,30 +8,30 @@ import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {
         @ForeignKey(
-                entity = Bildiriler.class,
+                entity = BildirilerEntity.class,
                 parentColumns = "bildiri_id",
                 childColumns = "bildiri"
         ),
         @ForeignKey(
-                entity = MakineListe.class,
+                entity = MakineListeEntity.class,
                 parentColumns = "makine_id",
                 childColumns = "makine"
         ),
         @ForeignKey(
-                entity = ImalatListe.class,
+                entity = ImalatListeEntity.class,
                 parentColumns = "imalat_id",
                 childColumns = "imalat"
         ),
         @ForeignKey(
-                entity = ImalatGerceklesme.class,
-                parentColumns = "gerceklesme_id",
-                childColumns = "gerceklesme"
+                entity = EtkenGerceklesmeEntity.class,
+                parentColumns = "etken_gercek_id",
+                childColumns = "etken"
         )
 })
-public class MakinePuantaj {
+public class MakineVerimsizlikEntity {
 
     @PrimaryKey(autoGenerate = true)
-    public int makinepuantaj_id;
+    public int makineverimsizlik_id;
 
     public String bildiri;
 
@@ -41,7 +41,7 @@ public class MakinePuantaj {
 
     public String imalat;
 
-    public Float puantaj;
+    public Float deger;
 
-    public String gerceklesme;
+    public String etken;
 }

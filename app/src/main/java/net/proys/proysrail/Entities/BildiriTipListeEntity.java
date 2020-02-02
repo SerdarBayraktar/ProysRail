@@ -7,7 +7,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class BildiriTipListe {
+public class BildiriTipListeEntity {
 
     @PrimaryKey(autoGenerate = true)//todo 200 - 299
     public int bildiritip_id;

@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.parse.Parse;
 import com.parse.ParseInstallation;
@@ -12,6 +13,7 @@ import com.parse.ParseInstallation;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
+    public static RoomDatabase database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
         //kopyala();
         data();
         //data1();
-        Parse.initialize(this);
-        ParseInstallation.getCurrentInstallation().saveInBackground();
+        //Parse.initialize(this);
+        //ParseInstallation.getCurrentInstallation().saveInBackground();
+        RoomStart();
 
         // Intent intent = new Intent(MainActivity.this,Anasayfa.class);
         //startActivity(intent);
@@ -350,6 +353,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }.start();
+
+
+    }
+    protected void RoomStart(){
+        //database.wordDao().ekle(word);
+        //database = Room.databaseBuilder(getApplicationContext(),RoomDatabase.class,"ProysDB").allowMainThreadQueries().build();
+
+
 
 
     }

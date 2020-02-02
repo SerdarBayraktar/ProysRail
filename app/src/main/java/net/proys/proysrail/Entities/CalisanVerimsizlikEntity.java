@@ -6,30 +6,34 @@ import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {
         @ForeignKey(
-                entity = Bildiriler.class,
+                entity = BildirilerEntity.class,
                 parentColumns = "bildiri_id",
                 childColumns = "bildiri"
         ),
         @ForeignKey(
-                entity = CalisanListe.class,
+                entity = CalisanListeEntity.class,
                 parentColumns = "calisan_id",
                 childColumns = "calisan"
         ),
         @ForeignKey(
-                entity = ImalatListe.class,
+                entity = ImalatListeEntity.class,
                 parentColumns = "imalat_id",
                 childColumns = "imalat"
         ),
         @ForeignKey(
-                entity = ImalatGerceklesme.class,
+                entity = ImalatGerceklesmeEntity.class,
                 parentColumns = "gerceklesme_id",
+                childColumns = "gerceklesme"
+        ),
+        @ForeignKey(
+                entity = EtkenGerceklesmeEntity.class,
+                parentColumns = "etken_gercek_id",
                 childColumns = "gerceklesme"
         )
 })
-public class CalisanPuantaj {
-
+public class CalisanVerimsizlikEntity {
     @PrimaryKey(autoGenerate = true)
-    public int calisanpuantaj_id;
+    public int calisanverimsizlik_id;
 
     public String bildiri;
 
@@ -39,13 +43,8 @@ public class CalisanPuantaj {
 
     public String imalat;
 
-    public Float puantaj;
+    public String etken;
 
-    public Float fazla_mesai;
-
-    public String puantaj_tipi;
-
-    public String gerceklesme;
-
+    public Float deger;
 
 }

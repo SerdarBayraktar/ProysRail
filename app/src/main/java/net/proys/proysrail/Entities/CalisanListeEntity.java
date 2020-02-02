@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 
 @Entity
 
-public class CalisanListe {
+public class CalisanListeEntity {
 
     @PrimaryKey (autoGenerate = true)
     public int calisan_id;//todo 1100+

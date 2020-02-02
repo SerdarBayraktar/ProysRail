@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class SektorListe {
+public class SektorListeEntity {
 
     @PrimaryKey(autoGenerate = true)
     public int sektor_id;

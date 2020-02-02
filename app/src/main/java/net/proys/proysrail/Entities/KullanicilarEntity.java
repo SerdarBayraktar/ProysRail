@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Kullanicilar {
+public class KullanicilarEntity {
 
     @PrimaryKey(autoGenerate = true)//todo 100 - 200
     public int kullanici_id;

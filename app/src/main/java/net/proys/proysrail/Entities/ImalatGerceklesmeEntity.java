@@ -8,23 +8,23 @@ import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {
         @ForeignKey(
-                entity = ImalatListe.class,
+                entity = ImalatListeEntity.class,
                 parentColumns = "imalat_id",
                 childColumns = "imalat"
         ),
         @ForeignKey(
-                entity = SektorListe.class,
+                entity = SektorListeEntity.class,
                 parentColumns = "sektor_id",
                 childColumns = "sektor"
         ),
         @ForeignKey(
-                entity = Bildiriler.class,
+                entity = BildirilerEntity.class,
                 parentColumns = "bildiri_id",
                 childColumns = "bildiri"
         )
 
 })
-public class ImalatGerceklesme {
+public class ImalatGerceklesmeEntity {
 
     @PrimaryKey(autoGenerate = true)
     public int gerceklesme_id;

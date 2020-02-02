@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class MakineKategori {
+public class MakineKategoriEntity {
 
     @PrimaryKey
     public int kategori_id;
