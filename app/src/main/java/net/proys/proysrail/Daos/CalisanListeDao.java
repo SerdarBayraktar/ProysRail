@@ -7,6 +7,7 @@ import java.util.List;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 @Dao
 public interface CalisanListeDao {
@@ -17,4 +18,9 @@ public interface CalisanListeDao {
 
     @Query("Select * from CalisanListeEntity")
     List<CalisanListeEntity> readAll();
+
+    @Update
+    void update(CalisanListeEntity calisanListeEntity);
+
+
 }

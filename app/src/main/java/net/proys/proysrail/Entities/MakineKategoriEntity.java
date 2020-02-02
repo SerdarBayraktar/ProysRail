@@ -9,6 +9,10 @@ public class MakineKategoriEntity {
     @PrimaryKey
     public int kategori_id;
 
+    public String kategori_isim;
+
+    public boolean rekabet;
+
     public int getKategori_id() {
         return kategori_id;
     }
@@ -33,7 +37,4 @@ public class MakineKategoriEntity {
         this.rekabet = rekabet;
     }
 
-    public String kategori_isim;
-
-    public boolean rekabet;
 }

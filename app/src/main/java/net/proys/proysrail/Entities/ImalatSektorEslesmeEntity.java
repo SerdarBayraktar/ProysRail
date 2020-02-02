@@ -21,9 +21,41 @@ public class ImalatSektorEslesmeEntity {
     @PrimaryKey(autoGenerate =true)
     public int id;
 
-    public String imalat;
+    public int imalat;
 
-    public String sektor;
+    public int sektor;
 
     public boolean tahmin;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getImalat() {
+        return imalat;
+    }
+
+    public void setImalat(int imalat) {
+        this.imalat = imalat;
+    }
+
+    public int getSektor() {
+        return sektor;
+    }
+
+    public void setSektor(int sektor) {
+        this.sektor = sektor;
+    }
+
+    public boolean isTahmin() {
+        return tahmin;
+    }
+
+    public void setTahmin(boolean tahmin) {
+        this.tahmin = tahmin;
+    }
 }

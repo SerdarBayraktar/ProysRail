@@ -12,6 +12,85 @@ import androidx.room.PrimaryKey;
         )
 })
 public class MakineListeEntity {
+    public int getMakine_id() {
+        return makine_id;
+    }
+
+    public void setMakine_id(int makine_id) {
+        this.makine_id = makine_id;
+    }
+
+    public String getKategori() {
+        return kategori;
+    }
+
+    public void setKategori(String kategori) {
+        this.kategori = kategori;
+    }
+
+    public String getTip() {
+        return tip;
+    }
+
+    public void setTip(String tip) {
+        this.tip = tip;
+    }
+
+    public String getMakine_ismi() {
+        return makine_ismi;
+    }
+
+    public void setMakine_ismi(String makine_ismi) {
+        this.makine_ismi = makine_ismi;
+    }
+
+    public String getKisa_isim() {
+        return kisa_isim;
+    }
+
+    public void setKisa_isim(String kisa_isim) {
+        this.kisa_isim = kisa_isim;
+    }
+
+    public String getPlaka() {
+        return plaka;
+    }
+
+    public void setPlaka(String plaka) {
+        this.plaka = plaka;
+    }
+
+    public Double getVt_puantaj() {
+        return vt_puantaj;
+    }
+
+    public void setVt_puantaj(Double vt_puantaj) {
+        this.vt_puantaj = vt_puantaj;
+    }
+
+    public String getTaseron() {
+        return taseron;
+    }
+
+    public void setTaseron(String taseron) {
+        this.taseron = taseron;
+    }
+
+    public int getGrup_no() {
+        return grup_no;
+    }
+
+    public void setGrup_no(int grup_no) {
+        this.grup_no = grup_no;
+    }
+
+    public String getTemin() {
+        return temin;
+    }
+
+    public void setTemin(String temin) {
+        this.temin = temin;
+    }
 
     @PrimaryKey(autoGenerate = true)//todo 9000+
     public int makine_id;
@@ -26,11 +105,11 @@ public class MakineListeEntity {
 
     public String plaka;
 
-    public Float vt_puantaj;
+    public Double vt_puantaj;
 
     public String taseron;
 
-    public String grup_no;
+    public int grup_no;
 
     public String temin;
 

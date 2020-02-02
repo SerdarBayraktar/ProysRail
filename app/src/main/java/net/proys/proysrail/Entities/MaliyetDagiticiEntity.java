@@ -11,9 +11,42 @@ public class MaliyetDagiticiEntity {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    public String dagilan;
+    public int dagilan;
 
-    public String toplayan;
+    public int toplayan;
 
-    public Float oran;
+    public Double oran;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getDagilan() {
+        return dagilan;
+    }
+
+    public void setDagilan(int dagilan) {
+        this.dagilan = dagilan;
+    }
+
+    public int getToplayan() {
+        return toplayan;
+    }
+
+    public void setToplayan(int toplayan) {
+        this.toplayan = toplayan;
+    }
+
+    public Double getOran() {
+        return oran;
+    }
+
+    public void setOran(Double oran) {
+        this.oran = oran;
+    }
 }

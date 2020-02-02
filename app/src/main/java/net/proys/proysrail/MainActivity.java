@@ -369,12 +369,26 @@ public class MainActivity extends AppCompatActivity {
         makineKategoriEntity.setRekabet(true);
        // database.makineKategoriDao().ekle(makineKategoriEntity);
         RemoteServerDataCheck sv = new RemoteServerDataCheck(MainActivity.this);
-        List<CalisanListeEntity> list = database.calisanListeDao().readAll();
+        sv.entegrationDataManagement();
 
 
-        //database.makineKategoriDao().ekle(makineKategoriEntity);
-        List<MakineKategoriEntity> list1 = database.makineKategoriDao().ReadAll();
-        System.out.println("asd "+list1.get(0).getKategori_isim());
+    }
+    private void tumtablolararrayler(){
+        String[] CalisanListeColumns = new String[]{
+                "calisan_id",
+                "isim",
+                "soyisim",
+                "isim_tam",
+                "maviyaka",
+                "direkt",
+                "pozisyon",
+                "vt_puantaj",
+                "unvan",
+                "departman",
+                "taseron",
+                "sorumlu",
+                "v_imalat"
+        };
 
     }
 }

@@ -26,4 +26,27 @@ public class ImalatMakineEslesmeEntity {
 
     public String makine;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getImalat() {
+        return imalat;
+    }
+
+    public void setImalat(String imalat) {
+        this.imalat = imalat;
+    }
+
+    public String getMakine() {
+        return makine;
+    }
+
+    public void setMakine(String makine) {
+        this.makine = makine;
+    }
 }
