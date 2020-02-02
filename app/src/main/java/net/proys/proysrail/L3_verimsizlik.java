@@ -40,7 +40,7 @@ public class L3_verimsizlik extends AppCompatActivity {
         //ariza_edit = findViewById(R.id.ariza_edit);
         ekleme_butonu = findViewById(R.id.ariza_ekleme);
         aciklama_icon = findViewById(R.id.imageAciklama);
-        ilerleme_icon = findViewById(R.id.ilerleme_icon);
+        //ilerleme_icon = findViewById(R.id.ilerleme_icon);
         verimsizlik_icon = findViewById(R.id.imageverim);
 
         imalat_icon = findViewById(R.id.imageImalat);
@@ -84,7 +84,7 @@ public class L3_verimsizlik extends AppCompatActivity {
             }
         });
 
-        ilerleme_icon.setOnClickListener(new View.OnClickListener() {
+        aciklama_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(L3_verimsizlik.this,L3_aciklama.class);

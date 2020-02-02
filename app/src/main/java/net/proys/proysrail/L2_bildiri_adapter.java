@@ -74,8 +74,8 @@ public class L2_bildiri_adapter extends ArrayAdapter<String> {
             imalat_adi.setText(String.valueOf(imalat_array[position]));
             mesafe.setText(String.valueOf(mesafe_array[position]+" "+ mesafe_birim_array[position]));
             System.out.println(km_bas_array[position]);
-            km_bas.setText(String.valueOf(km_bas_array[position].substring(0,3)+"+"+km_bas_array[position].substring(3,6)));
-            km_son.setText(String.valueOf(km_son_array[position].substring(0,3)+"+"+km_son_array[position].substring(3,6)));
+            km_bas.setText(leadingZeros(km_bas_array[position],km_bas_array[position].length()));
+            km_son.setText(leadingZeros(km_son_array[position],km_son_array[position].length()));
             personel_sayisi.setText(String.valueOf(personel_sayisi_array[position]+" kişi"));
             personel_puantaj.setText(String.valueOf(personel_puantaj_array[position]+" saat"));
             makine_sayisi.setText(String.valueOf(makine_sayisi_array[position]+ " adet"));
@@ -88,5 +88,31 @@ public class L2_bildiri_adapter extends ArrayAdapter<String> {
 
             return rowView;
 
-        };
+        }
+
+    // 4 haneden az olanları sol tarafını 0 la dolduran fonksiyon
+    public final String leadingZeros(String s,int length) {
+        if (s.length() >4)
+        {
+            return formatKm(s);
+        }
+        else if(s.length()==4)
+            return formatKm(s);
+        else
+        {
+            return  formatKm( String.format("%0" + (4-s.length()) + "d%s", 0, s));
+
+        }
+
+    }
+    // + lı format haline getiriyor
+    public final String  formatKm(String s)
+    {
+        StringBuilder stringBuilder=new StringBuilder();
+        stringBuilder.append(s);
+
+        return     stringBuilder.insert(s.length()-3,"+").toString();
+
+    }
+
 }

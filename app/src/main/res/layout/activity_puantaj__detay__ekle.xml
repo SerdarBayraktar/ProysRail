@@ -69,9 +69,9 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="29dp"
             android:layout_marginTop="-4dp"
-            android:fontFamily="@font/gil_sans_light_italic"
+            android:fontFamily="@font/opensans_italic"
             android:text="Makine İşletme"
-            android:textColor="@color/text_color"
+            android:textColor="@color/altbaslik"
             android:textSize="16.7sp" />
 
         <LinearLayout
@@ -91,7 +91,8 @@
 
     </RelativeLayout>
 
-    <EditText
+    <TextView
+
         android:id="@+id/editText"
         android:layout_width="0dp"
         android:layout_height="32.3dp"

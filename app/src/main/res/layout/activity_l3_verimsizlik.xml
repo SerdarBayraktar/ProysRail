@@ -234,7 +234,7 @@
         />
 
 
-    <ImageView
+  <!--  <ImageView
         android:id="@+id/ilerleme_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -242,7 +242,7 @@
         android:layout_toStartOf="@id/more"
         android:layout_marginBottom="15dp"
         android:layout_marginRight="15dp"
-        android:src="@drawable/sonraki_butonu" />
+        android:src="@drawable/sonraki_butonu" />-->
 
     <ImageView
         android:id="@+id/ariza_ekleme"

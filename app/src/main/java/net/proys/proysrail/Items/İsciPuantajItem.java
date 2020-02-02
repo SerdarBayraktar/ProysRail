@@ -2,11 +2,12 @@ package net.proys.proysrail.Items;
 
 public class İsciPuantajItem {
     String name;
-
+    String kategori;
     Float saat;
-    public İsciPuantajItem(String name, Float saat) {
+    public İsciPuantajItem(String name, Float saat,String kategori) {
         this.name = name;
         this.saat = saat;
+        this.kategori = kategori;
     }
 
 
@@ -14,7 +15,13 @@ public class İsciPuantajItem {
     public İsciPuantajItem() {
     }
 
+    public String getKategori() {
+        return kategori;
+    }
 
+    public void setKategori(String kategori) {
+        this.kategori = kategori;
+    }
 
     public String getName() {
         return name;

@@ -40,22 +40,23 @@ public class L4_is_gucu_ekip extends AppCompatActivity {
 
     }
     protected void setListView(){
+        final String tarih = String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11);
         final String[] isciler = database.ReadPersonelforL4(String.valueOf(veri.getKod()),"ekip");
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,isciler);
         listView1.setAdapter(arrayAdapter);
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                database.WriteTaslakResource(veri.getKod(),"tarih",veri.getImalatIsgucuid(),database.ReadPersonelwisim(isciler[position]),"iscilik","ekip",Integer.valueOf(database.ReadPersonel(database.ReadPersonelwisim(isciler[position]))[6]),Integer.valueOf(database.ReadPersonel(database.ReadPersonelwisim(isciler[position]))[7]),"efor");//TODO CHECK TARIH IMALAT
+                database.WriteTaslakResource(veri.getKod(),tarih,veri.getImalatIsgucuid(),database.ReadPersonelwisim(isciler[position]),"iscilik","ekip",Integer.valueOf(database.ReadPersonel(database.ReadPersonelwisim(isciler[position]))[6]),Integer.valueOf(database.ReadPersonel(database.ReadPersonelwisim(isciler[position]))[7]),"efor");//TODO CHECK TARIH IMALAT
                 String[] personel_id = database.ReadPersonelswEkip_id(database.ReadPersonelwisim(isciler[position]));
                 for(int i=0;i<personel_id.length;i++){
-                    database.WriteTaslakResource(veri.getKod(),"tarih",veri.getImalatIsgucuid(),personel_id[i],"iscilik","isci",Integer.valueOf(database.ReadPersonel(personel_id[i])[6]),Integer.valueOf(database.ReadPersonel(personel_id[i])[7]),database.ReadPersonelwisim(isciler[position]));
+                    database.WriteTaslakResource(veri.getKod(),tarih,veri.getImalatIsgucuid(),personel_id[i],"iscilik","isci",Integer.valueOf(database.ReadPersonel(personel_id[i])[6]),Integer.valueOf(database.ReadPersonel(personel_id[i])[7]),database.ReadPersonelwisim(isciler[position]));
 
                     List[] listeler = database.ReadTaslakVerimsizlik(String.valueOf(veri.getKod()),veri.getImalatIsgucuid());
                     List<String> etken_idler = listeler[0];
                     List<Integer> degerler = listeler[1];
                     for (int j =0; j<etken_idler.size(); j++){
-                        database.WriteTaslakResource(veri.getKod(), "tarih", veri.getImalatIsgucuid(), personel_id[i], "iscilik", "verimsiz", Integer.valueOf(degerler.get(j)), Integer.valueOf(database.ReadPersonel(personel_id[i])[7]), etken_idler.get(j));
+                        database.WriteTaslakResource(veri.getKod(), tarih, veri.getImalatIsgucuid(), personel_id[i], "iscilik", "verimsiz", Integer.valueOf(degerler.get(j)), Integer.valueOf(database.ReadPersonel(personel_id[i])[7]), etken_idler.get(j));
                         //ilki puantaj 2. si verimsizlik giriş
                     }
                 }

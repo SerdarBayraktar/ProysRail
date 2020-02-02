@@ -46,6 +46,7 @@ public class L4_verimsizlik_adapter extends ArrayAdapter<String> {
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String tarih = String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11);
 
                 String etken_id = database.ReadEtkenListesiforid(database.ReadEtkenListesi()[0][position]);
                 if (radioButton.isChecked()){
@@ -53,7 +54,7 @@ public class L4_verimsizlik_adapter extends ArrayAdapter<String> {
                     radioButton.setChecked(false);
                 }
                 else if(!radioButton.isChecked()) {
-                    database.WriteTaslakVerimsizlik(String.valueOf(veri.getKod()),"tarih",database.ReadGet_Set("ImalatId"),etken_id,database.ReadEtkenListesifordeger(etken_id));
+                    database.WriteTaslakVerimsizlik(String.valueOf(veri.getKod()),tarih,database.ReadGet_Set("ImalatId"),etken_id,database.ReadEtkenListesifordeger(etken_id));
                     radioButton.setChecked(true);
                 }
             }

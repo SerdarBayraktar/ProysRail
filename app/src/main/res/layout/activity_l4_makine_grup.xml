@@ -39,7 +39,7 @@
         android:layout_marginStart="29dp"
         android:layout_marginTop="-4dp"
         android:textColor="@color/text_color"
-        android:fontFamily="@font/gil_sans_light_italic"
+        android:fontFamily="@font/opensans_lightitalic"
         android:textSize="16.7sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

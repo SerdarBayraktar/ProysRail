@@ -39,7 +39,7 @@ public class L3_aciklama extends AppCompatActivity {
 
         TextView imalattxt = findViewById(R.id.imalattxt);
         imalattxt.setText(String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11));
-        ilerleme_icon = findViewById(R.id.ilerleme_icon);
+     //   ilerleme_icon = findViewById(R.id.ilerleme_icon);
         ekleme_butonu = findViewById(R.id.aciklama_ekleme);
         medya_icon = findViewById(R.id.imageCamera);
         imalat_icon = findViewById(R.id.imageImalat);
@@ -77,13 +77,13 @@ public class L3_aciklama extends AppCompatActivity {
             }
         });
 
-        ilerleme_icon.setOnClickListener(new View.OnClickListener() {
+      /*  ilerleme_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(L3_aciklama.this,L3_medya.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
     }
 
@@ -93,7 +93,7 @@ public class L3_aciklama extends AppCompatActivity {
         final List<Integer> aciklama_idler = lists[1];
         L3_aciklama_adapter adapter = new L3_aciklama_adapter(L3_aciklama.this,aciklamalar,aciklama_idler);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(L3_aciklama.this,L4_aciklama_detay.class);
@@ -102,7 +102,7 @@ public class L3_aciklama extends AppCompatActivity {
                 intent.putExtra("text",String.valueOf(aciklamalar.get(position)));
                 startActivity(intent);
             }
-        });
+        });*/
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override

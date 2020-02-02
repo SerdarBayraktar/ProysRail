@@ -40,10 +40,10 @@ public class L4_verimsizlik extends AppCompatActivity {
         //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, database.ReadEtkenListesi());
         L4_verimsizlik_adapter arrayAdapter = new L4_verimsizlik_adapter(L4_verimsizlik.this, database.ReadEtkenListesi()[0], database.ReadVerimsizlik(String.valueOf(veri.getKod()), database.ReadGet_Set("ImalatId"), database.ReadEtkenListesi()[0]));
         list.setAdapter(arrayAdapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-/*
+
                     String etken_id = database.ReadEtkenListesiforid(database.ReadEtkenListesi()[0][position]);
 
                     if (not checked){
@@ -55,10 +55,10 @@ public class L4_verimsizlik extends AppCompatActivity {
                     Intent intent = new Intent(L4_verimsizlik.this, L3_verimsizlik.class);
                     startActivity(intent);
 
-*/
+
 
             }
-        });
+        });*/
 
     }
     protected void setOnclickListeners(){

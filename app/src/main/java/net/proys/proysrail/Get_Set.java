@@ -19,9 +19,24 @@ public class Get_Set {
     private static String aciklamalar = "";
     private static int kullanici_id = 0;
     private static long kod =0;
+    private static String isci;
+    private static int puantajpopup;
 
+    public static int getPuantajpopup() {
+        return puantajpopup;
+    }
 
+    public static void setPuantajpopup(int puantajpopup) {
+        Get_Set.puantajpopup = puantajpopup;
+    }
 
+    public static String getIsci() {
+        return isci;
+    }
+
+    public static void setIsci(String isci) {
+        Get_Set.isci = isci;
+    }
 
     public static String getImalatIsgucuid() {
         return imalatIsgucuid;

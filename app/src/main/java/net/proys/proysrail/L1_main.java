@@ -73,28 +73,33 @@ public class L1_main extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    Intent intent = new Intent(L1_main.this,IP1ISCILIKPUANTAJ.class);
+                    startActivity(intent);
+                } else {
 
-                Get_Set veri = new Get_Set();
-                veri.setPosition(position);
-                L1_main l1_main = new L1_main();
-                SQLiteHelper database = new SQLiteHelper(L1_main.this);
-                String tarih = l1_main.getMaintitle()[veri.getPosition()].subSequence(l1_main.getMaintitle()[veri.getPosition()].length()-11,l1_main.getMaintitle()[veri.getPosition()].length()-1).toString();
-                String bildiri = database.ReadBildirilerwIsim(l1_main.getMaintitle()[veri.getPosition()].split(" ")[0]+" "+ l1_main.getMaintitle()[veri.getPosition()].split(" ")[1])[0];
-                SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMMdd");
-                SimpleDateFormat sdf1 = new SimpleDateFormat("dd.MM.yyyy");
-                Long kod = null;
-                try {
-                    kod = Long.valueOf(database.ReadGet_Set("KullaniciId")+String.valueOf(bildiri).substring(1)+sdf2.format(sdf1.parse(tarih)));
-                    veri.setKod(kod);
+                    Get_Set veri = new Get_Set();
+                    veri.setPosition(position);
+                    L1_main l1_main = new L1_main();
+                    SQLiteHelper database = new SQLiteHelper(L1_main.this);
+                    String tarih = l1_main.getMaintitle()[veri.getPosition()].subSequence(l1_main.getMaintitle()[veri.getPosition()].length() - 11, l1_main.getMaintitle()[veri.getPosition()].length() - 1).toString();
+                    String bildiri = database.ReadBildirilerwIsim(l1_main.getMaintitle()[veri.getPosition()].split(" ")[0] + " " + l1_main.getMaintitle()[veri.getPosition()].split(" ")[1])[0];
+                    SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMMdd");
+                    SimpleDateFormat sdf1 = new SimpleDateFormat("dd.MM.yyyy");
+                    Long kod = null;
+                    try {
+                        kod = Long.valueOf(database.ReadGet_Set("KullaniciId") + String.valueOf(bildiri).substring(1) + sdf2.format(sdf1.parse(tarih)));
+                        veri.setKod(kod);
 
-                } catch (ParseException e) {
-                    e.printStackTrace();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    Intent intent = new Intent(L1_main.this, L2_bildiri.class);
+                    intent.putExtra("main", row1[position]);
+                    intent.putExtra("sub", row2[position]);
+                    startActivity(intent);
+
                 }
-                Intent intent = new Intent(L1_main.this,L2_bildiri.class);
-                intent.putExtra("main",row1[position]);
-                intent.putExtra("sub",row2[position]);
-                startActivity(intent);
-
             }
         });
     }

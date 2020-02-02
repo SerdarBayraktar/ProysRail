@@ -2,9 +2,6 @@ package net.proys.proysrail;
 
 import android.app.Dialog;
 import android.content.Intent;
-
-import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -22,7 +19,10 @@ import net.proys.proysrail.Fragments.MakinePuantaj;
 import net.proys.proysrail.Fragments.MakineStatement;
 import net.proys.proysrail.Internfaces.Visibility;
 
-public class Makine_Isletme_MainFrame extends AppCompatActivity  implements Visibility {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+
+public class Makine_Isletme_MainFrame extends AppCompatActivity implements Visibility {
    RelativeLayout ustbar;
    TextView mainTitle,subTitle,machineName;
    ImageView more;
@@ -71,7 +71,9 @@ public class Makine_Isletme_MainFrame extends AppCompatActivity  implements Visi
         ft=getSupportFragmentManager().beginTransaction();
         if(fragmentTag=="PUANTAJ")
         {
-
+            fuel.setImageResource(R.drawable.fuel);
+            statement.setImageResource(R.drawable.statement);
+            puantaj.setImageResource(R.drawable.puantaj_checked);
             choose_machine.setVisibility(View.VISIBLE);
             more.setVisibility(View.VISIBLE);
             ft.replace(R.id.container,new MakinePuantaj());
@@ -81,18 +83,25 @@ public class Makine_Isletme_MainFrame extends AppCompatActivity  implements Visi
         }
         else if(fragmentTag=="FUEL")
         {
+            statement.setImageResource(R.drawable.statement);
+            puantaj.setImageResource(R.drawable.clock);
+             fuel.setImageResource(R.drawable.fuel_checked);
             ft.replace(R.id.container,new MakineFuel());
             ft.addToBackStack(null);
 
         }
         else if(fragmentTag=="FAULT")
         {
-            ft.replace(R.id.container,new MakineFault());
-            ft.addToBackStack(null);
+            Toast.makeText(this, "Henüz Hazır Değil", Toast.LENGTH_SHORT).show();
+           // ft.replace(R.id.container,new MakineFault());
+            //ft.addToBackStack(null);
 
         }
       else  if(fragmentTag=="STATEMENT")
         {
+            fuel.setImageResource(R.drawable.fuel);
+            puantaj.setImageResource(R.drawable.clock);
+            statement.setImageResource(R.drawable.statment_checked);
             ft.replace(R.id.container,new MakineStatement());
             ft.addToBackStack(null);
 

@@ -11,6 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         app:srcCompat="@color/background" />
+    <TextView
+        android:layout_below="@id/üstbar"
+        android:id="@+id/contur1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a3a3a3"/>
 
     <TextView
         android:id="@+id/isciadi"
@@ -24,13 +30,16 @@
 
     <TextView
         android:id="@+id/imalat"
-        android:textColor="#444444"
-        android:layout_marginTop="2dp"
+        android:layout_alignParentStart="true"
         android:layout_below="@id/isciadi"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="-4dp"
+        android:textColor="@color/altbaslik"
+        android:fontFamily="@font/opensans_italic"
+        android:textSize="16.7sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="subbalast" />
+        android:text="Subbalast Serimi" />
 
     <TextView
         android:id="@+id/txtPuantaj"

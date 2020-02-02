@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Fragments.MakineStatement">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:orientation="vertical"
+        android:id="@+id/text_aciklama"
+        android:layout_marginTop="9dp"
+        android:background="@color/background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:clickable="true"
+        android:layout_height="wrap_content"
+        android:padding="05dp">
+        <EditText
+            android:id="@+id/aciklama_txt"
+            android:gravity="top"
+            android:clickable="true"
+            android:hint="  "
+            android:textSize="16sp"
+            android:fontFamily="@font/opensans_light"
+            android:padding="7dp"
+            android:background="@drawable/edit_back_no_radius"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:inputType="textMultiLine"/>
 
-</FrameLayout>
+    </LinearLayout>
+
+</RelativeLayout>

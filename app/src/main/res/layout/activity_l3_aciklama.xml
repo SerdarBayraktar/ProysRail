@@ -38,7 +38,7 @@
         android:layout_below="@id/textView"
         android:layout_marginStart="29dp"
         android:layout_marginTop="-4dp"
-        android:textColor="@color/text_color"
+        android:textColor="@color/altbaslik"
         android:fontFamily="@font/opensans_lightitalic"
         android:textSize="16.7sp"
         android:layout_width="wrap_content"
@@ -230,7 +230,7 @@
         android:layout_alignParentBottom="true"
 
         />
-    <ImageView
+   <!-- <ImageView
         android:id="@+id/ilerleme_icon"
         android:layout_alignParentBottom="true"
         android:layout_toStartOf="@id/more"
@@ -238,7 +238,7 @@
         android:layout_marginRight="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/sonraki_butonu"/>
+        android:src="@drawable/sonraki_butonu"/>-->
 
     <ImageView
         android:id="@+id/aciklama_ekleme"
