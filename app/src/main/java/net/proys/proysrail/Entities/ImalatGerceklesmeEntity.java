@@ -31,7 +31,7 @@ public class ImalatGerceklesmeEntity {
 
     public  String imalat;
 
-    public Date tarih;
+    public String tarih;
 
     public int km_bas;
 

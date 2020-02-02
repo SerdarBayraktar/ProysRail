@@ -21,14 +21,9 @@ import androidx.room.PrimaryKey;
                 childColumns = "imalat"
         ),
         @ForeignKey(
-                entity = ImalatGerceklesmeEntity.class,
-                parentColumns = "gerceklesme_id",
-                childColumns = "gerceklesme"
-        ),
-        @ForeignKey(
                 entity = EtkenGerceklesmeEntity.class,
                 parentColumns = "etken_gercek_id",
-                childColumns = "gerceklesme"
+                childColumns = "etken"
         )
 })
 public class CalisanVerimsizlikEntity {

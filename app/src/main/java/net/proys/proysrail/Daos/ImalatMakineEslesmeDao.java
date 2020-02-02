@@ -1,5 +1,7 @@
 package net.proys.proysrail.Daos;
 
+import net.proys.proysrail.Entities.ImalatMakineEslesmeEntity;
+
 import androidx.room.Dao;
 import androidx.room.Insert;
 
@@ -8,5 +10,5 @@ public interface ImalatMakineEslesmeDao {
 
 
     @Insert
-    void ekle(ImalatMakineEslesmeDao imalatMakineEslesmeDao);
+    void ekle(ImalatMakineEslesmeEntity imalatMakineEslesmeEntity);
 }

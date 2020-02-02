@@ -22,7 +22,7 @@ public class BildiriTipListeEntity {
 
     public boolean gunluk_rapor;
 
-    public Time yayin_saat;
+    public String yayin_saat;
 
     public int giris_sure;
 

@@ -123,8 +123,6 @@ public abstract class RoomDatabase extends androidx.room.RoomDatabase {
         }
     };*/
 
-
-
     public abstract AciklamalarDao aciklamalarDao();
 
     public abstract BildirilerDao bildirilerDao();

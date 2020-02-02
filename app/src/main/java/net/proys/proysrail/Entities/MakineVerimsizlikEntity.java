@@ -37,7 +37,7 @@ public class MakineVerimsizlikEntity {
 
     public String makine;
 
-    public Date tarih;
+    public String tarih;
 
     public String imalat;
 

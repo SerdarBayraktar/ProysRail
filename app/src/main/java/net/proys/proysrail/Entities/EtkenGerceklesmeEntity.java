@@ -6,14 +6,14 @@ import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {//todo all check
         @ForeignKey(
-                entity = EtkenGerceklesmeEntity.class,
-                parentColumns = "imalat_id",
+                entity = EtkenListeEntity.class,
+                parentColumns = "etken_id",
                 childColumns = "etken"
         ),
         @ForeignKey(
-                entity = SektorListeEntity.class,
-                parentColumns = "sektor_id",
-                childColumns = "sektor"
+                entity = ImalatGerceklesmeEntity.class,
+                parentColumns = "gerceklesme_id",
+                childColumns = "gerceklesme"
         )
 })
 public class EtkenGerceklesmeEntity {
@@ -22,5 +22,9 @@ public class EtkenGerceklesmeEntity {
     public int etken_gercek_id;
 
     public String etken;
+
+    public Float deger;
+
+    public String gerceklesme;
 
 }

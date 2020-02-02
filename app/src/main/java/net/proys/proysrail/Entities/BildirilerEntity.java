@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey;
         @ForeignKey(
                 entity = BildiriTipListeEntity.class,
                 parentColumns = "bildiritip_id",
-                childColumns = "bildiri"
+                childColumns = "bildiri_tipi"
         ),
         @ForeignKey(
                 entity = KullanicilarEntity.class,
@@ -22,18 +22,18 @@ import androidx.room.PrimaryKey;
 public class BildirilerEntity {
 
     @PrimaryKey(autoGenerate = true)
-    public String bildiri_id;
+    public Long bildiri_id;
 
     public String bildiri_tipi;
 
-    public Date bildiri_tarih;
+    public String bildiri_tarih;
 
     public String kullanici;
 
     public int kabul;
 
-    public Time son_giris;//todo Time =?????????????
+    public String son_giris;
 
-    public Date kabul_zamani;
+    public String kabul_zamani;
 
 }

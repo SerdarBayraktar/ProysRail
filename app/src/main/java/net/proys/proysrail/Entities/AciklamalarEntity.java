@@ -25,7 +25,7 @@ public class AciklamalarEntity {
     @PrimaryKey(autoGenerate = true)
     public  int aciklama_id;
 
-    public Date tarih;
+    public String tarih;
 
     public String aciklama;//todo text
 

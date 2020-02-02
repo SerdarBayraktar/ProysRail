@@ -1,5 +1,7 @@
 package net.proys.proysrail.Daos;
 
+import net.proys.proysrail.Entities.MaliyetDagiticiEntity;
+
 import androidx.room.Dao;
 import androidx.room.Insert;
 
@@ -8,5 +10,5 @@ public interface MaliyetDagiticiDao {
 
 
     @Insert
-    void ekle(MaliyetDagiticiDao maliyetDagiticiDao);
+    void ekle(MaliyetDagiticiEntity maliyetDagiticiEntity);
 }
