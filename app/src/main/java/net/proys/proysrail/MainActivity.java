@@ -10,7 +10,10 @@ import androidx.room.Room;
 import com.parse.Parse;
 import com.parse.ParseInstallation;
 
+import net.proys.proysrail.Entities.MakineKategoriEntity;
+
 import java.io.IOException;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static RoomDatabase database;
@@ -358,7 +361,16 @@ public class MainActivity extends AppCompatActivity {
     }
     protected void RoomStart(){
         //database.wordDao().ekle(word);
-        //database = Room.databaseBuilder(getApplicationContext(),RoomDatabase.class,"ProysDB").allowMainThreadQueries().build();
+        database = Room.databaseBuilder(getApplicationContext(),RoomDatabase.class,"ProysDB").allowMainThreadQueries().build();
+
+        MakineKategoriEntity makineKategoriEntity = new MakineKategoriEntity();
+        makineKategoriEntity.setKategori_id(1);
+        makineKategoriEntity.setKategori_isim("deneme");
+        makineKategoriEntity.setRekabet(true);
+
+        //database.makineKategoriDao().ekle(makineKategoriEntity);
+        //List<MakineKategoriEntity> list = database.makineKategoriDao().ReadAll();
+        //System.out.println("asd "+list.get(0).getKategori_isim());
 
 
 
