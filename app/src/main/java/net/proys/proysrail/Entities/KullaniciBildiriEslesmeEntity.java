@@ -11,20 +11,19 @@ import androidx.room.PrimaryKey;
                 childColumns = "kullanici"
         ),
         @ForeignKey(
-                entity = ImalatListeEntity.class,
-                parentColumns = "imalat_id",
-                childColumns = "imalat"
+                entity = BildiriTipListeEntity.class,
+                parentColumns = "bildiritip_id",
+                childColumns = "bildiri_tipi"
         )
 })
-public class KullaniciImalatEslesmeEntity {
-
+public class KullaniciBildiriEslesmeEntity {
 
     @PrimaryKey(autoGenerate = true)
     public int id;
 
     public int kullanici;
 
-    public int imalat;
+    public int bildiri_tipi;
 
     public int getId() {
         return id;
@@ -42,11 +41,11 @@ public class KullaniciImalatEslesmeEntity {
         this.kullanici = kullanici;
     }
 
-    public int getImalat() {
-        return imalat;
+    public int getBildiri_tipi() {
+        return bildiri_tipi;
     }
 
-    public void setImalat(int imalat) {
-        this.imalat = imalat;
+    public void setBildiri_tipi(int bildiri_tipi) {
+        this.bildiri_tipi = bildiri_tipi;
     }
 }

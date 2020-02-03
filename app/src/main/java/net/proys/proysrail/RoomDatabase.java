@@ -1,7 +1,5 @@
 package net.proys.proysrail;
 
-import android.content.Context;
-
 import net.proys.proysrail.Daos.AciklamalarDao;
 import net.proys.proysrail.Daos.BildiriTipListeDao;
 import net.proys.proysrail.Daos.BildirilerDao;
@@ -14,6 +12,7 @@ import net.proys.proysrail.Daos.ImalatGerceklesmeDao;
 import net.proys.proysrail.Daos.ImalatListeDao;
 import net.proys.proysrail.Daos.ImalatMakineEslesmeDao;
 import net.proys.proysrail.Daos.ImalatSektorEslesmeDao;
+import net.proys.proysrail.Daos.KullaniciBildiriEslesmeDao;
 import net.proys.proysrail.Daos.KullaniciImalatEslesmeDao;
 import net.proys.proysrail.Daos.KullanicilarDao;
 import net.proys.proysrail.Daos.MakineKategoriDao;
@@ -34,6 +33,7 @@ import net.proys.proysrail.Entities.ImalatGerceklesmeEntity;
 import net.proys.proysrail.Entities.ImalatListeEntity;
 import net.proys.proysrail.Entities.ImalatMakineEslesmeEntity;
 import net.proys.proysrail.Entities.ImalatSektorEslesmeEntity;
+import net.proys.proysrail.Entities.KullaniciBildiriEslesmeEntity;
 import net.proys.proysrail.Entities.KullaniciImalatEslesmeEntity;
 import net.proys.proysrail.Entities.KullanicilarEntity;
 import net.proys.proysrail.Entities.MakineKategoriEntity;
@@ -43,13 +43,7 @@ import net.proys.proysrail.Entities.MakineVerimsizlikEntity;
 import net.proys.proysrail.Entities.MaliyetDagiticiEntity;
 import net.proys.proysrail.Entities.SektorListeEntity;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import androidx.annotation.NonNull;
 import androidx.room.Database;
-import androidx.room.Room;
-import androidx.sqlite.db.SupportSQLiteDatabase;
 
 @Database(entities = {
         AciklamalarEntity.class,
@@ -65,6 +59,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
         ImalatMakineEslesmeEntity.class,
         ImalatSektorEslesmeEntity.class,
         KullaniciImalatEslesmeEntity.class,
+        KullaniciBildiriEslesmeEntity.class,
         KullanicilarEntity.class,
         MakineKategoriEntity.class,
         MakineListeEntity.class,
@@ -163,5 +158,7 @@ public abstract class RoomDatabase extends androidx.room.RoomDatabase {
     public abstract MaliyetDagiticiDao maliyetDagiticiDao();
 
     public abstract SektorListeDao sektorListeDao();
+
+    public abstract KullaniciBildiriEslesmeDao kullaniciBildiriEslesmeDao();
 
 }

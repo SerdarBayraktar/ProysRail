@@ -13,12 +13,20 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import net.proys.proysrail.Entities.BildiriTipListeEntity;
+import net.proys.proysrail.Entities.BildirilerEntity;
 import net.proys.proysrail.Entities.CalisanListeEntity;
+import net.proys.proysrail.Entities.EtkenListeEntity;
+import net.proys.proysrail.Entities.ImalatListeEntity;
 import net.proys.proysrail.Entities.ImalatMakineEslesmeEntity;
 import net.proys.proysrail.Entities.ImalatSektorEslesmeEntity;
+import net.proys.proysrail.Entities.KullaniciBildiriEslesmeEntity;
+import net.proys.proysrail.Entities.KullaniciImalatEslesmeEntity;
+import net.proys.proysrail.Entities.KullanicilarEntity;
 import net.proys.proysrail.Entities.MakineKategoriEntity;
 import net.proys.proysrail.Entities.MakineListeEntity;
 import net.proys.proysrail.Entities.MaliyetDagiticiEntity;
+import net.proys.proysrail.Entities.SektorListeEntity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,9 +53,16 @@ public class RemoteServerDataCheck {
         all4MakineListe();
         all4MakineKategori();
         all4ImalatMakineEslesme();
-        //todo imalatbişeysini atladık
+        all4ImalatListe();
         all4ImalatSektorEslesme();
         all4MaliyetDagitici();
+        all4SektorListe();
+        all4EtkenListe();
+        all4BildiriTipListe();
+        all4Bildiriler();
+        all4Kullanicilar();
+        all4KullaniciBildiriEslesme();
+
 
     }
 
@@ -403,7 +418,7 @@ public class RemoteServerDataCheck {
     }
 
     private void all4MaliyetDagitici(){
-        if (database.imalatMakineEslesmeDao().readAll().size()>1){
+        if (database.maliyetDagiticiDao().readAll().size()>1){
             getMaliyetDagitici(0);//update
         }else{
             getMaliyetDagitici(1);    //sıfırdan create
@@ -468,4 +483,464 @@ public class RemoteServerDataCheck {
 
         }
     }
+
+    private void all4SektorListe(){
+        if (database.sektorListeDao().readAll().size()>1){
+            getSektorListe(0);//update
+        }else{
+            getSektorListe(1);    //sıfırdan create
+        }
+    }
+    private List<JSONObject> getSektorListe(final int flag) {
+        RequestQueue mRequestQueue;
+        final List<JSONObject> list = new ArrayList<>();
+        StringRequest mStringRequest;
+        String url = "http://www.proys.net/beta/panel/rest/get/sektorliste";
+        //RequestQueue initialized
+        mRequestQueue = Volley.newRequestQueue(mContext);
+        //String Request initialized
+        mStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
+                try {
+                    for (int i = 0; i<array.length;i++){
+                        String asd = array[i]+"\\}";
+                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
+                        JSONObject jsonObject = new JSONObject(asd);
+                        list.add(jsonObject);
+                    }
+                    Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
+                }catch (JSONException err){
+                    Log.d("Error", err.toString());
+                }
+                setSektorListe(list,flag);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(mContext, error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+        mRequestQueue.add(mStringRequest);
+        return list;
+    }
+    private void setSektorListe(List<JSONObject> jsonList, int flag){
+        for (int i = 0; i < jsonList.size() ; i++ ){
+            SektorListeEntity entity = new SektorListeEntity();
+            try{
+                entity.setSektor_id(jsonList.get(i).getInt("sektor_id"));
+                entity.setIsim(jsonList.get(i).getString("isim"));
+                entity.setHat_no(jsonList.get(i).getInt("hat_no"));
+                entity.setKm_bas(jsonList.get(i).getInt("km_bas"));
+                entity.setKm_bit(jsonList.get(i).getInt("km_bit"));
+
+                if (flag==0){
+                    database.sektorListeDao().update(entity);
+                }else if (flag==1){
+                    database.sektorListeDao().ekle(entity);
+                }
+            }catch (JSONException err){
+                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+
+            }
+        }
+    }
+
+    private void all4EtkenListe(){
+        if (database.etkenListeDao().readAll().size()>1){
+            getEtkenListe(0);//update
+        }else{
+            getEtkenListe(1);    //sıfırdan create
+        }
+    }
+    private List<JSONObject> getEtkenListe(final int flag) {
+        RequestQueue mRequestQueue;
+        final List<JSONObject> list = new ArrayList<>();
+        StringRequest mStringRequest;
+        String url = "http://www.proys.net/beta/panel/rest/get/etkenliste";
+        //RequestQueue initialized
+        mRequestQueue = Volley.newRequestQueue(mContext);
+        //String Request initialized
+        mStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
+                try {
+                    for (int i = 0; i<array.length;i++){
+                        String asd = array[i]+"\\}";
+                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
+                        JSONObject jsonObject = new JSONObject(asd);
+                        list.add(jsonObject);
+                    }
+                    Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
+                }catch (JSONException err){
+                    Log.d("Error", err.toString());
+                }
+                setEtkenListe(list,flag);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(mContext, error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+        mRequestQueue.add(mStringRequest);
+
+        return list;
+    }
+    private void setEtkenListe(List<JSONObject> jsonList, int flag){
+        for (int i = 0; i < jsonList.size() ; i++ ){
+            EtkenListeEntity entity = new EtkenListeEntity();
+            try{
+                entity.setEtken_id(jsonList.get(i).getInt("etken_id"));
+                entity.setIsim(jsonList.get(i).getString("isim"));
+                entity.setVt_deger(jsonList.get(i).getDouble("vt_deger"));
+                if (flag==0){
+                    database.etkenListeDao().update(entity);
+                }else if (flag==1){
+                    database.etkenListeDao().ekle(entity);
+                }
+            }catch (JSONException err){
+                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }
+
+    private void all4BildiriTipListe(){
+        if (database.bildiriTipListeDao().readAll().size()>1){
+            getBildiriTipListe(0);//update
+        }else{
+            getBildiriTipListe(1);    //sıfırdan create
+        }
+    }
+    private List<JSONObject> getBildiriTipListe(final int flag) {
+        RequestQueue mRequestQueue;
+        final List<JSONObject> list = new ArrayList<>();
+        StringRequest mStringRequest;
+        String url = "http://www.proys.net/beta/panel/rest/get/bildiritipliste";
+        //RequestQueue initialized
+        mRequestQueue = Volley.newRequestQueue(mContext);
+        //String Request initialized
+        mStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
+                try {
+                    for (int i = 0; i<array.length;i++){
+                        String asd = array[i]+"\\}";
+                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
+                        JSONObject jsonObject = new JSONObject(asd);
+                        list.add(jsonObject);
+                    }
+                    Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
+                }catch (JSONException err){
+                    Log.d("Error", err.toString());
+                }
+                setBildiriTipListe(list,flag);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(mContext, error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+        mRequestQueue.add(mStringRequest);
+        return list;
+    }
+    private void setBildiriTipListe(List<JSONObject> jsonList, int flag){
+        for (int i = 0; i < jsonList.size() ; i++ ){
+            BildiriTipListeEntity entity = new BildiriTipListeEntity();
+            try{
+                entity.setBildiritip_id(jsonList.get(i).getInt("bildiritip_id"));
+                entity.setIsim(jsonList.get(i).getString("isim"));
+                entity.setSistem(jsonList.get(i).getBoolean("sistem"));
+                entity.setMobil_sistem(jsonList.get(i).getBoolean("mobil_sistem"));
+                entity.setFrekans(jsonList.get(i).getInt("frekans"));
+                entity.setGunluk_rapor(jsonList.get(i).getBoolean("gunluk_rapor"));
+                entity.setYayin_saat(jsonList.get(i).getString("yayin_saat"));
+                entity.setGiris_sure(jsonList.get(i).getInt("giris_sure"));
+                entity.setBagimli(jsonList.get(i).getInt("bagimli"));
+
+                if (flag==0){
+                    database.bildiriTipListeDao().update(entity);
+                }else if (flag==1){
+                    database.bildiriTipListeDao().ekle(entity);
+                }
+            }catch (JSONException err){
+                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+
+            }
+
+        }
+    }
+
+    private void all4Bildiriler(){
+        if (database.bildirilerDao().readAll().size()>1){
+            getBildiriler(0);//update
+        }else{
+            getBildiriler(1);//sıfırdan create
+        }
+    }
+    private List<JSONObject> getBildiriler(final int flag) {
+        RequestQueue mRequestQueue;
+        final List<JSONObject> list = new ArrayList<>();
+        StringRequest mStringRequest;
+        String url = "http://www.proys.net/beta/panel/rest/get/bildiriler";
+        //RequestQueue initialized
+        mRequestQueue = Volley.newRequestQueue(mContext);
+        //String Request initialized
+        mStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
+                try {
+                    for (int i = 0; i<array.length;i++){
+                        String asd = array[i]+"\\}";
+                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
+                        JSONObject jsonObject = new JSONObject(asd);
+                        list.add(jsonObject);
+                    }
+                    Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
+                }catch (JSONException err){
+                    Log.d("Error", err.toString());
+                }
+                setBildiriler(list,flag);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(mContext, error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+        mRequestQueue.add(mStringRequest);
+        return list;
+    }
+    private void setBildiriler(List<JSONObject> jsonList, int flag){
+        for (int i = 0; i < jsonList.size() ; i++ ){
+            BildirilerEntity entity = new BildirilerEntity();
+            try{
+                entity.setBildiri_id(jsonList.get(i).getLong("bildiri_id"));
+                entity.setBildiri_tipi(jsonList.get(i).getInt("bildiri_tipi"));
+                entity.setBildiri_tarih(jsonList.get(i).getString("bildiri_tarih"));
+                entity.setKullanici(jsonList.get(i).getInt("kullanici"));
+                entity.setKabul(jsonList.get(i).getInt("kabul"));
+                entity.setSon_giris(jsonList.get(i).getString("son_giris"));
+                entity.setKabul_zamani(jsonList.get(i).getString("kabul_zamani"));
+
+                if (flag==0){
+                    database.bildirilerDao().update(entity);
+                }else if (flag==1){
+                    database.bildirilerDao().ekle(entity);
+                }
+            }catch (JSONException err){
+                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+
+            }
+
+        }
+    }
+
+    private void all4Kullanicilar(){
+        if (database.kullanicilarDao().readAll().size()>1){
+            getKullanicilar(0);//update
+        }else{
+            getKullanicilar(1);//sıfırdan create
+        }
+    }
+    private List<JSONObject> getKullanicilar(final int flag) {
+        RequestQueue mRequestQueue;
+        final List<JSONObject> list = new ArrayList<>();
+        StringRequest mStringRequest;
+        String url = "http://www.proys.net/beta/panel/rest/get/kullanicilar";
+        //RequestQueue initialized
+        mRequestQueue = Volley.newRequestQueue(mContext);
+        //String Request initialized
+        mStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
+                try {
+                    for (int i = 0; i<array.length;i++){
+                        String asd = array[i]+"\\}";
+                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
+                        JSONObject jsonObject = new JSONObject(asd);
+                        list.add(jsonObject);
+                    }
+                    Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
+                }catch (JSONException err){
+                    Log.d("Error", err.toString());
+                }
+                setKullanicilar(list,flag);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(mContext, error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+        mRequestQueue.add(mStringRequest);
+        return list;
+    }
+    private void setKullanicilar(List<JSONObject> jsonList, int flag){
+        for (int i = 0; i < jsonList.size() ; i++ ){
+            KullanicilarEntity entity = new KullanicilarEntity();
+            try{
+                entity.setKullanici_id(jsonList.get(i).getInt("kullanici_id"));
+                entity.setIsim(jsonList.get(i).getString("isim"));
+                entity.setSoyisim(jsonList.get(i).getString("soyisim"));
+                entity.setIsim_tam(jsonList.get(i).getString("isim_tam"));
+                entity.setKullanici_adi(jsonList.get(i).getString("kullanici_adi"));
+                entity.setEmail(jsonList.get(i).getString("email"));
+                entity.setPassword(jsonList.get(i).getString("password"));
+                entity.setAktif(jsonList.get(i).getBoolean("aktif"));
+
+                if (flag==0){
+                    database.kullanicilarDao().update(entity);
+                }else if (flag==1){
+                    database.kullanicilarDao().ekle(entity);
+                }
+            }catch (JSONException err){
+                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+
+            }
+
+        }
+    }
+
+    private void all4KullaniciBildiriEslesme(){
+        if (database.kullaniciBildiriEslesmeDao().readAll().size()>1){
+            getKullaniciBildiriEslesme(0);//update
+        }else{
+            getKullaniciBildiriEslesme(1);//sıfırdan create
+        }
+    }
+    private List<JSONObject> getKullaniciBildiriEslesme(final int flag) {
+        RequestQueue mRequestQueue;
+        final List<JSONObject> list = new ArrayList<>();
+        StringRequest mStringRequest;
+        String url = "http://www.proys.net/beta/panel/rest/get/kullanicibildirieslesme";
+        //RequestQueue initialized
+        mRequestQueue = Volley.newRequestQueue(mContext);
+        //String Request initialized
+        mStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
+                try {
+                    for (int i = 0; i<array.length;i++){
+                        String asd = array[i]+"\\}";
+                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
+                        JSONObject jsonObject = new JSONObject(asd);
+                        list.add(jsonObject);
+                    }
+                    Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
+                }catch (JSONException err){
+                    Log.d("Error", err.toString());
+                }
+                setKullaniciBildiriEslesme(list,flag);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(mContext, error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+        mRequestQueue.add(mStringRequest);
+        return list;
+    }
+    private void setKullaniciBildiriEslesme(List<JSONObject> jsonList, int flag){
+        for (int i = 0; i < jsonList.size() ; i++ ){
+            KullaniciBildiriEslesmeEntity entity = new KullaniciBildiriEslesmeEntity();
+            try{
+                entity.setBildiri_tipi(jsonList.get(i).getInt("bildiri_tipi"));
+                entity.setKullanici(jsonList.get(i).getInt("kullanici"));
+
+                if (flag==0){
+                    database.kullaniciBildiriEslesmeDao().update(entity);
+                }else if (flag==1){
+                    database.kullaniciBildiriEslesmeDao().ekle(entity);
+                }
+            }catch (JSONException err){
+                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+
+            }
+
+        }
+    }
+
+    private void all4ImalatListe(){
+        if (database.imalatListeDao().readAll().size()>1){
+            getImalatListe(0);//update
+        }else{
+            getImalatListe(1);//sıfırdan create
+        }
+    }
+    private List<JSONObject> getImalatListe(final int flag) {
+        RequestQueue mRequestQueue;
+        final List<JSONObject> list = new ArrayList<>();
+        StringRequest mStringRequest;
+        String url = "http://www.proys.net/beta/panel/rest/get/imalatliste";
+        //RequestQueue initialized
+        mRequestQueue = Volley.newRequestQueue(mContext);
+        //String Request initialized
+        mStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
+                try {
+                    for (int i = 0; i<array.length;i++){
+                        String asd = array[i]+"\\}";
+                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
+                        JSONObject jsonObject = new JSONObject(asd);
+                        list.add(jsonObject);
+                    }
+                    Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
+                }catch (JSONException err){
+                    Log.d("Error", err.toString());
+                }
+                setImalatListe(list,flag);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(mContext, error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+        mRequestQueue.add(mStringRequest);
+        return list;
+    }
+    private void setImalatListe(List<JSONObject> jsonList, int flag){
+        for (int i = 0; i < jsonList.size() ; i++ ){
+            ImalatListeEntity entity = new ImalatListeEntity();
+            try{
+                entity.setImalat_id(jsonList.get(i).getInt("imalat_id"));
+                entity.setIsim(jsonList.get(i).getString("isim"));
+                entity.setUzun_isim(jsonList.get(i).getString("uzun_isim"));
+                entity.setBpl_adsa(jsonList.get(i).getDouble("bpl_adsa"));
+                entity.setBpl_adsa_net(jsonList.get(i).getDouble("bpl_adsa_net"));
+                entity.setBpl_adsa_butce(jsonList.get(i).getDouble("bpl_adsa_butce"));
+                entity.setBirim(jsonList.get(i).getString("birim"));
+                entity.setTakip_tipi(jsonList.get(i).getString("takip_tipi"));
+                entity.setTakip(jsonList.get(i).getBoolean("takip"));
+                entity.setKontrol(jsonList.get(i).getBoolean("kontrol"));
+                entity.setPuantaj(jsonList.get(i).getBoolean("puantaj"));
+                entity.setMaliyet(jsonList.get(i).getBoolean("maliyet"));
+                entity.setMinpi_deger(jsonList.get(i).getInt("minpi_deger"));
+
+                if (flag==0){
+                    database.imalatListeDao().update(entity);
+                }else if (flag==1){
+                    database.imalatListeDao().ekle(entity);
+                }
+            }catch (JSONException err){
+                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+
+            }
+
+        }
+    }
+
 }

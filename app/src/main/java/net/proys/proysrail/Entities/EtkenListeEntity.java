@@ -11,6 +11,29 @@ public class EtkenListeEntity {
 
     public String isim;
 
-    public Float vt_deger;
+    public Double vt_deger;
 
+    public int getEtken_id() {
+        return etken_id;
+    }
+
+    public void setEtken_id(int etken_id) {
+        this.etken_id = etken_id;
+    }
+
+    public String getIsim() {
+        return isim;
+    }
+
+    public void setIsim(String isim) {
+        this.isim = isim;
+    }
+
+    public Double getVt_deger() {
+        return vt_deger;
+    }
+
+    public void setVt_deger(Double vt_deger) {
+        this.vt_deger = vt_deger;
+    }
 }
