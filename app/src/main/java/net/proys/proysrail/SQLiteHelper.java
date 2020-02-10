@@ -286,7 +286,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(BILDIRILER_TABLO_YAPISI.TERMIN_SAAT,termin_saat);
         sqLiteDatabase.insert(BILDIRILER_TABLO_YAPISI.TABLO_ADI,null,contentValues);
         sqLiteDatabase.close();
-    }
+    }//done
     public void WriteGet_Set(String key,String value){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -294,7 +294,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(GETTER_SETTER_TABLO_YAPISI.VALUE,value);
         sqLiteDatabase.insert(GETTER_SETTER_TABLO_YAPISI.TABLO_ADI,null,contentValues);
         sqLiteDatabase.close();
-    }
+    }//done
     public String ReadGet_Set(String key){
         String value=null;
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -314,14 +314,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         sqLiteDatabase.close();
         return value;
-    }
+    }//done
     public void UpdateGet_Set(String key,String new_value){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(GETTER_SETTER_TABLO_YAPISI.VALUE,new_value);
         sqLiteDatabase.update(GETTER_SETTER_TABLO_YAPISI.TABLO_ADI,contentValues,GETTER_SETTER_TABLO_YAPISI.KEY+ "= ?",new String[]{key});
         sqLiteDatabase.close();
-    }
+    }//done
     public void WriteSektor(int id,String isim,String hat,String hat_no,int km_bas,int km_bit,int aktif,String imalat,String bolge){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -336,7 +336,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(KITAP_TABLO_YAPISI.BOLGE,bolge);
         sqLiteDatabase.insert(KITAP_TABLO_YAPISI.TABLO_ADI,null,contentValues);
         sqLiteDatabase.close();
-    }
+    }//done
     public void WriteBildiriListesi(long kod,int kullanici_id,String bildiri_id,String isim,String tarih,String deadline_tarih,String deadline_saat,int sent){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -350,7 +350,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(BILDIRI_LISTESI_TABLO_YAPISI.SENT,sent);
         sqLiteDatabase.insert(BILDIRI_LISTESI_TABLO_YAPISI.TABLO_ADI,null,contentValues);
         sqLiteDatabase.close();
-    }
+    }//done
     public void WriteImalat(String id,String isim,String oncelik,String birim,double bp_as,int metraj,String bildiri,int vt_sektor,int vt_mesafe,int km_aktif){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -367,7 +367,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(IMALAT_TABLO_YAPISI.KM_AKTIF,km_aktif);
         sqLiteDatabase.insert(IMALAT_TABLO_YAPISI.TABLO_ADI,null,contentValues);
         sqLiteDatabase.close();
-    }
+    }//done
     public void  WriteTaslak(Long id,String tarih,String imalat,int kopya_no,String sektor,int hat_no,int km_bas,int km_son,int mesafe,String birim,int sent){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -384,7 +384,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(TASLAK_TABLO_YAPISI.SENT,sent);
         sqLiteDatabase.insert(TASLAK_TABLO_YAPISI.TABLO_ADI,null,contentValues);
         sqLiteDatabase.close();
-    }
+    }//done
     public void  WriteTaslakResource(Long id,String tarih,String imalat,String kaynak_id,String tip,String kategori,int puantaj,int sayi,String  verim){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -399,7 +399,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(TASLAK_RESOURCE_YAPISI.SAYI,sayi);
         sqLiteDatabase.insert(TASLAK_RESOURCE_YAPISI.TABLO_ADI,null,contentValues);
         sqLiteDatabase.close();
-    }
+    }//done
     public void  WriteTaslakAciklamalar(String id,String tarih,String imalat,String aciklama){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -409,7 +409,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(TASLAK_ACIKLAMALAR_YAPISI.ACIKLAMA, aciklama);
         sqLiteDatabase.insert(TASLAK_ACIKLAMALAR_YAPISI.TABLO_ADI,null,contentValues);
         sqLiteDatabase.close();
-    }
+    }//done
     public void  WriteEtkenListe(String etken_id,String isim,int vt_deger,int radio_button){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -419,7 +419,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(ETKEN_LISTE_TABLO_YAPISI.RADIO_BUTTON, radio_button);
         sqLiteDatabase.insert(ETKEN_LISTE_TABLO_YAPISI.TABLO_ADI,null,contentValues);
         sqLiteDatabase.close();
-    }
+    }//done
     public void  WriteTaslakVerimsizlik(String bildiri_id, String tarih, String imalat_id, String etken_id, int deger){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -430,7 +430,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(TASLAK_VERIMSIZLIK_TABLO_YAPISI.DEGER, deger);
         sqLiteDatabase.insert(TASLAK_VERIMSIZLIK_TABLO_YAPISI.TABLO_ADI,null,contentValues);
         sqLiteDatabase.close();
-    }
+    }//done
 
     public void  WritePersonel(String id, String kisa_isim, String kod, String kategori,String tip, String ekip_id,int vt_puantaj,int vt_sayi){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -445,7 +445,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         contentValues.put(PERSONEL_TABLO_YAPISI.VT_SAYI,vt_sayi);
         sqLiteDatabase.insert(PERSONEL_TABLO_YAPISI.TABLO_ADI,null,contentValues);
         sqLiteDatabase.close();
-    }
+    }//done
     public String[] ReadBildiriListesifor1b(int kullanici_id){
 
         int kod = 0;
@@ -497,7 +497,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         sqLiteDatabase.close();
         return kitapBilgisi;
-    }
+    }//no need
     public List[] ReadEtkenListesiforlist(String bildiri_id,String imalat_id){
         String id= null;
         int deger = 0;
@@ -523,7 +523,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         sqLiteDatabase.close();
         return list;
-    }
+    }// done
     public String ReadEtkenListesiforisim(String id){
         String isim= null;
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -540,7 +540,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         sqLiteDatabase.close();
         return isim;
-    }
+    }//done
     public String ReadEtkenListesiforid(String isim){
         String id= null;
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -557,7 +557,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         sqLiteDatabase.close();
         return id;
-    }
+    }//done
     public int ReadEtkenListesifordeger(String id){
         int deger= 0;
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -574,7 +574,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         sqLiteDatabase.close();
         return deger;
-    }
+    }//done
     public String[][] ReadEtkenListesi(){
         String isim = null;
         int radio = 0;
@@ -599,7 +599,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         sqLiteDatabase.close();
         return diziler;
-    }
+    }//done yenisinde radiolar kaldırıldı
     public String[] ReadVerimsizlik(String bildiri_id,String imalat_id,String[] etken_idler){
 
         List<String> radiolar = new ArrayList<>();
@@ -608,7 +608,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         }
         String[] radiolar_array = Arrays.copyOf(radiolar.toArray(new String[radiolar.size()]), radiolar.toArray(new String[radiolar.size()]).length, String[].class);
         return radiolar_array;
-    }
+    }//room helper clasında read verimsizlik altında yazılacak önce etken listeden idler çekilip entityde for yapılacak sonra part2 yazılacak
     public String ReadVerimsizlikPart2(String bildiri_id,String imalat_id,String etken_id){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String[] columns = {
@@ -651,7 +651,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.close();
         return listeler;
 
-    }
+    }//done
 
 
     public int ReadBildiriListesifor1b(int kullanici_id,String bildiri_id){
@@ -678,7 +678,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         sqLiteDatabase.close();
         return count ;
-    }
+    }//başlangıcı yaptım ama yazmadım kerem abi ile konuş amacı kullanıcıya tanımlı bldirilerden herhang birini şu ana kadar sistem hiç oluşturmadıysa haber vermek bu sayede oluştuturlması için tetiklemerk
     public String ReadBildiriListesiforDateComparision(int kullanici_id,String bildiri_id){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String[] columns = {BILDIRI_LISTESI_TABLO_YAPISI.KOD,
@@ -786,7 +786,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         sqLiteDatabase.close();
         return taslak_bilgisi;
-    }
+    }//done
     public String[] ReadPersonelforL4(String bildiri_id,String tip){
         String kisa_isim = null;
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();

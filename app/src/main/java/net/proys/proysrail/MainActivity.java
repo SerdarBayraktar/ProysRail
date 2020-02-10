@@ -11,6 +11,8 @@ import com.parse.Parse;
 import com.parse.ParseInstallation;
 
 import net.proys.proysrail.Entities.CalisanListeEntity;
+import net.proys.proysrail.Entities.EtkenGerceklesmeEntity;
+import net.proys.proysrail.Entities.EtkenListeEntity;
 import net.proys.proysrail.Entities.MakineKategoriEntity;
 
 import java.io.IOException;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //RoomStart();
         Intent intent = new Intent(MainActivity.this,Anasayfa.class);
         startActivity(intent);
         //kopyala();
@@ -29,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         //data1();
         //Parse.initialize(this);
         //ParseInstallation.getCurrentInstallation().saveInBackground();
-        RoomStart();
+
 
         // Intent intent = new Intent(MainActivity.this,Anasayfa.class);
         //startActivity(intent);
@@ -360,7 +363,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    protected void RoomStart(){
+   /* protected void RoomStart(){
         //database.wordDao().ekle(word);
         database = Room.databaseBuilder(getApplicationContext(),RoomDatabase.class,"ProysDB").allowMainThreadQueries().build();
         MakineKategoriEntity makineKategoriEntity = new MakineKategoriEntity();
@@ -368,11 +371,32 @@ public class MainActivity extends AppCompatActivity {
         makineKategoriEntity.setKategori_isim("deneme");
         makineKategoriEntity.setRekabet(true);
        // database.makineKategoriDao().ekle(makineKategoriEntity);
-        RemoteServerDataCheck sv = new RemoteServerDataCheck(MainActivity.this);
+       *//* RemoteServerDataCheck sv = new RemoteServerDataCheck(MainActivity.this);
         sv.entegrationDataManagement();
 
+        EtkenGerceklesmeEntity entity = new EtkenGerceklesmeEntity();
+        entity.setGerceklesme(1);
+        entity.setDeger(5.2);
+        entity.setEtken(6);
+        entity.setEtken_gercek_id(3);
 
-    }
+
+        EtkenListeEntity entity1 = new EtkenListeEntity();
+        entity1.setEtken_id(6);
+        entity1.setVt_deger(2.2);
+        entity1.setIsim("deneme");
+
+        //database.etkenGerceklesmeDao().ekle(entity);
+        //database.etkenListeDao().ekle(entity1);
+
+        //List<EtkenGerceklesmeEntity> list = database.etkenGerceklesmeDao().read(1);
+        list.get(0);
+*//*
+
+
+
+
+    }*/
     private void tumtablolararrayler(){
         String[] CalisanListeColumns = new String[]{
                 "calisan_id",

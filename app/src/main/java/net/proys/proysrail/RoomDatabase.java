@@ -8,6 +8,7 @@ import net.proys.proysrail.Daos.CalisanPuantajDao;
 import net.proys.proysrail.Daos.CalisanVerimsizlikDao;
 import net.proys.proysrail.Daos.EtkenGerceklesmeDao;
 import net.proys.proysrail.Daos.EtkenListeDao;
+import net.proys.proysrail.Daos.GetSetDao;
 import net.proys.proysrail.Daos.ImalatGerceklesmeDao;
 import net.proys.proysrail.Daos.ImalatListeDao;
 import net.proys.proysrail.Daos.ImalatMakineEslesmeDao;
@@ -29,6 +30,7 @@ import net.proys.proysrail.Entities.CalisanPuantajEntity;
 import net.proys.proysrail.Entities.CalisanVerimsizlikEntity;
 import net.proys.proysrail.Entities.EtkenGerceklesmeEntity;
 import net.proys.proysrail.Entities.EtkenListeEntity;
+import net.proys.proysrail.Entities.GetSetEntity;
 import net.proys.proysrail.Entities.ImalatGerceklesmeEntity;
 import net.proys.proysrail.Entities.ImalatListeEntity;
 import net.proys.proysrail.Entities.ImalatMakineEslesmeEntity;
@@ -66,7 +68,8 @@ import androidx.room.Database;
         MakinePuantajEntity.class,
         MakineVerimsizlikEntity.class,
         MaliyetDagiticiEntity.class,
-        SektorListeEntity.class
+        SektorListeEntity.class,
+        GetSetEntity.class
 },version = 1)
 public abstract class RoomDatabase extends androidx.room.RoomDatabase {
 
@@ -160,5 +163,7 @@ public abstract class RoomDatabase extends androidx.room.RoomDatabase {
     public abstract SektorListeDao sektorListeDao();
 
     public abstract KullaniciBildiriEslesmeDao kullaniciBildiriEslesmeDao();
+
+    public abstract GetSetDao getSetDao();
 
 }

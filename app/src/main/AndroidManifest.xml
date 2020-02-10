@@ -59,10 +59,8 @@
         <activity android:name=".L4_aciklama_detay" />
         <activity android:name=".L1_Notlar" />
         <activity android:name=".L1_Dosyalar" />
-        <activity android:name=".IP1ISCILIKPUANTAJ">
 
 
-        </activity>
         <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -72,8 +70,6 @@
 
 
     </activity>
-        <activity android:name=".Makine_Isletme_MainFrame" />
-        <activity android:name=".Puantaj_Detay_Ekle" />
     </application>
 
 </manifest>

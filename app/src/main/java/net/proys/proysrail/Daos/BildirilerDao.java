@@ -22,4 +22,7 @@ public interface BildirilerDao {
     @Update
     void update(BildirilerEntity bildirilerEntity);
 
+    //@Query("select bildiri_tarih from BildirilerEntity ")
+    //Important note bildiri kullanici eslesmesi sonucu bildireler tablosunda satırında yok kararı verilmeden önce panelden bildirilerdao guncelle
+
 }

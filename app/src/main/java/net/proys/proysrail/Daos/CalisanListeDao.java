@@ -22,5 +22,10 @@ public interface CalisanListeDao {
     @Update
     void update(CalisanListeEntity calisanListeEntity);
 
+    @Query("select * from CalisanListeEntity where calisan_id=:calisan_id")
+    List<CalisanListeEntity> readCalisan(int calisan_id);//ReadPersonelroom
+
+    //Important note bildiri kullanici eslesmesi sonucu bildireler tablosunda satırında yok kararı verilmeden önce panelden bildirilerdao guncelle
+
 
 }

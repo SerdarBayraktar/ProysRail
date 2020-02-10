@@ -22,4 +22,6 @@ public interface KullaniciBildiriEslesmeDao {
 
     @Update
     void update(KullaniciBildiriEslesmeEntity kullaniciBildiriEslesmeEntity);
+
+
 }
