@@ -12,11 +12,11 @@ import androidx.room.PrimaryKey;
         )
 })
 public class MakineListeEntity {
-    public int getMakine_id() {
+    public Integer getMakine_id() {
         return makine_id;
     }
 
-    public void setMakine_id(int makine_id) {
+    public void setMakine_id(Integer makine_id) {
         this.makine_id = makine_id;
     }
 
@@ -76,11 +76,11 @@ public class MakineListeEntity {
         this.taseron = taseron;
     }
 
-    public int getGrup_no() {
+    public Integer getGrup_no() {
         return grup_no;
     }
 
-    public void setGrup_no(int grup_no) {
+    public void setGrup_no(Integer grup_no) {
         this.grup_no = grup_no;
     }
 
@@ -93,7 +93,7 @@ public class MakineListeEntity {
     }
 
     @PrimaryKey(autoGenerate = true)//todo 9000+
-    public int makine_id;
+    public Integer makine_id;
 
     public String kategori;
 
@@ -109,7 +109,7 @@ public class MakineListeEntity {
 
     public String taseron;
 
-    public int grup_no;
+    public Integer grup_no;
 
     public String temin;
 

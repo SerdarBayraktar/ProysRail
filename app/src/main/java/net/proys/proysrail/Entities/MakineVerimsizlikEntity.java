@@ -31,7 +31,7 @@ import androidx.room.PrimaryKey;
 public class MakineVerimsizlikEntity {
 
     @PrimaryKey(autoGenerate = true)
-    public int makineverimsizlik_id;
+    public Integer makineverimsizlik_id;
 
     public String bildiri;
 

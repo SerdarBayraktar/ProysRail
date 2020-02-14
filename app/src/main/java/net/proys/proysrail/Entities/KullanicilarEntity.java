@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 public class KullanicilarEntity {
 
     @PrimaryKey(autoGenerate = true)
-    public int kullanici_id;
+    public Integer kullanici_id;
 
     public String isim;
 
@@ -24,11 +24,11 @@ public class KullanicilarEntity {
     public boolean aktif;
 
 
-    public int getKullanici_id() {
+    public Integer getKullanici_id() {
         return kullanici_id;
     }
 
-    public void setKullanici_id(int kullanici_id) {
+    public void setKullanici_id(Integer kullanici_id) {
         this.kullanici_id = kullanici_id;
     }
 

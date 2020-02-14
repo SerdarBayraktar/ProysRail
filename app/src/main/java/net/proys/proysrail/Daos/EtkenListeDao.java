@@ -22,9 +22,8 @@ public interface EtkenListeDao {
     @Update
     void update(EtkenListeEntity etkenListeEntity);
 
-/*
 
-    @Query("select * from EtkenListeEntity Where etken_id=:etken_id")//todo bu da aynı sıkıntıyı verdi
+    @Query("select isim,etken_id from EtkenListeEntity Where etken_id=:etken_id")
     List<EtkenListeEntity> readIsim(int etken_id);//ReadEtkenListesiforisimroom    could be str
 
     @Query("select etken_id,isim from EtkenListeEntity where isim=:isim")
@@ -37,11 +36,7 @@ public interface EtkenListeDao {
     List<EtkenListeEntity> readAllIsimler();//ReadEtkenListesiroom orjinaldaki radiolar kaldırıldı
 
 
-    @Query("select * from EtkenListeEntity")
-    List<EtkenListeEntity> readEtken_id();//todo bu da aynı sıkıntıyı verdi
-    // rror: The columns returned by the query does not have the fields [etken_id] in net.proys.proysrail.Entities.EtkenListeEntity
-    // even though they are annotated as non-null or primitive. Columns returned by the query: [isim]
-*/
-
+    @Query("select etken_id from EtkenListeEntity")
+    List<EtkenListeEntity> readEtken_id();
 
 }

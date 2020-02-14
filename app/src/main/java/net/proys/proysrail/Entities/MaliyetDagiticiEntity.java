@@ -9,36 +9,36 @@ import androidx.room.PrimaryKey;
 public class MaliyetDagiticiEntity {
 
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    public Integer id;
 
-    public int dagilan;
+    public Integer dagilan;
 
-    public int toplayan;
+    public Integer toplayan;
 
     public Double oran;
 
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getDagilan() {
+    public Integer getDagilan() {
         return dagilan;
     }
 
-    public void setDagilan(int dagilan) {
+    public void setDagilan(Integer dagilan) {
         this.dagilan = dagilan;
     }
 
-    public int getToplayan() {
+    public Integer getToplayan() {
         return toplayan;
     }
 
-    public void setToplayan(int toplayan) {
+    public void setToplayan(Integer toplayan) {
         this.toplayan = toplayan;
     }
 

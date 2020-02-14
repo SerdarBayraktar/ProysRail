@@ -24,31 +24,31 @@ public class BildirilerEntity {
     @PrimaryKey(autoGenerate = true)
     public Long bildiri_id;
 
-    public int bildiri_tipi;
+    public Integer bildiri_tipi;
 
     public String bildiri_tarih;
 
-    public int kullanici;
+    public Integer kullanici;
 
-    public int kabul;
+    public Integer kabul;
 
     public String son_giris;
 
     public String kabul_zamani;
 
-    public int getBildiri_tipi() {
+    public Integer getBildiri_tipi() {
         return bildiri_tipi;
     }
 
-    public void setBildiri_tipi(int bildiri_tipi) {
+    public void setBildiri_tipi(Integer bildiri_tipi) {
         this.bildiri_tipi = bildiri_tipi;
     }
 
-    public int getKullanici() {
+    public Integer getKullanici() {
         return kullanici;
     }
 
-    public void setKullanici(int kullanici) {
+    public void setKullanici(Integer kullanici) {
         this.kullanici = kullanici;
     }
 
@@ -68,11 +68,11 @@ public class BildirilerEntity {
         this.bildiri_tarih = bildiri_tarih;
     }
 
-    public int getKabul() {
+    public Integer getKabul() {
         return kabul;
     }
 
-    public void setKabul(int kabul) {
+    public void setKabul(Integer kabul) {
         this.kabul = kabul;
     }
 

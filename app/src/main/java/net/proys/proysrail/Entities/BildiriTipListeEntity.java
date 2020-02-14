@@ -10,7 +10,7 @@ import androidx.room.PrimaryKey;
 public class BildiriTipListeEntity {
 
     @PrimaryKey(autoGenerate = true)//todo 200 - 299
-    public int bildiritip_id;
+    public Integer bildiritip_id;
 
     public String isim;
 
@@ -18,22 +18,22 @@ public class BildiriTipListeEntity {
 
     public boolean mobil_sistem;
 
-    public int frekans;
+    public Integer frekans;
 
     public boolean gunluk_rapor;
 
     public String yayin_saat;
 
-    public int giris_sure;
+    public Integer giris_sure;
 
-    public int bagimli;
+    public Integer bagimli;
 
 
-    public int getBildiritip_id() {
+    public Integer getBildiritip_id() {
         return bildiritip_id;
     }
 
-    public void setBildiritip_id(int bildiritip_id) {
+    public void setBildiritip_id(Integer bildiritip_id) {
         this.bildiritip_id = bildiritip_id;
     }
 
@@ -61,11 +61,11 @@ public class BildiriTipListeEntity {
         this.mobil_sistem = mobil_sistem;
     }
 
-    public int getFrekans() {
+    public Integer getFrekans() {
         return frekans;
     }
 
-    public void setFrekans(int frekans) {
+    public void setFrekans(Integer frekans) {
         this.frekans = frekans;
     }
 
@@ -85,19 +85,19 @@ public class BildiriTipListeEntity {
         this.yayin_saat = yayin_saat;
     }
 
-    public int getGiris_sure() {
+    public Integer getGiris_sure() {
         return giris_sure;
     }
 
-    public void setGiris_sure(int giris_sure) {
+    public void setGiris_sure(Integer giris_sure) {
         this.giris_sure = giris_sure;
     }
 
-    public int getBagimli() {
+    public Integer getBagimli() {
         return bagimli;
     }
 
-    public void setBagimli(int bagimli) {
+    public void setBagimli(Integer bagimli) {
         this.bagimli = bagimli;
     }
 }

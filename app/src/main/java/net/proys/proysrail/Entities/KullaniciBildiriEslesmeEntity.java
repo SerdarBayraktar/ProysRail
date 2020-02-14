@@ -19,33 +19,33 @@ import androidx.room.PrimaryKey;
 public class KullaniciBildiriEslesmeEntity {
 
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    public Integer id;
 
-    public int kullanici;
+    public Integer kullanici;
 
-    public int bildiri_tipi;
+    public Integer bildiri_tipi;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getKullanici() {
+    public Integer getKullanici() {
         return kullanici;
     }
 
-    public void setKullanici(int kullanici) {
+    public void setKullanici(Integer kullanici) {
         this.kullanici = kullanici;
     }
 
-    public int getBildiri_tipi() {
+    public Integer getBildiri_tipi() {
         return bildiri_tipi;
     }
 
-    public void setBildiri_tipi(int bildiri_tipi) {
+    public void setBildiri_tipi(Integer bildiri_tipi) {
         this.bildiri_tipi = bildiri_tipi;
     }
 }

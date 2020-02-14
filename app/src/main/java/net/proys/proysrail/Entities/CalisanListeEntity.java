@@ -10,7 +10,7 @@ import androidx.room.PrimaryKey;
 public class CalisanListeEntity {
 
     @PrimaryKey (autoGenerate = true)
-    public int calisan_id;
+    public Integer calisan_id;
 
     public String isim;
 
@@ -36,11 +36,11 @@ public class CalisanListeEntity {
 
     public String v_imalat;
 
-    public int getCalisan_id() {
+    public Integer getCalisan_id() {
         return calisan_id;
     }
 
-    public void setCalisan_id(int calisan_id) {
+    public void setCalisan_id(Integer calisan_id) {
         this.calisan_id = calisan_id;
     }
 

@@ -20,30 +20,30 @@ import androidx.room.PrimaryKey;
 public class EtkenGerceklesmeEntity {
 
     @PrimaryKey(autoGenerate = true)
-    public int etken_gercek_id;
+    public Integer etken_gercek_id;
 
     @ColumnInfo(name = "etken")
-    public int etken;
+    public Integer etken;
 
     @ColumnInfo(name = "deger")
     public Double deger;
 
     @ColumnInfo(name = "gerceklesme")
-    public int gerceklesme;
+    public Integer gerceklesme;
 
-    public int getEtken_gercek_id() {
+    public Integer getEtken_gercek_id() {
         return etken_gercek_id;
     }
 
-    public void setEtken_gercek_id(int etken_gercek_id) {
+    public void setEtken_gercek_id(Integer etken_gercek_id) {
         this.etken_gercek_id = etken_gercek_id;
     }
 
-    public int getEtken() {
+    public Integer getEtken() {
         return etken;
     }
 
-    public void setEtken(int etken) {
+    public void setEtken(Integer etken) {
         this.etken = etken;
     }
 
@@ -55,11 +55,11 @@ public class EtkenGerceklesmeEntity {
         this.deger = deger;
     }
 
-    public int getGerceklesme() {
+    public Integer getGerceklesme() {
         return gerceklesme;
     }
 
-    public void setGerceklesme(int gerceklesme) {
+    public void setGerceklesme(Integer gerceklesme) {
         this.gerceklesme = gerceklesme;
     }
 }

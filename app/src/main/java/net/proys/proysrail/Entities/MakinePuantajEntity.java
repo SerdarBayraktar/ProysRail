@@ -31,7 +31,7 @@ import androidx.room.PrimaryKey;
 public class MakinePuantajEntity {
 
     @PrimaryKey(autoGenerate = true)
-    public int makinepuantaj_id;
+    public Integer makinepuantaj_id;
 
     public String bildiri;
 

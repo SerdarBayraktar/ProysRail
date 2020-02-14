@@ -23,7 +23,7 @@ import androidx.room.PrimaryKey;
 public class AciklamalarEntity {
 
     @PrimaryKey(autoGenerate = true)
-    public  int aciklama_id;
+    public  Integer aciklama_id;
 
     public String tarih;
 

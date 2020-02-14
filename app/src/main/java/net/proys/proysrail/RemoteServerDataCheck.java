@@ -28,6 +28,7 @@ import net.proys.proysrail.Entities.MakineListeEntity;
 import net.proys.proysrail.Entities.MaliyetDagiticiEntity;
 import net.proys.proysrail.Entities.SektorListeEntity;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -48,8 +49,9 @@ public class RemoteServerDataCheck {
          database = Room.databaseBuilder(mContext,RoomDatabase.class,"ProysDB").allowMainThreadQueries().build();
     }
 
-    protected void entegrationDataManagement(){
-        all4CalisanListe();
+    protected void entegrationDataManagement() throws Exception{
+        all4MakineListe();
+        /*all4CalisanListe();
         all4MakineListe();
         all4MakineKategori();
         all4ImalatMakineEslesme();
@@ -61,10 +63,11 @@ public class RemoteServerDataCheck {
         all4BildiriTipListe();
         all4Bildiriler();
         all4Kullanicilar();
-        all4KullaniciBildiriEslesme();
+        all4KullaniciBildiriEslesme();*/
 
 
     }
+    // flags for understand if its update or create of an row
 
     private void all4CalisanListe(){
         List<CalisanListeEntity> list = database.calisanListeDao().readAll();
@@ -90,9 +93,9 @@ public class RemoteServerDataCheck {
                 String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
                 try {
                    for (int i = 0; i<array.length;i++){
-                        String asd = array[i]+"\\}";
-                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
-                        JSONObject jsonObject = new JSONObject(asd);
+                        String object = array[i]+"\\}";
+                        object = object.substring(0,object.length()-2)+object.substring(object.length()-1);
+                        JSONObject jsonObject = new JSONObject(object);
                         list.add(jsonObject);
                    }
                     Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
@@ -146,37 +149,60 @@ public class RemoteServerDataCheck {
         list.get(0);
     }
 
-    private void all4MakineListe(){
+    private void all4MakineListe() throws  Exception{
         if (database.makineListeDao().readAll().size()>1){
             getMakineListe(0);//update
         }else{
             getMakineListe(1);    //sıfırdan create
         }
     }
-    private List<JSONObject> getMakineListe(final int flag) {
+    private List<JSONObject> getMakineListe(final int flag) throws Exception {
         RequestQueue mRequestQueue;
         final List<JSONObject> list = new ArrayList<>();
         StringRequest mStringRequest;
-        String url = "http://www.proys.net/beta/panel/rest/get/makineliste";
+        //String url = "http://www.proys.net/beta/panel/rest/get/makineliste";
+        String url = "http://31.210.91.198/beta/panel/rest/get/makineliste";
+
         //RequestQueue initialized
         mRequestQueue = Volley.newRequestQueue(mContext);
         //String Request initialized
         mStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
+                int x =0;
+                try {
+                    JSONArray jsonObjectResponse=new JSONArray(response);
+
+                    String s= String.valueOf(jsonObjectResponse.get(0));
+                    Toast.makeText(mContext, s, Toast.LENGTH_SHORT).show();
+                    Log.d("json",s);
+                  for (int i=0;i<jsonObjectResponse.length();i++){
+
+                  }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+
+
+
+                /*String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
                 try {
                     for (int i = 0; i<array.length;i++){
-                        String asd = array[i]+"\\}";
-                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
-                        JSONObject jsonObject = new JSONObject(asd);
+                        String object = array[i]+"\\}";
+                        object = object.substring(0,object.length()-2)+object.substring(object.length()-1);
+                        JSONObject jsonObject = new JSONObject(object);
                         list.add(jsonObject);
                     }
                     Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
                 }catch (JSONException err){
                     Log.d("Error", err.toString());
-                }
-                setMakineListe(list,flag);
+                }*/
+                //setMakineListe(list,flag);
 
             }
         }, new Response.ErrorListener() {
@@ -241,9 +267,9 @@ public class RemoteServerDataCheck {
                 String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
                 try {
                     for (int i = 0; i<array.length;i++){
-                        String asd = array[i]+"\\}";
-                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
-                        JSONObject jsonObject = new JSONObject(asd);
+                        String object = array[i]+"\\}";
+                        object = object.substring(0,object.length()-2)+object.substring(object.length()-1);
+                        JSONObject jsonObject = new JSONObject(object);
                         list.add(jsonObject);
                     }
                     Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
@@ -306,9 +332,9 @@ public class RemoteServerDataCheck {
                 String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
                 try {
                     for (int i = 0; i<array.length;i++){
-                        String asd = array[i]+"\\}";
-                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
-                        JSONObject jsonObject = new JSONObject(asd);
+                        String object = array[i]+"\\}";
+                        object = object.substring(0,object.length()-2)+object.substring(object.length()-1);
+                        JSONObject jsonObject = new JSONObject(object);
                         list.add(jsonObject);
                     }
                     Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
@@ -371,9 +397,9 @@ public class RemoteServerDataCheck {
                 String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
                 try {
                     for (int i = 0; i<array.length;i++){
-                        String asd = array[i]+"\\}";
-                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
-                        JSONObject jsonObject = new JSONObject(asd);
+                        String object = array[i]+"\\}";
+                        object = object.substring(0,object.length()-2)+object.substring(object.length()-1);
+                        JSONObject jsonObject = new JSONObject(object);
                         list.add(jsonObject);
                     }
                     Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
@@ -438,9 +464,9 @@ public class RemoteServerDataCheck {
                 String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
                 try {
                     for (int i = 0; i<array.length;i++){
-                        String asd = array[i]+"\\}";
-                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
-                        JSONObject jsonObject = new JSONObject(asd);
+                        String object = array[i]+"\\}";
+                        object = object.substring(0,object.length()-2)+object.substring(object.length()-1);
+                        JSONObject jsonObject = new JSONObject(object);
                         list.add(jsonObject);
                     }
                     Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
@@ -505,9 +531,9 @@ public class RemoteServerDataCheck {
                 String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
                 try {
                     for (int i = 0; i<array.length;i++){
-                        String asd = array[i]+"\\}";
-                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
-                        JSONObject jsonObject = new JSONObject(asd);
+                        String object = array[i]+"\\}";
+                        object = object.substring(0,object.length()-2)+object.substring(object.length()-1);
+                        JSONObject jsonObject = new JSONObject(object);
                         list.add(jsonObject);
                     }
                     Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
@@ -568,9 +594,9 @@ public class RemoteServerDataCheck {
                 String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
                 try {
                     for (int i = 0; i<array.length;i++){
-                        String asd = array[i]+"\\}";
-                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
-                        JSONObject jsonObject = new JSONObject(asd);
+                        String object = array[i]+"\\}";
+                        object = object.substring(0,object.length()-2)+object.substring(object.length()-1);
+                        JSONObject jsonObject = new JSONObject(object);
                         list.add(jsonObject);
                     }
                     Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
@@ -630,9 +656,9 @@ public class RemoteServerDataCheck {
                 String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
                 try {
                     for (int i = 0; i<array.length;i++){
-                        String asd = array[i]+"\\}";
-                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
-                        JSONObject jsonObject = new JSONObject(asd);
+                        String object = array[i]+"\\}";
+                        object = object.substring(0,object.length()-2)+object.substring(object.length()-1);
+                        JSONObject jsonObject = new JSONObject(object);
                         list.add(jsonObject);
                     }
                     Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
@@ -698,9 +724,9 @@ public class RemoteServerDataCheck {
                 String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
                 try {
                     for (int i = 0; i<array.length;i++){
-                        String asd = array[i]+"\\}";
-                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
-                        JSONObject jsonObject = new JSONObject(asd);
+                        String object = array[i]+"\\}";
+                        object = object.substring(0,object.length()-2)+object.substring(object.length()-1);
+                        JSONObject jsonObject = new JSONObject(object);
                         list.add(jsonObject);
                     }
                     Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
@@ -764,9 +790,9 @@ public class RemoteServerDataCheck {
                 String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
                 try {
                     for (int i = 0; i<array.length;i++){
-                        String asd = array[i]+"\\}";
-                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
-                        JSONObject jsonObject = new JSONObject(asd);
+                        String object = array[i]+"\\}";
+                        object = object.substring(0,object.length()-2)+object.substring(object.length()-1);
+                        JSONObject jsonObject = new JSONObject(object);
                         list.add(jsonObject);
                     }
                     Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
@@ -831,9 +857,9 @@ public class RemoteServerDataCheck {
                 String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
                 try {
                     for (int i = 0; i<array.length;i++){
-                        String asd = array[i]+"\\}";
-                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
-                        JSONObject jsonObject = new JSONObject(asd);
+                        String object = array[i]+"\\}";
+                        object = object.substring(0,object.length()-2)+object.substring(object.length()-1);
+                        JSONObject jsonObject = new JSONObject(object);
                         list.add(jsonObject);
                     }
                     Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
@@ -892,9 +918,9 @@ public class RemoteServerDataCheck {
                 String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
                 try {
                     for (int i = 0; i<array.length;i++){
-                        String asd = array[i]+"\\}";
-                        asd = asd.substring(0,asd.length()-2)+asd.substring(asd.length()-1);
-                        JSONObject jsonObject = new JSONObject(asd);
+                        String object = array[i]+"\\}";
+                        object = object.substring(0,object.length()-2)+object.substring(object.length()-1);
+                        JSONObject jsonObject = new JSONObject(object);
                         list.add(jsonObject);
                     }
                     Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();

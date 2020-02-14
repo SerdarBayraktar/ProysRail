@@ -28,7 +28,7 @@ import androidx.room.PrimaryKey;
 })
 public class CalisanVerimsizlikEntity {
     @PrimaryKey(autoGenerate = true)
-    public int calisanverimsizlik_id;
+    public Integer calisanverimsizlik_id;
 
     public String bildiri;
 

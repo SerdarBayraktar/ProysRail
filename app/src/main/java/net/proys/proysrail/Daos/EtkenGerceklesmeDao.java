@@ -20,6 +20,6 @@ public interface EtkenGerceklesmeDao {
     @Query("select etken_gercek_id,gerceklesme,etken from EtkenGerceklesmeEntity where gerceklesme=:gerceklesme_id and etken=:etken_id")
     List<EtkenGerceklesmeEntity> readNumberforradio(int gerceklesme_id,int etken_id);//ReadVerimsizlikPart2room
 
-    @Query("select * from EtkenGerceklesmeEntity as entity where gerceklesme=:gerceklesme_id")
-    List<EtkenGerceklesmeEntity> readEtkenDeger(int gerceklesme_id);//ReadTaslakVerimsizlikroom todo bak buna bir ara saçma sapan bir hata veriyor bu yuüzden * yaptım
+    @Query("select deger,gerceklesme,etken from EtkenGerceklesmeEntity as entity where gerceklesme=:gerceklesme_id")
+    List<EtkenGerceklesmeEntity> readEtkenDeger(int gerceklesme_id);//ReadTaslakVerimsizlikroom
 }

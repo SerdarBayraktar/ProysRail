@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 public class ImalatListeEntity {
 
     @PrimaryKey()
-    public int imalat_id;
+    public Integer imalat_id;
 
     public String isim;
 
@@ -31,13 +31,13 @@ public class ImalatListeEntity {
 
     public boolean maliyet;
 
-    public int minpi_deger;
+    public Integer minpi_deger;
 
-    public int getImalat_id() {
+    public Integer getImalat_id() {
         return imalat_id;
     }
 
-    public void setImalat_id(int imalat_id) {
+    public void setImalat_id(Integer imalat_id) {
         this.imalat_id = imalat_id;
     }
 
@@ -129,11 +129,11 @@ public class ImalatListeEntity {
         this.maliyet = maliyet;
     }
 
-    public int getMinpi_deger() {
+    public Integer getMinpi_deger() {
         return minpi_deger;
     }
 
-    public void setMinpi_deger(int minpi_deger) {
+    public void setMinpi_deger(Integer minpi_deger) {
         this.minpi_deger = minpi_deger;
     }
 }

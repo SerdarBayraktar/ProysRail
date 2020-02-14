@@ -29,7 +29,7 @@ import androidx.room.PrimaryKey;
 public class CalisanPuantajEntity {
 
     @PrimaryKey(autoGenerate = true)
-    public int calisanpuantaj_id;
+    public Integer calisanpuantaj_id;
 
     public String bildiri;
 

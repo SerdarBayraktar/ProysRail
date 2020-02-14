@@ -19,35 +19,35 @@ import androidx.room.PrimaryKey;
 public class ImalatSektorEslesmeEntity {
 
     @PrimaryKey(autoGenerate =true)
-    public int id;
+    public Integer id;
 
-    public int imalat;
+    public Integer imalat;
 
-    public int sektor;
+    public Integer sektor;
 
     public boolean tahmin;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getImalat() {
+    public Integer getImalat() {
         return imalat;
     }
 
-    public void setImalat(int imalat) {
+    public void setImalat(Integer imalat) {
         this.imalat = imalat;
     }
 
-    public int getSektor() {
+    public Integer getSektor() {
         return sektor;
     }
 
-    public void setSektor(int sektor) {
+    public void setSektor(Integer sektor) {
         this.sektor = sektor;
     }
 

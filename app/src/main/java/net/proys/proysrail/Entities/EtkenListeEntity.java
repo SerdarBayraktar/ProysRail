@@ -1,5 +1,6 @@
 package net.proys.proysrail.Entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -7,17 +8,17 @@ import androidx.room.PrimaryKey;
 public class EtkenListeEntity {
 
     @PrimaryKey (autoGenerate = true)
-    public int etken_id;
+    public Integer etken_id;
 
     public String isim;
 
     public Double vt_deger;
 
-    public int getEtken_id() {
+    public Integer getEtken_id() {
         return etken_id;
     }
 
-    public void setEtken_id(int etken_id) {
+    public void setEtken_id(Integer etken_id) {
         this.etken_id = etken_id;
     }
 

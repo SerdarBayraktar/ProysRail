@@ -27,25 +27,25 @@ import androidx.room.PrimaryKey;
 public class ImalatGerceklesmeEntity {
 
     @PrimaryKey(autoGenerate = true)
-    public int gerceklesme_id;
+    public Integer gerceklesme_id;
 
     public  String imalat;
 
     public String tarih;
 
-    public int km_bas;
+    public Integer km_bas;
 
-    public int km_bit;
+    public Integer km_bit;
 
     public String sektor;
 
-    public int hat_no;
+    public Integer hat_no;
 
-    public int ilerleme;
+    public Integer ilerleme;
 
     public String bildiri;
 
-    public int vardiya;
+    public Integer vardiya;
 
     public boolean minpi;
 }

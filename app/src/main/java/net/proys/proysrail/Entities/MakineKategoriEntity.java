@@ -7,17 +7,17 @@ import androidx.room.PrimaryKey;
 public class MakineKategoriEntity {
 
     @PrimaryKey
-    public int kategori_id;
+    public Integer kategori_id;
 
     public String kategori_isim;
 
     public boolean rekabet;
 
-    public int getKategori_id() {
+    public Integer getKategori_id() {
         return kategori_id;
     }
 
-    public void setKategori_id(int kategori_id) {
+    public void setKategori_id(Integer kategori_id) {
         this.kategori_id = kategori_id;
     }
 

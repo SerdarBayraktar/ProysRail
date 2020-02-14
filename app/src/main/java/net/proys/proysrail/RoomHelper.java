@@ -11,10 +11,13 @@ public class RoomHelper {
 
     }
 
-    public void ReadVerimsizlik(){//todo
+    public void ReadVerimsizlik(){
        RoomDatabase database = Room.databaseBuilder(mContext,RoomDatabase.class,"ProysDB").allowMainThreadQueries().build();
 
 
+
+    }
+    public void ReadBildiriListesifor1b(){
 
     }
 

@@ -20,33 +20,33 @@ public class KullaniciImalatEslesmeEntity {
 
 
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    public Integer id;
 
-    public int kullanici;
+    public Integer kullanici;
 
-    public int imalat;
+    public Integer imalat;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getKullanici() {
+    public Integer getKullanici() {
         return kullanici;
     }
 
-    public void setKullanici(int kullanici) {
+    public void setKullanici(Integer kullanici) {
         this.kullanici = kullanici;
     }
 
-    public int getImalat() {
+    public Integer getImalat() {
         return imalat;
     }
 
-    public void setImalat(int imalat) {
+    public void setImalat(Integer imalat) {
         this.imalat = imalat;
     }
 }

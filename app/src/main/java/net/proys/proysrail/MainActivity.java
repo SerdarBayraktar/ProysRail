@@ -21,10 +21,14 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public static RoomDatabase database;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //RoomStart();
+        try {
+            RoomStart();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         Intent intent = new Intent(MainActivity.this,Anasayfa.class);
         startActivity(intent);
         //kopyala();
@@ -363,16 +367,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-   /* protected void RoomStart(){
+    protected void RoomStart() throws  Exception{
         //database.wordDao().ekle(word);
         database = Room.databaseBuilder(getApplicationContext(),RoomDatabase.class,"ProysDB").allowMainThreadQueries().build();
-        MakineKategoriEntity makineKategoriEntity = new MakineKategoriEntity();
+        /*MakineKategoriEntity makineKategoriEntity = new MakineKategoriEntity();
         makineKategoriEntity.setKategori_id(2);
         makineKategoriEntity.setKategori_isim("deneme");
-        makineKategoriEntity.setRekabet(true);
-       // database.makineKategoriDao().ekle(makineKategoriEntity);
-       *//* RemoteServerDataCheck sv = new RemoteServerDataCheck(MainActivity.this);
+        makineKategoriEntity.setRekabet(true);*/
+        //database.makineKategoriDao().ekle(makineKategoriEntity);
+        RemoteServerDataCheck sv = new RemoteServerDataCheck(MainActivity.this);
         sv.entegrationDataManagement();
+/*
 
         EtkenGerceklesmeEntity entity = new EtkenGerceklesmeEntity();
         entity.setGerceklesme(1);
@@ -391,12 +396,13 @@ public class MainActivity extends AppCompatActivity {
 
         //List<EtkenGerceklesmeEntity> list = database.etkenGerceklesmeDao().read(1);
         list.get(0);
-*//*
+*/
 
 
 
 
-    }*/
+
+    }
     private void tumtablolararrayler(){
         String[] CalisanListeColumns = new String[]{
                 "calisan_id",
