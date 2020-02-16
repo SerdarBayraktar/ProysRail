@@ -6,7 +6,6 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 @Entity
-
 public class CalisanListeEntity {
 
     @PrimaryKey (autoGenerate = true)
@@ -18,9 +17,9 @@ public class CalisanListeEntity {
 
     public String isim_tam;
 
-    public boolean maviyaka;
+    public Boolean maviyaka;
 
-    public boolean direkt;
+    public Boolean direkt;
 
     public String unvan;
 

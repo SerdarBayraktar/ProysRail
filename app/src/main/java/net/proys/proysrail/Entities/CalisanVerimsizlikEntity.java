@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(foreignKeys = {
+@Entity/*(foreignKeys = {
         @ForeignKey(
                 entity = BildirilerEntity.class,
                 parentColumns = "bildiri_id",
@@ -25,7 +25,7 @@ import androidx.room.PrimaryKey;
                 parentColumns = "etken_gercek_id",
                 childColumns = "etken"
         )
-})
+})*/
 public class CalisanVerimsizlikEntity {
     @PrimaryKey(autoGenerate = true)
     public Integer calisanverimsizlik_id;
@@ -42,4 +42,59 @@ public class CalisanVerimsizlikEntity {
 
     public Float deger;
 
+    public Integer getCalisanverimsizlik_id() {
+        return calisanverimsizlik_id;
+    }
+
+    public void setCalisanverimsizlik_id(Integer calisanverimsizlik_id) {
+        this.calisanverimsizlik_id = calisanverimsizlik_id;
+    }
+
+    public String getBildiri() {
+        return bildiri;
+    }
+
+    public void setBildiri(String bildiri) {
+        this.bildiri = bildiri;
+    }
+
+    public String getCalisan() {
+        return calisan;
+    }
+
+    public void setCalisan(String calisan) {
+        this.calisan = calisan;
+    }
+
+    public String getTarih() {
+        return tarih;
+    }
+
+    public void setTarih(String tarih) {
+        this.tarih = tarih;
+    }
+
+    public String getImalat() {
+        return imalat;
+    }
+
+    public void setImalat(String imalat) {
+        this.imalat = imalat;
+    }
+
+    public String getEtken() {
+        return etken;
+    }
+
+    public void setEtken(String etken) {
+        this.etken = etken;
+    }
+
+    public Float getDeger() {
+        return deger;
+    }
+
+    public void setDeger(Float deger) {
+        this.deger = deger;
+    }
 }

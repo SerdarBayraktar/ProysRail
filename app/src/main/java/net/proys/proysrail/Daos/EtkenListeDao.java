@@ -30,7 +30,7 @@ public interface EtkenListeDao {
     List<EtkenListeEntity> readEtken_id(String isim);//ReadEtkenListesiforidroom        could be str
 
     @Query("select vt_deger,etken_id from EtkenListeEntity where etken_id=:etken_id")
-    int readDeger(int etken_id);//ReadEtkenListesifordegerroom
+    List<EtkenListeEntity> readDeger(int etken_id);//ReadEtkenListesifordegerroom
 
     @Query("select isim from EtkenListeEntity")
     List<EtkenListeEntity> readAllIsimler();//ReadEtkenListesiroom orjinaldaki radiolar kaldırıldı

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 @Entity
 public class ImalatListeEntity {
 
-    @PrimaryKey()
+    @PrimaryKey
     public Integer imalat_id;
 
     public String isim;
@@ -23,13 +23,13 @@ public class ImalatListeEntity {
 
     public String takip_tipi;
 
-    public boolean takip;
+    public Boolean takip;
 
-    public boolean kontrol;
+    public Boolean kontrol;
 
-    public boolean puantaj;
+    public Boolean puantaj;
 
-    public boolean maliyet;
+    public Boolean maliyet;
 
     public Integer minpi_deger;
 
@@ -97,35 +97,35 @@ public class ImalatListeEntity {
         this.takip_tipi = takip_tipi;
     }
 
-    public boolean isTakip() {
+    public Boolean isTakip() {
         return takip;
     }
 
-    public void setTakip(boolean takip) {
+    public void setTakip(Boolean takip) {
         this.takip = takip;
     }
 
-    public boolean isKontrol() {
+    public Boolean isKontrol() {
         return kontrol;
     }
 
-    public void setKontrol(boolean kontrol) {
+    public void setKontrol(Boolean kontrol) {
         this.kontrol = kontrol;
     }
 
-    public boolean isPuantaj() {
+    public Boolean isPuantaj() {
         return puantaj;
     }
 
-    public void setPuantaj(boolean puantaj) {
+    public void setPuantaj(Boolean puantaj) {
         this.puantaj = puantaj;
     }
 
-    public boolean isMaliyet() {
+    public Boolean isMaliyet() {
         return maliyet;
     }
 
-    public void setMaliyet(boolean maliyet) {
+    public void setMaliyet(Boolean maliyet) {
         this.maliyet = maliyet;
     }
 

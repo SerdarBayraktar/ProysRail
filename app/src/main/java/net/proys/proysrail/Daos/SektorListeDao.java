@@ -20,7 +20,12 @@ public interface SektorListeDao {
     @Query("select * from SektorListeEntity")
     List<SektorListeEntity> readAll();
 
-
     @Update
     void update(SektorListeEntity sektorListeEntity);
+
+    @Query("select * from SektorListeEntity where isim=:isim")
+    List<SektorListeEntity> readSektor (String isim);
+
+    @Query("select * from SektorListeEntity where sektor_id=:id")
+    List<SektorListeEntity> readSektor (Integer id);
 }

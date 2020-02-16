@@ -54,7 +54,6 @@ public class L4_aciklama extends AppCompatActivity {
 
     }
     public void setListView() {
-        String asd =database.ReadGet_Set("ImalatId");
         List[] lists = database.ReadAciklamal4(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"));
         final List<String> aciklamalar = lists[0];
         final List<Integer> aciklama_idler = lists[1];

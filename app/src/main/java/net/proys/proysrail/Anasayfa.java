@@ -23,9 +23,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,8 +58,12 @@ public class Anasayfa extends AppCompatActivity {
 
        init();
        animation();
-      setOnclickEvents();
+        //SyncWMySQl();
+        asd();
+        //abc();
+        setOnclickEvents();
        Benihatirla();
+
        //urldeneme();
         //urlget();
         //System.out.println(database.ReadPersonelwImalat_id("T0002")[0]);
@@ -343,7 +351,7 @@ public class Anasayfa extends AppCompatActivity {
             final String imalat = "T0012--T0013--T0014--T0015--T0006--T0007--T0008--T0009";
             final String bolge = "A1";
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://proys.net/sektorler.php", new Response.Listener<String>() {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://31.210.91.198/beta/panel/rest/post/bildiri", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     System.out.println(response);
@@ -359,20 +367,96 @@ public class Anasayfa extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String,String> info = new HashMap<String, String>();
-                    info.put("id",id);
-                    info.put("isim",isim);
-                    info.put("hat",hat);
-                    info.put("hat_no",hat_no);
-                    info.put("km_bas",km_bas);
-                    info.put("km_bit",km_bit);
-                    info.put("aktif",aktif);
-                    info.put("imalat",imalat);
-                    info.put("bolge",bolge);
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("deneme","proys");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    info.put("deneme",jsonObject.toString());
+
+
                     return info;
+                }
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    headers.put("Content-Type", "application/json; charset=utf-8");
+                    return headers;
                 }
             };
             //Volley.newRequestQueue(MainActivity.this).add(stringRequest);
             MySingleton.getInstance(getApplicationContext()).addToRequestQue(stringRequest);
+        }
+        public void asd(){
+            JSONArray array = new JSONArray();
+            array.put("serdar");
+            array.put("kerem");
+            array.put("cihan");
+            array.put("proys");
+            JSONObject js = new JSONObject();
+            String[] strings = new String[]{"serdar","kerem","cihan","proys"};
+            try {
+                js.put("deneme",array);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            // Make request for JSONObject
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest(
+                    Request.Method.POST, "http://31.210.91.198/beta/panel/rest/post/bildiri", js,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Toast.makeText(Anasayfa.this, response.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(Anasayfa.this, error.toString(), Toast.LENGTH_SHORT).show();
+
+                }
+            }) {
+
+                /**
+                 * Passing some request headers
+                 */
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    headers.put("Content-Type", "application/json; charset=utf-8");
+                    return headers;
+                }
+
+            };
+
+            // Adding request to request queue
+            Volley.newRequestQueue(this).add(jsonObjReq);
+
+        }
+        public void abc(){
+            JSONObject map = new JSONObject();
+            String username = "proys";
+            try {
+                map.put("deneme", username);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JsonObjectRequest sr = new JsonObjectRequest(Request.Method.POST, "http://31.210.91.198/beta/panel/rest/post/bildiri", map, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject result) {
+                    Toast.makeText(Anasayfa.this, result.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("ServiceCall", error.toString());
+                    Toast.makeText(Anasayfa.this, error.toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
+            RequestQueue mRequestQueue = Volley.newRequestQueue(Anasayfa.this);
+            mRequestQueue.add(sr);
         }
 
     @Override

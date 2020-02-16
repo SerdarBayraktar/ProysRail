@@ -22,4 +22,10 @@ public interface MakineListeDao {
     @Update
     void update(MakineListeEntity makineListeEntity);
 
+    @Query("select * from MakineListeEntity where makine_id=:makineId")
+    List<MakineListeEntity> readMakine(int makineId);
+
+    @Query("select kisa_isim from MakineListeEntity ")
+    List<MakineListeEntity> readAllMakineIsim();
+
 }

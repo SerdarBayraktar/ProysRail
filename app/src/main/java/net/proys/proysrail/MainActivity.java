@@ -11,11 +11,13 @@ import com.parse.Parse;
 import com.parse.ParseInstallation;
 
 import net.proys.proysrail.Entities.CalisanListeEntity;
+import net.proys.proysrail.Entities.CalisanPuantajEntity;
 import net.proys.proysrail.Entities.EtkenGerceklesmeEntity;
 import net.proys.proysrail.Entities.EtkenListeEntity;
 import net.proys.proysrail.Entities.MakineKategoriEntity;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,11 +26,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        try {
-            RoomStart();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        RoomStart();
+
         Intent intent = new Intent(MainActivity.this,Anasayfa.class);
         startActivity(intent);
         //kopyala();
@@ -51,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
         databaseCopyHelper.openDataBase();
     }
 
-    protected void data(){
+    protected void data()
+    {
 
         SharedPreferences sp = getSharedPreferences("Database",MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
@@ -367,58 +367,46 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    protected void RoomStart() throws  Exception{
-        //database.wordDao().ekle(word);
+    protected void RoomStart() {
         database = Room.databaseBuilder(getApplicationContext(),RoomDatabase.class,"ProysDB").allowMainThreadQueries().build();
-        /*MakineKategoriEntity makineKategoriEntity = new MakineKategoriEntity();
-        makineKategoriEntity.setKategori_id(2);
-        makineKategoriEntity.setKategori_isim("deneme");
-        makineKategoriEntity.setRekabet(true);*/
-        //database.makineKategoriDao().ekle(makineKategoriEntity);
-        RemoteServerDataCheck sv = new RemoteServerDataCheck(MainActivity.this);
-        sv.entegrationDataManagement();
+
+        //RemoteServerDataCheck sv = new RemoteServerDataCheck(MainActivity.this);
+        //sv.entegrationDataManagement();
 /*
 
-        EtkenGerceklesmeEntity entity = new EtkenGerceklesmeEntity();
-        entity.setGerceklesme(1);
-        entity.setDeger(5.2);
-        entity.setEtken(6);
-        entity.setEtken_gercek_id(3);
+        List<CalisanPuantajEntity> entities = new ArrayList<>();
+
+        CalisanPuantajEntity entity1 = new CalisanPuantajEntity();
+        entity1.setGerceklesme("asd");
+        entity1.setImalat("123");
+        entity1.setBildiri("abc");
+        entity1.setCalisan("456");
+        entity1.setTarih("uyhrtg");
+        entity1.setPuantaj(7.0f);
+        entity1.setPuantaj_tipi("calisti");
+        entity1.setFazla_mesai(0.0f);
+        entity1.setCalisanpuantaj_id(1);
+        database.calisanPuantajDao().ekle(entity1);
+        entities = database.calisanPuantajDao().readAll();
+        System.out.println(entities.get(0).getBildiri());
 
 
-        EtkenListeEntity entity1 = new EtkenListeEntity();
-        entity1.setEtken_id(6);
-        entity1.setVt_deger(2.2);
-        entity1.setIsim("deneme");
+        CalisanPuantajEntity entity = new CalisanPuantajEntity();
+        entity.setGerceklesme("asd");
+        entity.setImalat("123");
+        entity.setBildiri("abc");
+        entity.setCalisan("456");
+        database.calisanPuantajDao().deleteCalisanPuantaj(entity);
 
-        //database.etkenGerceklesmeDao().ekle(entity);
-        //database.etkenListeDao().ekle(entity1);
-
-        //List<EtkenGerceklesmeEntity> list = database.etkenGerceklesmeDao().read(1);
-        list.get(0);
+        entities = database.calisanPuantajDao().readAll();
+        System.out.println(entities);
 */
 
 
 
+        int x =0;
 
 
-    }
-    private void tumtablolararrayler(){
-        String[] CalisanListeColumns = new String[]{
-                "calisan_id",
-                "isim",
-                "soyisim",
-                "isim_tam",
-                "maviyaka",
-                "direkt",
-                "pozisyon",
-                "vt_puantaj",
-                "unvan",
-                "departman",
-                "taseron",
-                "sorumlu",
-                "v_imalat"
-        };
 
     }
 }

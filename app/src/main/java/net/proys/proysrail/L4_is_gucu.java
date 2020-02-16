@@ -142,7 +142,7 @@ public class L4_is_gucu extends AppCompatActivity {
                     database.DeleteTaslakResourceVerimsizlik(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),database.ReadPersonelwisim(secilen.get(position)));
                     depo.add(secilen.get(position));
                     secilen.remove(position);
-                }else if (durum==2){
+                }else if (durum==2){//gurp kısmı devre dışı todo for beta 1 sonrası ekip
                     database.DeleteTaslakResourceVerimsizlikforGrup(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),database.ReadPersonelwisim(secilen.get(position)));
                     secilen.remove(position);
 

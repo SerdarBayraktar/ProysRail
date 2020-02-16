@@ -24,4 +24,19 @@ public interface ImalatListeDao {
 
     @Update
     void update(ImalatListeEntity imalatListeEntity);
+
+    @Query("select isim from ImalatListeEntity where imalat_id=:id")
+    List<ImalatListeEntity> readImalatIsmi(Integer id);
+
+    @Query("select imalat_id from ImalatListeEntity where isim=:isim")
+    List<ImalatListeEntity> readImalatId(String isim);
+
+    @Query("select * from ImalatListeEntity where imalat_id=:id")
+    List<ImalatListeEntity> readImalat(Integer id);
+
+    @Query("select * from ImalatListeEntity where isim=:isim")
+    List<ImalatListeEntity> readImalat(String isim);
+
+    @Query("select isim from ImalatListeEntity where takip=:takip")
+    List<ImalatListeEntity> readImalat(Boolean takip);
 }

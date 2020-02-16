@@ -25,7 +25,12 @@ public interface CalisanListeDao {
     @Query("select * from CalisanListeEntity where calisan_id=:calisan_id")
     List<CalisanListeEntity> readCalisan(int calisan_id);//ReadPersonelroom
 
+    @Query("select isim from CalisanListeEntity where direkt=:dogru")
+    List<CalisanListeEntity> readIsim(Boolean dogru);
+
     //Important note bildiri kullanici eslesmesi sonucu bildireler tablosunda satırında yok kararı verilmeden önce panelden bildirilerdao guncelle
 
+    @Query("select * from CalisanListeEntity where isim=:isim ")
+    List<CalisanListeEntity> readCalisan(String isim);
 
 }
