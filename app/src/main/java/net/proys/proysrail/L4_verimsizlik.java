@@ -38,6 +38,7 @@ public class L4_verimsizlik extends AppCompatActivity {
         veri = new Get_Set();
         final SQLiteHelper database = new SQLiteHelper(L4_verimsizlik.this);
         //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, database.ReadEtkenListesi());
+        //L4_verimsizlik_adapter arrayAdapter = new L4_verimsizlik_adapter(L4_verimsizlik.this, database.ReadEtkenListesi()[0], database.ReadVerimsizlik(String.valueOf(veri.getKod()), database.ReadGet_Set("ImalatId"), database.ReadEtkenListesi()[0]));
         L4_verimsizlik_adapter arrayAdapter = new L4_verimsizlik_adapter(L4_verimsizlik.this, database.ReadEtkenListesi()[0], database.ReadVerimsizlik(String.valueOf(veri.getKod()), database.ReadGet_Set("ImalatId"), database.ReadEtkenListesi()[0]));
         list.setAdapter(arrayAdapter);
         /*list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

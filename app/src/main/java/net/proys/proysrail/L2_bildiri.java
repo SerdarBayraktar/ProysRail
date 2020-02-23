@@ -84,8 +84,6 @@ public class L2_bildiri extends AppCompatActivity {
                 veri.setPositionL2(imalat_array.length);
                 intent.putExtra("tip","imalat");
                 intent.putExtra("version","new");
-                //SQLiteHelper database = new SQLiteHelper(L2_bildiri.this);
-                //database.WriteTaslak(veri.getKod(),"tarih","",0,"",0,0,0,0,"",0);//todo tarih ayarla
                 startActivity(intent);
             }
         });

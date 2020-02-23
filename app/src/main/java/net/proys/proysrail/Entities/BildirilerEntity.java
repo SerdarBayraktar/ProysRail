@@ -7,7 +7,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(foreignKeys = {
+@Entity/*(foreignKeys = {
         @ForeignKey(
                 entity = BildiriTipListeEntity.class,
                 parentColumns = "bildiritip_id",
@@ -18,10 +18,10 @@ import androidx.room.PrimaryKey;
                 parentColumns = "kullanici_id",
                 childColumns = "kullanici"
         )
-})
+})*/
 public class BildirilerEntity {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     public Long bildiri_id;
 
     public Integer bildiri_tipi;

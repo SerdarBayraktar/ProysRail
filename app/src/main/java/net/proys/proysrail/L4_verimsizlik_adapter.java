@@ -33,7 +33,7 @@ public class L4_verimsizlik_adapter extends ArrayAdapter<String> {
     public View getView(final int position, View view, ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
         final SQLiteHelper database = new SQLiteHelper(context);
-        View rowView =inflater.inflate(R.layout.l4_verimsizlik_row, null,true);//layout hatalı olabilir
+        View rowView =inflater.inflate(R.layout.l4_verimsizlik_row, null,true);
         TextView etken_isim = rowView.findViewById(R.id.etken);
         etken_isim.setText(String.valueOf(etken[position]));
         final RadioButton radioButton = rowView.findViewById(R.id.radioButton);

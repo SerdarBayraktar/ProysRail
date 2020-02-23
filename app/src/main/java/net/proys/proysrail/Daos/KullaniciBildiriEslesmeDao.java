@@ -23,5 +23,6 @@ public interface KullaniciBildiriEslesmeDao {
     @Update
     void update(KullaniciBildiriEslesmeEntity kullaniciBildiriEslesmeEntity);
 
-
+    @Query("select * from KullaniciBildiriEslesmeEntity where kullanici=:kullaniciId")
+    List<KullaniciBildiriEslesmeEntity> read(Integer kullaniciId);
 }

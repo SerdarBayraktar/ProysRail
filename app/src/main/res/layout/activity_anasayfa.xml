@@ -63,7 +63,7 @@
         android:paddingTop="4dp"
         android:paddingRight="8dp"
         android:paddingLeft="8dp"
-
+        android:text="serdarbayraktarmath@gmail.com"
         android:singleLine="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.0"
@@ -72,6 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageLogo" />
 
     <EditText
+        android:text="123"
         android:paddingTop="4dp"
         android:paddingRight="8dp"
         android:paddingLeft="8dp"

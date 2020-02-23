@@ -209,9 +209,9 @@ public class Login_SQLiteHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext()){
                 bildiri = cursor.getString(cursor.getColumnIndex(LOGIN_YAPISI.BILDIRI));
                 bildiri_listesi = bildiri.split("--");
-
             }
         }
+        cursor.close();
         sqLiteDatabase.close();
         return bildiri_listesi;
     }

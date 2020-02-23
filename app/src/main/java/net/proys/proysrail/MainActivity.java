@@ -2,6 +2,7 @@ package net.proys.proysrail;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.DatabaseUtils;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,10 +11,13 @@ import androidx.room.Room;
 import com.parse.Parse;
 import com.parse.ParseInstallation;
 
+import net.proys.proysrail.Entities.BildiriTipListeEntity;
+import net.proys.proysrail.Entities.BildirilerEntity;
 import net.proys.proysrail.Entities.CalisanListeEntity;
 import net.proys.proysrail.Entities.CalisanPuantajEntity;
 import net.proys.proysrail.Entities.EtkenGerceklesmeEntity;
 import net.proys.proysrail.Entities.EtkenListeEntity;
+import net.proys.proysrail.Entities.GetSetEntity;
 import net.proys.proysrail.Entities.MakineKategoriEntity;
 
 import java.io.IOException;
@@ -22,16 +26,19 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static RoomDatabase database;
+    public RoomHelper dh;
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        dh = new RoomHelper(MainActivity.this);
         RoomStart();
 
         Intent intent = new Intent(MainActivity.this,Anasayfa.class);
         startActivity(intent);
         //kopyala();
         data();
+        createGetSet();
         //data1();
         //Parse.initialize(this);
         //ParseInstallation.getCurrentInstallation().saveInBackground();
@@ -368,10 +375,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
     protected void RoomStart() {
-        database = Room.databaseBuilder(getApplicationContext(),RoomDatabase.class,"ProysDB").allowMainThreadQueries().build();
-
-        //RemoteServerDataCheck sv = new RemoteServerDataCheck(MainActivity.this);
-        //sv.entegrationDataManagement();
+        //database = Room.databaseBuilder(getApplicationContext(),RoomDatabase.class,"ProysDB").allowMainThreadQueries().build();
+        database = RoomDatabase.getDatabase(MainActivity.this);
+        RemoteServerDataCheck sv = new RemoteServerDataCheck(getApplicationContext());
+        sv.entegrationDataManagement();
+        List<BildiriTipListeEntity> entities = database.bildiriTipListeDao().readAll();
+        entities.size();
 /*
 
         List<CalisanPuantajEntity> entities = new ArrayList<>();
@@ -404,9 +413,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
         int x =0;
 
 
 
+    }
+    public void createGetSet(){
+        dh.createGetSet("kullaniciId");
+        List<BildirilerEntity> entities = database.bildirilerDao().readAll();
+        entities.size();
     }
 }

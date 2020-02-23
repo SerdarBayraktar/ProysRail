@@ -139,6 +139,12 @@ public class L2_makine extends AppCompatActivity {
         HashMap[] hashMaps = database.CreateL2MakineKartPart2(lists[0],lists[1],String.valueOf(veri.getKod()));
 
         L2_makine_expandable_listview_adapter adapter = new L2_makine_expandable_listview_adapter(L2_makine.this,lists[0],hashMaps[0],hashMaps[1],hashMaps[2]);//to do new adapter
+        RoomHelper dh = new RoomHelper(this);
+        //final List[] lists = dh.ReadMakineKartlari(dh.readGetSet("bildiriId"));
+        //HashMap[] hashMaps = database.CreateL2MakineKartPart2(lists[0],lists[1],String.valueOf(veri.getKod()));
+// hashmaplere uygun veritabanı yaz
+        //L2_makine_expandable_listview_adapter adapter = new L2_makine_expandable_listview_adapter(L2_makine.this,lists[0],hashMaps[0],hashMaps[1],hashMaps[2]);//to do new adapter
+
         listView.setAdapter(adapter);
 
         listView.setAdapter(adapter);

@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.List;
+
 /**
  * Created by Proys Yazılım on 26.06.2019.
  */
@@ -20,8 +22,6 @@ public class L1_rapor_list extends ArrayAdapter<String>
 
     public L1_rapor_list(Activity context, String[] maintitle, String[] subtitle) {
         super(context, R.layout.l1_rapor_row, maintitle);
-        // TODO Auto-generated constructor stub
-
         this.context=context;
         this.maintitle=maintitle;
         this.subtitle=subtitle;
@@ -39,7 +39,30 @@ public class L1_rapor_list extends ArrayAdapter<String>
 
         return rowView;
 
-    };
+    }/*
+    private final Activity context;
+    private final List[] maintitle;
+
+    public L1_rapor_list(Activity context, List[] lists) {
+        super(context, R.layout.l1_rapor_row, maintitle);
+        this.context=context;
+        this.maintitle=maintitle;
+        this.subtitle=subtitle;
+
+    }
+    public View getView(int position, View view, ViewGroup parent) {
+        LayoutInflater inflater=context.getLayoutInflater();
+        View rowView=inflater.inflate(R.layout.l1_rapor_row, null,true);
+
+        TextView titleText = (TextView) rowView.findViewById(R.id.ilerleme);
+        TextView subtitleText = (TextView) rowView.findViewById(R.id.tarih);
+
+        titleText.setText(maintitle[position]);
+        subtitleText.setText(subtitle[position]);
+
+        return rowView;
+
+    }*/
 
 
 

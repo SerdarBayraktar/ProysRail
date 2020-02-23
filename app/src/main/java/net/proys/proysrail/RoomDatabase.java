@@ -1,5 +1,7 @@
 package net.proys.proysrail;
 
+import android.content.Context;
+
 import net.proys.proysrail.Daos.AciklamalarDao;
 import net.proys.proysrail.Daos.BildiriTipListeDao;
 import net.proys.proysrail.Daos.BildirilerDao;
@@ -45,7 +47,13 @@ import net.proys.proysrail.Entities.MakineVerimsizlikEntity;
 import net.proys.proysrail.Entities.MaliyetDagiticiEntity;
 import net.proys.proysrail.Entities.SektorListeEntity;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import androidx.annotation.NonNull;
 import androidx.room.Database;
+import androidx.room.Room;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 @Database(entities = {
         AciklamalarEntity.class,
@@ -73,8 +81,9 @@ import androidx.room.Database;
 },version = 1)
 public abstract class RoomDatabase extends androidx.room.RoomDatabase {
 
+
     // marking the instance as volatile to ensure atomic access to the variable
-    /*private static volatile RoomDatabase INSTANCE;
+    private static volatile RoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -85,7 +94,7 @@ public abstract class RoomDatabase extends androidx.room.RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             RoomDatabase.class, "ProysDB")
-                            .addCallback(sRoomDatabaseCallback)
+                            .addCallback(sRoomDatabaseCallback).allowMainThreadQueries()
                             .build();
                 }
             }
@@ -93,21 +102,21 @@ public abstract class RoomDatabase extends androidx.room.RoomDatabase {
         return INSTANCE;
     }
 
-    *//**
+    /**
      * Override the onOpen method to populate the database.
      * For this sample, we clear the database every time it is created or opened.
      *
      * If you want to populate the database only when the database is created for the 1st time,
      * override RoomDatabase.Callback()#onCreate
-     *//*
+     */
     private static androidx.room.RoomDatabase.Callback sRoomDatabaseCallback = new androidx.room.RoomDatabase.Callback() {
         @Override
-        public void onOpen(@NonNull SupportSQLiteDatabase db) {
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
-*//*
+
             // If you want to keep data through app restarts,
             // comment out the following block
-            databaseWriteExecutor.execute(() -> {
+            /*databaseWriteExecutor.execute(() -> {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
                 WordDao dao = INSTANCE.wordDao();
@@ -117,9 +126,9 @@ public abstract class RoomDatabase extends androidx.room.RoomDatabase {
                 dao.insert(word);
                 word = new Word("World");
                 dao.insert(word);
-            });*//*
+            });*/
         }
-    };*/
+    };
 
 
     public abstract AciklamalarDao aciklamalarDao();

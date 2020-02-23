@@ -4,13 +4,19 @@ import android.content.Intent;
 
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import net.proys.proysrail.Entities.AciklamalarEntity;
+
+import java.util.Date;
 import java.util.List;
 
 public class L4_aciklama extends AppCompatActivity {
@@ -18,12 +24,16 @@ public class L4_aciklama extends AppCompatActivity {
     ListView listView;
     Get_Set veri;
     SQLiteHelper database;
+    RoomHelper dh;
+    RoomDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_l4_aciklama);
         database = new SQLiteHelper(L4_aciklama.this);
+        dh = new RoomHelper(this);
+        db = RoomDatabase.getDatabase(this);
         init();
         setListView();
         setOnclickevents();
@@ -39,6 +49,7 @@ public class L4_aciklama extends AppCompatActivity {
         tick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //dh.DeleteAciklamaEmpty(); todo veritabani room
                 database.DeleteAciklamaEmpty();
                 Intent intent = new Intent(L4_aciklama.this,L2_aciklama.class);
                 startActivity(intent);
@@ -47,6 +58,13 @@ public class L4_aciklama extends AppCompatActivity {
         ekle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*AciklamalarEntity entity = new AciklamalarEntity();
+                entity.setAciklama("");todo veritabani room
+                entity.setBildiri(dh.readGetSet("bildiriId"));
+                entity.setGerceklesme(dh.readGetSet("gerceklesmeId"));
+                entity.setImalat(dh.readGetSet("imalatId"));
+                entity.setTarih();//tarih ayarla buna todo
+                db.aciklamalarDao().ekle(entity);*/
                 database.WriteTaslakL4(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"),Integer.valueOf(database.ReadGet_Set("KopyaNo")));
                 setListView();
             }
@@ -77,6 +95,7 @@ public class L4_aciklama extends AppCompatActivity {
                     public void onClick(View v) {
                         SQLiteHelper database = new SQLiteHelper(L4_aciklama.this);
                         database.DeleteAciklama(String.valueOf(aciklama_idler.get(position)));
+                       // db.aciklamalarDao().delete(aciklama_idler.get(position)); //todo veritabani room
                         setListView();
                     }
                 });

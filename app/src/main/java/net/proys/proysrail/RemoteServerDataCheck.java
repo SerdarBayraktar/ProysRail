@@ -6,10 +6,13 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -32,6 +35,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,13 +52,18 @@ public class RemoteServerDataCheck {
 
     public RemoteServerDataCheck(Context mContext) {
         this.mContext = mContext;
-         database = Room.databaseBuilder(mContext,RoomDatabase.class,"ProysDB").allowMainThreadQueries().build();
+         database = RoomDatabase.getDatabase(mContext);
     }
 
-    protected void entegrationDataManagement() throws Exception{
-        all4MakineListe();
-        /*all4CalisanListe();
-        all4MakineListe();
+    protected void entegrationDataManagement() {
+        all4Kullanicilar();
+        all4KullaniciBildiriEslesme();
+        all4BildiriTipListe();
+        /*try {
+            all4MakineListe();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         all4MakineKategori();
         all4ImalatMakineEslesme();
         all4ImalatListe();
@@ -60,19 +71,14 @@ public class RemoteServerDataCheck {
         all4MaliyetDagitici();
         all4SektorListe();
         all4EtkenListe();
-        all4BildiriTipListe();
         all4Bildiriler();
-        all4Kullanicilar();
-        all4KullaniciBildiriEslesme();*/
+        all4CalisanListe();*/
 
 
     }
     // flags for understand if its update or create of an row
 
     private void all4CalisanListe(){
-        List<CalisanListeEntity> list = database.calisanListeDao().readAll();
-        //list.get(0);
-
         if (database.calisanListeDao().readAll().size()>1){
             getCalisanListe(0);//update
         }else{
@@ -83,7 +89,7 @@ public class RemoteServerDataCheck {
         RequestQueue mRequestQueue;
         final List<JSONObject> list = new ArrayList<>();
         StringRequest mStringRequest;
-        String url = "http://www.proys.net/beta/panel/rest/get/calisanliste";
+        String url = "http://31.210.91.198/beta/panel/rest/get/calisanliste";
         //RequestQueue initialized
         mRequestQueue = Volley.newRequestQueue(mContext);
         //String Request initialized
@@ -140,7 +146,7 @@ public class RemoteServerDataCheck {
                     database.calisanListeDao().ekle(entity);
                 }
             }catch (JSONException err){
-                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, err.toString()+"yükleyemedim calisan liste", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -160,7 +166,7 @@ public class RemoteServerDataCheck {
         RequestQueue mRequestQueue;
         final List<JSONObject> list = new ArrayList<>();
         StringRequest mStringRequest;
-        //String url = "http://www.proys.net/beta/panel/rest/get/makineliste";
+        //String url = "http://31.210.91.198/beta/panel/rest/get/makineliste";
         String url = "http://31.210.91.198/beta/panel/rest/get/makineliste";
 
         //RequestQueue initialized
@@ -237,7 +243,7 @@ public class RemoteServerDataCheck {
                     database.makineListeDao().ekle(entity);
                 }
             }catch (JSONException err){
-                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, err.toString()+"yükleyemedim makine liste", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -257,7 +263,7 @@ public class RemoteServerDataCheck {
         RequestQueue mRequestQueue;
         final List<JSONObject> list = new ArrayList<>();
         StringRequest mStringRequest;
-        String url = "http://www.proys.net/beta/panel/rest/get/MakineKategori";
+        String url = "http://31.210.91.198/beta/panel/rest/get/makinekategori";
         //RequestQueue initialized
         mRequestQueue = Volley.newRequestQueue(mContext);
         //String Request initialized
@@ -304,7 +310,7 @@ public class RemoteServerDataCheck {
                     database.makineKategoriDao().ekle(entity);
                 }
             }catch (JSONException err){
-                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, err.toString()+"bilyemedim makine kateori", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -322,7 +328,7 @@ public class RemoteServerDataCheck {
         RequestQueue mRequestQueue;
         final List<JSONObject> list = new ArrayList<>();
         StringRequest mStringRequest;
-        String url = "http://www.proys.net/beta/panel/rest/get/imalatmakineeslesme";
+        String url = "http://31.210.91.198/beta/panel/rest/get/imalatmakineeslesme";
         //RequestQueue initialized
         mRequestQueue = Volley.newRequestQueue(mContext);
         //String Request initialized
@@ -369,7 +375,7 @@ public class RemoteServerDataCheck {
                     database.imalatMakineEslesmeDao().ekle(entity);
                 }
             }catch (JSONException err){
-                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, err.toString()+"yükleyemedim imalat makine eslesme", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -387,7 +393,7 @@ public class RemoteServerDataCheck {
         RequestQueue mRequestQueue;
         final List<JSONObject> list = new ArrayList<>();
         StringRequest mStringRequest;
-        String url = "http://www.proys.net/beta/panel/rest/get/imalatsektoreslesme";
+        String url = "http://31.210.91.198/beta/panel/rest/get/imalatsektoreslesme";
         //RequestQueue initialized
         mRequestQueue = Volley.newRequestQueue(mContext);
         //String Request initialized
@@ -436,7 +442,7 @@ public class RemoteServerDataCheck {
                     database.imalatSektorEslesmeDao().ekle(entity);
                 }
             }catch (JSONException err){
-                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, err.toString()+"yükleyemedim imalat sektor eslesme", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -454,7 +460,7 @@ public class RemoteServerDataCheck {
         RequestQueue mRequestQueue;
         final List<JSONObject> list = new ArrayList<>();
         StringRequest mStringRequest;
-        String url = "http://www.proys.net/beta/panel/rest/get/maliyetdagitici";
+        String url = "http://31.210.91.198/beta/panel/rest/get/maliyetdagitici";
         //RequestQueue initialized
         mRequestQueue = Volley.newRequestQueue(mContext);
         //String Request initialized
@@ -503,7 +509,7 @@ public class RemoteServerDataCheck {
                     database.maliyetDagiticiDao().ekle(entity);
                 }
             }catch (JSONException err){
-                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, err.toString()+"yükleyemedim maliyet dagitici", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -521,7 +527,7 @@ public class RemoteServerDataCheck {
         RequestQueue mRequestQueue;
         final List<JSONObject> list = new ArrayList<>();
         StringRequest mStringRequest;
-        String url = "http://www.proys.net/beta/panel/rest/get/sektorliste";
+        String url = "http://31.210.91.198/beta/panel/rest/get/sektorliste";
         //RequestQueue initialized
         mRequestQueue = Volley.newRequestQueue(mContext);
         //String Request initialized
@@ -567,7 +573,7 @@ public class RemoteServerDataCheck {
                     database.sektorListeDao().ekle(entity);
                 }
             }catch (JSONException err){
-                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, err.toString()+"yükleyemedim sektorliste", Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -584,7 +590,7 @@ public class RemoteServerDataCheck {
         RequestQueue mRequestQueue;
         final List<JSONObject> list = new ArrayList<>();
         StringRequest mStringRequest;
-        String url = "http://www.proys.net/beta/panel/rest/get/etkenliste";
+        String url = "http://31.210.91.198/beta/panel/rest/get/etkenliste";
         //RequestQueue initialized
         mRequestQueue = Volley.newRequestQueue(mContext);
         //String Request initialized
@@ -629,14 +635,14 @@ public class RemoteServerDataCheck {
                     database.etkenListeDao().ekle(entity);
                 }
             }catch (JSONException err){
-                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, err.toString()+"yükleyemedim etkenliste", Toast.LENGTH_SHORT).show();
             }
 
         }
     }
 
     private void all4BildiriTipListe(){
-        if (database.bildiriTipListeDao().readAll().size()>1){
+        if (database.bildiriTipListeDao().readAll().size()>0){
             getBildiriTipListe(0);//update
         }else{
             getBildiriTipListe(1);    //sıfırdan create
@@ -646,24 +652,24 @@ public class RemoteServerDataCheck {
         RequestQueue mRequestQueue;
         final List<JSONObject> list = new ArrayList<>();
         StringRequest mStringRequest;
-        String url = "http://www.proys.net/beta/panel/rest/get/bildiritipliste";
+        String url = "http://31.210.91.198/beta/panel/rest/get/bildiritipliste";
         //RequestQueue initialized
         mRequestQueue = Volley.newRequestQueue(mContext);
         //String Request initialized
         mStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                String[] array = response.substring(1,response.length()-1).split("\\}"+"\\,");
                 try {
-                    for (int i = 0; i<array.length;i++){
-                        String object = array[i]+"\\}";
-                        object = object.substring(0,object.length()-2)+object.substring(object.length()-1);
-                        JSONObject jsonObject = new JSONObject(object);
-                        list.add(jsonObject);
+                    response = new String(response.getBytes("ISO-8859-1"), "UTF-8");
+                    JSONArray jsonObjectResponse=new JSONArray(response);
+                    for (int i = 0; i<jsonObjectResponse.length();i++){
+                        list.add(jsonObjectResponse.getJSONObject(i));
                     }
                     Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
                 }catch (JSONException err){
                     Log.d("Error", err.toString());
+                }catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
                 }
                 setBildiriTipListe(list,flag);
             }
@@ -688,7 +694,7 @@ public class RemoteServerDataCheck {
                 entity.setGunluk_rapor(jsonList.get(i).getBoolean("gunluk_rapor"));
                 entity.setYayin_saat(jsonList.get(i).getString("yayin_saat"));
                 entity.setGiris_sure(jsonList.get(i).getInt("giris_sure"));
-                entity.setBagimli(jsonList.get(i).getInt("bagimli"));
+                //entity.setBagimli(jsonList.get(i).getBoolean("bagimli"));
 
                 if (flag==0){
                     database.bildiriTipListeDao().update(entity);
@@ -696,7 +702,7 @@ public class RemoteServerDataCheck {
                     database.bildiriTipListeDao().ekle(entity);
                 }
             }catch (JSONException err){
-                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, err.toString()+" bildiritip", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -714,7 +720,7 @@ public class RemoteServerDataCheck {
         RequestQueue mRequestQueue;
         final List<JSONObject> list = new ArrayList<>();
         StringRequest mStringRequest;
-        String url = "http://www.proys.net/beta/panel/rest/get/bildiriler";
+        String url = "http://31.210.91.198/beta/panel/rest/get/bildiriler";
         //RequestQueue initialized
         mRequestQueue = Volley.newRequestQueue(mContext);
         //String Request initialized
@@ -762,7 +768,7 @@ public class RemoteServerDataCheck {
                     database.bildirilerDao().ekle(entity);
                 }
             }catch (JSONException err){
-                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, err.toString()+"yükleyemedim bildiriler", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -780,7 +786,7 @@ public class RemoteServerDataCheck {
         RequestQueue mRequestQueue;
         final List<JSONObject> list = new ArrayList<>();
         StringRequest mStringRequest;
-        String url = "http://www.proys.net/beta/panel/rest/get/kullanicilar";
+        String url = "http://31.210.91.198/beta/panel/rest/get/kullanicilar";
         //RequestQueue initialized
         mRequestQueue = Volley.newRequestQueue(mContext);
         //String Request initialized
@@ -795,7 +801,6 @@ public class RemoteServerDataCheck {
                         JSONObject jsonObject = new JSONObject(object);
                         list.add(jsonObject);
                     }
-                    Toast.makeText(mContext, response, Toast.LENGTH_SHORT).show();
                 }catch (JSONException err){
                     Log.d("Error", err.toString());
                 }
@@ -829,9 +834,11 @@ public class RemoteServerDataCheck {
                     database.kullanicilarDao().ekle(entity);
                 }
             }catch (JSONException err){
-                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, err.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, jsonList.get(i).toString()+"  kullanıcılar", Toast.LENGTH_LONG).show();
 
             }
+
 
         }
     }
@@ -847,7 +854,7 @@ public class RemoteServerDataCheck {
         RequestQueue mRequestQueue;
         final List<JSONObject> list = new ArrayList<>();
         StringRequest mStringRequest;
-        String url = "http://www.proys.net/beta/panel/rest/get/kullanicibildirieslesme";
+        String url = "http://31.210.91.198/beta/panel/rest/get/kullanicibildirieslesme";
         //RequestQueue initialized
         mRequestQueue = Volley.newRequestQueue(mContext);
         //String Request initialized
@@ -890,7 +897,7 @@ public class RemoteServerDataCheck {
                     database.kullaniciBildiriEslesmeDao().ekle(entity);
                 }
             }catch (JSONException err){
-                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, err.toString()+"yükleyemedim kullanıcıbildiri", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -908,7 +915,7 @@ public class RemoteServerDataCheck {
         RequestQueue mRequestQueue;
         final List<JSONObject> list = new ArrayList<>();
         StringRequest mStringRequest;
-        String url = "http://www.proys.net/beta/panel/rest/get/imalatliste";
+        String url = "http://31.210.91.198/beta/panel/rest/get/imalatliste";
         //RequestQueue initialized
         mRequestQueue = Volley.newRequestQueue(mContext);
         //String Request initialized
@@ -962,7 +969,7 @@ public class RemoteServerDataCheck {
                     database.imalatListeDao().ekle(entity);
                 }
             }catch (JSONException err){
-                Toast.makeText(mContext, "yükleyemedim", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, err.toString()+"yükleyemedim imalat liste", Toast.LENGTH_SHORT).show();
 
             }
 

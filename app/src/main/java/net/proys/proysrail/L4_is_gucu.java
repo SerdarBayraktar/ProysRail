@@ -2,6 +2,8 @@ package net.proys.proysrail;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,6 +14,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import net.proys.proysrail.Entities.CalisanListeEntity;
+import net.proys.proysrail.Entities.CalisanPuantajEntity;
+import net.proys.proysrail.Entities.CalisanVerimsizlikEntity;
+import net.proys.proysrail.Entities.EtkenListeEntity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,12 +32,16 @@ public class L4_is_gucu extends AppCompatActivity {
     protected List<String> depo,secilen;
     Get_Set veri;
     SQLiteHelper database;
+    RoomHelper dh;
+    RoomDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_l4_is_gucu);
         veri = new Get_Set();
+        dh = new RoomHelper(L4_is_gucu.this);
+        db = RoomDatabase.getDatabase(L4_is_gucu.this);
         init();
         setOnclickEvents();
         setLists();
@@ -80,6 +91,7 @@ public class L4_is_gucu extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().equals("")) {
+                    //depo = dh.ReadPersonelforL4Sepet(dh.readGetSet("gerceklesmeId"),dh.readGetSet("imalatId"),dh.readGetSet("bildiriId")); todo veritabaniroom
                     depo = database.ReadPersonelforL4Sepet(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"));
                 } else {
                     List<String> depo_searched = new ArrayList<>();
@@ -96,7 +108,9 @@ public class L4_is_gucu extends AppCompatActivity {
     }
     protected void setLists(){
         Get_Set veri = new Get_Set();
+        //depo = dh.ReadPersonelforL4Sepet(dh.readGetSet("gerceklesmeId"),dh.readGetSet("imalatId"),dh.readGetSet("bildiriId")); todo veritabaniroom
         depo = database.ReadPersonelforL4Sepet(String.valueOf(veri.getKod()),database.ReadGet_Set("ImalatId"));
+        //secilen = dh.ReadPersonelforL4SepetSecilen(dh.readGetSet("gerceklesmeId"),dh.readGetSet("imalatId"),dh.readGetSet("bildiriId")); todo veritabaniroom
         secilen = database.ReadPersonelforL4SepetSecilen(String.valueOf(veri.getKod()),veri.getImalatIsgucuid());
 
     }
@@ -124,8 +138,45 @@ public class L4_is_gucu extends AppCompatActivity {
                 depo.remove(position);
                 setListView1();
                 setListView2();
+
             }
         });
+/*  todo veritabaniroom
+        depo_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                secilen.add(depo.get(position));
+                List<CalisanListeEntity> bilgiler = db.calisanListeDao().readCalisan(dh.ReadPersonelwIsim(depo.get(position)));
+                if (bilgiler.size()>=6){
+                    String tarih = String.valueOf(veri.getKod()).substring(13,15)+"."+String.valueOf(veri.getKod()).substring(11,13)+"."+String.valueOf(veri.getKod()).substring(7,11);
+                    CalisanPuantajEntity entity = new CalisanPuantajEntity();
+                    entity.setCalisan(String.valueOf(bilgiler.get(0).getCalisan_id()));
+                    entity.setPuantaj(bilgiler.get(0).getVt_puantaj());
+                    entity.setPuantaj_tipi("calisti");
+                    entity.setFazla_mesai(0.0f);
+                    entity.setTarih(tarih);
+                    entity.setBildiri(dh.readGetSet("bildiriId"));
+                    entity.setImalat(dh.readGetSet("imalatId"));
+                    entity.setGerceklesme(dh.readGetSet("gerceklesmeId"));
+                    db.calisanPuantajDao().ekle(entity);
+
+                    List<EtkenListeEntity> etkenListeEntities = db.etkenListeDao().readAll();
+                     for (int i =0; i<etkenListeEntities.size(); i++){
+                        CalisanVerimsizlikEntity calisanVerimsizlikEntity= new CalisanVerimsizlikEntity();
+                        calisanVerimsizlikEntity.setCalisan(String.valueOf(bilgiler.get(0).getCalisan_id()));
+                        calisanVerimsizlikEntity.setEtken(etkenListeEntities.get(i).getIsim());
+                        calisanVerimsizlikEntity.setDeger(etkenListeEntities.get(i).getVt_deger());
+                        calisanVerimsizlikEntity.setTarih(tarih);
+                        calisanVerimsizlikEntity.setBildiri(dh.readGetSet("bildiriId"));
+                        calisanVerimsizlikEntity.setImalat(dh.readGetSet("imalatId"));
+                        db.calisanVerimsizlikDao().ekle(calisanVerimsizlikEntity);
+                    }
+                }
+                depo.remove(position);
+                setListView1();
+                setListView2();
+            }
+        });*/
     }
 
     protected void setListView2(){
@@ -150,9 +201,26 @@ public class L4_is_gucu extends AppCompatActivity {
                 setListView1();
                 setListView2();
             }
-        });
+        });/*todo veritabaniroom
+        secilen_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Get_Set veri =new Get_Set();
+                int durum = database.ReadTaslakforL4SepetSecilenClick(String.valueOf(veri.getKod()),database.ReadPersonelwisim(secilen.get(position)),veri.getImalatIsgucuid());
+                durum =1; //devre dışı şuan ekio o yüzden bunu yaptım
+                if (durum==1){
+                    db.calisanVerimsizlikDao().deleteVerimsizlik(dh.readGetSet("bildiriId"),dh.ReadPersonelwIsim(secilen.get(position)),dh.readGetSet("imalatId"));
+                    depo.add(secilen.get(position));
+                    secilen.remove(position);
+                }else if (durum==2){//gurp kısmı devre dışı todo for beta 1 sonrası ekip
+                    database.DeleteTaslakResourceVerimsizlikforGrup(String.valueOf(veri.getKod()),veri.getImalatIsgucuid(),database.ReadPersonelwisim(secilen.get(position)));
+                    secilen.remove(position);
 
-
+                }
+                setListView1();
+                setListView2();
+            }
+        });*/
     }
 
     @Override

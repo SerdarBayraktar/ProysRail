@@ -147,7 +147,6 @@ public class l2_is_gucu extends AppCompatActivity {
         L2_is_gucu_expandable_listview_adapter adapter = new L2_is_gucu_expandable_listview_adapter(l2_is_gucu.this,lists[0],hashMaps[0],hashMaps[1]);
 
 
-
         //L2_is_gucu_adapter adapter = new L2_is_gucu_adapter(this, ekipler, puantaj, kayip_saat);
         listView.setAdapter(adapter);
         listView.setDivider(null);

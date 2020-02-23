@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(foreignKeys = {
+@Entity/*(foreignKeys = {
         @ForeignKey(
                 entity = KullanicilarEntity.class,
                 parentColumns = "kullanici_id",
@@ -15,7 +15,7 @@ import androidx.room.PrimaryKey;
                 parentColumns = "bildiritip_id",
                 childColumns = "bildiri_tipi"
         )
-})
+})*/
 public class KullaniciBildiriEslesmeEntity {
 
     @PrimaryKey(autoGenerate = true)

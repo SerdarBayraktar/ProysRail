@@ -21,7 +21,7 @@ public class KullanicilarEntity {
 
     public String password;
 
-    public boolean aktif;
+    public Boolean aktif;
 
 
     public Integer getKullanici_id() {

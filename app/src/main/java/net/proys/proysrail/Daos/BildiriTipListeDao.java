@@ -22,4 +22,7 @@ public interface BildiriTipListeDao {
 
     @Update
     void update(BildiriTipListeEntity bildiriTipListeEntity);
+
+    @Query("select * from BildiriTipListeEntity where bildiritip_id=:bildiritipId")
+    List<BildiriTipListeEntity> read(Integer bildiritipId);
 }

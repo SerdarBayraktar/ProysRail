@@ -17,4 +17,7 @@ public interface CalisanVerimsizlikDao {
 
     @Query("select etken,deger from CalisanVerimsizlikEntity where bildiri=:bildiriId and calisan=:calisanId")
     List<CalisanVerimsizlikEntity> readVerimsizlik(String bildiriId, String calisanId);
+
+    @Query("Delete from CalisanVerimsizlikEntity where bildiri=:bildiriId and calisan=:calisanId and imalat=:imalatId")
+    void deleteVerimsizlik(String bildiriId,String calisanId,String imalatId);
 }

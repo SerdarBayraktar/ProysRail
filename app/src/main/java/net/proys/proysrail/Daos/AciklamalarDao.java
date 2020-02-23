@@ -29,4 +29,6 @@ public interface AciklamalarDao {
 
     @Query("delete from aciklamalarentity where aciklama=:aciklama")
     void delete(String aciklama);
+    @Query("delete from aciklamalarentity where aciklama_id=:aciklamaId")
+    void delete(Integer aciklamaId);
 }

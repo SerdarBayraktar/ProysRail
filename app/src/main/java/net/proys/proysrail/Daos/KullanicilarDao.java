@@ -23,4 +23,10 @@ public interface KullanicilarDao {
 
     @Update
     void update(KullanicilarEntity kullanicilarEntity);
+
+    @Query("select * from KullanicilarEntity where email=:email")
+    List<KullanicilarEntity> read(String email);
+
+    @Query("select * from KullanicilarEntity where kullanici_id=:kullaniciId")
+    List<KullanicilarEntity> readId(Integer kullaniciId);
 }

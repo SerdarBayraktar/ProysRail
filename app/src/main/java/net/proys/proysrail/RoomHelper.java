@@ -8,12 +8,15 @@ import net.proys.proysrail.Daos.MakineListeDao;
 import net.proys.proysrail.Daos.MakinePuantajDao;
 import net.proys.proysrail.Daos.MakineVerimsizlikDao;
 import net.proys.proysrail.Entities.AciklamalarEntity;
+import net.proys.proysrail.Entities.BildiriTipListeEntity;
 import net.proys.proysrail.Entities.BildirilerEntity;
 import net.proys.proysrail.Entities.CalisanListeEntity;
 import net.proys.proysrail.Entities.CalisanPuantajEntity;
 import net.proys.proysrail.Entities.CalisanVerimsizlikEntity;
+import net.proys.proysrail.Entities.GetSetEntity;
 import net.proys.proysrail.Entities.ImalatGerceklesmeEntity;
 import net.proys.proysrail.Entities.ImalatListeEntity;
+import net.proys.proysrail.Entities.KullaniciBildiriEslesmeEntity;
 import net.proys.proysrail.Entities.MakineListeEntity;
 import net.proys.proysrail.Entities.MakinePuantajEntity;
 import net.proys.proysrail.Entities.MakineVerimsizlikEntity;
@@ -32,18 +35,10 @@ public class RoomHelper {
     private Context mContext;
     RoomDatabase database;
     protected RoomHelper(Context context) {
-         database = Room.databaseBuilder(mContext,RoomDatabase.class,"ProysDB").allowMainThreadQueries().build();
-
         this.mContext = context;
-
+        database = RoomDatabase.getDatabase(mContext);
     }
-
-    protected void ReadVerimsizlik(){
-
-
-
-    }
-    protected void ReadBildiriListesiforDateComparision(int kullanici_id,String bildiri_id){
+    protected String ReadBildiriListesiforDateComparision(int kullanici_id,String bildiri_id){
         List<BildirilerEntity> entities = database.bildirilerDao().readTarihler(kullanici_id);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
         String tarih_str = null;
@@ -69,9 +64,9 @@ public class RoomHelper {
         } else {
             tarih_str = "0";
         }
+        return tarih_str;
 
     }
-
     protected List<CalisanListeEntity> ReadPersonelforL4(String bildiri_id){// ekipler kısmı kesildi favekip yok dip not ekipler için kullanılıyor
         List<CalisanListeEntity> entities = database.calisanListeDao().readIsim(true);
         return entities;
@@ -89,7 +84,6 @@ public class RoomHelper {
         }
         return isimler;
     }
-
     protected List<String> ReadPersonelforL4SepetMakine(String gerceklesmeId,String imalatId,String bildiriId){//hazır
         List<String> isimler = new ArrayList<>();
         List<MakineListeEntity> tumMakineler = database.makineListeDao().readAllMakineIsim();
@@ -120,7 +114,6 @@ public class RoomHelper {
         }
         return isimler;
     }
-
     protected int ReadTaslakforL4SepetSecilenClick(String gerceklesmeId,String imalatId,String bildiriId,String kaynakId){//hazır
         int x=1;
         CalisanPuantajEntity entity = database.calisanPuantajDao().readCalisan(gerceklesmeId,imalatId,bildiriId,kaynakId).get(0);
@@ -150,6 +143,9 @@ public class RoomHelper {
     }
     protected String ReadEtkenIdForIsim(String etkenId){
         return database.etkenListeDao().readIsim(Integer.valueOf(etkenId)).get(0).getIsim();
+    }
+    protected String ReadEtkenisim(String isim){
+        return database.etkenListeDao().readEtken_id(isim).get(0).getEtken_id().toString();
     }
     protected List[] ReadIlerlemeKartlari(String bildiriId){
         List<ImalatGerceklesmeEntity> entities =  database.imalatGerceklesmeDao().readIlerleme(bildiriId);
@@ -368,7 +364,70 @@ public class RoomHelper {
         }
         return String.valueOf(puantaj);
     }
+    public void ReadTaslakResourceforExListViewChild(String bildiriId,String gerceklesmeId,List<String> idler,List<String> groupisimler){
+        List<CalisanPuantajEntity> entities = database.calisanPuantajDao().readCalisan(bildiriId, gerceklesmeId);
+        //bu l3 işçilik puantaj için gerekli
+    }
+    public String readGetSet(String key){
+        if (database.getSetDao().readValue(key).size()==0){
+            GetSetEntity entity = new GetSetEntity();
+            entity.setKey(key);
+            entity.setValue("");
+            database.getSetDao().ekle(entity);
+        }
+        return database.getSetDao().readValue(key).get(0).getValue();
+    }
+    public void createGetSet(String key){
+        if (database.getSetDao().readValue(key).size()==0){
+            GetSetEntity entity = new GetSetEntity();
+            entity.setKey(key);
+            entity.setValue("");
+            database.getSetDao().ekle(entity);
+        }
+    }
+    public List[] ReadBildiriListesiforList(Integer kullaniciId){
+        List<BildirilerEntity> entities1 = database.bildirilerDao().readAll();
+        entities1.size();
+        List<BildirilerEntity> entities = database.bildirilerDao().read(kullaniciId,0,2);
+        List<String> isim = new ArrayList<>();
+        List<String> deadline = new ArrayList<>();
+        List<String> id = new ArrayList<>();
+        List<String> tarihler = new ArrayList<>();
+        for (int i = 0; i <entities.size() ; i++) {
+            isim.add(readBildiritipi(entities.get(i).getBildiri_tipi())+"("+entities.get(i).getBildiri_tarih()+")");
+            deadline.add("Son Bildiri Tarihi : "+ entities.get(i).getSon_giris());
+            id.add(String.valueOf(entities.get(i).getBildiri_id()));
+            tarihler.add(String.valueOf(entities.get(i).getBildiri_tarih()));
 
+        }
+        return new List[]{isim,deadline,id,tarihler};
+    }
+    public String readBildiritipi(Integer id){
+        List<BildiriTipListeEntity> entities = database.bildiriTipListeDao().readAll();
+        entities.size();
 
-
+        return database.bildiriTipListeDao().read(id).get(0).getIsim();// java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+    }
+    public void updateGetSet(String key,String value){
+        GetSetEntity entity = new GetSetEntity();
+        entity.setKey(key);
+        entity.setValue(value);
+        if (database.getSetDao().readValue(key).size()==0){
+            database.getSetDao().ekle(entity);
+        }else {
+            database.getSetDao().update(entity);
+        }
+    }
+    public List<String> ReadwithIdfor1b(int kullaniciId){
+        List<KullaniciBildiriEslesmeEntity> entities = database.kullaniciBildiriEslesmeDao().read(kullaniciId);
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < entities.size(); i++) {
+            list.add(String.valueOf(entities.get(i).getBildiri_tipi()));
+        }
+        return list;
+    }
+    public boolean bildirilerCheckkwithConnection(Long bildiriId){
+        int size = database.bildirilerDao().readBildiri(bildiriId).size();
+        return size==0;//eşitse true vericek yani öyle bir bildiri yok yani çek getten
+    }
 }

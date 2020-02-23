@@ -37,4 +37,7 @@ public interface BildirilerDao {
 
     @Delete
     void delete(BildirilerEntity bildirilerEntity);
+
+    @Query("select * from BildirilerEntity where kullanici=:kullaniciId and kabul=:kabul1 or kabul=:kabul2")
+    List<BildirilerEntity> read(Integer kullaniciId ,Integer kabul1,Integer kabul2);
 }

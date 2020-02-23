@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(foreignKeys = {
+@Entity/*(foreignKeys = {
         @ForeignKey(
                 entity = ImalatListeEntity.class,
                 parentColumns = "imalat_id",
@@ -15,7 +15,7 @@ import androidx.room.PrimaryKey;
                 parentColumns = "sektor_id",
                 childColumns = "sektor"
         )
-})
+})*/
 public class ImalatSektorEslesmeEntity {
 
     @PrimaryKey(autoGenerate =true)

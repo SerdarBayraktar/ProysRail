@@ -1663,7 +1663,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         sqLiteDatabase.close();
         return rows;
-    }
+    }//todo
     public List[] ReadTaslakfList(String id){
         String imalat = null;
         String sektor = null;
@@ -2327,7 +2327,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         sqLiteDatabase.close();
         return new HashMap[]{listHash,listHashpuantaj};
-    }//todo
+    }// gruplar kaldırıldır bu sebebten ötürü sadeleştirilip eklendi
     public HashMap<String,List<String>>[] ReadTaslakResourceforExListViewChildMakine(String id,String imalatid,List<String> idler,List<String> groupisimler){//idler groupların idsi isimler groupların isimleri
         String tarih = null;
         String kaynak_id = null;
